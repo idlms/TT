@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_PROJECT=_RL6449_PROJECT"
+            ],
+            "forcedInclude": [
+                "${workspaceFolder}/Project/Header/RL6449_Project.h"
+            ],
+        }
+    ],
+    "version": 4
+}

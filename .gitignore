@@ -1,0 +1,11 @@
+Output/
+*.Opt
+*.opt
+*.uv2
+*.uvgui.*
+*.bak
+*.dep
+*.lst
+*.map
+*.o
+*.d

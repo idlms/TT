@@ -1,0 +1,32 @@
+;;==============================================
+;; Global setting
+;;==============================================
+;@INCLUDE("Kernel\Link\RL6449_Link.lin")
+
+BANKAREA(0x0000, 0xFFFF)
+PRINT(".\Output\RL6449_Project.m51")
+
+;;;==============================================
+;; User autolink setting
+;;==============================================
+;@if(_DUAL_BANK_SUPPORT == _ON)
+	;@if((_DUAL_BANK_TYPE != _DUAL_BANK_FLASH_PARTITION) && (_DUAL_BANK_TYPE != _DUAL_BANK_FLASH_PARTITION_USER_FLAG_MODE))
+		;@BANK0(SYSMAIN)
+		;@FUNC(?PR?SYSMAINSTARTUSERCODE?SYSMAIN, 0x4000)
+		;@BANK_LIMIT(_DUAL_BANK_USER_FW_CODE_SIZE)
+	;@else
+		;@if(_DUAL_BANK_FLASH_PARTITION_BOOT_USER_SEL == _DUAL_BANK_FLASH_PARTITION_USER)
+			;@BANK0(SYSMAIN)
+			;@FUNC(?PR?SYSMAINSTARTUSERCODE?SYSMAIN, 0x4000)
+			;@BANK_LIMIT(_DUAL_BANK_USER_FW_CODE_SIZE)
+		;@else
+			;@BANK0(USERCOMMONDUALBANKPROCESS)
+    		;@FUNC(?PR?USERCOMMONDUALBANKPROCESSRUNUSERCODE?USERCOMMONDUALBANKPROCESS, 0x4000)
+    		;@BANK_LIMIT(_DUAL_BANK_USER_FW_START_BANK)
+    	;@endif
+	;@endif
+;@endif
+
+;;==============================================
+;; Non-autolink setting
+;;==============================================
