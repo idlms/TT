@@ -2718,7 +2718,6 @@ void UserCommonAdjustPCM(EnumPCMType enumPCMMode, BYTE *pucIGammaTableArray, BYT
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-
 void UserCommonAdjustGamma(BYTE *pucOGammaTableArray, BYTE ucGammaBankNum)
 {
 #if(_LOCAL_DIMMING_SUPPORT == _ON)
@@ -2740,14 +2739,9 @@ void UserCommonAdjustGamma(BYTE *pucOGammaTableArray, BYTE ucGammaBankNum)
         }
         else
 #endif
-
         {
             ScalerColorOutputGammaAdjust(pucOGammaTableArray, ucGammaBankNum);
         }
-
-// ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-// ScalerColorPCMSRGBAdjust(_SRGB_1_BIT_SHIFT_LEFT, tSRGB_RG_Test, GET_CURRENT_BANK_NUMBER(), 18);
-// ScalerColorSRGBEnable(_FUNCTION_ON);
     }
 }
 

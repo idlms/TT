@@ -33,14 +33,8 @@
 #define _IR_NEC_DTV328                              0
 #define _IR_SONY_B102P                              1
 #define _IR_PHILIPS_RC6                             2
-#define _IR_NEC_TYPE1	                            3
-#define _IR_LG_TYPE									4
 
-#if(_CUSTOMER_TYPE == _CUSTOMER_VIDEOTREE) 
-#define _IR_PROTOCAL                                _IR_LG_TYPE
-#else
-#define _IR_PROTOCAL                                _IR_NEC_TYPE1//_IR_NEC_DTV328
-#endif
+#define _IR_PROTOCAL                                _IR_NEC_DTV328//_IR_PHILIPS_RC6	// IR NEC
 #endif // End of #if(_IR_SUPPORT == _IR_HW_SUPPORT)
 
 

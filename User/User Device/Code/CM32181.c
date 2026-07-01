@@ -46,13 +46,13 @@ static bit Cm32181_WriteRegs(BYTE ucAddr, BYTE  *pucBuff, BYTE  ucLength)
 	PCB_EEPROM_WRITE_PROTECT(_EEPROM_WP_DISABLE);
 	if (ScalerMcuHwIICWrite(CM32181_ADDRESS, 1, ucAddr, ucLength, pucBuff, _PCB_SYS_EEPROM_IIC) == _FAIL)
 	{
-
+		
 		// Enable EEPROM Write Protect
 		PCB_EEPROM_WRITE_PROTECT(_EEPROM_WP_ENABLE);
 
 		return _FAIL;
 	}
-
+	
 	return _SUCCESS;
 }
 
@@ -86,7 +86,7 @@ static bit Cm32181_Ping(void)
 	if (pui8Buff[0] != 0x81)
 	{
 		bRetVal = _FALSE;
-
+		
 	}
 	//DebugMessageSystem("Cm32181_Ping", pui8Buff[0]);
 	return bRetVal;
@@ -103,7 +103,7 @@ static bit Cm32181_Ping(void)
 bit Cm32181_init(void)
 {
 	WORD u16RBuff;
-	BYTE pui8Buff[2] = { 0x00, 0x00 };
+	BYTE pui8Buff[2]= { 0x00, 0x00};
 	if (Cm32181_Ping())
 	{
 		InitializeCm3281 = _TRUE;
@@ -114,7 +114,7 @@ bit Cm32181_init(void)
 		return _FALSE;
 	}
 	/* Default Values */
-	u16RBuff = CM32181_CMD_ALS_ENABLE | CM32181_CMD_ALS_IT_DEFAULT | CM32181_CMD_ALS_SM_DEFAULT;
+	u16RBuff = CM32181_CMD_ALS_ENABLE |	CM32181_CMD_ALS_IT_DEFAULT | CM32181_CMD_ALS_SM_DEFAULT;
 	pui8Buff[1] = (BYTE)((u16RBuff & 0xFF00) >> 8);
 	pui8Buff[0] = (BYTE)((u16RBuff & 0x00FF));
 	command00Reg = u16RBuff;
@@ -262,7 +262,7 @@ DWORD Cm32181_get_lux(void)
 	if (Cm32181_ReadRegs(CM32181_REG_ADDR_ALS, pui8Buff, 2))
 	{
 		u16RBuff = (WORD)(pui8Buff[1] << 8);
-		u16RBuff |= (WORD)pui8Buff[0];
+		u16RBuff |=(WORD) pui8Buff[0];
 	}
 	else
 	{
@@ -271,10 +271,10 @@ DWORD Cm32181_get_lux(void)
 	//DebugMessageSystem("Lux Read pui8Buff[1]", pui8Buff[1]);
 	//DebugMessageSystem("Lux Read pui8Buff[0]", pui8Buff[0]);
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
-	// als_it = 100000 ¾Ë¼ö ¾ø´Â ÀÌÀ¯·Î ÇÑ ¹ø¿¡ 100000À» ³ª´­¼ö ¾ø¾î¼­ 1000, 100 À¸·Î µÎ¹ø ³ª´©¾î °è»ê ÇÏµµ·Ï º¯°æ. 
+	// als_it = 100000 ì•Œìˆ˜ ì—†ëŠ” ì´ìœ ë¡œ í•œ ë²ˆì— 100000ì„ ë‚˜ëˆŒìˆ˜ ì—†ì–´ì„œ 1000, 100 ìœ¼ë¡œ ë‘ë²ˆ ë‚˜ëˆ„ì–´ ê³„ì‚° í•˜ë„ë¡ ë³€ê²½. 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	lux = lux * u16RBuff / 100;
-
+	 
 	lux *= CM32181_CALIBSCALE_DEFAULT;
 	lux /= CM32181_CALIBSCALE_RESOLUTION;
 	lux /= MLUX_PER_LUX;

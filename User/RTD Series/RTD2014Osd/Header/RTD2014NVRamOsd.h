@@ -23,8 +23,9 @@
 #define _PANEL_INDEX_ADDRESS                           (_VGA_MODE_DATA_ADDRESS_END + 1)
 #define _OSD_DATA_ADDRESS                              (_PANEL_INDEX_ADDRESS + 1)
 #define _BRICON_DATA_ADDRESS                           (_OSD_DATA_ADDRESS + sizeof(StructOsdUserDataType))
-#define _COLORTEMP_DATA_ADDRESS                        (_BRICON_DATA_ADDRESS + (sizeof(StructBriConDataType) * _SOURCE_AMOUNT))
-#define _SIXCOLOR_DATA_ADDRESS                         (_COLORTEMP_DATA_ADDRESS + (sizeof(StructColorProcDataType) * (_CT_COLORTEMP_AMOUNT + 1)))
+#define _COLORTEMP_DATA_ADDRESS                        (_BRICON_DATA_ADDRESS + (sizeof(StructBriConDataType) * (_SOURCE_AMOUNT+1)))		
+#define _SIXCOLOR_DATA_ADDRESS                         (_COLORTEMP_DATA_ADDRESS + (sizeof(StructColorProcDataType) * (_CT_COLORTEMP_AMOUNT+1)))	
+
 #define _OSD_DATA_USER_ADDRESS_END                     (_SIXCOLOR_DATA_ADDRESS + sizeof(StructSixColorDataType))
 //---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -32,17 +33,32 @@
 #define _PANEL_TIME_DATA_ADDRESS                       (_FACTORY_SETTING_DATA_ADDRESS)
 #define _PANEL_TIME_DATA_ADDRESS_END                   (_PANEL_TIME_DATA_ADDRESS + sizeof(StructTimeType))
 
+#define _OSD_USER_SERVICE_ADDRESS                        (_PANEL_TIME_DATA_ADDRESS_END + 1)	
+#define _OSD_USER_SERVICE_ADDRESS_END                    (_OSD_USER_SERVICE_ADDRESS + sizeof(StructOsdServiceDataType) - 1)
+
+
 //--------------------------------------------------------------------------------------------
 #endif
 
 typedef struct
 {
     WORD usBackLight;
+	BYTE b1BacklightControl : 1;	
     BYTE ucOsdHPos;
     BYTE ucOsdVPos;
     BYTE ucOsdTimeout;
     BYTE ucAspectOriginRatio;
     BYTE ucTransparency;
+//--------------------------------------------------------
+    BYTE ucDisplayMode;				// 	RTD2795 Not Used
+    BYTE ucSelectRegionWidth;
+    BYTE ucSelectRegionColor;
+    BYTE ucPipSubPosType;
+    WORD usPipSubHPos;
+    WORD usPipSubVPos;
+    BYTE ucPipSubScaling;
+    BYTE ucPipSubBlending;
+    BYTE ucPbpLrRatio;
 //--------------------------------------------------------
     BYTE b4Language : 4;
     BYTE b4ColorEffect : 4;
@@ -71,9 +87,13 @@ typedef struct
     BYTE b1VolumeMute : 1;
     BYTE b1AudioStandAloneStatus : 1;
     BYTE b1AudioSourceStatus : 1;
+#if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+    BYTE b1TtsSupport: 1;
+    BYTE ucTtsTextVolume;
+    BYTE ucTtsAudioVolume;
+#endif // End of #if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
 //--------------------------------------------------------
     BYTE ucVolume;
-    BYTE b2AudioMode : 2; // eric_171010
 //--------------------------------------------------------
     BYTE b1ODStatus : 1;
     BYTE b33DConvergenceMode : 3;
@@ -84,15 +104,20 @@ typedef struct
     BYTE ucOsdInputPort;
 
 #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-    BYTE b2D0TypeCU3Mode : 2;
-    BYTE b2D1TypeCU3Mode : 2;
-    BYTE b2D2TypeCU3Mode : 2;
-    BYTE b2D6TypeCU3Mode : 2;
+    BYTE b1D0TypeCU3Mode : 1;
+    BYTE b1D1TypeCU3Mode : 1;
+    BYTE b1D2TypeCU3Mode : 1;
+    BYTE b1D6TypeCU3Mode : 1;
+#if(_TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_SWITCH_SUPPORT == _ON)
+    BYTE b1D0TypeCPinAssignmentESupportSelect : 1;
+    BYTE b1D1TypeCPinAssignmentESupportSelect : 1;
+    BYTE b1D2TypeCPinAssignmentESupportSelect : 1;
+    BYTE b1D6TypeCPinAssignmentESupportSelect : 1;
+#endif
 #endif
 //--------------------------------------------------------
     BYTE b2OsdDpD0PortVersion : 2;
     BYTE b2OsdDpD1PortVersion : 2;
-    BYTE b2OsdDpMST : 2;
     BYTE b3OsdDispRotate : 3;
     BYTE b1OsdDpVersionHotKeyDisp : 1;
 //--------------------------------------------------------
@@ -101,10 +126,48 @@ typedef struct
     BYTE b2OsdDpD6PortVersion : 2;
     BYTE b2OsdDpD2PortVersion : 2;
     BYTE b1FreeSyncStatus : 1;
+    BYTE b1DpAdaptiveSyncStatus : 1;
     BYTE b1CloneMode : 1;
+	BYTE b3CloneSrc : 3;	
+//--------------------------------------------------------
+	BYTE b1ResetDo : 1;		
+	BYTE ucPowerSaveTime;
+	BYTE ucSetId;
+	BYTE ucTransferId;		
+	BYTE b2HpdMode : 2;
+
+	BYTE b1AutoAdjustDo : 1;		
+	BYTE b2FanControl : 2;
+	BYTE ucActiveTemp;
+	BYTE ucHysteresis;
+	BYTE ucCurrentTemp;
+	BYTE b1ShutdownMode : 1;
+	BYTE ucShutdownTemp;
+	BYTE b1AutoDimming : 1;
+	//WORD ucDimming;	//WORD usBackLight;
+	WORD usMaxAmbient;
+	WORD usMinAmbient;
+	WORD usCurLux;
+	BYTE b1VideoWall : 1;
+	BYTE ucDisplayNum;
+	BYTE ucHSetCount;
+	BYTE ucVSetCount;
+	BYTE ucHEdgeAdjust;
+	BYTE ucVEdgeAdjust;
+	BYTE b1ReverseScan : 1;
+	BYTE b1InputSwapDo : 1;	
+	BYTE b1BurnIn : 1;		
+	BYTE ucSelectRegion;		
+	//--------------------------------------------------------
+    BYTE b1KeyLock : 1;	
+
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT )
+    BYTE b1Stabilizer : 1; 
+#endif
 //--------------------------------------------------------
     BYTE b2LatencyStatus : 2;
     BYTE b1OsdDoubleSize :1;
+    BYTE b3OsdDpMST : 3;
 //--------------------------------------------------------
 #if(_HDR10_SUPPORT == _ON)
     BYTE ucHdrMode;
@@ -121,41 +184,6 @@ typedef struct
 #if (_SDR_TO_HDR_SUPPORT == _ON)
     BYTE b1Sdr2HdrStatus : 1;
 #endif
-
-#if (_AUO_PANEL_ALCW_SUPPORT == _ON)
-	BYTE b1EnableALCW : 1;
-#endif
-#if (_ENABLE_VIDEO_WALL == _ON)
-	BYTE b1VideoWallStatus : 1;
-	BYTE ucVideoWallDispNum;
-	BYTE ucVideoWallHNum;
-	BYTE ucVideoWallVNum;
-	BYTE ucVideoWallRs232Id;
-#endif
-
-#if (_ENABLE_LIGHT_SENSOR == _ON)
-	BYTE b1LightSensorStatus : 1;
-#endif
-
-#if (_ENABLE_FAN_CONTROL == _ON)
-	BYTE b1FanStatus : 2;
-	BYTE ucFanPwm1;
-	BYTE ucFanPwm2;
-	BYTE ucFanPwm3;
-	BYTE ucFanPwm4;
-	BYTE b1ShutDownStatus : 1;
-	BYTE b1ShutDownTemp;
-#endif
-
-#if(_ENABLE_SELF_CHECK == _ON)
-	BYTE b1SelfCheckStatus : 1;
-#endif
-	BYTE b1BacklightPwmRes : 1;
-	BYTE b1BacklightControl : 1;
-	//BYTE b1BacklightInvert : 1;
-	//WORD usBacklightFreq;
-    WORD usBacklightFreq;
-	WORD usBacklightMax;
 #if(_HDMI_MULTI_EDID_SUPPORT == _ON)
     BYTE b2OsdHdmiD0PortVersion : 2;
     BYTE b2OsdHdmiD1PortVersion : 2;
@@ -166,17 +194,55 @@ typedef struct
 #endif
 
 #if(_USB3_RETIMER_SUPPORT == _ON)
-    BYTE b1OsdUsb3RetimerPSPDWakeUp: 1;
+    BYTE b1OsdUsb3RetimerPDWakeUp: 1;
+    BYTE b1OsdUsb3RetimerPSWakeUp: 1;
+    EnumHubInputPort enumHubInputPortSwitchbyUser;
 #endif
+#if(_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+    BYTE b2MbrStatus : 2;
+    BYTE b7MbrDuty : 7;
+    BYTE b7MbrPosition : 7;
+#endif
+} StructOsdUserDataType;
 
-	BYTE aim : 2;
-	BYTE timernumber : 4;
-	BYTE leftMenuChoose : 2;
-	BYTE leftTimerPosition: 2;
-	BYTE ucPowerSave;
+//------------------------------------
+typedef struct
+{
+    BYTE b1IsService : 1;	
+    BYTE b1LCDtest : 1;
+    BYTE b4D0Name : 4;
+    BYTE b4D1Name : 4;
+    BYTE b4D2Name : 4;
+    BYTE b4D3Name : 4;
+    BYTE b1OsdLogo : 1;
+	BYTE b1BacklightInvert : 1;
+	WORD usBacklightFreq;
+    WORD usBacklightMin;
+    WORD usBacklightMax;
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT )
+    WORD usStabilux;
+#endif
+#if (_ENABLE_LIGHT_SENSOR == _ON)
+	BYTE b1LightSensorStatus : 1;
+	//WORD usLightSensorStep;
+	//WORD usLightSensorMin;
+	//WORD usLightSensorMax;
+#endif
+    BYTE b1LCDtestMode;
 
-#if (_ENABLE_MENU_OLED == _ON)
-	BYTE b1OLEDOffRsStatus : 1;
+    #if (_ENABLE_FAN_CONTROL == _ON)
+	BYTE b1FanStatus : 2;
+    BYTE ucFanPwm;
+	//BYTE ucFanPwm1;
+	//BYTE ucFanPwm2;
+	//BYTE ucFanPwm3;
+	//BYTE ucFanPwm4;
+	BYTE b1ShutDownStatus : 1;
+	BYTE b1ShutDownTemp;
+    BYTE ucMaxTemp;
+    #endif
+    #if (_ENABLE_MENU_OLED == _ON)
+	BYTE ucOLEDOffRsStatus;
 	BYTE b1OLEDJBStatus : 1;
 	BYTE b1OffRSExcute : 1;
 	BYTE b1JBCompExcute : 1;
@@ -184,31 +250,70 @@ typedef struct
 	BYTE ucOffRSMin;
 	WORD usJBHour;
 	BYTE ucJBMin;
+    BYTE ucSequenceTime;
 #endif
-
-#if (_PIXEL_SHIFT_SUPPORT == _ON)
-	BYTE b1PixelShiftStatus : 1;
-	BYTE ucPixelShiftTimes;
-#endif
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)	
-	BYTE b1CalibFlag;
-#endif
-
-} StructOsdUserDataType;
+    BYTE ucOSDLogoList;
+    BYTE b14EDIDName[14];
+    BYTE b14EDIDSerial[14];
+    BYTE b1EDIDHSize;
+    BYTE b1EDIDVSize;
+    BYTE b1UserAssignUp;
+    BYTE b1UserAssignDown;
+    BYTE b1UserAssignLeft;
+    BYTE b1UserAssignRight;
+} StructOsdServiceDataType; 
 
 typedef struct
 {
     WORD usColorTempR;
     WORD usColorTempG;
     WORD usColorTempB;
-} StructColorProcDataType;
+    WORD usColorBIASR;
+    WORD usColorBIASG;
+    WORD usColorBIASB;
+    WORD usColorGainR;
+    WORD usColorGainG;
+    WORD usColorGainB;
+    //D56, D65, D93,USER
+} StructColorProcDataType;	
 
+typedef struct
+{
+#if(_HDR10_SUPPORT == _ON)
+    BYTE ucHdrMode;
+#endif
+    BYTE ucAspectOriginRatio;
+    //-----------------------------------
+    BYTE b4Sharpness : 4;
+    BYTE b3AspectRatio : 3;
+    BYTE b1OverScan : 1;
+    //-----------------------------------
+} StructOsdInputPortDataType;	
+
+//---------------------------------------------------------
+/*
+typedef struct
+{
+    WORD usColorTempR;
+    WORD usColorTempG;
+    WORD usColorTempB;
+} StructColorProcDataType;
+*/
 typedef struct
 {
     WORD usBrightness;
     WORD usContrast;
 
-} StructBriConDataType;
+	WORD usSubBrightness;		
+    WORD usSubContrast;
+	
+	WORD usColorOffsetR;	
+	WORD usColorOffsetG;
+	WORD usColorOffsetB;
+	WORD usColorGainR;
+	WORD usColorGainG;
+	WORD usColorGainB;
+} StructBriConDataType;		
 
 typedef struct
 {
@@ -243,12 +348,13 @@ extern WORD g_pusFlashAddrArr[_END_OF_PAGEID - _START_OF_PAGEID + 1];
 // Extern functions from RTD2011NVRamOsd.c
 //----------------------------------------------------------------------------------------
 
-extern StructOsdUserDataType g_stOsdUserData;
+extern StructOsdUserDataType g_stOSDUserData;
 extern StructBriConDataType g_stBriConData;
 extern StructColorProcDataType g_stColorProcData;
 extern code StructColorProcDataType tColorTempDefaultData[];
 extern StructSixColorDataType g_stSixColorData;
 extern StructTimeType g_stPanelTimeData;
+extern StructOsdServiceDataType g_stOsdServiceData;	
 
 #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _OFF)
 
@@ -257,9 +363,20 @@ extern void RTDEepromWholeRestore(void);
 extern void RTDEepromRestoreBacklight(void);
 extern void RTDEepromSaveOSDData(void);
 extern void RTDEepromRestoreOSDData(void);
+extern void RTDEepromLoadOsdServiceData(void);	
+extern void RTDEepromSaveOsdServiceData(void);	
+extern void RTDEepromRestoreOsdServiceData(void);	
+
 extern void RTDEepromLoadBriCon(BYTE ucSource);
 extern void RTDEepromSaveBriCon(BYTE ucSource);
 extern void RTDEepromRestoreBriCon(void);
+
+extern void RTDEepromBackupColorCon(void);	
+extern void RTDEepromRecoveryColorCon(void);
+
+extern void RTDEepromBackupSetId(void);
+extern void RTDEepromRecoverySetId(void);
+
 extern void RTDEepromLoadColorSetting(BYTE ucColorTempType);
 extern void RTDEepromSaveColorSetting(BYTE ucColorTempType);
 extern void RTDEepromRestoreColorSetting(void);
@@ -268,10 +385,14 @@ extern void RTDEepromSaveSixColorData(void);
 extern void RTDEepromRestoreSixColorData(void);
 extern void RTDEepromSavePanelUsedTimeData(void);
 
+extern void UserCommonFlashSaveCustomerUserData(void);
+extern void UserCommonFlashCustomerUserData(void);
+
 #define RTDNVRamStartup()                              RTDEepromStartup()
 #define RTDNVRamWholeRestore()                         RTDEepromWholeRestore()
 #define RTDNVRamRestoreBacklight()                     RTDEepromRestoreBacklight()
 #define RTDNVRamSaveOSDData()                          RTDEepromSaveOSDData()
+#define RTDNVRamSaveOsdServiceData()                   RTDEepromSaveOsdServiceData()
 #define RTDNVRamRestoreOSDData()                       RTDEepromRestoreOSDData()
 #define RTDNVRamLoadBriCon(x)                          RTDEepromLoadBriCon(x)
 #define RTDNVRamSaveBriCon(x)                          RTDEepromSaveBriCon(x)

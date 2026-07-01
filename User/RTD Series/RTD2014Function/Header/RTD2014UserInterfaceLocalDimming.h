@@ -41,14 +41,17 @@
 #ifndef __USER_INTERFACE_LOCAL_DIMMING__
 extern EnumLDActionMode UserInterfaceGetLocaldimmingActionMode(void);
 extern EnumLDStatus UserInterfaceGetLocalDimmingStatus(void);
-extern WORD UserInterfaceGetLocalDimmingPWMSmoothLevel(void);
-extern EnumLDSDRColorMode UserInterfaceGetLocalDimmingColorMode(void);
-extern BYTE UserInterfaceGetLocalDimmingGammaIndex(void);
+extern BYTE UserInterfaceGetLocalDimmingPWMSmoothLevel(void);
 extern void UserInterfaceLocalDimmingAdjustPCM(void);
 extern EnumLDStatus UserInterfaceGetLocalDimmingNoSupportStatus(void);
-extern EnumPCHDRMode UserInterfaceGetPCHDRMode(void);
+extern EnumLDPCHDRMode UserInterfaceGetPCHDRVerifyMode(void);
+
 #if(_UNIFORMITY_SUPPORT == _ON)
 extern EnumUniformityStatus UserInterfaceGetUniformityStatus(void);
+#endif
+
+#if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+extern void UserInterfaceTunnelPatternDetectOff(void);
 #endif
 
 #endif // End of __USER_INTERFACE_LOCAL_DIMMING__

@@ -247,8 +247,8 @@
 #define _DDCCI_OPCODE_VCP_CONTROL_LOCK              0xE3
 //For DISTEK
 #define _DDCCI_OPCODE_VCP_INDEX_SET                 0xE5
-#define _DDCCI_OPCODE_VCP_GET                       0xE6
-#define _DDCCI_OPCODE_VCP_SET                       0xE7
+#define _DDCCI_OPCODE_VCP_EDID_GET                  0xE6
+#define _DDCCI_OPCODE_VCP_EDID_SET                  0xE7
 
 #define _DDCCI_OPCODE_VCP_MANUFACTURER              0xFD
 

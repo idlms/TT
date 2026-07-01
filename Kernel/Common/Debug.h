@@ -36,7 +36,7 @@
 // Debug Message Supported
 //--------------------------------------------------
 #define _DEBUG_MESSAGE_SYSTEM                       _OFF//_OFF	//  Debug(NewCtrlReg , I2C Through IC) & Debug message
-#define _DEBUG_MESSAGE_SCALER                       _ON
+#define _DEBUG_MESSAGE_SCALER                       _OFF
 #define _DEBUG_MESSAGE_ANALOG                       _OFF
 #define _DEBUG_MESSAGE_DIGITAL                      _OFF
 #define _DEBUG_MESSAGE_RX0                          _OFF
@@ -52,7 +52,7 @@
 #define _DEBUG_MESSAGE_MEASURE                      _OFF
 #define _DEBUG_MESSAGE_MEMORY                       _OFF
 #define _DEBUG_MESSAGE_MEMORY_PHASE_CAL             _OFF
-#define _DEBUG_MESSAGE_FRAME_SYNC                   _ON
+#define _DEBUG_MESSAGE_FRAME_SYNC                   _OFF
 #define _DEBUG_MESSAGE_FRC                          _OFF
 #define _DEBUG_MESSAGE_OSD                          _OFF
 #define _DEBUG_MESSAGE_IR                           _OFF

@@ -1,28 +1,25 @@
 /********************************************************************************/
-/*   The  Software  is  proprietary,  confidential,  and  valuable to Realtek   */
-/*   Semiconductor  Corporation  ("Realtek").  All  rights, including but not   */
-/*   limited  to  copyrights,  patents,  trademarks, trade secrets, mask work   */
-/*   rights, and other similar rights and interests, are reserved to Realtek.   */
-/*   Without  prior  written  consent  from  Realtek,  copying, reproduction,   */
-/*   modification,  distribution,  or  otherwise  is strictly prohibited. The   */
-/*   Software  shall  be  kept  strictly  in  confidence,  and  shall  not be   */
-/*   disclosed to or otherwise accessed by any third party.                     */
-/*   c<2003> - <2012>                                                           */
-/*   The Software is provided "AS IS" without any warranty of any kind,         */
-/*   express, implied, statutory or otherwise.                                  */
+/*   Copyright (c) 2021 Realtek Semiconductor Corp. All rights reserved.        */
+/*                                                                              */
+/*   SPDX-License-Identifier: LicenseRef-Realtek-Proprietary                    */
+/*                                                                              */
+/*   This software component is confidential and proprietary to Realtek         */
+/*   Semiconductor Corp. Disclosure, reproduction, redistribution, in whole     */
+/*   or in part, of this work and its derivatives without express permission    */
+/*   is prohibited.                                                             */
 /********************************************************************************/
 
 //----------------------------------------------------------------------------------------------------
-// ID Code      : Led_Driver_AUSTRIA_AS3820.c
+// ID Code      : Led_Driver_AUSTRIA_AS3824.c
 // Update Note  :
 //----------------------------------------------------------------------------------------------------
 
 #include "UserCommonInclude.h"
 
-#if(_DEVICE_LED_DRIVER_TYPE == _DEVICE_LED_DRIVER_02_AUSTRIA_AS3820)
+#if(_DEVICE_LED_DRIVER_TYPE == _DEVICE_LED_DRIVER_03_AUSTRIA_AS3824)
 
 #if(_SPI_SUPPORT != _ON)
-#warning "_SPI_SUPPORT should be _ON for AUSTRIA_AS3820 LED driver!"
+#warning "_SPI_SUPPORT should be _ON for AUSTRIA_AS3824 LED driver!"
 #endif
 
 //****************************************************************************
@@ -89,6 +86,12 @@
 #define _REG_ADDRESS_PWM16_PLUS_WIDTH_LSB           0x55
 #define _REG_ADDRESS_PWM16_PLUS_WIDTH_MSB           0x56
 
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+#define _DEVICE_LED_DRIVER_DEFALUIT_DAC             0x3C0   // 3D/HDR:750mA
+#else
+#define _DEVICE_LED_DRIVER_DEFALUIT_DAC             0x200   // 2D:250mA
+#endif
+
 
 //****************************************************************************
 // MACROS
@@ -108,24 +111,42 @@
 //****************************************************************************
 // CODE TABLES
 //****************************************************************************
+BYTE code tucPanelLocalPwmType[] =
+{
+    _PANEL_PWM_LOCAL_1, _PANEL_PWM_LOCAL_2, _PANEL_PWM_LOCAL_3, _PANEL_PWM_LOCAL_4,
+    _PANEL_PWM_LOCAL_5, _PANEL_PWM_LOCAL_6, _PANEL_PWM_LOCAL_7, _PANEL_PWM_LOCAL_8,
 
+#if(_PANEL_REGION_MODE == _LD_2X8_MODE)
+    _PANEL_PWM_LOCAL_9, _PANEL_PWM_LOCAL_10, _PANEL_PWM_LOCAL_11, _PANEL_PWM_LOCAL_12,
+    _PANEL_PWM_LOCAL_13, _PANEL_PWM_LOCAL_14, _PANEL_PWM_LOCAL_15, _PANEL_PWM_LOCAL_16,
+#endif
+};
 
 //****************************************************************************
 // VARIABLE DECLARATIONS
 //****************************************************************************
-
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+bit g_bHdrBoost = _TRUE;
+BYTE g_ucBoostGainBackup = 100;
+#endif
 
 //****************************************************************************
 // FUNCTION DECLARATIONS
 //****************************************************************************
 #if(_DEBUG_IIC_BY_USERINTERFACE == _ON)
-bit DeviceInterfaceLedDriverDebug(BYTE ucType, BYTE *pucDdcciArray, BYTE *pucReturnValue);
+bit ExternalDeviceInterfaceLedDriverDebug(BYTE ucType, BYTE *pucDdcciArray, BYTE *pucReturnValue);
 #endif
-void DeviceInterfaceLedDriverInitial(void);
-void DeviceInterfaceLedDriverPwmEnable(bit bEnable);
-void DeviceInterfaceLedDriverPwm(EnumDeviceLedDriverPwm enumDeviceLedDriverPwm, WORD usValue);
-void DeviceInterfaceLedDriverPwmArray(WORD *pusValue);
-void DeviceInterfaceLedDriverBacklight(WORD usBacklight);
+void ExternalDeviceInterfaceLedDriverInitial(void);
+void ExternalDeviceInterfaceLedDriverPwmEnable(bit bEnable);
+void ExternalDeviceInterfaceLedDriverPwm(EnumDeviceLedDriverPwm enumDeviceLedDriverPwm, WORD usValue, EnumDeviceLedCalibrationUse enumcaliUse);
+
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+void ExternalDeviceInterfaceLedDriverPwmArrayBoostMode(WORD *pusValue, BYTE ucBoostGain);
+#else
+void ExternalDeviceInterfaceLedDriverPwmArray(WORD *pusValue);
+#endif
+
+void ExternalDeviceInterfaceLedDriverBacklight(WORD usBacklight);
 
 
 //****************************************************************************
@@ -139,7 +160,7 @@ void DeviceInterfaceLedDriverBacklight(WORD usBacklight);
 //                pucReturnValue: return value
 // Output Value : _TRUE or _FALSE
 //--------------------------------------------------
-bit DeviceInterfaceLedDriverDebug(BYTE ucType, BYTE *pucDdcciArray, BYTE *pucReturnValue)
+bit ExternalDeviceInterfaceLedDriverDebug(BYTE ucType, BYTE *pucDdcciArray, BYTE *pucReturnValue)
 {
     BYTE pucRegData[10] = {0};
 
@@ -175,8 +196,9 @@ bit DeviceInterfaceLedDriverDebug(BYTE ucType, BYTE *pucDdcciArray, BYTE *pucRet
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-void DeviceInterfaceLedDriverInitial(void)
+void ExternalDeviceInterfaceLedDriverInitial(void)
 {
+    // Unlock register Group1 and Group2.
     BYTE pucDevice_01[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
@@ -184,20 +206,22 @@ void DeviceInterfaceLedDriverInitial(void)
         0xCA
     };
 
+    // Valid by CE && use internal pll clk
     BYTE pucDevice_02[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
         0x13,
-        0x40
+        0x00
+
     };
 
+    // Pwm Period = 0xFFF
     BYTE pucDevice_03[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
         0x14,
         0xFF
     };
-
     BYTE pucDevice_04[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
@@ -205,6 +229,7 @@ void DeviceInterfaceLedDriverInitial(void)
         0x0F
     };
 
+    // Enable Output CH1~CH8
     BYTE pucDevice_05[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
@@ -212,20 +237,21 @@ void DeviceInterfaceLedDriverInitial(void)
         0xFF
     };
 
+    // Disable Output CH9~CH16
     BYTE pucDevice_06[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
         0x02,
-        0xFF
+        0x00
     };
 
+    // set DPLL frequency multiplier = 0x1FFF
     BYTE pucDevice_07[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
         0x61,
         0x1F
     };
-
     BYTE pucDevice_08[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
@@ -233,13 +259,15 @@ void DeviceInterfaceLedDriverInitial(void)
         0xFF
     };
 
+
+
+    // 10 bit VDAC = (0xA7 << 2) + 0x02 = 670
     BYTE pucDevice_09[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
         0x0C,
         0xA7
     };
-
     BYTE pucDevice_10[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
@@ -247,21 +275,70 @@ void DeviceInterfaceLedDriverInitial(void)
         0x02
     };
 
+
+    // HDR Mode select
     BYTE pucDevice_11[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
-        0x07,
-        0x04
+        0x67,
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+        0x16    // HDR_MODE Enable, use different Boost DAC setting on each channel
+#else
+        0x06    // HDR_MODE Disable, use global DAC setting
+#endif
     };
 
-    BYTE pucDevice_12[3] =
+
+    // BoostDAC (CH1~CH8)
+    BYTE pucDevice_12[11] =
+    {
+        (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_BLOCK_DATA),
+        0x08,
+        0x70,
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2),
+        (BYTE)(_DEVICE_LED_DRIVER_DEFALUIT_DAC >> 2)
+    };
+
+    BYTE pucDevice_13[8] =
+    {
+        (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_BLOCK_DATA),
+        0x05,
+        0x03,
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+        0x87,  // FAULT_1
+#else
+        0x97,  // FAULT_1
+#endif
+        0x00,  // GPIO_CTRL
+        0x00,  // FB_SEL1
+        0x00,  // FB_SEL2
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+        0x07   // CURR_CTRL, 3D/HDR DACref = 800mV, Slwe rate:250mV / 2us
+#else
+        0x03   // CURR_CTRL, 2D DACref = 500mV, Slwe rate:250mV / 2us
+#endif
+    };
+
+    // Enable CH1~CH8 Feedback
+    BYTE pucDevice_14[3] =
     {
         (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
         0x0E,
         0xFF
     };
-
-    ScalerSpiInitial();
+    // Disable CH9~CH16 Feedback
+    BYTE pucDevice_15[3] =
+    {
+        (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_SINGLE_DATA),
+        0x0F,
+        0x00
+    };
 
     ScalerSpiData(_WRITE, 3, pucDevice_01);
     ScalerSpiData(_WRITE, 3, pucDevice_02);
@@ -273,7 +350,10 @@ void DeviceInterfaceLedDriverInitial(void)
     ScalerSpiData(_WRITE, 3, pucDevice_09);
     ScalerSpiData(_WRITE, 3, pucDevice_10);
     ScalerSpiData(_WRITE, 3, pucDevice_11);
-    ScalerSpiData(_WRITE, 3, pucDevice_12);
+    ScalerSpiData(_WRITE, 11, pucDevice_12);
+    ScalerSpiData(_WRITE, 8, pucDevice_13);
+    ScalerSpiData(_WRITE, 3, pucDevice_14);
+    ScalerSpiData(_WRITE, 3, pucDevice_15);
 
     ScalerSpiData(_WRITE, 3, pucDevice_07);
     ScalerSpiData(_WRITE, 3, pucDevice_08);
@@ -284,7 +364,7 @@ void DeviceInterfaceLedDriverInitial(void)
 // Input Value  : _ENABLE or _DISABLE
 // Output Value : None
 //--------------------------------------------------
-void DeviceInterfaceLedDriverPwmEnable(bit bEnable)
+void ExternalDeviceInterfaceLedDriverPwmEnable(bit bEnable)
 {
     BYTE pucDevice_77[3] =
     {
@@ -325,7 +405,7 @@ void DeviceInterfaceLedDriverPwmEnable(bit bEnable)
     }
     else
     {
-        DeviceInterfaceLedDriverPwm(_PANEL_PWM_LOCAL_ALL, 0x0000);
+        ExternalDeviceInterfaceLedDriverPwm(_PANEL_PWM_LOCAL_ALL, 0x0000, _DEVICE_CALI_OFF);
     }
 }
 
@@ -335,11 +415,17 @@ void DeviceInterfaceLedDriverPwmEnable(bit bEnable)
 //                usValue: PWM adjust value
 // Output Value : None
 //--------------------------------------------------
-void DeviceInterfaceLedDriverPwm(EnumDeviceLedDriverPwm enumDeviceLedDriverPwm, WORD usValue)
+void ExternalDeviceInterfaceLedDriverPwm(EnumDeviceLedDriverPwm enumDeviceLedDriverPwm, WORD usValue, EnumDeviceLedCalibrationUse enumcaliUse)
 {
     BYTE ucI = 0;
     BYTE pucTemp[3 + ((_PANEL_PWM_LOCAL_END - _PANEL_PWM_LOCAL_START + 1) * 2)] = {0};
     BYTE ucLength = 0;
+
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
+    ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_HDR_COOL);
+    ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_HDR_BOOST);
+    g_bHdrBoost = _TRUE;
+#endif
 
     if(enumDeviceLedDriverPwm == _PANEL_PWM_LOCAL_ALL)
     {
@@ -371,8 +457,11 @@ void DeviceInterfaceLedDriverPwm(EnumDeviceLedDriverPwm enumDeviceLedDriverPwm, 
                   (enumDeviceLedDriverPwm == _DEVICE_LED_DRIVER_PWM_15) ? _REG_ADDRESS_PWM15_PLUS_WIDTH_LSB :
                   (enumDeviceLedDriverPwm == _DEVICE_LED_DRIVER_PWM_16) ? _REG_ADDRESS_PWM16_PLUS_WIDTH_LSB : _REG_ADDRESS_PWM1_PLUS_WIDTH_LSB);
 
-    usValue = ((usValue > _PANEL_PWM_MAX) ? _PANEL_PWM_MAX :
-               ((usValue < _PANEL_PWM_MIN) ? _PANEL_PWM_MIN : usValue));
+    if(enumcaliUse == _DEVICE_CALI_OFF)
+    {
+        usValue = ((usValue > _DEVICE_LED_DRIVER_PWM_MAX) ? _DEVICE_LED_DRIVER_PWM_MAX :
+                   ((usValue < _DEVICE_LED_DRIVER_PWM_MIN) ? _DEVICE_LED_DRIVER_PWM_MIN : usValue));
+    }
 
     for(ucI = 0; ucI < ucLength; ucI++)
     {
@@ -385,38 +474,106 @@ void DeviceInterfaceLedDriverPwm(EnumDeviceLedDriverPwm enumDeviceLedDriverPwm, 
     ScalerSpiData(_WRITE, ucLength, pucTemp);
 }
 
+#if(_LD_HDR10_BOOST_SUPPORT == _ON)
 //--------------------------------------------------
-// Description  : Set Led Driver Pwm Frequency
-// Input Value  : pusValue: PWM data array
+// Description  : Set Led Driver Pwm Frequency, and Boost Gain value
+// Input Value  : pusValue: PWM data array, Boost Gain: Gain value relative to average luminance
 // Output Value : None
 //--------------------------------------------------
-void DeviceInterfaceLedDriverPwmArray(WORD *pusValue)
+void ExternalDeviceInterfaceLedDriverPwmArrayBoostMode(WORD *pusValue, BYTE ucBoostGain)
 {
     BYTE ucI = 0;
     BYTE ucJ = 0;
 
     BYTE pucTemp[3 + ((_PANEL_PWM_LOCAL_END - _PANEL_PWM_LOCAL_START + 1) * 2)] = {0};
     BYTE ucLength = (_PANEL_PWM_LOCAL_END - _PANEL_PWM_LOCAL_START + 1);
-
-    BYTE code tucPanelLocalPwmType[] =
+    WORD usDriverPWMBoost = (DWORD)_DEVICE_LED_DRIVER_PWM_MAX * _PANEL_LV_BOOST_MAX / _PANEL_LV_MAX;
+    EnumLDBoostMode enumLDBoostMode = UserCommonLocalDimmingGetBoostMode();
+    if(g_bHdrBoost == _TRUE)
     {
-        _PANEL_PWM_LOCAL_1,
-        _PANEL_PWM_LOCAL_2,
-        _PANEL_PWM_LOCAL_3,
-        _PANEL_PWM_LOCAL_4,
-        _PANEL_PWM_LOCAL_5,
-        _PANEL_PWM_LOCAL_6,
-        _PANEL_PWM_LOCAL_7,
-        _PANEL_PWM_LOCAL_8,
-        _PANEL_PWM_LOCAL_9,
-        _PANEL_PWM_LOCAL_10,
-        _PANEL_PWM_LOCAL_11,
-        _PANEL_PWM_LOCAL_12,
-        _PANEL_PWM_LOCAL_13,
-        _PANEL_PWM_LOCAL_14,
-        _PANEL_PWM_LOCAL_15,
-        _PANEL_PWM_LOCAL_16,
-    };
+        ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_HDR_COOL);
+
+        if(ucBoostGain > 100)
+        {
+            ScalerTimerActiveTimerEvent(SEC(30), _USER_TIMER_EVENT_HDR_BOOST);
+        }
+        else
+        {
+            ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_HDR_BOOST);
+        }
+    }
+    else
+    {
+        ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_HDR_BOOST);
+        ScalerTimerActiveTimerEvent(SEC(30), _USER_TIMER_EVENT_HDR_COOL);
+
+        ucBoostGain = 100;
+    }
+    pucTemp[0] = (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_BLOCK_DATA);
+    pucTemp[1] = 16;
+    pucTemp[2] = ((_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_1) ? _REG_ADDRESS_PWM1_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_2) ? _REG_ADDRESS_PWM2_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_3) ? _REG_ADDRESS_PWM3_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_4) ? _REG_ADDRESS_PWM4_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_5) ? _REG_ADDRESS_PWM5_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_6) ? _REG_ADDRESS_PWM6_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_7) ? _REG_ADDRESS_PWM7_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_8) ? _REG_ADDRESS_PWM8_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_9) ? _REG_ADDRESS_PWM9_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_10) ? _REG_ADDRESS_PWM10_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_11) ? _REG_ADDRESS_PWM11_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_12) ? _REG_ADDRESS_PWM12_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_13) ? _REG_ADDRESS_PWM13_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_14) ? _REG_ADDRESS_PWM14_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_15) ? _REG_ADDRESS_PWM15_PLUS_WIDTH_LSB :
+                  (_PANEL_PWM_LOCAL_START == _DEVICE_LED_DRIVER_PWM_16) ? _REG_ADDRESS_PWM16_PLUS_WIDTH_LSB : _REG_ADDRESS_PWM1_PLUS_WIDTH_LSB);
+
+    for(ucI = 0; ucI < ucLength; ucI++)
+    {
+        PDATA_DWORD(0) = 0;
+
+        for(ucJ = 0; ucJ < sizeof(tucPanelLocalPwmType); ucJ++)
+        {
+            if((_PANEL_PWM_LOCAL_START + ucI) == tucPanelLocalPwmType[ucJ])
+            {
+                if(enumLDBoostMode == _LD_BOOST_KERNAL)
+                {
+                    PDATA_DWORD(0) = ((DWORD)*(pusValue + ucJ) * ucBoostGain + 50) / 100;
+                    if(PDATA_DWORD(0) > usDriverPWMBoost)
+                    {
+                        PDATA_DWORD(0) = usDriverPWMBoost;
+                    }
+                    break;
+                }
+                else
+                {
+                    PDATA_DWORD(0) = ((*(pusValue + ucJ) > _DEVICE_LED_DRIVER_PWM_MAX) ? _DEVICE_LED_DRIVER_PWM_MAX :(*(pusValue + ucJ)));
+                    break;
+                }
+            }
+        }
+
+        pucTemp[3 + (ucI * 2)] = (PDATA_DWORD(0) & 0x00FF);
+        pucTemp[4 + (ucI * 2)] = ((PDATA_DWORD(0) & 0x0F00) >> 8);
+    }
+
+    ucLength = 3 + (ucLength * 2);
+
+    ScalerSpiSPIDataCeForceLow(_WRITE, ucLength, pucTemp);
+}
+#else
+//--------------------------------------------------
+// Description  : Set Led Driver Pwm Frequency
+// Input Value  : pusValue: PWM data array
+// Output Value : None
+//--------------------------------------------------
+void ExternalDeviceInterfaceLedDriverPwmArray(WORD *pusValue)
+{
+    BYTE ucI = 0;
+    BYTE ucJ = 0;
+
+    BYTE pucTemp[3 + ((_PANEL_PWM_LOCAL_END - _PANEL_PWM_LOCAL_START + 1) * 2)] = {0};
+    BYTE ucLength = (_PANEL_PWM_LOCAL_END - _PANEL_PWM_LOCAL_START + 1);
 
     pucTemp[0] = (_DEVICE_LED_DRIVER_DEVICE_ADDRESS | _DEVICE_LED_DRIVER_BLOCK_DATA);
     pucTemp[1] = 16;
@@ -458,17 +615,18 @@ void DeviceInterfaceLedDriverPwmArray(WORD *pusValue)
 
     ScalerSpiSPIDataCeForceLow(_WRITE, ucLength, pucTemp);
 }
+#endif
 
 //--------------------------------------------------
 // Description  : Adjust Backlight
 // Input Value  : usBacklight: back-light level
 // Output Value : None
 //--------------------------------------------------
-void DeviceInterfaceLedDriverBacklight(WORD usBacklight)
+void ExternalDeviceInterfaceLedDriverBacklight(WORD usBacklight)
 {
     usBacklight = (((DWORD)(usBacklight - _BACKLIGHT_MIN) * (_DEVICE_LED_DRIVER_PWM_MAX - _DEVICE_LED_DRIVER_PWM_MIN)) / (_BACKLIGHT_MAX - _BACKLIGHT_MIN)) + _DEVICE_LED_DRIVER_PWM_MIN;
 
-    DeviceInterfaceLedDriverPwm(_PANEL_PWM_LOCAL_ALL, usBacklight);
+    ExternalDeviceInterfaceLedDriverPwm(_PANEL_PWM_LOCAL_ALL, usBacklight, _DEVICE_CALI_OFF);
 }
-#endif // End of #if(_DEVICE_LED_DRIVER_TYPE == _DEVICE_LED_DRIVER_02_AUSTRIA_AS3820)
+#endif // End of #if(_DEVICE_LED_DRIVER_TYPE == _DEVICE_LED_DRIVER_03_AUSTRIA_AS3824)
 

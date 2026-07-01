@@ -1,11 +1,6 @@
-Output/
+# ignore compiler output
+/Output
+
+# ignore uVision backup files
 *.Opt
-*.opt
-*.uv2
-*.uvgui.*
-*.bak
-*.dep
-*.lst
-*.map
-*.o
-*.d
+*.Bak

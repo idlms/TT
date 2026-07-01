@@ -13,35 +13,14 @@
 /********************************************************************************/
 
 //----------------------------------------------------------------------------------------------------
-// ID Code      : RTD2014UserInterfaceGlobalDimming.h No.0000
+// ID Code      : UserDeviceInclude.h No.0000	
 // Update Note  :
 //----------------------------------------------------------------------------------------------------
 
+#include "Global.h"
+#include "Project.h"
+#include "UserCommonInclude.h"
 
-//****************************************************************************
-// LAYER DEFINITIONS / MACROS
-//****************************************************************************
+//#include "UserExternalDeviceIIC.h"	
+//#include "UserPTN3460Include.h"
 
-
-//****************************************************************************
-// VARIABLE EXTERN
-//****************************************************************************
-
-
-//****************************************************************************
-// STRUCT / TYPE / ENUM DEFINITTIONS
-//****************************************************************************
-
-
-//****************************************************************************
-// FUNCTION EXTERN
-//****************************************************************************
-#if(_GLOBAL_DIMMING_SUPPORT == _ON)
-
-#ifndef __USER_INTERFACE_GLOBAL_DIMMING__
-extern void UserInterfaceGlobalDimmingAdjustPWM(WORD pusValue);
-extern void UserInterfaceGlobalDimmingAdjustPCM(void);
-extern EnumGDStatus UserInterfaceGetGlobalDimmingStatus(void);
-#endif // End of __USER_INTERFACE_LOCAL_DIMMING__
-
-#endif // End of #if(_GLOBAL_DIMMING_SUPPORT == _ON)

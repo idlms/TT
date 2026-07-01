@@ -490,7 +490,8 @@ BYTE code tHDMI_EDID_QHD_TABLE[] =
 
 BYTE code tHDMI_EDID_UHD_TABLE[] =
 {
-#include "./EDID/EdidHdmi/EDID_HDMI2_3840x2160@60_HFVSDB_WITH420.h"
+//#include "./EDID/EdidHdmi/EDID_HDMI2_3840x2160@60_HFVSDB_WITH420.h"	//  HDMI EDID Change Point => Kernel\User Common Function\Header\EDID
+#include "./EDID/EdidHdmi/EDID_HDMI_3840x2160@60_SATURN2.h"							// HDMI EDID 2160P
 };
 
 #if(_HDMI_MULTI_EDID_SUPPORT == _ON)

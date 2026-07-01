@@ -50,7 +50,8 @@
 #define _AMOLED_TEMPER2_HI_REG              (0x60)
 #define _AMOLED_TEMPER2_LO_REG              (0x61)
 
-
+extern bit _bPowerOnOffRS;
+extern bit sbPowerSaveOffRS;
 
 
 void AMOLED_WriteByte(BYTE B_RegAddr, BYTE B_Data);

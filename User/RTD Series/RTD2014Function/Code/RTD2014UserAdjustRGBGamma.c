@@ -46,8 +46,6 @@
 //****************************************************************************
 // FUNCTION DECLARATIONS
 //****************************************************************************
-#if(_OGC_SUPPORT != _ON)
-#if(_RGB_GAMMA_FUNCTION == _ON)
 void UserAdjustRGBGamma(BYTE ucGamma);
 
 
@@ -64,6 +62,6 @@ void UserAdjustRGBGamma(BYTE ucGamma)
 {
     ScalerColorRGBOutputGammaAdjust(tRGBGAMMA_TABLE[ucGamma - 1], GET_CURRENT_BANK_NUMBER());
 }
-#endif
-#endif
+
+
 #endif // End of #if((_OSD_TYPE == _REALTEK_2014_OSD) && (_RGB_GAMMA_FUNCTION == _ON))

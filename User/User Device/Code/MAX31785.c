@@ -29,7 +29,7 @@ bit WriteReg_MAX31785(BYTE ui8Addr, BYTE ui8Value)
 	{
 		// Enable EEPROM Write Protect
 		PCB_EEPROM_WRITE_PROTECT(_EEPROM_WP_ENABLE);
-
+		_MAX31785Initialised = _FALSE;
 		return _FAIL;
 	}
 	return _SUCCESS;
@@ -40,11 +40,9 @@ bit ReadReg_MAX31785(BYTE ui8Addr, BYTE *pui8Wbuff)
 {
 	if (ScalerMcuHwIICRead(MAX31785_SLAVE_ADDRESS, 1, ui8Addr, 1, pui8Wbuff, _PCB_SYS_EEPROM_IIC) == _FAIL)
 	{
-		DebugMessageSystem("MAX31785_ReadReg(1) = FAIL", pui8Wbuff[0]);
+		//DebugMessageSystem("MAX31785_ReadReg(1) = FAIL", pui8Wbuff[0]);
 		return _FAIL;
 	}
-	DebugMessageSystem("MAX31785_ReadReg(1) addr = SUCCESS", ui8Addr);
-	DebugMessageSystem("MAX31785_ReadReg(1) buff = SUCCESS", pui8Wbuff[0]);
 	return _SUCCESS;
 }
 
@@ -85,15 +83,9 @@ WORD ReadRegs_MAX31785(BYTE ui8Addr)
 	return u16RBuff;
 }
 
-
 bit SuccessInitialize_MAX31785(void)
 {
 	return _MAX31785Initialised;
-}
-
-BYTE Get_MAX31785TempCount(void)
-{
-	return MAX31785_TEMP_MAX;
 }
 
 void _Get_MAX31785_tempSensorCount(void)
@@ -173,11 +165,11 @@ bit Initialize_MAX31785(void)
 SBYTE Get_MAX31785_TemperatureValue(WORD temp)
 {
 	SBYTE s8Retvalue = 0;
-	double tem = 0;
+	//double tem = 0;
 
 	if (temp == 0x7FFF) return 0;
 	s8Retvalue = (SBYTE)(temp * pow(10, -2));
-	tem = floor(temp * pow(10, -2));
+	//tem = floor(temp * pow(10, -2));
 
 	//DebugMessageSystem("Get_MAX31785_TemperatureValue \n\r", tem);
 	return s8Retvalue;
@@ -199,7 +191,6 @@ WORD Get_MAX31785_PWMValue(BYTE pwm)
 ///////////////////////////////////////////////////
 // Temperature Measure 
 //////////////////////////////////////////////////
-
 
 SBYTE Get_MAX31785Temperature(void)
 {
@@ -231,7 +222,14 @@ SBYTE Get_MAX31785Temperature(void)
 			tempSum += (SBYTE)temp;
 		}
 	}
-	tempSum = tempSum /(MAX31785_TEMP_MAX - errorCount);
+	//tempSum = tempSum /(MAX31785_TEMP_MAX - errorCount);
+	tempSum = MAX31785TempSensor[0].tempData;
+	for (i = 1; i < MAX31785_TEMP_MAX; i++)
+	{
+		if(MAX31785TempSensor[i].tempData > tempSum)
+			tempSum = MAX31785TempSensor[i].tempData;
+	}
+
 	//LOG_INFO("tempSum == %d, MAX31785_tempSensorCount == %d, errorCount == %d\n\r", tempSum, MAX31785_TEMP_MAX, errorCount);
 	return tempSum;
 }
@@ -331,28 +329,4 @@ void SetFanPWM6(BYTE u8pwm)
 	WriteRegs_MAX31785(MAX31785_FAN_COMMAND_1, setpwm);
 }
 
-//tFanControlEntry fanControlMAX31785Driver =
-//{
-//	.Tempstatus = MAX31785TempSensor,
-//	.Init = Initialize_MAX31785,
-//	.InitSatus = SuccessInitialize_MAX31785,
-//	.GetTempCount = Get_MAX31785TempCount, // Temperature Sensor 갯수.
-//	.GetTempAVG = Get_MAX31785Temperature, //
-//	.GetTemp1 = Get_MAX31785Temp1,
-//	.GetTemp2 = Get_MAX31785Temp2,
-//	.GetTemp3 = Get_MAX31785Temp3,
-//	.GetTemp4 = Get_MAX31785Temp4,
-//	.GetTemp5 = NULL,
-//	.SetAllPWM = MAX31785_SetFanAllPWM,
-//	.SetPWM1 = MAX31785_SetFanPWM1,
-//	.SetPWM2 = MAX31785_SetFanPWM2,
-//	.SetPWM3 = MAX31785_SetFanPWM3,
-//	.SetPWM4 = MAX31785_SetFanPWM4,
-//	.SetPWM5 = MAX31785_SetFanPWM5,
-//	.SetPWM6 = MAX31785_SetFanPWM6,
-//	.GetConfig = NULL,
-//	.SetConfig = NULL,
-//	.EnableFan = _MAX31785_EanbleFan,
-//	.DisableFan = _MAX31785_DisableFan,
-//};
 #endif //_FANCONTROL_SENSOR_TYPE == _FAN_MAX31785

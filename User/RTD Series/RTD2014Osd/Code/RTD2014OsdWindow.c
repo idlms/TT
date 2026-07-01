@@ -43,11 +43,12 @@
 // FUNCTION DECLARATIONS
 //****************************************************************************
 void OsdWindowDrawing(BYTE ucWindow, WORD usXStart, WORD usYStart, WORD usXEnd, WORD usYEnd, BYTE ucColor);
-//void OsdWindowDrawingHighlight(BYTE ucWindow, WORD usXStart, WORD usYStart, WORD usXEnd, WORD usYEnd, BYTE ucColor, BYTE ucForegroundColor, BYTE ucBackgroundColor);
 void OsdWindowDrawingByFont(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth, BYTE ucHeight, BYTE ucColor);
-void OsdWindowDrawingByFontHighlight(BYTE ucWindow, BYTE ucRow1, BYTE ucCol1, BYTE ucWidth, BYTE ucHeight, BYTE ucColor, BYTE ucForegroundColor, BYTE ucBackgroundColor);
+void OsdWindowDrawingByFontOrg(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth, BYTE ucHeight, BYTE ucColor);
+void OsdWindowDrawingByFontHighlight(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth, BYTE ucHeight, BYTE ucColor, BYTE ucForegroundColor, BYTE ucBackgroundColor);
+
 void OsdWindowSlider(BYTE ucRow, BYTE ucCol, BYTE ucPercentValue, BYTE ucSliderNumber, bit bSelectState);
-//void OsdWindowSliderDisable(void);
+void OsdWindowSliderDisable(void);
 
 //***************************************************************************
 // FUNCTION DEFINITIONS
@@ -137,19 +138,59 @@ void OsdWindowDrawing(BYTE ucWindow, WORD usXStart, WORD usYStart, WORD usXEnd, 
 // Input Value  :
 // Output Value :
 //--------------------------------------------------
-//void OsdWindowDrawingHighlight(BYTE ucWindow, WORD usXStart, WORD usYStart, WORD usXEnd, WORD usYEnd, BYTE ucColor, BYTE ucForegroundColor, BYTE ucBackgroundColor)
-//{
-//    OsdWindowDrawing(ucWindow, usXStart, usYStart, usXEnd, usYEnd, ucColor);
-//
-//    ScalerOsdWindowHighlightFunction(_ENABLE, ucWindow, ucForegroundColor, ucBackgroundColor, _CP_BG);
-//}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
 void OsdWindowDrawingByFont(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth, BYTE ucHeight, BYTE ucColor)
+{
+	
+    WORD usHstart = 0;
+    WORD usHend = 0;
+    WORD usVstart = 0;
+    WORD usVend = 0;
+
+    usHstart = ((WORD)ucCol * 12);
+    usHend = usHstart + ((WORD)ucWidth * 12);
+
+    if(ucRow > 0)
+    {
+        usVstart = ((ucRow) * 18);
+    }
+    usVend = usVstart + (18 * (ucHeight - 2 ));
+
+    OsdWindowDrawing(ucWindow, usHstart, usVstart, usHend, usVend, ucColor);
+	
+
+	// OsdWindowDrawing(ucWindow, XSTART(ucCol*12), YSTART(ucRow*18+9), XEND((ucCol+ucWidth)*12), YEND((ucRow+ucHeight)*18-9), ucColor);	
+	// ScalerOsdRoundedWindowOnOff(ucWindow, _ON,_ON,_ON,_ON,_ON);
+
+	// if((ucWindow == _MENU_SECTION_0_TITLE_WINDOW)||(ucWindow == _MENU_SECTION_1_TITLE_WINDOW))
+	// {
+	// 	ScalerOsdRoundedWindowOnOff(ucWindow, _ON,_ON,_OFF,_ON,_OFF);
+	// }
+	// else
+	// {
+	// 	ScalerOsdRoundedWindowOnOff(ucWindow, _ON,_ON,_ON,_ON,_ON);
+	// }
+
+	// ScalerOsdRoundedWindowSize(ucWindow,_OSD_ROUNDED_WIN_SIZE_16X16);
+	
+	// ScalerOsdRoundedWindowPattern16x16(0,10);
+	// ScalerOsdRoundedWindowPattern16x16(1,12);
+	// ScalerOsdRoundedWindowPattern16x16(2,13);
+	// ScalerOsdRoundedWindowPattern16x16(3,14);
+	// ScalerOsdRoundedWindowPattern16x16(4,14);
+	// ScalerOsdRoundedWindowPattern16x16(5,15);
+	// ScalerOsdRoundedWindowPattern16x16(6,15);
+	// ScalerOsdRoundedWindowPattern16x16(7,15);
+	// ScalerOsdRoundedWindowPattern16x16(8,15);
+	// ScalerOsdRoundedWindowPattern16x16(9,15);
+	// ScalerOsdRoundedWindowPattern16x16(10,15);
+	// ScalerOsdRoundedWindowPattern16x16(11,15);
+	// ScalerOsdRoundedWindowPattern16x16(12,15);
+	// ScalerOsdRoundedWindowPattern16x16(13,15);
+	// ScalerOsdRoundedWindowPattern16x16(14,15);
+	// ScalerOsdRoundedWindowPattern16x16(15,15);
+
+}
+void OsdWindowDrawingByFontOrg(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth, BYTE ucHeight, BYTE ucColor)
 {
     WORD usHstart = 0;
     WORD usHend = 0;
@@ -173,19 +214,19 @@ void OsdWindowDrawingByFont(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth,
 // Input Value  :
 // Output Value :
 //--------------------------------------------------
-void OsdWindowDrawingByFontHighlight(BYTE ucWindow, BYTE ucRow1, BYTE ucCol1, BYTE ucWidth, BYTE ucHeight, BYTE ucColor, BYTE ucForegroundColor, BYTE ucBackgroundColor)
+void OsdWindowDrawingByFontHighlight(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth, BYTE ucHeight, BYTE ucColor, BYTE ucForegroundColor, BYTE ucBackgroundColor)
 {
     WORD usHstart = 0;
     WORD usHend = 0;
     WORD usVstart = 0;
     WORD usVend = 0;
 
-    usHstart = ((WORD)ucCol1 * 12);
+    usHstart = ((WORD)ucCol * 12);
     usHend = usHstart + ((WORD)ucWidth * 12);
 
-    if(ucRow1 > 0)
+    if(ucRow > 0)
     {
-        usVstart = (ucRow1 * 18);
+        usVstart = (ucRow * 18);
     }
     usVend = usVstart + (18 * ucHeight);
 
@@ -201,58 +242,34 @@ void OsdWindowDrawingByFontHighlight(BYTE ucWindow, BYTE ucRow1, BYTE ucCol1, BY
 //--------------------------------------------------
 void OsdWindowSlider(BYTE ucRow, BYTE ucCol, BYTE ucPercentValue, BYTE ucSliderNumber, bit bSelectState)
 {
-	WORD usHstart = 0;
-	WORD usHend = 0;
-	WORD usVstart = 0;
-	WORD usVend = 0;
-	WORD usSliderPixel = 0;
-	BYTE ucSliderBarWindow = 0;
-	BYTE ucSliderBoderWindow = 0;
-	BYTE ucSliderBackgroundWindow = 0;
-	BYTE ucSliderColor = 0;
-	BYTE ucSliderBackgroundColor = 0;
-	BYTE ucSliderBoderColor = 0;
+    WORD usHstart = 0;
+    WORD usHend = 0;
+    WORD usVstart = 0;
+    WORD usVend = 0;
+    WORD usSliderPixel = 0;
+    BYTE ucSliderBarWindow = 0;
+    BYTE ucSliderBoderWindow = 0;
+    BYTE ucSliderBackgroundWindow = 0;
+    BYTE ucSliderColor = 0;
+    BYTE ucSliderBackgroundColor = 0;
+    BYTE ucSliderBoderColor = 0;
 
-	if (ucSliderNumber == _SLIDER_9)
-	{
-		usSliderPixel = (WORD)(_SLIDER_LENGHT_2 * ucPercentValue) / 100;
-		usHstart = ((WORD)ucCol * 12) + _SLIDER_OFFSET;
-		usHend = usHstart + _SLIDER_LENGHT_2;
-	}
-	else
-	{
-		usSliderPixel = (WORD)(_SLIDER_LENGHT * ucPercentValue) / 100;
-		usHstart = ((WORD)ucCol * 12) + _SLIDER_OFFSET;
-		usHend = usHstart + _SLIDER_LENGHT;
-	}
-   
+    usSliderPixel = (WORD)(_SLIDER_LENGHT * ucPercentValue) / 100;
 
-	if (ucSliderNumber == _SLIDER_9)
-	{
-		if (ucRow > 0)
-		{
-			usVstart = (ucRow * 18);
-			usVend = usVstart + _SLIDER_HIGH_2;
-		}
-		else
-		{
-			usVstart = (ucRow * 18);
-			usVend = usVstart + _SLIDER_HIGH_2;
-		}
-	}
-	else
-	{
-		if (ucRow > 0)
-		{
-			usVstart = (ucRow * 18);
-			usVend = usVstart + _SLIDER_HIGH;
-		}
-		else
-		{
-			usVstart = (ucRow * 18);
-			usVend = usVstart + _SLIDER_HIGH;
-		}
-	}
+    usHstart = ((WORD)ucCol * 12) + _SLIDER_OFFSET;
+    usHend = usHstart + _SLIDER_LENGHT;
+
+    if(ucRow > 0)
+    {
+        usVstart = (ucRow * 18);
+        usVend = usVstart + _SLIDER_HIGH;
+    }
+    else
+    {
+        usVstart = (ucRow * 18);
+        usVend = usVstart + _SLIDER_HIGH;
+    }
+
     if(ucSliderNumber == _SLIDER_0)
     {
         ucSliderBarWindow = _SLIDER_0_BAR_WINDOW;
@@ -302,14 +319,14 @@ void OsdWindowSlider(BYTE ucRow, BYTE ucCol, BYTE ucPercentValue, BYTE ucSliderN
 // Input Value  :
 // Output Value :
 //--------------------------------------------------
-//void OsdWindowSliderDisable(void)
-//{
-//    ScalerOsdWindowDisable(_SLIDER_0_BAR_WINDOW);
-//    ScalerOsdWindowDisable(_SLIDER_0_BORDER_WINDOW);
-//    ScalerOsdWindowDisable(_SLIDER_0_BG_WINDOW);
-//    ScalerOsdWindowDisable(_SLIDER_1_BAR_WINDOW);
-//    ScalerOsdWindowDisable(_SLIDER_1_BORDER_WINDOW);
-//    ScalerOsdWindowDisable(_SLIDER_1_BG_WINDOW);
-//}
+void OsdWindowSliderDisable(void)
+{
+    ScalerOsdWindowDisable(_SLIDER_0_BAR_WINDOW);
+    ScalerOsdWindowDisable(_SLIDER_0_BORDER_WINDOW);
+    ScalerOsdWindowDisable(_SLIDER_0_BG_WINDOW);
+    ScalerOsdWindowDisable(_SLIDER_1_BAR_WINDOW);
+    ScalerOsdWindowDisable(_SLIDER_1_BORDER_WINDOW);
+    ScalerOsdWindowDisable(_SLIDER_1_BG_WINDOW);
+}
 #endif//#if(_OSD_TYPE == _REALTEK_2014_OSD)
 

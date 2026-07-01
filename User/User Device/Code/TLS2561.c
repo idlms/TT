@@ -59,15 +59,15 @@ bit retvalue = _FALSE;
 //--------------------------------------------------
 bit TLS2561Read(WORD usSubAddr, WORD usLength, BYTE *pucReadArray)
 {
-    usSubAddr = usSubAddr;
-    usLength = usLength;
-    pucReadArray = pucReadArray;
+	usSubAddr = usSubAddr;
+	usLength = usLength;
+	pucReadArray = pucReadArray;
 
-    // Execute Hardware IIC Read Command
-    //if(UserCommonEepromIICRead(_TLS2561_SLAVE_ADDRESS, usSubAddr, 1, usLength, pucReadArray, 0x00, _PCB_SYS_EEPROM_IIC) == _FAIL)
-    //{
-    //    return _FAIL;
-    //}
+	// Execute Hardware IIC Read Command
+	//if(UserCommonEepromIICRead(_TLS2561_SLAVE_ADDRESS, usSubAddr, 1, usLength, pucReadArray, 0x00, _PCB_SYS_EEPROM_IIC) == _FAIL)
+	//{
+	//    return _FAIL;
+	//}
 	if (ScalerMcuHwIICRead(_TLS2561_SLAVE_ADDRESS, 1, usSubAddr, 1, pucReadArray, _PCB_SYS_EEPROM_IIC) == _FAIL)
 	{
 		return _FAIL;
@@ -75,7 +75,7 @@ bit TLS2561Read(WORD usSubAddr, WORD usLength, BYTE *pucReadArray)
 	//UARTDebugMessage(8);
 	//UARTDebugMessage("ch 0 Low:\n", 1);
 	//UARTDebugMessage("ch 0 Low:\n", 2);
-    return _SUCCESS;
+	return _SUCCESS;
 }
 
 //--------------------------------------------------
@@ -89,11 +89,11 @@ bit TLS2561Read(WORD usSubAddr, WORD usLength, BYTE *pucReadArray)
 //#pragma OT(8)
 bit TLS2561Write(WORD usSubAddr, WORD usLength, BYTE *pucWriteArray)
 {
-    usSubAddr = usSubAddr;
-    usLength = usLength;
-    pucWriteArray = pucWriteArray;
+	usSubAddr = usSubAddr;
+	usLength = usLength;
+	pucWriteArray = pucWriteArray;
 
-    // Execute Hardware IIC Write Command
+	// Execute Hardware IIC Write Command
 	//PCB_EEPROM_WRITE_PROTECT(_EEPROM_WP_DISABLE);
  //   if(UserCommonEepromIICWrite(_TLS2561_SLAVE_ADDRESS, usSubAddr, 1, usLength, pucWriteArray, 0x00, _PCB_SYS_EEPROM_IIC, WRITE_SIZE_8) == _FAIL)
  //   {
@@ -122,7 +122,7 @@ bit Initialize_TLS2561(void)
 	BYTE wData[1];
 	BYTE rData[1];
 
-	
+
 	retvalue = _FALSE;
 	wData[0] = 0x03; // Power On
 	//TLS2561Write(0x80, 1, &wData[0]);
@@ -166,7 +166,7 @@ DWORD CalculateLux(void)
 	SWORD b, m;
 
 	DWORD temp;
-	DWORD lux =0;
+	DWORD lux = 0;
 	bit iGain = _FALSE; BYTE tInt = 1; BYTE iType = 1;
 
 	pCH0Data[0] = 0x00;
@@ -290,11 +290,11 @@ DWORD CalculateLux(void)
 		}
 		break;
 	}
-	temp = ((channel0 * b)-(channel1 * m));
+	temp = ((channel0 * b) - (channel1 * m));
 	// do not allow negative lux value
 	if (temp < 0) temp = 0;
 	// round lsb (2^(LUX_SCALE−1))
-	temp += (1 << (LUX_SCALE-1));
+	temp += (1 << (LUX_SCALE - 1));
 	// strip off fractional portion
 	lux = temp >> LUX_SCALE;
 	return(lux);

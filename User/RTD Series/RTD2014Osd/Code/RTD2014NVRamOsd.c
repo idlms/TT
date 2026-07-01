@@ -26,32 +26,80 @@
 //--------------------------------------------------
 // Brightness/Contrast Default Value
 //--------------------------------------------------
-#if(_CTS_TYPE == _CTS_GEN_1_12BIT)
-#define _CONTRAST_VGA                               2455 //0x800
-#define _CONTRAST_DVI                               2455 //0x800
-#define _CONTRAST_VIDEO8                            2455 //0x800
-#define _CONTRAST_HDMI                              2455 //0x620//0x800
-#define _CONTRAST_DP                                2455 //0x620//0x800
-#else
-#define _CONTRAST_VGA                               0x080
-#define _CONTRAST_DVI                               0x080
-#define _CONTRAST_VIDEO8                            0x080
-#define _CONTRAST_HDMI                              0x080
-#define _CONTRAST_DP                                0x080
+#if(_CTS_TYPE == _CTS_GEN_1_12BIT)	// 	//0 ~ 4096=>// usContrast(1024) + ColorTemp(1024) + SubContrast(1024) + ColorGain(1024) 
+
+#define _CONTRAST_VGA                               0x800//512//0x800	// usContrast(1024)/2	
+#define _CONTRAST_DVI                               0x800//512//0x800
+#define _CONTRAST_VIDEO8                            0x800//512//0x800
+#define _CONTRAST_HDMI                              0x800//512//0x800
+#define _CONTRAST_DP                                0x800//512//0x800
+
+#define _SUB_CONTRAST_VGA                           512//0x800	// usSubContrast(1024)/2	
+#define _SUB_CONTRAST_DVI                           512//0x800
+#define _SUB_CONTRAST_VIDEO8                        512//0x800
+#define _SUB_CONTRAST_HDMI                          512//0x800
+#define _SUB_CONTRAST_DP                            512//0x800
+
+#define _COLOR_GAIN_R								512//1024//0x400	// ColorGain(1024)/2
+#define _COLOR_GAIN_G								512//1024//0x400
+#define _COLOR_GAIN_B								512//1024//0x400
+
+#else												//0 ~ 256 =>// usContrast(64) + ColorTemp(64) + SubContrast(64) + ColorGain(64) 
+
+#define _CONTRAST_VGA                               0x080//32//0x080	// usContrast(64)/2
+#define _CONTRAST_DVI                               0x080//32//0x080
+#define _CONTRAST_VIDEO8                            0x080//32//0x080
+#define _CONTRAST_HDMI                              0x080//32//0x080
+#define _CONTRAST_DP                                0x080//32//0x080
+
+#define _SUB_CONTRAST_VGA                           32//0x080	// usSubContrast(64)/2	
+#define _SUB_CONTRAST_DVI                           32//0x080
+#define _SUB_CONTRAST_VIDEO8                        32//0x080
+#define _SUB_CONTRAST_HDMI                          32//0x080
+#define _SUB_CONTRAST_DP                            32//0x080
+
+#define _COLOR_GAIN_R								32//64//0x040	// ColorGain(64)/2
+#define _COLOR_GAIN_G								32//64//0x040
+#define _COLOR_GAIN_B								32//64//0x040
+
 #endif
 
-#if(_BRI_TYPE == _BRI_GEN_1_10BIT)
-#define _BRIGHTNESS_VGA                             520 //0x1F8
-#define _BRIGHTNESS_DVI                             520 //0x200
-#define _BRIGHTNESS_VIDEO8                          520 //0x200
-#define _BRIGHTNESS_HDMI							520 //0x1c4 // 0x200
-#define _BRIGHTNESS_DP                              520 //0x1c4//0x200
-#else
-#define _BRIGHTNESS_VGA                             0x07E
-#define _BRIGHTNESS_DVI                             0x080
-#define _BRIGHTNESS_VIDEO8                          0x080
-#define _BRIGHTNESS_HDMI                            0x080
-#define _BRIGHTNESS_DP                              0x080
+#if(_BRI_TYPE == _BRI_GEN_1_10BIT)	// //0 ~ 1024=>// usBrightness(512) + SubBrightness(256) + ColorOffset(256)
+
+#define _BRIGHTNESS_VGA                             0x200//256//0x1F8	// usBrightness(512)/2	
+#define _BRIGHTNESS_DVI                             0x200//256//0x200
+#define _BRIGHTNESS_VIDEO8                          0x200//256//0x200
+#define _BRIGHTNESS_HDMI                            0x200//256//0x200
+#define _BRIGHTNESS_DP                              0x200//256//0x200
+
+#define _SUB_BRIGHTNESS_VGA                         128			// SubBrightness(256)/2
+#define _SUB_BRIGHTNESS_DVI                         128	
+#define _SUB_BRIGHTNESS_VIDEO8                      128	
+#define _SUB_BRIGHTNESS_HDMI                        128	
+#define _SUB_BRIGHTNESS_DP                          128	
+
+#define _COLOR_OFFSET_R								128//256//0x100	// ColorOffset(256)/2
+#define _COLOR_OFFSET_G								128//256//0x100
+#define _COLOR_OFFSET_B								128//256//0x100
+
+#else												//0 ~ 256 =>// usBrightness(128) + ColorOffset(64) + ColorOffset(64)
+
+#define _BRIGHTNESS_VGA                             0x080//64//0x07E	// usBrightness(128)/2
+#define _BRIGHTNESS_DVI                             0x080//64//0x080
+#define _BRIGHTNESS_VIDEO8                          0x080//64//0x080
+#define _BRIGHTNESS_HDMI                            0x080//64//0x080
+#define _BRIGHTNESS_DP                              0x080//64//0x080
+
+#define _SUB_BRIGHTNESS_VGA                         32			// SubBrightness(64)/2
+#define _SUB_BRIGHTNESS_DVI                         32	
+#define _SUB_BRIGHTNESS_VIDEO8                      32	
+#define _SUB_BRIGHTNESS_HDMI                        32	
+#define _SUB_BRIGHTNESS_DP    
+
+#define _COLOR_OFFSET_R								32//64		// ColorOffset(64)/2
+#define _COLOR_OFFSET_G								32//64
+#define _COLOR_OFFSET_B								32//64
+
 #endif
 //--------------------------------------------------
 // Six Color Data Default Values
@@ -88,29 +136,121 @@
 #define _EEPROM_EMULATION_VERSION                   0x01
 #endif
 
+#define CUSTOMER_USERDATA_BANK           17
+#define CUSTOMER_USERDATA_PAGE_START     0
+#define FLASH_PAGE_SIZE         256
+#define CUSTOMER_USERDATA_STRUCT_SIZE         sizeof(StructOsdCustomerUserDataType)
+
+typedef struct
+{
+    StructOsdUserDataType stOsdUserData;
+    StructBriConDataType stBriConData;
+    StructBriConDataType stBackupBriConData[_SOURCE_AMOUNT];
+    StructColorProcDataType stColorProcData;
+    StructSixColorDataType stSixColorData;
+
+} StructOsdCustomerUserDataType;
+
+//--------------------------------------------------
+code StructOsdServiceDataType g_stOsdServiceDataDefault =	
+    {
+        _OFF,                   // BYTE b1IsService : 1;	
+        _OFF,                   // BYTE b1LCDtest:1;
+        _SOURCE_NAME_DP1,       // BYTE b4D0Name : 4;
+        _SOURCE_NAME_DP2,       // BYTE b4D1Name : 4;
+        _SOURCE_NAME_HDMI1,     // BYTE b4D2Name : 4;
+#if(_SDI_CONVERTER_TYPE == _SDI_CONVERTER_NONE)
+        _SOURCE_NAME_HDMI2,     // BYTE b4D3Name : 4;
+#else
+        _SOURCE_NAME_SDI,       // BYTE b4D3Name : 4;
+#endif
+        _OFF,                   // BYTE b1OsdLogo : 1;	
+        _ON,                    // BYTE b1BacklightInvert : 1;
+        180,                    // WORD usBacklightFreq;
+        _DEFAULT_BACKLIGHT_MIN, // WORD usBacklightMin;		
+        _DEFAULT_BACKLIGHT_MAX, // WORD usBacklightMax;		
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+        _DEFAULT_STABILUX, // WORD usStabilux;
+#endif
+#if (_ENABLE_LIGHT_SENSOR == _ON)
+        _OFF,                    // BYTE b1LightSensorStatus : 1;  
+#endif
+        _OFF,                 // BYTE b1LCDtestMode;
+#if (_ENABLE_FAN_CONTROL == _ON)
+        _AUTO, // BYTE b1FanStatus : 2;
+        0x80,  // BYTE ucFanPwm;
+        //0x80,  // BYTE ucFanPwm1;
+        //0x80,  // BYTE ucFanPwm2;
+        //0x80,  // BYTE ucFanPwm3;
+        //0x80,  // BYTE ucFanPwm4;
+        _OFF,  // BYTE b1ShutDownStatus : 1;
+        75,    // BYTE b1ShutDownTemp;
+        0,     // BYTE ucMaxTemp;
+#endif
+#if (_ENABLE_MENU_OLED == _ON)
+	_OFFRS_AUTO,						// BYTE ucOLEDOffRsStatus;
+	_OFF,						// BYTE b1OLEDJBStatus : 1;
+	_OFF,						//b1OffRSExcute :1
+	_OFF,						//b1JBCompExcute :1
+	0,						    // BYTE ucOffRSHour
+	0,						    // BYTE ucOffRSMin
+	0,							// WORD usJBHour
+	0,							// BYTE ucJBMin
+    _POWER_SAVE_5MIN,            //BYTE ucSequenceTime;
+#endif
+    0,                   // BYTE ucOSDLogoList 
+    {'T', 'I', 'T', 'A', 'N', 0, 0, 0, 0, 0, 0, 0, 0, 0}, // BYTE b14EDIDName[14];
+    {'0', '0', '0', '0', '0', '0', '0', 0, 0, 0, 0, 0, 0, 0},  // BYTE b14EDIDSerial[14];    
+    70,//BYTE b1EIDHSize;
+    40,//BYTE b1EDIDVSize;
+    _USERASSIGN_NONE,//BYTE b1UserAssignUp;
+    _USERASSIGN_NONE,//BYTE b1UserAssignDown;
+    _USERASSIGN_BACKLIGHT,//BYTE b1UserAssignLeft;
+    _USERASSIGN_CONTRAST,//BYTE b1UserAssignRight;
+};
+
+//--------------------------------------------------
+
 // Attention: it is necessary for sizeof(StructOsdUserDataType) < ((_FLASH_ITEMID_OSD_DATA_END - _FLASH_ITEMID_OSD_DATA_START) * (_DATA_ITEM_LENGTH - 2))
 // Please check it when add items in StructOsdUserDataType
-code StructOsdUserDataType g_stOSDDefaultData =
+code StructOsdUserDataType g_stOSDDefaultData =		//  OSD Default Data
 {
-
-	0x0CCC,                   // usBackLight;
-    50,                       // ucOsdHPos;
-    50,                       // ucOsdVPos;
-    15,                       // ucOsdTimeout;
+	/*
+#if(_PWM_DUT_RESOLUTION == _PWM_8BIT)
+    (WORD)_BACKLIGHT_MAX,//0x0080,  // usBackLight;	//  _BACKLIGHT_MAX : 255 (_BACKLIGHT_PWM_INVERSE => _OFF)
+#else
+    (WORD)_BACKLIGHT_MAX,//0x0800,  // usBackLight;	
+#endif
+	*/
+	(WORD)_DEFAULT_BACKLIGHT_MAX, // 0x0800,                   // usBackLight;	// (4095)
+	_LINEAR,					  // BYTE b1BacklightControl : 1;	
+    _OSD_H_POS_MIN,//64,//62,//50,//55,//50,                       // ucOsdHPos;	
+    _OSD_V_POS_MIN,//50,//4,//50,                       // ucOsdVPos;	
+    30,//10,                       // ucOsdTimeout;		
     0,                        // ucAspectOriginRatio
-    0x60,                        // ucTransparency;
+    20,//30,//0,                        // ucTransparency;	
+//--------------------------------------------------------
+	_OSD_DM_1P,               // BYTE ucDisplayMode		//  RTD2795 Not Used
+    0,                        // BYTE ucSelectRegionWidth
+    _SELECT_REGION_COLOR_0,   // BYTE ucSelectRegionColor
+    _PIP_POSITON_RB,                          // BYTE ucPipSubPosType
+    _OSD_PIP_USER_POSITION_H_MAX,          // WORD usPipSubHPos
+    _OSD_PIP_USER_POSITION_V_MAX,          // WORD usPipSubVPos
+    _OSD_PIP_SIZE_MAX,                        // BYTE ucPipSubScaling
+    _OSD_PIP_TRANSPARENCY_MIN,                // BYTE ucPipSubBlending
+    _OSD_PBP_LR_RATIO_MIN,                 // BYTE ucPbpLrRatio
 //--------------------------------------------------------
     _ENGLISH,                 // b4Language;
     _COLOREFFECT_STANDARD,    // b4ColorEffect;
 //--------------------------------------------------------
-	_CT_6500,                 // b4ColorTempType;
+    _CT_D65,//_CT_SRGB,//_CT_6500,                 // b4ColorTempType;	//  _CT_6500 -> _CT_SRGB ( Gain Center )	
     _COLOR_SPACE_RGB,         // b3VGARGBYUV;
     _COLOR_SPACE_RGB,         // b3DVIRGBYUV;
 //--------------------------------------------------------
     2,                        // b3Sharpness;
     _OSD_ROTATE_DEGREE_0,     // b1OsdRotate;
     _OSD_ROTATE_DISPLAY_KEEP_SRC_ASPECT_RATIO,     // b2DispRotationSizeType;
-    _ON,                      // b1OverScan;
+    _OFF,//_ON,                      // b1OverScan;		//  OverScan Off
 //--------------------------------------------------------
     _GAMMA_OFF,               // b3Gamma;
     _OSD_ASPECT_RATIO_FULL,   // b3AspectRatio;
@@ -123,48 +263,93 @@ code StructOsdUserDataType g_stOSDDefaultData =
     _HL_WIN_OFF,              // ucHLWinType;
 //--------------------------------------------------------
     _PCM_OSD_NATIVE,          // b3PCMStatus : 3;
-	_ULTRA_VIVID_OFF,         // b2UltraVividStatus : 2;
+    _ULTRA_VIVID_OFF,         // b2UltraVividStatus : 2;
     _OFF,                     // b1VolumeMute : 1;
     _OFF,                     // b1AudioStandAloneStatus : 1;
-    _DIGITAL_AUDIO,                        // b1AudioSourceStatus : 1;
+    _DIGITAL_AUDIO,//0,       // b1AudioSourceStatus : 1;	//  ( 0: _LINE_IN_AUDIO  1: _DIGITAL_AUDIO )
+#if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+    0,						  // BYTE b1TtsSupport: 1;
+    0,						  // BYTE ucTtsTextVolume;
+    0,						  // BYTE ucTtsAudioVolume;
+#endif // End of #if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
 //--------------------------------------------------------
-    10,                       // ucVolume;
-    0x00,                   // b2AudioMode; // eric_171010
-    
+    30,//50,                  // ucVolume;		//  DAC Volume Set
 //--------------------------------------------------------
     _OFF,                      // b1ODStatus : 1;
     0x00,                      // b33DConvergenceMode : 3;
     _AUTO_COLOR_TYPE_EXTERNAL, // b1FactoryAutoColorType : 1;
-    _OFF,                       // BYTE b1PanelUniformity : 1;
+    _ON,                       // BYTE b1PanelUniformity : 1;
     0,                         // BYTE b1PCMSoftProftMode : 1;
 //--------------------------------------------------------
-    0,                         // BYTE ucOsdInputPort;
+    _OSD_INPUT_AUTO,//_OSD_INPUT_D1,	//0,                        // BYTE ucOsdInputPort;		// AUTO -> DP1
 #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-    _TYPE_C_U3_OFF,            // BYTE b2D0TypeCU3Mode;
-    _TYPE_C_U3_OFF,            // BYTE b2D1TypeCU3Mode;
-    _TYPE_C_U3_OFF,            // BYTE b2D2TypeCU3Mode;
-    _TYPE_C_U3_OFF,            // BYTE b2D6TypeCU3Mode;
+    _TYPE_C_U3_OFF,            // BYTE b1D0TypeCU3Mode;
+    _TYPE_C_U3_OFF,            // BYTE b1D1TypeCU3Mode;
+    _TYPE_C_U3_OFF,            // BYTE b1D2TypeCU3Mode;
+    _TYPE_C_U3_OFF,            // BYTE b1D6TypeCU3Mode;
+#if(_TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_SWITCH_SUPPORT == _ON)
+    _TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_ON,            // BYTE b1D0TypeCPinAssignmentESupportSelect;
+    _TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_ON,            // BYTE b1D1TypeCPinAssignmentESupportSelect;
+    _TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_ON,            // BYTE b1D2TypeCPinAssignmentESupportSelect;
+    _TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_ON,            // BYTE b1D6TypeCPinAssignmentESupportSelect;
+#endif
 #endif
 //--------------------------------------------------------
-    _DP_VER_1_DOT_2,                         // b1OsdDpD0PortVersion : 1;
-    _DP_VER_1_DOT_2,                         // b1OsdDpD1PortVersion : 1;
-    _OFF,                      // b2OsdDpMST : 2;
+    _DP_VER_1_DOT_3,//0,                     // b1OsdDpD0PortVersion : 2;		//  DP Version 1.1/1.2/1.3
+    _DP_VER_1_DOT_3,//0,                     // b1OsdDpD1PortVersion : 2;
     0,                         // b3OsdDispRotate : 3;
     0,                         // b1OsdDpVersionHotKeyDisp : 1;
 //--------------------------------------------------------
     0,                         // b1PreShowDpHotKeyVersion : 1;
     0,                         // b3PanelUniformityType : 3;
-    0,                         // b1OsdDpD6PortVersion : 1;
-    0,                         // b1OsdDpD2PortVersion : 1;
+    0,                         // b1OsdDpD6PortVersion : 2;
+    0,                         // b1OsdDpD2PortVersion : 2;
     _OFF,                      // b1FreeSyncStatus : 1;
-    _OSD_CLONE_OFF,            // b1CloneMode: 1;
+    _OFF,                      // b1DpAdaptiveSyncStatus : 1;
+    _OSD_CLONE_ON,             // b1CloneMode: 1;				// 	Clone Mode On
+    0,							// b3CloneSrc : 3;	
+//--------------------------------------------------------
+	_OFF,   					// b1ResetDo : 1;				
+	_POWER_SAVE_30SEC,			// ucPowerSaveTime;
+	1,							// ucSetId;
+	0,							// ucTransferId;				//  ( 0: All Set , 0~100 )	
+	_HPD_MODE1,					// b2HpdMode : 2;
+
+	_OFF,						// b1AutoAdjustDo : 1;		
+	_FAN_MODE_OFF,				// b2FanControl : 2;		// 0: Auto , 1: On , 2: Off
+	40,							// ucActiveTemp;
+	3,							// ucHysteresis;
+	0,							// ucCurrentTemp;
+	_OFF,						// b1ShutdownMode : 1;
+	80,							// ucShutdownTemp;
+	_OFF,						// b1AutoDimming : 1;
+	//100,	//WORD ucDimming;	//WORD usBackLight;
+	400,						// usMaxAmbient;
+	200,						// usMinAmbient;
+	0,							// usCurLux;
+	_ON,//_OFF,						// b1VideoWall : 1;
+	1,							// ucDisplayNum;
+	1,							// ucHSetCount;
+	1,							// ucVSetCount;
+	0,							// ucHEdgeAdjust;
+	0,							// ucVEdgeAdjust;
+	0,							// b1ReverseScan : 1;
+	0,							// b1InputSwapDo : 1;	
+	0,							// b1BurnIn : 1;		
+	0, 							// ucSelectRegion;		
+    0,							// b1KeyLock : 1;	
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT )
+	0,							// b1Stabilizer : 1; 
+#endif	
 //--------------------------------------------------------
     _LATENCY_L,                // b2LatencyStatus : 2
     _OFF,                      // BYTE b1OsdDoubleSize :1;
+	_OFF,                      // b2OsdDpMST : 3;				 
+//--------------------------------------------------------	
 #if(_HDR10_SUPPORT == _ON)
     _HDR10_MODE_OFF,              // BYTE ucHdrMode;
-    _ON,                       // b1DarkEnhanceStatus : 1;
-    _ON,                       // b1HdrSharpness : 1;
+    _OFF,                       // b1DarkEnhanceStatus : 1;
+    _OFF,                       // b1HdrSharpness : 1;
     0,                          // BYTE ucHdrContrast;
     0,                          // BYTE ucHdrColorEnhance;
     0,                          // BYTE ucHdrLightEnhance;
@@ -176,36 +361,7 @@ code StructOsdUserDataType g_stOSDDefaultData =
 #if (_SDR_TO_HDR_SUPPORT == _ON)
     _OFF,                       // b1Sdr2HdrStatus : 1;
 #endif
-#if(_AUO_PANEL_ALCW_SUPPORT == _ON)
-	_OFF,					  // b1EnableALCW : 1
-#endif
-#if (_ENABLE_VIDEO_WALL == _ON)
-	_OFF,						// b1VideoWallStatus : 1;
-	1,							// ucVideoWallDispNum;
-	_VIDEO_WALL_HV_NUM_MIN,		// ucVideoWallHNum;
-	_VIDEO_WALL_HV_NUM_MIN,		// ucVideoWallVNum;
-	1,							// ucVideoWallRs232Id,
-#endif
-#if (_ENABLE_LIGHT_SENSOR == _ON)
-	_OFF,						// b1LightSensorStatus : 1;
-#endif
-#if (_ENABLE_FAN_CONTROL == _ON)
-	_AUTO,						// b1FanStatus : 2;
-	0x80,						// ucFanPwm1;
-	0x80,						// ucFanPwm2;
-	0x80,						// ucFanPwm3;
-	0x80,						// ucFanPwm4;
-	_OFF,						// b1ShutDownStatus : 1;
-	75,							// b1ShutDownTemp;
-#endif
-#if(_ENABLE_SELF_CHECK == _ON)
-	_OFF,						// b1SelfCheckStatus : 1;
-#endif
-	0,							// b1BacklightPwmRes : 1;
-	0,							// b1BacklightControl : 1;
-	//1,							// b1BacklightInvert : 1;
-	180,						// usBacklightFreq;
-	255,					    // usBacklightMax;
+
 // --------------------------------------------------------
 #if(_HDMI_MULTI_EDID_SUPPORT == _ON)
     _HDMI_1P4,                 // BYTE b2OsdHdmiD0PortVersion : 2;
@@ -217,66 +373,97 @@ code StructOsdUserDataType g_stOSDDefaultData =
 #endif
 
 #if(_USB3_RETIMER_SUPPORT == _ON)
-    _TRUE,                     // BYTE b1OsdUsb3RetimerPSPDWakeUp: 1;
+    _TRUE,                     // BYTE b1OsdUsb3RetimerPDWakeUp: 1;
+    _TRUE,                     // BYTE b1OsdUsb3RetimerPSWakeUp: 1;
+    _HUB_UFP_TYPE_C_INPUT_PORT, // EnumHubInputPort enumHubInputPortSwitchbyUser;
 #endif
- _AIM_1,
- _TIMER_10,
- _LEFT_AIM,
- _LEFT_TIMER_POSITION_1,
-POWER_SAVE_5SEC,		  // ucPowerSave
-
-#if (_ENABLE_MENU_OLED == _ON)
-	_OFF,						// BYTE b1OLEDOffRsStatus : 1;
-	_OFF,						// BYTE b1OLEDJBStatus : 1;
-	_OFF,						//b1OffRSExcute :1
-	_OFF,						//b1JBCompExcute :1
-	0,						    // BYTE ucOffRSHour
-	0,						    // BYTE ucOffRSMin
-	0,							// WORD usJBHour
-	0,							// BYTE ucJBMin
-#endif
-
-#if (_PIXEL_SHIFT_SUPPORT == _ON)
-#if (_CUSTOMER_TYPE	== _CUSTOMER_DISPLAY_IMAGE)	
-	_ON,						//BYTE b1PixelShiftStatus : 1;
-	PIXEL_SHIFT_5MIN,			//BYTE ucPixelShiftTimes
-#else
-	_OFF,						//BYTE b1PixelShiftStatus : 1;
-	PIXEL_SHIFT_5MIN,			//BYTE ucPixelShiftTimes
-#endif
+#if(_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+	_OSD_MBR_USER_DISABLE,    // b2MbrStatus : 2;
+	_OSD_MBR_DUTY_DEFAULT,    // b7MbrDutys : 7;
+	_OSD_MBR_POS_DEFAULT,     // b7MbrPosition : 7;
 #endif
 };
 
-code StructBriConDataType tBriConDefaultData[] =
+code StructBriConDataType tBriConDefaultData[] =	// Color Control Default Data
 {
     {
         _BRIGHTNESS_VGA,
         _CONTRAST_VGA,
+
+		_SUB_BRIGHTNESS_VGA,	
+        _SUB_CONTRAST_VGA,
+        
+        _COLOR_OFFSET_R,	
+        _COLOR_OFFSET_G,
+        _COLOR_OFFSET_B,
+        _COLOR_GAIN_R,
+        _COLOR_GAIN_G,
+        _COLOR_GAIN_B,
     },
 
     {
         _BRIGHTNESS_VIDEO8,
         _CONTRAST_VIDEO8,
+
+		_SUB_BRIGHTNESS_VIDEO8,	
+        _SUB_CONTRAST_VIDEO8,
+
+		_COLOR_OFFSET_R,
+        _COLOR_OFFSET_G,
+        _COLOR_OFFSET_B,
+        _COLOR_GAIN_R,
+        _COLOR_GAIN_G,
+        _COLOR_GAIN_B,
     },
 
     {
         _BRIGHTNESS_DVI,
         _CONTRAST_DVI,
+
+		_SUB_BRIGHTNESS_DVI,	
+        _SUB_CONTRAST_DVI,
+
+		_COLOR_OFFSET_R,
+        _COLOR_OFFSET_G,
+        _COLOR_OFFSET_B,
+        _COLOR_GAIN_R,
+        _COLOR_GAIN_G,
+        _COLOR_GAIN_B,
     },
 
     {
         _BRIGHTNESS_HDMI,
         _CONTRAST_HDMI,
+
+		_SUB_BRIGHTNESS_HDMI,	
+        _SUB_CONTRAST_HDMI,
+
+		_COLOR_OFFSET_R,
+        _COLOR_OFFSET_G,
+        _COLOR_OFFSET_B,
+        _COLOR_GAIN_R,
+        _COLOR_GAIN_G,
+        _COLOR_GAIN_B,
     },
 
     {
         _BRIGHTNESS_DP,
         _CONTRAST_DP,
+
+		_SUB_BRIGHTNESS_DP,	
+        _SUB_CONTRAST_DP,
+
+		_COLOR_OFFSET_R,
+        _COLOR_OFFSET_G,
+        _COLOR_OFFSET_B,
+        _COLOR_GAIN_R,
+        _COLOR_GAIN_G,
+        _COLOR_GAIN_B,
     },
 
 };
-
-code StructColorProcDataType tColorTempDefaultData[] =
+/*
+code StructColorProcDataType tColorTempDefaultData[] =	//  Color Temp Default Data
 {
     {
         _CT9300_RED,
@@ -314,7 +501,189 @@ code StructColorProcDataType tColorTempDefaultData[] =
         _CTUSER_BLUE,
     },
 };
+*/
+//--------------------------------------------------
+code StructColorProcDataType tColorTempDefaultData[] =	
+    {
+        // D56
+        {
+            _CT_D56_RED,
+            _CT_D56_GREEN,
+            _CT_D56_BLUE,
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASR
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASG
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASB
+            (_COLOR_GAIN_CENTER << 4), // usColorGainR
+            (_COLOR_GAIN_CENTER << 4), // usColorGainG
+            (_COLOR_GAIN_CENTER << 4), // usColorGainB
+        },
+        // D65
+        {
+            _CT_D65_RED,
+            _CT_D65_GREEN,
+            _CT_D65_BLUE,
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASR
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASG
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASB
+            (_COLOR_GAIN_CENTER << 4), // usColorGainR
+            (_COLOR_GAIN_CENTER << 4), // usColorGainG
+            (_COLOR_GAIN_CENTER << 4), // usColorGainB
+        },
+        // D93
+        {
+            _CT_D93_RED,
+            _CT_D93_GREEN,
+            _CT_D93_BLUE,
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASR
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASG
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASB
+            (_COLOR_GAIN_CENTER << 4), // usColorGainR
+            (_COLOR_GAIN_CENTER << 4), // usColorGainG
+            (_COLOR_GAIN_CENTER << 4), // usColorGainB
+        },
+        // USER
+        {
+            _CTUSER_RED,
+            _CTUSER_GREEN,
+            _CTUSER_BLUE,
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASR
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASG
+            (_COLOR_BIAS_CENTER << 2), // usColorBIASB
+            (_COLOR_GAIN_CENTER << 4), // usColorGainR
+            (_COLOR_GAIN_CENTER << 4), // usColorGainG
+            (_COLOR_GAIN_CENTER << 4), // usColorGainB
+        },
+        /*
+                {
+                    _CTSRGB_RED,
+                    _CTSRGB_GREEN,
+                    _CTSRGB_BLUE,
+                    (_COLOR_BIAS_CENTER << 2), // usColorBIASR
+                    (_COLOR_BIAS_CENTER << 2), // usColorBIASG
+                    (_COLOR_BIAS_CENTER << 2),  // usColorBIASB
+                    (_COLOR_GAIN_CENTER << 4),  // usColorGainR
+                    (_COLOR_GAIN_CENTER << 4),  // usColorGainG
+                    (_COLOR_GAIN_CENTER << 4),  // usColorGainB
+                },
 
+                {
+                    _CTUSER_RED,
+                    _CTUSER_GREEN,
+                    _CTUSER_BLUE,
+                    (_COLOR_BIAS_CENTER << 2), // usColorBIASR
+                    (_COLOR_BIAS_CENTER << 2), // usColorBIASG
+                    (_COLOR_BIAS_CENTER << 2),  // usColorBIASB
+                    (_COLOR_GAIN_CENTER << 4),  // usColorGainR
+                    (_COLOR_GAIN_CENTER << 4),  // usColorGainG
+                    (_COLOR_GAIN_CENTER << 4),  // usColorGainB
+                },
+                */
+};
+
+code StructOsdInputPortDataType tOsdInputPortDataDefault[_OSD_INPUT_AMOUNT] =	
+    {
+        {
+// _A0_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D0_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D1_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D2_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D3_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D4_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D5_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+
+        {
+// _D6_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+/*
+        {
+// _D7_INPUT_PORT
+#if (_HDR10_SUPPORT == _ON)
+            _HDR10_MODE_OFF,
+#endif
+            0,                      // BYTE ucAspectOriginRatio
+            2,                      // BYTE b3Sharpness : 3;
+            _OSD_ASPECT_RATIO_USER, // BYTE b3AspectRatio : 3;
+            _OFF,                   // BYTE b1OverScan : 1;
+        },
+*/
+};
+
+//--------------------------------------------------
 code StructSixColorDataType g_stSixColorDefaultData =
 {
     _SIX_COLOR_HUE_R,
@@ -334,11 +703,19 @@ code StructSixColorDataType g_stSixColorDefaultData =
 //****************************************************************************
 // VARIABLE DECLARATIONS
 //****************************************************************************
-StructOsdUserDataType g_stOsdUserData;
+StructOsdUserDataType g_stOSDUserData;
 StructBriConDataType g_stBriConData;
+StructBriConDataType g_stBackupBriConData[_SOURCE_AMOUNT];	
 StructColorProcDataType g_stColorProcData;
 StructSixColorDataType g_stSixColorData;
 StructTimeType g_stPanelTimeData;
+
+StructOsdServiceDataType g_stOsdServiceData;	
+StructOsdCustomerUserDataType g_stOSDCustomerUserData;
+
+bit g_bForceSkip;
+BYTE ucBackupSerialNum[13];	
+BYTE ucBackupSetId;	
 
 #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _ON)
 DWORD g_ulFlashMoveCount;
@@ -357,9 +734,21 @@ void RTDEepromRestoreBacklight(void);
 void RTDEepromLoadOSDData(void);
 void RTDEepromSaveOSDData(void);
 void RTDEepromRestoreOSDData(void);
+void RTDEepromLoadOsdServiceData(void);	
+void RTDEepromSaveOsdServiceData(void);	
+void RTDEepromRestoreOsdServiceData(void);	
+
 void RTDEepromLoadBriCon(BYTE ucSource);
 void RTDEepromSaveBriCon(BYTE ucSource);
 void RTDEepromRestoreBriCon(void);
+
+void RTDEepromBackupColorCon(void);	
+void RTDEepromRecoveryColorCon(void);
+
+void RTDEepromBackupSetId(void);
+void RTDEepromRecoverySetId(void);
+
+
 void RTDEepromLoadColorSetting(BYTE ucColorTempType);
 void RTDEepromSaveColorSetting(BYTE ucColorTempType);
 void RTDEepromRestoreColorSetting(void);
@@ -371,6 +760,8 @@ void RTDEepromLoadPanelUsedTimeData(void);
 void RTDEepromSavePanelUsedTimeData(void);
 void RTDEepromRestorePanelUsedTimeData(void);
 
+void UserCommonFlashSaveCustomerUserData(void);
+void UserCommonFlashCustomerUserData(void);
 #else // Else of #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _OFF)
 
 BYTE RTDFlashGetFreePage(void);
@@ -428,36 +819,53 @@ void RTDEepromStartup(void)
         pData[0] = _CHECKSUM ^ 0xFF;
         pData[1] = _VERSION_CODE ^ 0xFF;
         UserCommonEepromRead(_EEPROM_CHECKSUM_ADDRESS, 2, pData);
-
+		
+		if(!ucCnt)
+		{
+			printf("_CHECKSUM:%X pData[0]:%X\n\r",(int)_CHECKSUM,(int)pData[0]);	
+			printf("_VERSION_CODE:%X pData[1]:%X\n\r",(int)_VERSION_CODE,(int)pData[1]);	
+		}
+		
         if((pData[0] == _CHECKSUM) && (pData[1] == _VERSION_CODE))
         {
             break;
         }
     }
 
-    if(pData[0] != _CHECKSUM)
+    if(pData[0] != _CHECKSUM)	//  Reset All
     {
+        BYTE pucData[3] = {0};
+
         // Load default value and save to EEPROM
         RTDEepromWholeRestore();
+		printf("CHECKSUM Not Equal => RTDEepromWholeRestore() All Data\n\r");	
+		
         // Save VERSION CODE to EEPROM
-        pData[0] = _CHECKSUM;
-        pData[1] = _VERSION_CODE;
-        pData[2] = 0; // _PANEL_INDEX_ADDRESS
+        pucData[0] = _CHECKSUM;
+        pucData[1] = _VERSION_CODE;
+        pucData[2] = 0; // _PANEL_INDEX_ADDRESS
 
 #if(_PANEL_EXIST_MULTIPANEL == _ON)
         SET_MDOMAIN_PANEL_INDEX(0);
 #endif
 
-        UserCommonEepromWrite(_EEPROM_CHECKSUM_ADDRESS, 2, pData);
-        UserCommonEepromWrite(_PANEL_INDEX_ADDRESS, 1, &pData[2]);
+        UserCommonEepromWrite(_EEPROM_CHECKSUM_ADDRESS, 2, pucData);
+        UserCommonEepromWrite(_PANEL_INDEX_ADDRESS, 1, &pucData[2]);
+
+		//------------------------------------------------------------------------------
+        UserCommonFlashSaveCustomerUserData();
     }
     else if(pData[1] != _VERSION_CODE)
     {
-        g_stColorProcData = tColorTempDefaultData[_CT_USER];
-        RTDEepromSaveColorSetting(_CT_USER);
-
+		printf("_VERSION_CODE Not Equal => User OSD, Color ...\n\r");	
+		
+        //g_stColorProcData = tColorTempDefaultData[_CT_USER];
+        //RTDEepromSaveColorSetting(_CT_USER);
+		RTDEepromRestoreColorSetting();	
+		
         UserCommonEepromRestoreSystemData();
         RTDEepromRestoreOSDData();
+		RTDEepromLoadOsdServiceData();	
 
 #if(_VGA_SUPPORT == _ON)
         UserCommonEepromRestoreModeUserData();
@@ -476,8 +884,11 @@ void RTDEepromStartup(void)
     }
     else
     {
+		printf("RTDEepromLoad All Data \n\r");	
+		
         UserCommonEepromLoadSystemData();
         RTDEepromLoadOSDData();
+		RTDEepromLoadOsdServiceData();	
         RTDEepromLoadSixColorData();
         RTDEepromLoadPanelUsedTimeData();
 
@@ -532,11 +943,17 @@ void RTDEepromWholeRestore(void)
 #endif
 
     RTDEepromRestoreBriCon();
-    RTDEepromRestoreColorSetting();
-    RTDEepromRestoreUserColorSetting();
+
+    RTDEepromRestoreColorSetting();	
+    //RTDEepromRestoreUserColorSetting();
 
     RTDEepromRestoreSixColorData();
     RTDEepromRestorePanelUsedTimeData();
+
+	//--------------------------------------
+	// Osd service data
+    RTDEepromRestoreOsdServiceData();	
+	//--------------------------------------
 }
 
 //--------------------------------------------------
@@ -557,7 +974,7 @@ void RTDEepromRestoreBacklight(void)
 //--------------------------------------------------
 void RTDEepromLoadOSDData(void)
 {
-    UserCommonEepromRead(_OSD_DATA_ADDRESS, sizeof(StructOsdUserDataType), (BYTE *)(&g_stOsdUserData));
+    UserCommonEepromRead(_OSD_DATA_ADDRESS, sizeof(StructOsdUserDataType), (BYTE *)(&g_stOSDUserData));
 
 #if(_DP_MST_SUPPORT == _ON)
     if((GET_OSD_DP_MST() != _MST_OFF) &&
@@ -575,7 +992,7 @@ void RTDEepromLoadOSDData(void)
 //--------------------------------------------------
 void RTDEepromSaveOSDData(void)
 {
-    UserCommonEepromWrite(_OSD_DATA_ADDRESS, sizeof(StructOsdUserDataType), (BYTE *)(&g_stOsdUserData));
+    UserCommonEepromWrite(_OSD_DATA_ADDRESS, sizeof(StructOsdUserDataType), (BYTE *)(&g_stOSDUserData));
 }
 
 //--------------------------------------------------
@@ -585,12 +1002,38 @@ void RTDEepromSaveOSDData(void)
 //--------------------------------------------------
 void RTDEepromRestoreOSDData(void)
 {
-	bit bPwmRes = _FALSE;
-	bit bBacklightControl = _FALSE;
-
-    g_stOsdUserData = g_stOSDDefaultData;
-
+    g_stOSDUserData = g_stOSDDefaultData;
     RTDEepromSaveOSDData();
+}
+
+//--------------------------------------------------
+// Description  : Load OSD Service from EEPROM
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void RTDEepromLoadOsdServiceData(void)	
+{
+    UserCommonEepromRead(_OSD_USER_SERVICE_ADDRESS, sizeof(StructOsdServiceDataType), (BYTE *)(&g_stOsdServiceData));
+}
+
+//--------------------------------------------------
+// Description  : Save OSD Service to EEPROM
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void RTDEepromSaveOsdServiceData(void)	
+{
+    UserCommonEepromWrite(_OSD_USER_SERVICE_ADDRESS, sizeof(StructOsdServiceDataType), (BYTE *)(&g_stOsdServiceData));
+}
+//--------------------------------------------------
+// Description  : Restore default OSD Service
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void RTDEepromRestoreOsdServiceData(void)	
+{
+    g_stOsdServiceData = g_stOsdServiceDataDefault;
+    RTDEepromSaveOsdServiceData();
 }
 
 //--------------------------------------------------
@@ -629,6 +1072,44 @@ void RTDEepromRestoreBriCon(void)
     }
 }
 
+void RTDEepromBackupColorCon(void)	
+{
+    BYTE ucTemp = 0;
+	
+    for(ucTemp = 0; ucTemp < _SOURCE_AMOUNT; ucTemp++)
+    {
+        RTDEepromLoadBriCon(ucTemp);
+		g_stBriConData.usBrightness = tBriConDefaultData[ucTemp].usBrightness;	// Default User Brightness 
+		g_stBriConData.usContrast = tBriConDefaultData[ucTemp].usContrast;		// Default User Contrast 
+        g_stBackupBriConData[ucTemp] = g_stBriConData;
+    }
+}
+
+void RTDEepromRecoveryColorCon(void)	
+{
+    BYTE ucTemp = 0;
+
+    for(ucTemp = 0; ucTemp < _SOURCE_AMOUNT; ucTemp++)
+    {
+        g_stBriConData = g_stBackupBriConData[ucTemp];
+        RTDEepromSaveBriCon(ucTemp);
+    }
+}
+
+
+void RTDEepromBackupSetId(void)	
+{
+    ucBackupSetId = GET_OSD_SETID();
+}
+
+void RTDEepromRecoverySetId(void)
+{
+    SET_OSD_SETID(ucBackupSetId);
+	RTDEepromSaveOSDData();
+}
+
+
+
 //--------------------------------------------------
 // Description  : Load color settings from EEPROM
 // Input Value  : ucSource --> Source Type
@@ -637,35 +1118,16 @@ void RTDEepromRestoreBriCon(void)
 //--------------------------------------------------
 void RTDEepromLoadColorSetting(BYTE ucColorTempType)
 {
-#if(_OGC_SUPPORT == _ON)
+#if 0//(_OGC_SUPPORT == _ON)
     if(GET_OSD_GAMMA() != _GAMMA_OFF)
     {
-#if(_CTS_TYPE == _CTS_GEN_1_12BIT)
-#if(_LOCAL_DIMMING_SUPPORT == _ON)
-        if(UserCommonLocalDimmingGetEnableStutas() == _LD_ENABLE)
-        {
-            UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (ucColorTempType * _OGC_TOTAL_GAMMA * 6 + (GET_OSD_GAMMA() - 1) * 6 + _DIMMING_OGC_RGB_GAIN_ADDRESS), 6, pData);
-        }
-        else
-#endif
-        {
-#if(_GLOBAL_DIMMING_SUPPORT == _ON)
-            if(UserCommonGlobalDimmingGetEnableStatus() == _GD_ENABLE)
-            {
-                UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (GET_COLOR_TEMP_TYPE() * _OGC_TOTAL_GAMMA * 6 + (GET_OSD_GAMMA() - 1) * 6 + _DIMMING_OGC_RGB_GAIN_ADDRESS), 6, pData);
-            }
-            else
-#endif
-            {
-                UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (GET_COLOR_TEMP_TYPE() * _OGC_TOTAL_GAMMA * 6 + (GET_OSD_GAMMA() - 1) * 6), 6, pData);
-            }
-        }
+        UserCommonAdjustOGCColorTempGain(ucColorTempType, (GET_OSD_GAMMA() - 1), pData, _OGC_NORMAL_TYPE);
 
+#if(_CTS_TYPE == _CTS_GEN_1_12BIT)
         g_stColorProcData.usColorTempR = PDATA_WORD(0);
         g_stColorProcData.usColorTempG = PDATA_WORD(1);
         g_stColorProcData.usColorTempB = PDATA_WORD(2);
 #elif(_CTS_TYPE == _CTS_GEN_0_8BIT)
-        UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (ucColorTempType * _OGC_TOTAL_GAMMA * 3 + (GET_OSD_GAMMA() - 1) * 3), 3, pData);
         g_stColorProcData.usColorTempR = pData[0];
         g_stColorProcData.usColorTempG = pData[1];
         g_stColorProcData.usColorTempB = pData[2];
@@ -709,7 +1171,7 @@ void RTDEepromSaveColorSetting(BYTE ucColorTempType)
 void RTDEepromRestoreColorSetting(void)
 {
     BYTE ucTemp = 0;
-    for(ucTemp = _CT_9300; ucTemp < _CT_USER; ucTemp++)
+    for (ucTemp = _CT_D56; ucTemp <= _CT_USER; ucTemp++)
     {
         g_stColorProcData = tColorTempDefaultData[ucTemp];
         RTDEepromSaveColorSetting(ucTemp);
@@ -724,13 +1186,10 @@ void RTDEepromRestoreColorSetting(void)
 void RTDEepromRestoreUserColorSetting(void)
 {
     StructColorProcDataType stUserColorTemp;
-    BYTE ucIndex = 0;
 
-    for(ucIndex = _CT_9300; ucIndex <= _CT_USER; ++ucIndex)
-    {
-        stUserColorTemp = tColorTempDefaultData[ucIndex];
-        UserCommonEepromWrite(_COLORTEMP_DATA_ADDRESS + (ucIndex) * sizeof(StructColorProcDataType), sizeof(StructColorProcDataType), (BYTE *)(&stUserColorTemp));
-    }
+    stUserColorTemp = tColorTempDefaultData[_CT_USER];
+
+    UserCommonEepromWrite(_COLORTEMP_DATA_ADDRESS + (_CT_USER) * sizeof(StructColorProcDataType), sizeof(StructColorProcDataType), (BYTE *)(&stUserColorTemp));
 }
 
 
@@ -797,6 +1256,81 @@ void RTDEepromRestorePanelUsedTimeData(void)
     RTDEepromSavePanelUsedTimeData();
 }
 
+    // StructOsdUserDataType stOsdUserData;
+    // StructBriConDataType stBriConData;
+    // StructBriConDataType stBackupBriConData[_SOURCE_AMOUNT];
+    // StructColorProcDataType stColorProcData;
+    // StructSixColorDataType stSixColorData;
+
+void UserCommonFlashSaveCustomerUserData(void)
+{
+    BYTE ucPageIdx = 0;
+    BYTE *pucData;
+    BYTE ucIndex = 0;
+    BYTE ucTotalPageCount;
+    WORD usRemainingSize = sizeof(g_stOSDCustomerUserData);
+    
+    ucTotalPageCount = (CUSTOMER_USERDATA_STRUCT_SIZE + (FLASH_PAGE_SIZE - 1)) / FLASH_PAGE_SIZE;
+
+    g_stOSDCustomerUserData.stOsdUserData = g_stOSDUserData;
+    g_stOSDCustomerUserData.stBriConData = g_stBriConData;
+
+	for(ucIndex = 0; ucIndex <= _SOURCE_AMOUNT; ++ucIndex)
+	{
+		g_stOSDCustomerUserData.stBackupBriConData[ucIndex] = g_stBackupBriConData[ucIndex];
+	}
+
+    g_stOSDCustomerUserData.stColorProcData = g_stColorProcData;
+    g_stOSDCustomerUserData.stSixColorData = g_stSixColorData;
+
+    DebugMessageMemory("g_stOSDCustomerUserData SIZE ",CUSTOMER_USERDATA_STRUCT_SIZE);
+    pucData = (BYTE *)&g_stOSDCustomerUserData;
+
+    if(UserCommonFlashErasePage(CUSTOMER_USERDATA_BANK, CUSTOMER_USERDATA_PAGE_START) == _FALSE)
+    {
+        return; 
+    }
+
+    for(ucPageIdx = 0; ucPageIdx < ucTotalPageCount; ucPageIdx++) 
+    {
+
+        WORD usWriteSize = (usRemainingSize >= FLASH_PAGE_SIZE) ? FLASH_PAGE_SIZE : usRemainingSize;
+
+        if(UserCommonFlashWrite(CUSTOMER_USERDATA_BANK, 
+                                (CUSTOMER_USERDATA_PAGE_START + ucPageIdx), 
+                                usWriteSize,  
+                                (pucData + (ucPageIdx * FLASH_PAGE_SIZE))) == _FALSE)
+        {
+            break;
+        }
+
+        usRemainingSize -= usWriteSize; 
+        if(usRemainingSize == 0) break; 
+    }
+
+}
+
+void UserCommonFlashCustomerUserData(void)
+{
+    BYTE ucIndex = 0;
+    UserCommonFlashRead(CUSTOMER_USERDATA_BANK, 
+                    CUSTOMER_USERDATA_PAGE_START, 
+                    CUSTOMER_USERDATA_STRUCT_SIZE, 
+                    (BYTE *)&g_stOSDCustomerUserData);
+					
+
+    g_stOSDUserData = g_stOSDCustomerUserData.stOsdUserData;
+    g_stBriConData = g_stOSDCustomerUserData.stBriConData;
+
+	for(ucIndex = 0; ucIndex <= _SOURCE_AMOUNT; ++ucIndex)
+	{
+		g_stBackupBriConData[ucIndex] = g_stOSDCustomerUserData.stBackupBriConData[ucIndex];
+	}
+
+    g_stColorProcData = g_stOSDCustomerUserData.stColorProcData;
+    g_stSixColorData = g_stOSDCustomerUserData.stSixColorData;
+
+}
 #else // Else of #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _OFF)
 
 //--------------------------------------------------
@@ -858,9 +1392,15 @@ bit RTDFlashIsPageInfoValid(BYTE ucPage)
     WORD usPageInfoAddr = ucPage * _FLASH_PAGE_SIZE;
     BYTE ucPageInfoChecksum = 0;
     BYTE pucPageInfo[5] = {0};
+    BYTE pucPageInfoTemp[4] = {0};
 
     UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usPageInfoAddr + _PAGEINFO_CHECKSUM_ADDR, 5, pucPageInfo);
-    ucPageInfoChecksum = pucPageInfo[1] ^ pucPageInfo[2] ^ pucPageInfo[3] ^ pucPageInfo[4];
+    pucPageInfoTemp[0] = pucPageInfo[1];
+    pucPageInfoTemp[1] = pucPageInfo[2];
+    pucPageInfoTemp[2] = pucPageInfo[3];
+    pucPageInfoTemp[3] = pucPageInfo[4];
+    ucPageInfoChecksum = UserCommonFlashCalculateCheckSumData(pucPageInfoTemp, 4);
+    ucPageInfoChecksum = (ucPageInfoChecksum & 0x7F);
 
     if(ucPageInfoChecksum == pucPageInfo[0])
     {
@@ -879,6 +1419,8 @@ void RTDFlashInitialDataPage(BYTE ucPageID)
 {
     WORD usAddr = _SYSTEM_EEPROM_EMULATION_START_PAGE * _FLASH_PAGE_SIZE;
     BYTE ucFreePage = _SYSTEM_EEPROM_EMULATION_START_PAGE;
+    BYTE ucVersionCode = 0;
+    BYTE ucChecksum = 0;
 
     ucFreePage = RTDFlashGetFreePage();
     // Initial page index
@@ -886,19 +1428,38 @@ void RTDFlashInitialDataPage(BYTE ucPageID)
     // Initial address
     g_pusFlashAddrArr[ucPageID] = 0;
     // Initial move count
-    g_ulFlashMoveCount++;
+    if(g_ulFlashMoveCount == 0xFFFFFF)
+    {
+        g_ulFlashMoveCount = 0x01;
+    }
+    else
+    {
+        g_ulFlashMoveCount++;
+    }
+
     g_ucFlashLastPage = ucFreePage;
 
     usAddr = g_pucFlashPageArr[ucPageID] * _FLASH_PAGE_SIZE;
     UserCommonFlashErasePage(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[ucPageID]);
 
-    pData[0] = ucPageID;
-    pData[1] = (BYTE)(g_ulFlashMoveCount >> 16);
-    pData[2] = (BYTE)(g_ulFlashMoveCount >> 8);
-    pData[3] = (BYTE)g_ulFlashMoveCount;
-    pData[4] = pData[0] ^ pData[1] ^ pData[2] ^ pData[3];
-    UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr + _PAGEINFO_PAGEID_ADDR, 4, pData);
-    UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr + _PAGEINFO_CHECKSUM_ADDR, 1, &pData[4]);
+    {
+        BYTE pucBuffer[5] = {0};
+
+        pucBuffer[0] = ucPageID;
+        pucBuffer[1] = (BYTE)(g_ulFlashMoveCount >> 16);
+        pucBuffer[2] = (BYTE)(g_ulFlashMoveCount >> 8);
+        pucBuffer[3] = (BYTE)g_ulFlashMoveCount;
+        pucBuffer[4] = UserCommonFlashCalculateCheckSumData(pucBuffer, 4);
+        pucBuffer[4] = (pucBuffer[4] & 0x7F);
+
+        ucVersionCode = _VERSION_CODE;
+        ucChecksum = _CHECKSUM;
+
+        UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[_CHECKSUM_VERSIONCODE_ID] * _FLASH_PAGE_SIZE + _FLASH_FW_VERSIONCODE_ADDR, 1, &ucVersionCode);
+        UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[_CHECKSUM_VERSIONCODE_ID] * _FLASH_PAGE_SIZE + _FLASH_FW_CHECKSUM_ADDR, 1, &ucChecksum);
+        UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr + _PAGEINFO_PAGEID_ADDR, 4, pucBuffer);
+        UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr + _PAGEINFO_CHECKSUM_ADDR, 1, &pucBuffer[4]);
+    }
 }
 
 //--------------------------------------------------
@@ -937,6 +1498,8 @@ void RTDFlashInitialAddr(void)
     WORD usAddr = 0;
     DWORD ulMoveCount = 0;
     BYTE ucPageID = 0;
+    BYTE pucData[4] = {0};
+    DWORD ulMoveCountTemp = 0;
 
     g_ulFlashMoveCount = 0;
     g_ucFlashLastPage = _SYSTEM_EEPROM_EMULATION_START_PAGE;
@@ -955,30 +1518,33 @@ void RTDFlashInitialAddr(void)
             usAddr = ucCnt * _FLASH_PAGE_SIZE + _PAGEINFO_PAGEID_ADDR;
 
             // Get the move count of current page
-            UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr, 4, pData);
-            ulMoveCount = ((DWORD)(pData[1]) << 16) | ((DWORD)(pData[2]) << 8) | ((DWORD)(pData[3]));
+            UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr, 4, pucData);
+            ulMoveCount = ((DWORD)(pucData[1]) << 16) | ((DWORD)(pucData[2]) << 8) | ((DWORD)(pucData[3]));
 
-            // Get the max move count and its page index
-            if(ulMoveCount >= g_ulFlashMoveCount)
+            // Get the max move count and its page index, ulMoveCount Only 3 Bytes, extra Judge 0xFFFFFF < 0x000001 Case
+            if(((ulMoveCount >= g_ulFlashMoveCount) && (!((ulMoveCount == 0xFFFFFF) && (g_ulFlashMoveCount == 0x01)))) ||\
+               ((ulMoveCount < g_ulFlashMoveCount) && ((ulMoveCount == 0x01) && (g_ulFlashMoveCount == 0xFFFFFF))))
             {
-                g_pucFlashPageArr[pData[0]] = ucCnt;
+                g_pucFlashPageArr[pucData[0]] = ucCnt;
                 g_ulFlashMoveCount = ulMoveCount;
                 g_ucFlashLastPage = ucCnt;
             }
             // Check Other vaild page index
             else
             {
-                if(g_pucFlashPageArr[pData[0]] == 0xFF)
+                if(g_pucFlashPageArr[pucData[0]] == 0xFF)
                 {
-                    g_pucFlashPageArr[pData[0]] = ucCnt;
+                    g_pucFlashPageArr[pucData[0]] = ucCnt;
                 }
                 else // Check which page have begger Movecount
                 {
-                    usAddr = g_pucFlashPageArr[pData[0]] * _FLASH_PAGE_SIZE + _PAGEINFO_MOVECOUNT_ADDR;
-                    UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr, 3, &pData[1]);
-                    if(ulMoveCount > (((DWORD)(pData[1]) << 16) | ((DWORD)(pData[2]) << 8) | ((DWORD)(pData[3]))))
+                    usAddr = g_pucFlashPageArr[pucData[0]] * _FLASH_PAGE_SIZE + _PAGEINFO_MOVECOUNT_ADDR;
+                    UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usAddr, 3, &pucData[1]);
+                    ulMoveCountTemp = (((DWORD)(pucData[1]) << 16) | ((DWORD)(pucData[2]) << 8) | ((DWORD)(pucData[3])));
+                    if(((ulMoveCount >= ulMoveCountTemp) && (!((ulMoveCount == 0xFFFFFF) && (ulMoveCountTemp == 0x01)))) ||\
+                       ((ulMoveCount < ulMoveCountTemp) && ((ulMoveCount == 0x01) && (ulMoveCountTemp == 0xFFFFFF))))
                     {
-                        g_pucFlashPageArr[pData[0]] = ucCnt;
+                        g_pucFlashPageArr[pucData[0]] = ucCnt;
                     }
                 }
             }
@@ -1077,7 +1643,6 @@ bit RTDFlashMoveData(BYTE ucPageID, BYTE *pucData)
     WORD usMovedItemCount = 0;
     WORD usMovedAddrIndex = 0;
     BYTE ucItemID = 0;
-    BYTE ucIndex = 0;
     BYTE ucChecksum = 0xFF;
     BYTE ucVersioncode = 0xFF;
 
@@ -1116,7 +1681,15 @@ bit RTDFlashMoveData(BYTE ucPageID, BYTE *pucData)
     // Update ucFlashPage
     g_pucFlashPageArr[ucPageID] = ucFreePage;
     // Update move count value
-    g_ulFlashMoveCount += 1;
+    if(g_ulFlashMoveCount == 0xFFFFFF)
+    {
+        g_ulFlashMoveCount = 0x01;
+    }
+    else
+    {
+        g_ulFlashMoveCount++;
+    }
+
     g_ucFlashLastPage = ucFreePage;
 
     usPrevPageAddr = ucPrevPage * _FLASH_PAGE_SIZE;
@@ -1143,11 +1716,9 @@ bit RTDFlashMoveData(BYTE ucPageID, BYTE *pucData)
             {
                 // The item has not been moved, then check the item is valid or not
                 pucData[15] = 0;
-                for(ucIndex = 0; ucIndex < (_DATA_ITEM_LENGTH - 1); ucIndex++)
-                {
-                    UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usPrevPageAddr + (usAddrIndex - 1) * _DATA_ITEM_LENGTH + ucIndex, 1, pData);
-                    pucData[15] = pucData[15] ^ pData[0];
-                }
+                UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usPrevPageAddr + (usAddrIndex - 1) * _DATA_ITEM_LENGTH, _DATA_ITEM_LENGTH - 1, pData);
+                pucData[15] = UserCommonFlashCalculateCheckSumData(pData, (_DATA_ITEM_LENGTH - 1));
+                pucData[15] = (pucData[15] & 0x7F);
 
                 // Check the checksum
                 UserCommonFlashRead(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, usPrevPageAddr + usAddrIndex * _DATA_ITEM_LENGTH - 1, 1, pData);
@@ -1178,13 +1749,19 @@ bit RTDFlashMoveData(BYTE ucPageID, BYTE *pucData)
     }
 
     // Save page info
-    pData[0] = ucPageID;
-    pData[1] = (BYTE)(g_ulFlashMoveCount >> 16);
-    pData[2] = (BYTE)(g_ulFlashMoveCount >> 8);
-    pData[3] = (BYTE)g_ulFlashMoveCount;
-    pData[4] = pData[0] ^ pData[1] ^ pData[2] ^ pData[3];
-    UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[ucPageID] * _FLASH_PAGE_SIZE + _PAGEINFO_PAGEID_ADDR, 4, pData);
-    UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[ucPageID] * _FLASH_PAGE_SIZE + _PAGEINFO_CHECKSUM_ADDR, 1, &pData[4]);
+    {
+        BYTE pucBuffer[5] = {0};
+
+        pucBuffer[0] = ucPageID;
+        pucBuffer[1] = (BYTE)(g_ulFlashMoveCount >> 16);
+        pucBuffer[2] = (BYTE)(g_ulFlashMoveCount >> 8);
+        pucBuffer[3] = (BYTE)g_ulFlashMoveCount;
+        pucBuffer[4] = UserCommonFlashCalculateCheckSumData(pucBuffer, 4);
+        pucBuffer[4] = (pucBuffer[4] & 0x7F);
+
+        UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[ucPageID] * _FLASH_PAGE_SIZE + _PAGEINFO_PAGEID_ADDR, 4, pucBuffer);
+        UserCommonFlashWrite(_SYSTEM_EEPROM_EMULATION_FLASH_BANK, g_pucFlashPageArr[ucPageID] * _FLASH_PAGE_SIZE + _PAGEINFO_CHECKSUM_ADDR, 1, &pucBuffer[4]);
+    }
 
     return _TRUE;
 }
@@ -1347,18 +1924,18 @@ void RTDFlashLoadOSDData(void)
 
         if(UserCommonFlashLoadItem((_FLASH_ITEMID_OSD_DATA_START + ucItemOffset), pData, _DATA_ITEM_LENGTH - 2) == _FALSE)
         {
-            g_stOsdUserData = g_stOSDDefaultData;
+            g_stOSDUserData = g_stOSDDefaultData;
             return;
         }
 
         if(ucStructLen > (_DATA_ITEM_LENGTH - 2))
         {
-            memcpy((((BYTE *)(&g_stOsdUserData)) + (ucItemOffset * (_DATA_ITEM_LENGTH - 2))), pData, (_DATA_ITEM_LENGTH - 2));
+            memcpy((((BYTE *)(&g_stOSDUserData)) + (ucItemOffset * (_DATA_ITEM_LENGTH - 2))), pData, (_DATA_ITEM_LENGTH - 2));
             ucStructLen = ucStructLen - (_DATA_ITEM_LENGTH - 2);
         }
         else
         {
-            memcpy((((BYTE *)(&g_stOsdUserData)) + (ucItemOffset * (_DATA_ITEM_LENGTH - 2))), pData, ucStructLen);
+            memcpy((((BYTE *)(&g_stOSDUserData)) + (ucItemOffset * (_DATA_ITEM_LENGTH - 2))), pData, ucStructLen);
             break;
         }
     }
@@ -1392,12 +1969,12 @@ void RTDFlashSaveOSDData(void)
 
         if(ucStructLen > (_DATA_ITEM_LENGTH - 2))
         {
-            UserCommonFlashSaveItem((_FLASH_ITEMID_OSD_DATA_START + ucItemOffset), (((BYTE *)(&g_stOsdUserData)) + ucItemOffset * (_DATA_ITEM_LENGTH - 2)), _DATA_ITEM_LENGTH - 2);
+            UserCommonFlashSaveItem((_FLASH_ITEMID_OSD_DATA_START + ucItemOffset), (((BYTE *)(&g_stOSDUserData)) + ucItemOffset * (_DATA_ITEM_LENGTH - 2)), _DATA_ITEM_LENGTH - 2);
             ucStructLen -= (_DATA_ITEM_LENGTH - 2);
         }
         else
         {
-            UserCommonFlashSaveItem((_FLASH_ITEMID_OSD_DATA_START + ucItemOffset), (((BYTE *)(&g_stOsdUserData)) + ucItemOffset * (_DATA_ITEM_LENGTH - 2)), ucStructLen);
+            UserCommonFlashSaveItem((_FLASH_ITEMID_OSD_DATA_START + ucItemOffset), (((BYTE *)(&g_stOSDUserData)) + ucItemOffset * (_DATA_ITEM_LENGTH - 2)), ucStructLen);
             break;
         }
     }
@@ -1412,7 +1989,7 @@ void RTDFlashRestoreOSDData(void)
 {
     BYTE ucItemOffset = 0;
 
-    g_stOsdUserData = g_stOSDDefaultData;
+    g_stOSDUserData = g_stOSDDefaultData;
 
     for(ucItemOffset = 0; ucItemOffset < ((sizeof(StructOsdUserDataType) + (_DATA_ITEM_LENGTH - 2) - 1) / (_DATA_ITEM_LENGTH - 2)); ucItemOffset++)
     {
@@ -1489,31 +2066,13 @@ void RTDFlashLoadColorSetting(BYTE ucColorTempType)
 #if(_OGC_SUPPORT == _ON)
     if(GET_OSD_GAMMA() != _GAMMA_OFF)
     {
+        UserCommonAdjustOGCColorTempGain(ucColorTempType, (GET_OSD_GAMMA() - 1), pData, _OGC_NORMAL_TYPE);
+
 #if(_CTS_TYPE == _CTS_GEN_1_12BIT)
-#if(_LOCAL_DIMMING_SUPPORT == _ON)
-        if(UserCommonLocalDimmingGetEnableStutas() == _LD_ENABLE)
-        {
-            UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (ucColorTempType * _OGC_TOTAL_GAMMA * 6 + (GET_OSD_GAMMA() - 1) * 6 + _DIMMING_OGC_RGB_GAIN_ADDRESS), 6, pData);
-        }
-        else
-#endif
-        {
-#if(_GLOBAL_DIMMING_SUPPORT == _ON)
-            if(UserCommonGlobalDimmingGetEnableStatus() == _GD_ENABLE)
-            {
-                UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (GET_COLOR_TEMP_TYPE() * _OGC_TOTAL_GAMMA * 6 + (GET_OSD_GAMMA() - 1) * 6 + _DIMMING_OGC_RGB_GAIN_ADDRESS), 6, pData);
-            }
-            else
-#endif
-            {
-                UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (GET_COLOR_TEMP_TYPE() * _OGC_TOTAL_GAMMA * 6 + (GET_OSD_GAMMA() - 1) * 6), 6, pData);
-            }
-        }
         g_stColorProcData.usColorTempR = PDATA_WORD(0);
         g_stColorProcData.usColorTempG = PDATA_WORD(1);
         g_stColorProcData.usColorTempB = PDATA_WORD(2);
 #elif(_CTS_TYPE == _CTS_GEN_0_8BIT)
-        UserCommonFlashRead(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) | (ucColorTempType * _OGC_TOTAL_GAMMA * 3 + (GET_OSD_GAMMA() - 1) * 3), 3, pData);
         g_stColorProcData.usColorTempR = pData[0];
         g_stColorProcData.usColorTempG = pData[1];
         g_stColorProcData.usColorTempB = pData[2];

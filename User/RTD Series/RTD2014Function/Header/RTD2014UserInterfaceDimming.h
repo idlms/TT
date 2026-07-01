@@ -36,10 +36,7 @@
 // FUNCTION EXTERN
 //****************************************************************************
 #if(_BACKLIGHT_DIMMING_SUPPORT == _ON)
-
-#if(_GLOBAL_DIMMING_SUPPORT == _ON)
-extern bit UserInterfaceSDROCCOGCMode(void);
-extern EnumSDRStatus UserInterfaceGetSDRMode(void);
-#endif
-
+extern EnumSDRCalibrationType UserInterfaceSDROCCOGCMode(void);
+extern EnumSDRPCMStatus UserInterfaceGetSDRPCMMode(void);
+extern EnumSDROGCStatus UserInterfaceGetSDROGCMode(void);
 #endif // End of #if(_BACKLIGHT_DIMMING_SUPPORT == _ON)

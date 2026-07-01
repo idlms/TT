@@ -57,13 +57,18 @@
 #define _HDMI_1                                     _D1_INPUT_PORT
 #define _HDMI_2                                     _D2_INPUT_PORT
 
+//--------------------------------------------------
+// Dell DDM Tool
+//--------------------------------------------------
+#define _DDCCI_OPCODE_VCP_DELL_DDM_SUPPORT          0xF1
+
 
 //****************************************************************************
 // STRUCT / TYPE / ENUM DEFINITTIONS
 //****************************************************************************
 BYTE code tCOLORPRESET_VALUE[] = {0x08, 0x06, 0x05, 0x04, 0x01, 0x0B, 0x02};
 
-BYTE code tLANGUAGEDEFINE[] = {0x02, 0x03, 0x04, 0x0a, 0x01, 0x0d, 0x06};
+BYTE code tLANGUAGEDEFINE[] = {0x02, 0x01, 0x03, 0x04, 0x0A, 0x0D, 0x06};
 
 
 
@@ -78,22 +83,24 @@ BYTE g_ucDdcciActiveValue;
 BYTE g_ucColorTempUnSupport;
 
 bit g_bForcePowSavStatus = _FALSE;
-bit	g_bScreenMuteSatus = _FALSE;
+bit g_bScreenMuteSatus = _FALSE;	
 
-//****************************************************************************
-// CIZGI DECLARATIONS
-//****************************************************************************
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)	
+#if(_CUSTOMER_TYPE == _CUSTOMER_AWERONET)	
+BYTE _OGC_FLASH_BANK = 15;
+#endif
+
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)
 BYTE Czg_Gamma_TablePointer = 0x0;
 BYTE Czg_RGBTable = 0;
 BYTE Czg_AutoIncrement = 0;
-WORD Czg_Gamma_Table = 0x00; 
+WORD Czg_Gamma_Table = 0x00;
 BYTE Czg_WriteCmd = 0;
 BYTE tLUTGAMMA[132];
 BYTE Czg_GammaValue = 0x0;
 BYTE Czg_GolorTempValue = 0x0;
-WORD  GammaValue = 0;
+BYTE Czg_GammaPage = 0x0;
 
+WORD GammaValue = 0;
 WORD usLastLUT = 0;
 WORD usCurrLUT = 0;
 WORD usInto = 0;
@@ -105,12 +112,10 @@ BYTE gammaHigh = 0;
 BYTE bufferCnt = 0;
 
 BYTE ucBackupDB = 0;
-
 BYTE BoardModel = 1;
-
 BYTE xdata *g_pucDISP_CALIBRATION_FLASHx = _OGC_FLASH_PAGE * _FLASH_PAGE_SIZE;
-	
 #endif
+
 //****************************************************************************
 // FUNCTION DECLARATIONS
 //****************************************************************************
@@ -159,7 +164,10 @@ void UserDdcciHandler(void)
                     break;
 
                 default:
-                    UserCommonDdcciInitTx();
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)
+					UserCommonDdcciInitTx();
+#endif
+
                     break;
             }
 
@@ -173,16 +181,46 @@ void UserDdcciHandler(void)
     {
         // Check if Data is needed to be received
         // Reply data to source according to the request
-        if((GET_RUN_DDCCI_COMMAND() == _SUCCESS) && (UserInterfaceGetDpMSTCapablePort() != _DP_MST_NO_PORT))
+        if((GET_RUN_DDCCI_COMMAND() == _SUCCESS) && (UserCommonInterfaceGetDpMstCapablePort() != _DP_MST_NO_PORT))
         {
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)										
-                    UserCommonDdcciInitTx();
-#endif	
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)
+			UserCommonDdcciInitTx();
+#endif
+
             SET_RUN_DDCCI_COMMAND(_FAIL);
         }
     }
 #endif
 }
+
+#if(_DDCCI_CUSTOM_CAPABILITY_STR_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : Get custom capability string data
+// Input Value  : pucDest -> destination
+//                enumPortType -> port type
+//                usStartIndex -> data offset
+//                usLength -> data length
+// Output Value : None
+//--------------------------------------------------
+void UserInterfaceDdcciGetCpStringData(BYTE *pucDest, EnumInputPortType enumPortType, WORD usStartIndex, WORD usLength)
+{
+    pucDest = pucDest;
+    enumPortType = enumPortType;
+    usStartIndex = usStartIndex;
+    usLength = usLength;
+}
+
+//--------------------------------------------------
+// Description  : Get custom capability string size
+// Input Value  : enumPortType -> port type
+// Output Value : size
+//--------------------------------------------------
+WORD UserInterfaceDdcciGetCpStringSize(EnumInputPortType enumPortType)
+{
+    enumPortType = enumPortType;
+    return 0;
+}
+#endif
 
 //--------------------------------------------------
 // Description  : DDCCI Get VCP Feature & VCP Feature Reply
@@ -278,7 +316,7 @@ void RTDDdcciGetVCPFeature(void)
 
         case _DDCCI_OPCODE_VCP_BACKLIGHT:
             UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 100,
-                                            (WORD)UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
+                                            (WORD)UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
             break;
 
         case _DDCCI_OPCODE_VCP_CONTRAST:
@@ -432,7 +470,7 @@ void RTDDdcciGetVCPFeature(void)
 
         case _DDCCI_OPCODE_VCP_HFREQ:
             // PDATA_DWORD(0) = (DWORD)GET_INPUT_TIMING_HFREQ() * 100;
-            UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, LOWORD(((DWORD)GET_INPUT_TIMING_HFREQ() * 100)), HIWORD(((DWORD)GET_INPUT_TIMING_HFREQ() * 100)));
+            UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, HIWORD(((DWORD)GET_INPUT_TIMING_HFREQ() * 100)), LOWORD(((DWORD)GET_INPUT_TIMING_HFREQ() * 100)));
             break;
 
         case _DDCCI_OPCODE_VCP_VFREQ:
@@ -500,23 +538,64 @@ void RTDDdcciGetVCPFeature(void)
         case _DDCCI_OPCODE_VCP_SHARPNESS:
             UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0x0004, GET_OSD_SHARPNESS());
             break;
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)	
-        case _DDCCI_OPCODE_VCP_DICOM_PRESET_ADDRESS:
-            UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, (WORD)((((Czg_AutoIncrement<<7) | (Czg_RGBTable) | (Czg_Gamma_Table << 4) | (Czg_WriteCmd<< 2)) << 8) | Czg_Gamma_TablePointer));
-            break;
-			
-        case _DDCCI_OPCODE_VCP_DICOM_PRESET_VALUE:
-						UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, (WORD)((gammaHigh << 8) | gammaLow));
-            break;
 
-        case _DDCCI_OPCODE_VCP_DICOM_GAMMA_TABLE_OP:
-						UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, Czg_Gamma_Table);
+        case _DDCCI_OPCODE_VCP_DELL_DDM_SUPPORT:
+            UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, 0x01);
             break;
-				
-        case _DDCCI_OPCODE_VCP_DICOM_INFO:
-						UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, (WORD) (BoardModel));
-            break;				
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)
+		case _DDCCI_OPCODE_VCP_DICOM_PRESET_ADDRESS:
+			UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, (WORD)((((Czg_AutoIncrement << 7) | (Czg_RGBTable) | (Czg_Gamma_Table << 4) | (Czg_WriteCmd << 2)) << 8) | Czg_Gamma_TablePointer));
+			break;
+		
+		case _DDCCI_OPCODE_VCP_DICOM_PRESET_VALUE:
+			UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, (WORD)((gammaHigh << 8) | gammaLow));
+			break;
+		
+		case _DDCCI_OPCODE_VCP_DICOM_GAMMA_TABLE_OP:
+			UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, Czg_Gamma_Table);
+			break;
+		
+		case _DDCCI_OPCODE_VCP_DICOM_INFO:
+			UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0xFFFF, (WORD)(BoardModel));
+			break;
 #endif
+    case _DDCCI_OPCODE_VCP_EDID_GET:
+        {
+            BYTE idx = ucJ;
+            WORD value = 0x0000;
+
+            if(idx < 7) // NAME
+            {
+                BYTE i = idx * 2;
+
+                BYTE h = (i < 14) ? g_stOsdServiceData.b14EDIDName[i] : 0;
+                BYTE l = (i + 1 < 14) ? g_stOsdServiceData.b14EDIDName[i + 1] : 0;
+
+                value = (h << 8) | l;
+            }
+            else if(idx < 14) // SERIAL
+            {
+                BYTE i = (idx - 7) * 2;
+
+                BYTE h = (i < 14) ? g_stOsdServiceData.b14EDIDSerial[i] : 0;
+                BYTE l = (i + 1 < 14) ? g_stOsdServiceData.b14EDIDSerial[i + 1] : 0;
+
+                value = (h << 8) | l;
+            }
+            else if(idx == 14) // ⭐ H / V
+            {
+                value = (g_stOsdServiceData.b1EDIDHSize << 8) | g_stOsdServiceData.b1EDIDVSize;
+            }
+
+            UserCommonDdcciSetVCPReplyValue(
+                _DDCCI_CMD_GETVCP_TP_SET_PARAMETER,
+                0xFFFF,
+                value
+            );
+
+            break;
+        }
+
         default:
             g_pucDdcciTxBuf[_DDCCI_RESULT_CODE] = _DDCCI_CMD_GETVCP_RC_UNSUPPORTED;
             break;
@@ -603,9 +682,10 @@ void RTDDdcciSetVCPFeature(void)
 
     if(RTDDdcciSetVCPFeatureCheck() == _FAIL)
     {
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)										
-                    UserCommonDdcciInitTx();
-#endif	
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)
+		UserCommonDdcciInitTx();
+#endif
+
     }
     else
     {
@@ -819,7 +899,7 @@ void RTDDdcciSetVCPFeature(void)
                     g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] = 100;
                 }
 
-                SET_OSD_BACKLIGHT(UserCommonAdjustPercentToRealValue(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE], _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
+                SET_OSD_BACKLIGHT(UserCommonAdjustPercentToRealValue(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE], _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
 
                 UserAdjustBacklight(GET_OSD_BACKLIGHT());
                 SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
@@ -1149,15 +1229,15 @@ void RTDDdcciSetVCPFeature(void)
                         break;
 
                     case 0x0A:
-//                        SET_OSD_LANGUAGE(_SPANISH);
+                        SET_OSD_LANGUAGE(_SPANISH);
                         break;
 
                     case 0x06:
- //                       SET_OSD_LANGUAGE(_JAPAN);
+                        SET_OSD_LANGUAGE(_JAPAN);
                         break;
 
                     case 0x0D:
- //                       SET_OSD_LANGUAGE(_CHINESE_S);
+                        SET_OSD_LANGUAGE(_CHINESE_S);
                         break;
 
                     default:
@@ -1168,197 +1248,249 @@ void RTDDdcciSetVCPFeature(void)
                 SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
 
                 break;
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)	
-            case _DDCCI_OPCODE_VCP_DICOM_PRESET_ADDRESS:						
-								Czg_Gamma_TablePointer = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
-								Czg_RGBTable = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] & 0x0f;
-								if(g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] & 0x80){
-									Czg_AutoIncrement = 1;									
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _ON)
+				case _DDCCI_OPCODE_VCP_DICOM_PRESET_ADDRESS:
+					Czg_Gamma_TablePointer = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+					Czg_RGBTable = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] & 0x0f;
+					if (g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] & 0x80)
+					{
+						Czg_AutoIncrement = 1;
+					}
+					else
+						Czg_AutoIncrement = 0;
+					Czg_Gamma_Table = ((g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] & 0x7f) >> 4);
+		
+					if ((Czg_RGBTable == 0) && (Czg_Gamma_TablePointer == 0))
+					{
+						usCurrLUT = 0;
+						//	SET_OSD_COLOR_EFFECT(GET_OSD_SELECT_REGION(), _COLOREFFECT_STANDARD);
+						//	UserAdjustColorEffectMode(GET_OSD_SYSTEM_SELECT_REGION());
+						//ucBackupDB = ScalerGetByte(P31_B0_D_DB_CTRL0);
+						//ScalerSetByte(P31_B0_D_DB_CTRL0, 0x00);
+			
+						// ScalerMcuUartWrite(Czg_GammaValue);
+		
+						if (Czg_GammaValue == 0xff)
+						{
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE);
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 1);
+						}
+						else if(Czg_GammaValue == 40)	//	Set Gamma Value
+						{
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 4);
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 5);
+						}
+						else if(Czg_GammaValue == 44)	//	Set Gamma Value
+						{
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 2);
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 3);
+						}
+						else if(Czg_GammaValue == 48)	//	Set Gamma Value
+						{
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 7);
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 6);
+						}	 
+						/*
+						else
+						{
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 2);
+							UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 3);
+						}*/
+					}
+					SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+		
+					break;
+			
+				case _DDCCI_OPCODE_VCP_DICOM_GAMMA_TABLE_OP:
+					Czg_GammaValue = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+					Czg_GolorTempValue = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
+			
+					printCnt = 0;
+					bufferCnt = 0;
+					usCurrLUT = 0;
+					/*
+					switch (Czg_GolorTempValue)
+					{
+					case 0: // Color Temp is D50
+						SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_USER);
+						break;
+					case 58: // Color Temp is D56
+						SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_5800);
+						break;
+					case 65: // Color Temp is D65
+						SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_6500);
+						break;
+					case 75: // Color Temp is D75
+						SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_7500);
+						break;
+					case 93: // Color Temp is D93
+						SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_9300);
+						break;
+					default:
+						break;
+					}*/
+		
+					if ((Czg_GammaValue >= 9) && (Czg_GammaValue <= 60)) // Set Gamma Value
+					{
+						/*
+						if(Czg_GammaValue == 36)	//	Set Gamma Value
+						{
+							SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), 1);
+						}
+						else if(Czg_GammaValue == 40)	//	Set Gamma Value
+						{
+							SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), 2);
+						}
+						else if(Czg_GammaValue == 44)	//	Set Gamma Value
+						{
+							SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), 3);
+						}
+						else if(Czg_GammaValue == 48)	//	Set Gamma Value
+						{
+							SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), 4);
+						}*/
+#if ((_CUSTOMER_TYPE == _CUSTOMER_MEDICAL) || (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT))
+#else
+						if(Czg_GammaValue == 40)	//	Set Gamma Value
+						{
+		
+							SET_OSD_GAMMA(_GAMMA_20);
+							 Czg_GammaPage = 4;
+			
+						}
+						else if(Czg_GammaValue == 48)	//	Set Gamma Value
+						{
+							 SET_OSD_GAMMA(_GAMMA_24);
+							 Czg_GammaPage = 6;
+						}	
+						else  
+#endif
+						 if(Czg_GammaValue == 44)	//	Set Gamma Value
+						{
+							SET_OSD_GAMMA(_GAMMA_22);
+							Czg_GammaPage = 2;
+						}
+					   
+							
+					}
+					else if (Czg_GammaValue == 255) //	 Select DICOM calibration
+					{
+						SET_OSD_GAMMA(_GAMMA_DICOM);
+			
+						Czg_GammaPage = 0;
+					}
+							
+					/*			
+					SET_OSD_COLOR_EFFECT(GET_OSD_SELECT_REGION(), _COLOREFFECT_STANDARD);
+					RTDNVRamSaveOsdRegionData(GET_OSD_DISPLAY_MODE(), GET_OSD_SELECT_REGION());*/
+			
+					//g_stOsdUserData.b1CalibFlag = 1;
+					//RTDEepromSaveOsdUserData();
+					//printCnt = 0;
+					//}
+					
+					if(GET_OSD_GAMMA() != _GAMMA_OFF)
+					{
+                        ScalerColorOutputGammaEnable(_FUNCTION_OFF);
+                        UserAdjustGamma(GET_OSD_GAMMA());
+                        ScalerColorOutputGammaEnable(_FUNCTION_ON);
+					}
+					SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+		
+					break;
+			
+				case _DDCCI_OPCODE_VCP_DICOM_PRESET_VALUE:
+					gammaLow = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+					gammaHigh = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
+			
+					usLastLUT = (g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] << 8) | g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+					for (ucJ = 1; ucJ < 4; ucJ++)
+					{
+						usInto = usLastLUT - ((usLastLUT - usCurrLUT) * (4 - ucJ) + 2) / 4;
+						tLUTGAMMA[ucJ * 2 + Czg_Gamma_TablePointer * 8 - 2 - bufferCnt * 128] = usInto >> 8;
+						tLUTGAMMA[ucJ * 2 + 1 + Czg_Gamma_TablePointer * 8 - 2 - bufferCnt * 128] = usInto & 0xFF;
+					}
+					tLUTGAMMA[(Czg_Gamma_TablePointer + 1) * 8 - 2 - bufferCnt * 128] = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
+					tLUTGAMMA[(Czg_Gamma_TablePointer + 1) * 8 + 1 - 2 - bufferCnt * 128] = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+					usCurrLUT = usLastLUT;
+		
+					if (((Czg_Gamma_TablePointer + 1) % 16) == 0)
+					{
+						if (Czg_Gamma_TablePointer == 255)
+						{
+							tLUTGAMMA[128] = tLUTGAMMA[126];
+							tLUTGAMMA[129] = tLUTGAMMA[127];
+							tLUTGAMMA[130] = 0;
+							tLUTGAMMA[131] = 0;
+							UserCommonFlashWrite(_OGC_FLASH_BANK, ((WORD)Czg_GammaPage << 12) + (_OGC_DICOM_ADDRESS + Czg_RGBTable * 2052 + bufferCnt * 128), 132, tLUTGAMMA);
+							bufferCnt = 0;
+							usCurrLUT = 0;
+							if (Czg_RGBTable == 2)
+							{
+								printCnt++;
+								if (printCnt == 1)
+								{
+									//	SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_6500);
+									RTDNVRamLoadColorSetting(GET_COLOR_TEMP_TYPE());
+									UserAdjustContrast(GET_OSD_CONTRAST());
+									//			SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), 5);
+									//UserAdjustGammaRegionEnable(GET_OSD_SELECT_REGION(), _DB_APPLY_POLLING, _OFF);
+									UserAdjustGamma(GET_OSD_GAMMA());
+									//UserAdjustGammaRegionEnable(GET_OSD_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
+									SET_OSD_COLOR_EFFECT(_COLOREFFECT_STANDARD);
+									//UserAdjustColorEffectMode(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING);
+									//RTDNVRamSaveOsdRegionData(GET_OSD_DISPLAY_MODE(), GET_OSD_SELECT_REGION());
+			
+									RTDEepromSaveOSDData();//RTDEepromSaveOsdUserData();
 								}
 								else
-									Czg_AutoIncrement = 0;			
-								Czg_Gamma_Table = ((g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] & 0x7f) >> 4);	
-
-								if((Czg_RGBTable == 0) && (Czg_Gamma_TablePointer == 0)){
-									usCurrLUT = 0;
-								//	SET_OSD_COLOR_EFFECT(GET_OSD_SELECT_REGION(), _COLOREFFECT_STANDARD);
-								//	UserAdjustColorEffectMode(GET_OSD_SYSTEM_SELECT_REGION());
-									ucBackupDB = ScalerGetByte(P31_B0_D_DB_CTRL0);
-									ScalerSetByte(P31_B0_D_DB_CTRL0, 0x00);
-									UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE);
-									UserCommonFlashErasePage(_OGC_FLASH_BANK, _OGC_FLASH_PAGE + 1);											
-								}
-			break;
-				
-            case _DDCCI_OPCODE_VCP_DICOM_GAMMA_TABLE_OP:	
-									Czg_GammaValue = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
-									Czg_GolorTempValue = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
-
-										printCnt = 0;
-										bufferCnt = 0;
-										usCurrLUT = 0;	
-										switch (Czg_GolorTempValue)
-										{	
-											case 0:	// Color Temp is D50	
-												SET_COLOR_TEMP_TYPE( _CT_USER);
-												break;
-											case 58:	// Color Temp is D56	
-												SET_COLOR_TEMP_TYPE( _CT_5800);
-												break;		
-											case 65:	// Color Temp is D65	
-												SET_COLOR_TEMP_TYPE( _CT_6500);
-												break;	
-											case 75:	// Color Temp is D75	
-												SET_COLOR_TEMP_TYPE( _CT_7500);
-												break;	
-											case 93:	// Color Temp is D93	
-												SET_COLOR_TEMP_TYPE( _CT_9300);
-												break;																				
-											default:				
-												break;
-										}
-
-										if((Czg_GammaValue >= 9)&&(Czg_GammaValue <= 60))	//	Set Gamma Value
-										{
-
-											if(Czg_GammaValue == 36)	//	Set Gamma Value  GAMMA 1.8
-											{
-												SET_OSD_GAMMA( _GAMMA_18);
-											}
-											
-											if(Czg_GammaValue == 40)	//	Set Gamma Value GAMMA 2.0
-											{
-												SET_OSD_GAMMA( _GAMMA_20);
-											}			
-											else if(Czg_GammaValue == 44)	//	Set Gamma Value GAMMA 2.2
-											{
-												SET_OSD_GAMMA( _GAMMA_22);
-											}		
-											/*
-											else if(Czg_GammaValue == 48)	//	Set Gamma Value GAMMA 2.2
-											{
-												SET_OSD_GAMMA( 3);
-											}		
-											*/
-										}
-#if(_TECNINT_DICOM)
-										else if(Czg_GammaValue == 255)						//	 Select DICOM calibration
-										{
-											SET_OSD_GAMMA( _GAMMA_RC2);
-										}	
-#endif					
-							/*			SET_OSD_COLOR_EFFECT(GET_OSD_SELECT_REGION(), _COLOREFFECT_STANDARD);
-										
-										RTDNVRamSaveOsdRegionData(GET_OSD_DISPLAY_MODE(), GET_OSD_SELECT_REGION());*/
-
-//										g_stOsdUserData.b1CalibFlag = 1;
-//										RTDEepromSaveOsdUserData();
-//										printCnt = 0;
-//									}
-/*									UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_POLLING, _OFF);
-									if(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
-									{
-										UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
-										UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
-									}*/
-
-                break;
-
-            case _DDCCI_OPCODE_VCP_DICOM_PRESET_VALUE:
-							gammaLow = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
-							gammaHigh = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
-						
-							usLastLUT = (g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE] << 8) | g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];							
-							for(ucJ = 1; ucJ < 4; ucJ++)
-							{
-									usInto = usLastLUT - ((usLastLUT - usCurrLUT) * (4-ucJ) + 2) / 4; 
-									tLUTGAMMA[ucJ*2+Czg_Gamma_TablePointer*8-2-bufferCnt*128] = usInto >> 8;
-									tLUTGAMMA[ucJ*2+1+Czg_Gamma_TablePointer*8-2-bufferCnt*128] = usInto & 0xFF;
-							}									
-							tLUTGAMMA[(Czg_Gamma_TablePointer+1)*8-2-bufferCnt*128] = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
-							tLUTGAMMA[(Czg_Gamma_TablePointer+1)*8+1-2-bufferCnt*128] = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
-							usCurrLUT = usLastLUT;				
-							
-							if(((Czg_Gamma_TablePointer + 1) % 16) == 0){
-									if(Czg_Gamma_TablePointer == 255){
-											tLUTGAMMA[128] = tLUTGAMMA[126];
-											tLUTGAMMA[129] = tLUTGAMMA[127];
-											tLUTGAMMA[130] = 0;
-											tLUTGAMMA[131] = 0;	//_OGC_RGB_GAIN_ADDRESS
-											UserCommonFlashWrite(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) + (_OGC_DICOM_ADDRESS + Czg_RGBTable*2052 + bufferCnt*128), 132, tLUTGAMMA);
-											//UserCommonFlashWrite(_OGC_FLASH_BANK + (ucGammaIndex-1), ((WORD)_OGC_FLASH_PAGE << 12) + (_OGC_DICOM_ADDRESS + Czg_RGBTable*2052 + bufferCnt*128) + (ucColorTempIndex  * 0x1810), 132, tLUTGAMMA);
-											//UserCommonFlashWrite(_OGC_FLASH_BANK+ (ucGammaIndex-1), ((WORD)(_OGC_FLASH_PAGE+(ucColorTempIndex*2) << 12)) + (_OGC_DICOM_ADDRESS + Czg_RGBTable*2052 + bufferCnt*128), 132, tLUTGAMMA);
-											bufferCnt = 0;
-											usCurrLUT = 0;
-											if(Czg_RGBTable == 2){ //0 R 1 G 2 BLUE
-													printCnt++;
-													if(printCnt == 1){
-													//	SET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION(), _CT_6500);
-														RTDNVRamLoadColorSetting(GET_COLOR_TEMP_TYPE());
-														UserAdjustContrast( GET_OSD_CONTRAST());
-													//	SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), 5);
-														//UserAdjustGammaRegionEnable(GET_OSD_SELECT_REGION(), _DB_APPLY_POLLING, _OFF);
-														UserAdjustGamma( GET_OSD_GAMMA());
-														//UserAdjustGammaRegionEnable(GET_OSD_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
-														SET_OSD_COLOR_EFFECT(_COLOREFFECT_STANDARD);
-														UserAdjustColorEffectMode();
-														//RTDNVRamSaveOsdRegionData(GET_OSD_DISPLAY_MODE(), GET_OSD_SELECT_REGION());
-														g_stOsdUserData.b1CalibFlag = 1;
-														RTDEepromSaveOSDData();
-													}
-													else {
-														printCnt = 0;
-													}
-													//ScalerColorOutputGammaAdjust(&g_pucDISP_CALIBRATION_FLASH[tGAMMA_INDEX[ucGammaIndex]], _OGC_FLASH_BANK);
-													
-													
-													ScalerColorOutputGammaEnable(_FUNCTION_OFF);
-													ScalerColorOutputGammaAdjust( g_pucDISP_CALIBRATION_FLASHx + _OGC_DICOM_ADDRESS, _OGC_FLASH_BANK);
-													//ScalerColorOutputGammaAdjust( g_pucDISP_CALIBRATION_FLASHx + _OGC_DICOM_ADDRESS + ((ucGammaIndex -1) * 2052*3*4)+ (ucColorTempIndex  * 2052*3), _OGC_FLASH_BANK);
-        												//ScalerColorOutputGammaAdjust(g_pucDISP_CALIBRATION_FLASHx + tCIZIGGAMMA_INDEX[ucColorTempIndex], _OGC_FLASH_BANK+(ucGammaIndex-1));
-													//ScalerColorOutputGammaAdjust(g_pucDISP_CALIBRATION_FLASHx +  _OGC_FLASH_PAGE+(ucColorTempIndex*2) * _FLASH_PAGE_SIZE + _OGC_DICOM_ADDRESS ,  _OGC_FLASH_BANK+(ucGammaIndex-1));	
-													ScalerColorPCMInputGammaEnable(_FUNCTION_OFF);
-													ScalerColorBrightnessEnable(_FUNCTION_OFF);
-													ScalerColorContrastEnable(_FUNCTION_OFF);
-													ScalerColorSRGBEnable(_FUNCTION_OFF);
-
-													ScalerColorOutputGammaEnable(_FUNCTION_ON);	
-														
-													//ScalerColorGammaRegionEnable(_1P_NORMAL_FULL_REGION, _DB_APPLY_NO_POLLING, _ON);
-//													RTDNVRamLoadColorSetting(UserAdjustGetOSDSelectRegion(_1P_NORMAL_FULL_REGION));
-//													UserAdjustContrast(_1P_NORMAL_FULL_REGION, GET_OSD_CONTRAST(UserAdjustGetOSDSelectRegion(_1P_NORMAL_FULL_REGION)));
-													
-													ScalerSetByte(P31_B0_D_DB_CTRL0, ucBackupDB);
-													ScalerMcuDdcciReleaseScl();
-												//	SET_OSD_PANEL_UNIFORMITY_TYPE(8);
-//													g_stOsdUserData.b1CalibFlag = 1;
-//													RTDEepromSaveOsdUserData();
-										//			RTDFlashSaveOSDData();
-
-			//									}
-											}										
-									}
-									else {
-										UserCommonFlashWrite(_OGC_FLASH_BANK, ((WORD)_OGC_FLASH_PAGE << 12) + (_OGC_DICOM_ADDRESS + Czg_RGBTable*2052 + bufferCnt*128), 128, tLUTGAMMA);
-										//UserCommonFlashWrite(_OGC_FLASH_BANK+ (ucGammaIndex-1), ((WORD)_OGC_FLASH_PAGE << 12) + (_OGC_DICOM_ADDRESS + Czg_RGBTable*2052 + bufferCnt*128) + (ucColorTempIndex  * 0x1810), 128, tLUTGAMMA);
-										//UserCommonFlashWrite(_OGC_FLASH_BANK+ (ucGammaIndex-1), ((WORD)(_OGC_FLASH_PAGE+(ucColorTempIndex*2) << 12)) + (_OGC_DICOM_ADDRESS + Czg_RGBTable*2052 + bufferCnt*128), 128, tLUTGAMMA);
-											bufferCnt++;
-									}
-							}	
-
-								if (Czg_AutoIncrement)
 								{
-										if (Czg_Gamma_TablePointer == 0xff)
-										{
-											Czg_RGBTable++;
-											bufferCnt = 0;
-											if (Czg_RGBTable > 2)
-												Czg_RGBTable = 0;
-										}
-										Czg_Gamma_TablePointer++;
-								}	
-	
-                break;
+									printCnt = 0;
+								}
+								ScalerColorOutputGammaEnable(_FUNCTION_OFF);
+								ScalerColorOutputGammaAdjust((g_pucDISP_CALIBRATION_FLASHx + (Czg_GammaPage * _FLASH_PAGE_SIZE)) + _OGC_DICOM_ADDRESS, _OGC_FLASH_BANK);
+								// ScalerColorOutputGammaAdjust(_1P_NORMAL_FULL_REGION, (g_pucDISP_CALIBRATION_FLASHxx + (_FLASH_PAGE_SIZE*2)) + _OGC_DICOM_ADDRESS, _OGC_FLASH_BANK);
+		
+								ScalerColorPCMInputGammaEnable(_FUNCTION_OFF);
+								ScalerColorBrightnessEnable(_FUNCTION_OFF);
+								ScalerColorContrastEnable(_FUNCTION_OFF);
+								ScalerColorSRGBEnable(_FUNCTION_OFF);
+								ScalerColorOutputGammaEnable(_FUNCTION_ON);
+								//ScalerColorGammaRegionEnable(_1P_NORMAL_FULL_REGION, _DB_APPLY_NO_POLLING, _ON);
+								//RTDNVRamLoadColorSetting(UserAdjustGetOSDSelectRegion(_1P_NORMAL_FULL_REGION));
+								//UserAdjustContrast(_1P_NORMAL_FULL_REGION, GET_OSD_CONTRAST(UserAdjustGetOSDSelectRegion(_1P_NORMAL_FULL_REGION)));
+			
+								//ScalerSetByte(P31_B0_D_DB_CTRL0, ucBackupDB);
+								ScalerMcuDdcciReleaseScl();
+								//	SET_OSD_PANEL_UNIFORMITY_TYPE(8);
+								//													g_stOsdUserData.b1CalibFlag = 1;
+								//													RTDEepromSaveOsdUserData();
+								//			RTDFlashSaveOSDData();
+								//									}
+							}
+						}
+						else
+						{
+							UserCommonFlashWrite(_OGC_FLASH_BANK, ((WORD)Czg_GammaPage << 12) + (_OGC_DICOM_ADDRESS + Czg_RGBTable * 2052 + bufferCnt * 128), 128, tLUTGAMMA);
+							bufferCnt++;
+						}
+					}
+			
+					if (Czg_AutoIncrement)
+					{
+						if (Czg_Gamma_TablePointer == 0xff)
+						{
+							Czg_RGBTable++;
+							bufferCnt = 0;
+							if (Czg_RGBTable > 2)
+								Czg_RGBTable = 0;
+						}
+						Czg_Gamma_TablePointer++;
+					}
+			
+					SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+		
+					break;
 #endif
 
             case _DDCCI_OPCODE_VCP_OSD_ON_OFF:
@@ -1381,11 +1513,53 @@ void RTDDdcciSetVCPFeature(void)
 
                 break;
 #endif
+        case _DDCCI_OPCODE_VCP_INDEX_SET:
+            ucJ = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+            break;
+
+        case _DDCCI_OPCODE_VCP_EDID_SET:
+        {
+            BYTE idx = ucJ;
+
+            BYTE high = g_pucDdcciRxBuf[_DDCCI_SET_HIGH_BYTE];
+            BYTE low  = g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE];
+
+            if(idx < 7) // NAME
+            {
+                BYTE i = idx * 2;
+
+                if(i < 14)
+                {
+                    g_stOsdServiceData.b14EDIDName[i] = high;
+                    if(i + 1 < 14)
+                        g_stOsdServiceData.b14EDIDName[i + 1] = low;
+                }
+            }
+            else if(idx < 14) // SERIAL
+            {
+                BYTE i = (idx - 7) * 2;
+
+                if(i < 14)
+                {
+                    g_stOsdServiceData.b14EDIDSerial[i] = high;
+                    if(i + 1 < 14)
+                        g_stOsdServiceData.b14EDIDSerial[i + 1] = low;
+                }
+            }
+            else if(idx == 14) // H / V
+            {
+                g_stOsdServiceData.b1EDIDHSize = high;
+                g_stOsdServiceData.b1EDIDVSize = low;
+            }
+            RTDEepromSaveOsdServiceData();
+            break;
+        }
 
             default:
-#if(_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)										
-                    UserCommonDdcciInitTx();
-#endif	
+#if (_CIZGI_ENABLE_DICOM_CALIBRATION == _OFF)
+				UserCommonDdcciInitTx();
+#endif
+
                 break;
         }
     }

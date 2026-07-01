@@ -72,6 +72,9 @@ extern EnumHDR10DarkEnhanceStatus UserInterfaceHDRGetHDR10DarkEnhanceStatus(void
 
 #if(_HDR10_LIGHT_ENHANCE_SUPPORT == _ON)
 extern EnumHDR10LightEnhanceStatus UserInterfaceHDRGetHDR10LightEnhanceStatus(void);
+#if(_BACKLIGHT_DIMMING_SUPPORT == _ON)
+extern BYTE UserInterfaceHDRGetHDR10LightEnhanceGain(void);
+#endif
 #endif
 
 #if(_DCC_FUNCTION == _ON)
@@ -84,12 +87,16 @@ extern BYTE UserInterfaceHDRGetHDR10ICMTableBank(void);
 extern code BYTE *UserInterfaceHDRGetHDR10ICMTable(void);
 #endif
 
+#if((_HDR10_FIXED_POINT_TONEMAPPING_SUPPORT == _ON) || (_HDR10_USER_DEFINE_FIXED_POINT_TONEMAPPING_SUPPORT == _ON))
+extern EnumHDR10FixedPointToneMappingStatus UserInterfaceHDRGetHDR10FixedPointTMStatus(void);
+#endif
+
+extern void UserInterfaceHDRGetHDR10UserAssignTable(StructHDR10Table *pstHDR10Table);
 #endif
 
 #if(_FREESYNC_II_SUPPORT == _ON)
-extern void UserInterfaceHDRFreeSyncIIProc(void);
+extern void UserInterfaceHDRAdjustFreeSyncIIProc(void);
 #endif
-
 #endif // End of #if(_ULTRA_HDR_SUPPORT == _ON)
 
 #endif // End of __USER_INTERFACE_HDR__

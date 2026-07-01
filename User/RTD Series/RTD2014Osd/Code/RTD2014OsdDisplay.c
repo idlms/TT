@@ -21,82 +21,367 @@
 
 #include "UserCommonInclude.h"
 
-#if (_OSD_TYPE == _REALTEK_2014_OSD)
+#if(_OSD_TYPE == _REALTEK_2014_OSD)
 
+extern BYTE code tsOsdClearText6[];
+
+extern BYTE code tsOsdTestString[];	
+
+extern BYTE code tsOsdPicture[];	
+extern BYTE code tsOsdColor[];
+extern BYTE code tsOsdDisplay[];
+extern BYTE code tsOsdOsdSetting[]; 
+extern BYTE code tsOsdAudio[]; 
+extern BYTE code tsOsdDpOption[]; 
+extern BYTE code tsOsdSetup[];
+extern BYTE code tsOsdHeatControl[];
+extern BYTE code tsOsdDimControl[];
+extern BYTE code tsOsdVideoWall[];
+extern BYTE code tsOsdInfo[];
+
+extern BYTE code tsOsdBlacklevel[];
+extern BYTE code tsOsdChroma[];
+
+extern BYTE code tsOsdBrightness[];	
+extern BYTE code tsOsdContrast[];
+extern BYTE code tsOsdSharpness[];
+extern BYTE code tsOsdAspectRatio[];
+extern BYTE code tsOsdOverScan[];
+
+extern BYTE code tsOsdMonoColor[];
+extern BYTE code tsOsdStd[];
+extern BYTE code tsOsdMono[];
+extern BYTE code tsOsdNight[];
+
+extern BYTE code tsOsdLock[];
+extern BYTE code tsOsdUnLock[];
+extern BYTE code tsOsdCorved[];
+extern BYTE code tsOsdLinear[];
+extern BYTE code tsOsdBacklightControl[];
+extern BYTE code tsOsdBacklight[];
+extern BYTE code tsOsdClone[];
+extern BYTE code tsOsdLightSensor[];
+extern BYTE code tsOsdFanControl[];
+extern BYTE code tsOsdFanSpeed[];
+extern BYTE code tsOsdKeyLock[];
+
+extern BYTE code tsUserAssign_UpKey[];
+extern BYTE code tsUserAssign_DownKey[];
+extern BYTE code tsUserAssign_LeftKey[];
+extern BYTE code tsUserAssign_RightKey[];
+extern BYTE code tsUserAssign_NOT_USE[];
+
+extern BYTE code tsOsdColorEffect[];
+extern BYTE code tsOsdGamma[];
+extern BYTE code tsOsdTemperature[];
+extern BYTE code tsOsdColorGamut[];
+extern BYTE code tsOsdRed[];
+extern BYTE code tsOsdGreen[];
+extern BYTE code tsOsdBlue[];
+
+extern BYTE code tsOsdRedBIAS[];
+extern BYTE code tsOsdGreenBIAS[];
+extern BYTE code tsOsdBlueBIAS[];
+extern BYTE code tsOsdRedGain[];
+extern BYTE code tsOsdGreenGain[];
+extern BYTE code tsOsdBlueGain[];
+
+
+extern BYTE code tsOsdDispRotate[];
+extern BYTE code tsOsdSource1[];
+extern BYTE code tsOsdSource2[];
+extern BYTE code tsOsdSource3[];
+extern BYTE code tsOsdSource4[];
+extern BYTE code tsOsdDispMode[];
+extern BYTE code tsOsdPipPosition[];
+extern BYTE code tsOsdPipSize[];
+extern BYTE code tsOsdInputSwap[];
+extern BYTE code tsOsdRegion[];			
+
+extern BYTE code tsOsdOsdHPosition[];
+extern BYTE code tsOsdOsdVPosition[];
+
+extern BYTE code tsOsdTransparency[];
+extern BYTE code tsOsdOsdTimeout[];
+extern BYTE code tsOsdOsdRotate[];
+extern BYTE code tsOsdLanguage[];
+
+extern BYTE code tsOsdVolume[];
+extern BYTE code tsOsdMute[];
+extern BYTE code tsOsdUnmute[];
+extern BYTE code tsOsdAudioSource[];
+
+extern BYTE code tsOsdDpVersion[];
+extern BYTE code tsOsdDpMst[];
+extern BYTE code tsOsdDpResolution[];
+
+extern BYTE code tsOsdDpCloneMode[];
+extern BYTE code tsOsdDpCloneSource[];	
+
+extern BYTE code tsOsdPowerSave[];
+extern BYTE code tsOsdSetId[];
+extern BYTE code tsOsdHpdMode[];
+
+extern BYTE code tsOsdReset[];
+extern BYTE code tsOsdPowerSave[];
+extern BYTE code tsOsdSetId[];
+extern BYTE code tsOsdHpdMode[];
+extern BYTE code tsOsdAutoAdjust[];
+extern BYTE code tsOsdHPosition[];
+extern BYTE code tsOsdVPosition[];
+extern BYTE code tsOsdClock[];
+extern BYTE code tsOsdPhase[];
+
+extern BYTE code tsOsdFanControl[];
+extern BYTE code tsOsdActiveTemp[];
+extern BYTE code tsOsdHysteresis[];
+extern BYTE code tsOsdCurrentTemp[];
+extern BYTE code tsOsdShutdownMode[];
+extern BYTE code tsOsdShutdownTemp[];
+
+extern BYTE code tsOsdAutoDimming[];
+extern BYTE code tsOsdDimming[];
+extern BYTE code tsOsdMaxAmbient[];
+extern BYTE code tsOsdMinAmbient[];
+extern BYTE code tsOsdCurrntLux[];
+
+extern BYTE code tsOsdVideoWallMode[];
+extern BYTE code tsOsdDisplayNum[];
+extern BYTE code tsOsdHSetCount[];
+extern BYTE code tsOsdVSetCount[];
+extern BYTE code tsOsdHEdgeAdjust[];
+extern BYTE code tsOsdVEdgeAdjust[];
+extern BYTE code tsOsdReverseScan[];
+
+extern BYTE code tsOsdFirmwareVersion[];
+extern BYTE code tsOsdSerialNumber[];
+
+extern BYTE code tsOsdSourcePc[];
+extern BYTE code tsOsdSourceSDI[];
+extern BYTE code tsOsdSource10GSFP[];
+
+//----------------------------------------------------------------------
+extern BYTE code tsOsdService1[];	
+extern BYTE code tsOsdService2[];
+extern BYTE code tsOsdService3[];
+extern BYTE code tsOsdService4[];
+extern BYTE code tsOsdService_UserAssign[];
+extern BYTE code tsOsdScreenTest[];
+
+extern BYTE code tsOsdWhiteBalance[];
+extern BYTE code tsOsdD0Name[];
+extern BYTE code tsOsdD1Name[];
+extern BYTE code tsOsdD2Name[];
+extern BYTE code tsOsdD3Name[];
+extern BYTE code tsOsdBacklightMin[];
+extern BYTE code tsOsdBacklightMax[];
+extern BYTE code tsOsdBLUFreq[];
+extern BYTE code tsOsdBLUInvert[];
+extern BYTE code tsOsdLOGO[];
+extern BYTE code tsOsdLogoSelect[];
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT )
+extern BYTE code tsOsdStabilux[];
+extern BYTE code tsOsdStabilizer[];
+#endif
+extern BYTE code tsOsdModel[];
+extern BYTE code tsOsdFormat[];
+extern BYTE code tsOsdColorTemp[];	
+
+extern BYTE code tsOsdRange[];
+
+extern BYTE code tsOsdInput[];
+extern BYTE code tsOsdScreen[];
+
+extern BYTE code tsOsdOLED[];
+extern BYTE code tsOsdOFFRS[];
+extern BYTE code tsOsdJB[];
+extern BYTE code tsOsdSequenceTime[];
+extern BYTE code tsBACKUP_USER_CONFIG[];
+
+extern BYTE code tsOsdOLEDAutoRun[];		
+extern BYTE code tsOsdOLEDEndRun[];		
+extern BYTE code tsOsdOLEDNow[];		
+
+//----------------------------------------------------------------------
+
+BYTE code tsOsdON[];
+BYTE code tsOsdOFF[];
+BYTE code tsOsdOFF2[];	
+BYTE code tsOsdOFF3[];
+
+
+extern BYTE code tsOsdFull[];
+extern BYTE code tsOsdFill[];
+
+extern BYTE code tsOsd16_9[];
+extern BYTE code tsOsd4_3[];
+extern BYTE code tsOsd5_4[];
+extern BYTE code tsOsdOrigin[];
+extern BYTE code tsOsdUser[];
+extern BYTE code tsOsdClearText[];
+extern BYTE code tsOsdClearLongText[];
+
+
+extern BYTE code tsOsdStandard[];		
+extern BYTE code tsOsdGame[];
+extern BYTE code tsOsdMovie[];
+extern BYTE code tsOsdPhoto[];
+extern BYTE code tsOsdVidid[];
+extern BYTE code tsOsdGammaOff[];
+extern BYTE code tsOsdGammaBypass[];
+extern BYTE code tsOsdGammaNative[];
+extern BYTE code tsOsdResettoDefault[];
+
+extern BYTE code tsOsdGamma18[];
+extern BYTE code tsOsdGamma20[];
+extern BYTE code tsOsdGamma22[];
+extern BYTE code tsOsdGamma24[];
+
+extern BYTE code tsOsdGammaDicom[];	
+extern BYTE code tsOsdGammaRC2[];
+extern BYTE code tsOsdGammaRC3[];
+extern BYTE code tsOsdTempD56[];
+extern BYTE code tsOsdTempD65[];
+extern BYTE code tsOsdTempD93[];
+extern BYTE code tsOsdTempUser[];
+extern BYTE code tsOsdBT709[];
+extern BYTE code tsOsdDCI_P3[];
+extern BYTE code tsOsdBT2020[];
+
+
+extern BYTE code tsOsdTemp9300[];
+extern BYTE code tsOsdTemp7500[];
+extern BYTE code tsOsdTemp6500[];
+extern BYTE code tsOsdTemp5800[];
+extern BYTE code tsOsdTempSRGB[];
+
+extern BYTE code tsOsdRotate[];
+extern BYTE code tsOsdRotate0[];	
+extern BYTE code tsOsdRotate90[];
+extern BYTE code tsOsdRotate180[];
+extern BYTE code tsOsdRotate270[];
+extern BYTE code tsOsdRotateHFlip[];	
+extern BYTE code tsOsdRotateVFlip[];
+extern BYTE code tsOsdRotateHVFlip[];
+extern BYTE code tsOsdRotateNOFlip[];
+
+
+
+extern BYTE code tsOsdSourceAuto[];
+extern BYTE code tsOsdSourceA0VGA[];
+extern BYTE code tsOsdSourceD0DP2[];
+extern BYTE code tsOsdSourceD1DP1[];
+extern BYTE code tsOsdSourceD2HDMI2[];
+extern BYTE code tsOsdSourceD3HDMI1[];
+extern BYTE code tsOsdSourceDVI[];
+
+extern BYTE code tsOsd1P[];			
+extern BYTE code tsOsd2PLR[];
+extern BYTE code tsOsd2PTB[];
+extern BYTE code tsOsd2PPIP[];
+extern BYTE code tsOsd3P[];
+extern BYTE code tsOsd4P[];
+extern BYTE code tsOsdPipRB[];
+extern BYTE code tsOsdPipRT[];
+extern BYTE code tsOsdPipLB[];
+extern BYTE code tsOsdPipLT[];
+
+extern BYTE code tsOsdEnglish[];
+extern BYTE code tsOsdChinese[];
+
+extern BYTE code tsOsdAudioLineIn[];	
+extern BYTE code tsOsdAudioDigital[];
+extern BYTE code tsOsdVga[];			
+
+extern BYTE code tsOsdDpVer1_1[];		
+extern BYTE code tsOsdDpVer1_2[];
+extern BYTE code tsOsdDpVer1_3[];
+extern BYTE code tsOsd1080P[];
+extern BYTE code tsOsd1440P[];
+extern BYTE code tsOsd2160P[];
+
+extern BYTE code tsOsdPowerSaveOff[];			
+extern BYTE code tsOsdPowerSave5Sec[];
+extern BYTE code tsOsdPowerSave30Sec[];
+extern BYTE code tsOsdPowerSave60Sec[];	
+
+extern BYTE code tsOsdPowerSave30Sec_1[];
+
+extern BYTE code tsOsdPowerSave1Min[];
+extern BYTE code tsOsdPowerSave2Min[];
+extern BYTE code tsOsdPowerSave5Min[];
+extern BYTE code tsOsdPowerSave30Min[];
+extern BYTE code tsOsdPowerSave60Min[];
+extern BYTE code tsOsdPowerSave120Min[];
+extern BYTE code tsOsdHpdMode1[];	
+extern BYTE code tsOsdHpdMode2[];	
+extern BYTE code tsOsdHpdMode3[];	
+extern BYTE code tsOsdHpdMode4[];	
+
+
+extern BYTE code tsOsdAutoPass[];		
+extern BYTE code tsOsdAutoFail[];
+
+extern BYTE code tsOsdFanAuto[];		
+
+
+extern BYTE code tsOsd1PFull[];	
+extern BYTE code tsOsd2PLRL[];	
+extern BYTE code tsOsd2PLRR[];	
+extern BYTE code tsOsd2PLRFull[];	
+extern BYTE code tsOsd2PTBT[];	
+extern BYTE code tsOsd2PTBB[];	
+extern BYTE code tsOsd2PTBFull[];	
+extern BYTE code tsOsd2PPipMain[];	
+extern BYTE code tsOsd2PPipSub[];	
+extern BYTE code tsOsd2PPipFull[];	
+extern BYTE code tsOsd3P1P[];	
+extern BYTE code tsOsd3P2P[];	
+extern BYTE code tsOsd3P3P[];
+extern BYTE code tsOsd3PFull[];	
+
+extern BYTE code tsOsd4PLT[];	
+extern BYTE code tsOsd4PLB[];	
+extern BYTE code tsOsd4PRT[];	
+extern BYTE code tsOsd4PRB[];	
+extern BYTE code tsOsd4PFull[];	
+
+extern BYTE code tsOsdSource[];	
+extern BYTE code tsOsdYES[];	
+extern BYTE code tsOsdNO[];
+
+extern BYTE code tsOsdMenu[];			
+extern BYTE code tsOsdNotice[];	
+
+extern BYTE code tsOsdNull[]; 	
+extern BYTE code tsOsdTestLength[];	
+
+extern BYTE code tsOsdMstD0DP2[];
+extern BYTE code tsOsdMstD1DP1[];	
+
+extern BYTE code tsOsdIrTransfer[];	
+extern BYTE code tsOsdTransferId[];	
+extern BYTE code tsOsdAll[];	
+
+
+extern void OsdPropGetShowResolutionStringAddress(void);
+extern void OsdPropShowFreeSyncVFreqRange(BYTE ucRow, BYTE ucCol, BYTE ucFptsSelect, BYTE ucColor, BYTE ucLanguage);
+extern void OsdPropGetShowDpInfoStringAddress(BYTE Index);
+extern void OsdPropGetShowVFreqStringAddress(void);
+extern void OsdPropGetShowHFreqPClkStringAddress(void);
+extern void OsdPropGetShowRangeStringAddress(void);
+extern void OsdPropGetShowAudioStringAddress(void);
 //****************************************************************************
 // DEFINITIONS / MACROS
 //****************************************************************************
 
 //****************************************************************************
-// STRUCT / TYPE / ENUM DEFINITTIONS
-//****************************************************************************
-typedef enum
-{
-	_VGA_A0 = 0x01,
-} EnumOsdSourceTypeVga;
-
-typedef enum
-{
-	_DVI = 0x02,
-#if (_D0_INPUT_PORT_TYPE == _D0_DVI_PORT)
-	_DVI_D0,
-#endif
-#if (_D1_INPUT_PORT_TYPE == _D1_DVI_PORT)
-	_DVI_D1,
-#endif
-#if ((_D2_INPUT_PORT_TYPE == _D2_DVI_PORT) || (_D2_INPUT_PORT_TYPE == _D2_DUAL_DVI_PORT))
-	_DVI_D2,
-#endif
-#if ((_D3_INPUT_PORT_TYPE == _D3_DVI_PORT) || (_D3_INPUT_PORT_TYPE == _D3_DUAL_DVI_PORT))
-	_DVI_D3,
-#endif
-#if ((_D4_INPUT_PORT_TYPE == _D4_DVI_PORT) || (_D4_INPUT_PORT_TYPE == _D4_DUAL_DVI_PORT))
-	_DVI_D4,
-#endif
-#if (_D5_INPUT_PORT_TYPE == _D5_DVI_PORT)
-	_DVI_D5,
-#endif
-
-	_HDMI = 0x10,
-#if ((_D0_INPUT_PORT_TYPE == _D0_HDMI_PORT) || (_D0_INPUT_PORT_TYPE == _D0_MHL_PORT))
-	_HDMI_D0,
-#endif
-#if ((_D1_INPUT_PORT_TYPE == _D1_HDMI_PORT) || (_D1_INPUT_PORT_TYPE == _D1_MHL_PORT))
-	_HDMI_D1,
-#endif
-#if ((_D2_INPUT_PORT_TYPE == _D2_HDMI_PORT) || (_D2_INPUT_PORT_TYPE == _D2_MHL_PORT))
-	_HDMI_D2,
-#endif
-#if ((_D3_INPUT_PORT_TYPE == _D3_HDMI_PORT) || (_D3_INPUT_PORT_TYPE == _D3_MHL_PORT))
-	_HDMI_D3,
-#endif
-#if ((_D4_INPUT_PORT_TYPE == _D4_HDMI_PORT) || (_D4_INPUT_PORT_TYPE == _D4_MHL_PORT))
-	_HDMI_D4,
-#endif
-#if ((_D5_INPUT_PORT_TYPE == _D5_HDMI_PORT) || (_D5_INPUT_PORT_TYPE == _D5_MHL_PORT))
-	_HDMI_D5,
-#endif
-} EnumOsdSourceTypeTMDS;
-
-typedef enum
-{
-	_DP = 0x0E,
-#if (_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
-	_DP_D0,
-#endif
-#if (_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-	_DP_D1,
-#endif
-#if (_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-	_DP_D2,
-#endif
-#if (_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-	_DP_D6,
-#endif
-} EnumOsdSourceTypeDP;
-
-//****************************************************************************
 // CODE TABLES
+//****************************************************************************
+
+
+//****************************************************************************
+// STRUCT / TYPE / ENUM DEFINITTIONS
 //****************************************************************************
 
 //--------------------------------------------------
@@ -105,92 +390,102 @@ typedef enum
 
 typedef enum
 {
-	_OSD_ADVANCE_ASPECT,
-	_OSD_ADVANCE_OVERSCAN,
-	_OSD_ADVANCE_OVERDRIVE,
-	_OSD_ADVANCE_DDCCI,
-	_OSD_ADVANCE_ULTRAVIVID,
-	_OSD_ADVANCE_DCR,
-	_OSD_ADVANCE_DPOPTION,
-	_OSD_ADVANCE_DPMST,
-	_OSD_ADVANCE_DP_RESOLUTION,
-	_OSD_ADVANCE_CLONE,
-	_OSD_ADVANCE_HDMI_VERSIONS,
-	_OSD_ADVANCE_FREESYNC,
-	_OSD_ADVANCE_TYPEC_MODE,
-	_OSD_ADVANCE_HDR,
-	_OSD_ADVANCE_LOCALDIMMING,
-	_OSD_ADVANCE_PIXELSHIFT,
-	_OSD_ADVANCE_SDR_TO_HDR,
+    _OSD_ADVANCE_ASPECT,
+    _OSD_ADVANCE_OVERSCAN,
+    _OSD_ADVANCE_OVERDRIVE,
+    _OSD_ADVANCE_DDCCI,
+    _OSD_ADVANCE_ULTRAVIVID,
+    _OSD_ADVANCE_DCR,
+    _OSD_ADVANCE_DPOPTION,
+    _OSD_ADVANCE_DPMST,
+    _OSD_ADVANCE_DP_RESOLUTION,
+    _OSD_ADVANCE_CLONE,
+    _OSD_ADVANCE_HDMI_VERSIONS,
+    _OSD_ADVANCE_FREESYNC,
+    _OSD_ADVANCE_DP_ADAPTIVESYNC,
+    _OSD_ADVANCE_TYPE_C_MODE,
+    _OSD_ADVANCE_HDR,
+    _OSD_ADVANCE_LOCALDIMMING,
+    _OSD_ADVANCE_PIXELSHIFT,
+    _OSD_ADVANCE_SDR_TO_HDR,
+    _OSD_ADVANCE_MBR,
+    _OSD_ADVANCE_NONE,
 
-	_OSD_ADVANCE_NONE,
+}EnumOsdAdvanceItem;
 
-} EnumOsdAdvanceItem;
-
-// following order could modify by User
-BYTE code OSD_ADVANCE_ITEM_PRI[] =
-	{
-#if (_ASPECT_RATIO_SUPPORT == _ON)
-		_OSD_ADVANCE_ASPECT,
+//following order could modify by User
+BYTE code tOSD_ADVANCE_ITEM_PRI[]=
+{
+#if(_ASPECT_RATIO_SUPPORT == _ON)
+    _OSD_ADVANCE_ASPECT,
 #endif
 
-#if (_OVERSCAN_SUPPORT == _ON)
-		_OSD_ADVANCE_OVERSCAN,
+#if(_OVERSCAN_SUPPORT == _ON)
+    _OSD_ADVANCE_OVERSCAN,
 #endif
 
-#if (_OD_SUPPORT == _ON)
-		_OSD_ADVANCE_OVERDRIVE,
+#if(_OD_SUPPORT == _ON)
+    _OSD_ADVANCE_OVERDRIVE,
 #endif
-		_OSD_ADVANCE_DDCCI,
+    _OSD_ADVANCE_DDCCI,
 
-#if (_ULTRA_VIVID_SUPPORT == _ON)
-		_OSD_ADVANCE_ULTRAVIVID,
-#endif
-
-#if (_DCR_SUPPORT == _ON)
-		_OSD_ADVANCE_DCR,
+#if(_ULTRA_VIVID_SUPPORT == _ON)
+    _OSD_ADVANCE_ULTRAVIVID,
 #endif
 
-#if (_DP_SUPPORT == _ON)
-		_OSD_ADVANCE_DPOPTION,
-#if (_DP_MST_SUPPORT == _ON)
-		_OSD_ADVANCE_DPMST,
+#if(_DCR_SUPPORT == _ON)
+    _OSD_ADVANCE_DCR,
 #endif
-		_OSD_ADVANCE_DP_RESOLUTION,
-		_OSD_ADVANCE_CLONE,
+
+#if(_DP_SUPPORT == _ON)
+    _OSD_ADVANCE_DPOPTION,
+#if(_DP_MST_SUPPORT == _ON)
+    _OSD_ADVANCE_DPMST,
+#endif
+    _OSD_ADVANCE_DP_RESOLUTION,
+    _OSD_ADVANCE_CLONE,
 #endif
 
 #if (_HDMI_MULTI_EDID_SUPPORT == _ON)
-		_OSD_ADVANCE_HDMI_VERSIONS,
+    _OSD_ADVANCE_HDMI_VERSIONS,
 #endif
 
-#if ((_FREESYNC_II_SUPPORT == _ON) || (_FREESYNC_SUPPORT == _ON))
-		_OSD_ADVANCE_FREESYNC,
+#if((_FREESYNC_II_SUPPORT == _ON)||(_FREESYNC_SUPPORT == _ON))
+    _OSD_ADVANCE_FREESYNC,
 #endif
 
-#if (_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-		_OSD_ADVANCE_TYPEC_MODE,
+#if(_DP_ADAPTIVESYNC_SUPPORT == _ON)
+    _OSD_ADVANCE_DP_ADAPTIVESYNC,
 #endif
 
-#if (_HDR10_SUPPORT == _ON)
-		_OSD_ADVANCE_HDR,
+#if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
+    _OSD_ADVANCE_TYPE_C_MODE,
 #endif
 
-#if (_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-		_OSD_ADVANCE_LOCALDIMMING,
+#if(_HDR10_SUPPORT == _ON)
+    _OSD_ADVANCE_HDR,
+#endif
+
+#if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
+    _OSD_ADVANCE_LOCALDIMMING,
 #endif
 
 #if (_SDR_TO_HDR_SUPPORT == _ON)
-		_OSD_ADVANCE_SDR_TO_HDR,
+    _OSD_ADVANCE_SDR_TO_HDR,
 #endif
 
-#if (_PIXEL_SHIFT_SUPPORT == _ON)
-		_OSD_ADVANCE_PIXELSHIFT,
+#if(_PIXEL_SHIFT_SUPPORT == _ON)
+    _OSD_ADVANCE_PIXELSHIFT,
 #endif
 
-		_OSD_ADVANCE_NONE,
+#if(_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+    _OSD_ADVANCE_MBR,
+#endif
+
+    _OSD_ADVANCE_NONE,
 };
-#define _OSD_ADVANCE_ITEM_AMOUNT (sizeof(OSD_ADVANCE_ITEM_PRI) - 1)
+#define _OSD_ADVANCE_ITEM_AMOUNT    (sizeof(tOSD_ADVANCE_ITEM_PRI)-1)
+
 
 //****************************************************************************
 // VARIABLE DECLARATIONS
@@ -199,83 +494,64 @@ BYTE code OSD_ADVANCE_ITEM_PRI[] =
 //****************************************************************************
 // FUNCTION DECLARATIONS
 //****************************************************************************
+#if (_ENABLE_MENU_OLED == _ON)
+BYTE *OsdDisplayGetSequenceTimeP(void);
+#endif
+
 BYTE OsdDisplayGetSourcePortString(void);
 
-#if (_ENABLE_VIDEO_WALL == _ON)
-BYTE GetVideoWallDisplayNumber(void);
+#if(_VGA_SUPPORT == _ON)
+BYTE OsdDisplayGetVGAModeString(bit bUserMode);
 #endif
-BYTE OsdDispJudgeSourceType(void);
+
 void OsdDispDisableOsd(void);
 void OsdDispSetPosition(BYTE ucType, EnumOsdPositionType enumOsdPositionType, WORD usHPos, WORD usVPos);
-void OsdDispMainMenuIconString(BYTE ucIconPos, WORD usIcon, BYTE ucColor);
-
-void OsdDispMainMenuItemSelection(BYTE ucIconPos, BYTE ucState);
+void OsdDispClearSelectColor(BYTE ucUpDown);
 
 void OsdDispMainMenu(void);
+void OsdSubMenuPageDraw(BYTE ucMainItem);	
 
-void OsdDispHotKeyVolumeMenu(void); // 170928_02
-void OsdDispHotKeyMuteMenu(void);
-// void OsdDispHotKeyAudioMode(void);
-// void OsdDispHotKeyPictureMode(void); //Eric_171010
+void OsdDispNumberAndText(WORD usOsdState, WORD usValue, BYTE ucColor);	
 
-WORD OsdDisplayDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle, bit bNumberic);
+WORD OsdDisplayDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle);
+WORD OsdDisplayDetOverRange_Long(WORD usValue, WORD usMax, WORD usMin, bit bCycle);
 WORD OsdDisplayDetOverRange_Curved(WORD usValue, WORD usMax, WORD usMin, bit bCycle);
+WORD OsdDisplayDetOverRange_Freq(WORD usValue, WORD usMax, WORD usMin, bit bCycle);
+
+
 void OsdDisplaySixColorGetOneColor(BYTE ucColor);
-// void OsdDisplaySixColorSetOneColor(BYTE ucColor);
+void OsdDisplaySixColorSetOneColor(BYTE ucColor);
+
+
+void OsdDispHotKeySourceMenu(void);
 
 void OsdDispOsdMessage(EnumOSDDispMsg enumMessage);
 
-#if (_VGA_SUPPORT == _ON)
+#if (_ENABLE_MENU_OLED == _ON)
+void OsdDispHotKeyOffRSMenu(void);
+#endif
+
+#if(_VGA_SUPPORT == _ON)
 void OsdDispAutoConfigProc(void);
 void OsdDisplayAutoBalanceProc(void);
 #endif
 
+void OsdDispClearSliderAndNumber(void);
 void OsdDispOsdReset(void);
-#if (_CUSTOMER_TYPE != _CUSTOMER_STANDARD)
-void OsdDispShowLogo(void);
+void OsdDispOsdFactoryReset(void);	
+
+#if(_DP_SUPPORT == _ON)
+void OsdDispResetDpCapabilitySwitch(void);
 #endif
-void COsdShowPageText(BYTE PageNo);
-void OsdDispHotKeyBacklightMenu(void);
 
-// Eric_20180306_Delete : Start ---------------------------------
-// WORD OsdDispDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle);
-// void OsdDispMainMenuItemIndication(BYTE ucItem, BYTE ucAmount, BYTE ucState);
-// void OsdDispMainMenuItemIndication2(BYTE ucItem, BYTE ucAmount, BYTE ucState);//add for New Advance Menu flow
-// void OsdDispMainMenuKeyInfo(BYTE ucItem, BYTE ucState);
-// void OsdDispClearSelectColor(BYTE ucUpDown);
+void OsdDispShowLogo(void);
+void OsdDispShowInformation(void);
+void OsdDispTransferId(BYTE AdjValue);	
 
-//    #if(_VGA_SUPPORT == _ON)
-//    void OsdDispMainSubString(BYTE ucState);
-//    #endif
-//
-//    void OsdDispMainOptionIcon(BYTE ucIconPos, BYTE ucIcon, BYTE ucColor);
-void OsdDispMainMenuIconPage(BYTE ucUpDown, BYTE ucState);
-void OsdDispMainMenuArrow(BYTE ucUpDown, BYTE ucLeftRight, BYTE ucState);
-// void OsdDispMainMenuOptionSetting(BYTE ucItem, BYTE ucSelectState, BYTE ucOption);
-// void OsdDispClearArrow(BYTE ucUpDown);
-// void OsdDispMainMenuSubSelect(BYTE ucItem, WORD usOsdState, WORD usOsdStatePrevious);
-// void OsdDispMainMenuCursor(WORD usOsdState, WORD usOsdStatePrevious, bit bInSubsidiary);
 
-void OsdDispSliderAndNumber(WORD usOsdState, WORD usValue);
-// WORD OsdDisplayDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle);
-// void OsdDispClearSliderAndNumber(void);
-// void OsdDispHotKeyOptionMenu(BYTE ucOption);
-void OsdDispHotKeyOptionMenuSwitch(BYTE ucOption);
-void OsdDispHotKeySourceMenuIcon(BYTE ucPort);
-void OsdDispHotKeySourceMenu(void);
-// void OsdDispPanelUniformityMsgSwitch(void);
-
-// void OsdDispShowInformation(void);
-#if ((_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE) || (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE))
+#if((_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE) || (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE))
 void OsdDispOsdRotateSwitch(void);
 #endif
-// void OsdDispAdvanceMenuReDraw(bit bRedrawLevel);
-// bit OsdDispAdvanceItemCountbyKeyMessage(void);
-// BYTE OsdDispAdvanceIconGet(BYTE ucIndex);
-// void OsdDispAdvanceItemSwitch(BYTE ucIndex);
-// void OsdDispAdvanceItemSelect(BYTE ucIndex);
-
-// Eric_20180306_Delete : End ---------------------------------
 
 //****************************************************************************
 // FUNCTION DEFINITIONS
@@ -287,228 +563,415 @@ void OsdDispOsdRotateSwitch(void);
 //--------------------------------------------------
 BYTE OsdDisplayGetSourcePortString(void)
 {
-	switch (SysSourceGetInputPort())
-	{
-#if (_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
-	case _A0_INPUT_PORT:
-		return _STRING_A0_PORT;
+    switch(SysSourceGetInputPort())
+    {
+#if(_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
+        case _A0_INPUT_PORT:
+            return _STRING_A0_PORT;
 #endif
-#if (_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
-	case _D0_INPUT_PORT:
-		return _STRING_D0_PORT;
+#if(_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
+        case _D0_INPUT_PORT:
+            return _STRING_D0_PORT;
 #endif
-#if (_D1_INPUT_PORT_TYPE != _D1_NO_PORT)
-	case _D1_INPUT_PORT:
-		return _STRING_D1_PORT;
+#if(_D1_INPUT_PORT_TYPE != _D1_NO_PORT)
+        case _D1_INPUT_PORT:
+            return _STRING_D1_PORT;
 #endif
-#if (_D2_INPUT_PORT_TYPE != _D2_NO_PORT)
-	case _D2_INPUT_PORT:
-		return _STRING_D2_PORT;
+#if(_D2_INPUT_PORT_TYPE != _D2_NO_PORT)
+        case _D2_INPUT_PORT:
+            return _STRING_D2_PORT;
 #endif
-#if (_D3_INPUT_PORT_TYPE != _D3_NO_PORT)
-	case _D3_INPUT_PORT:
-		return _STRING_D3_PORT;
+#if(_D3_INPUT_PORT_TYPE != _D3_NO_PORT)
+        case _D3_INPUT_PORT:
+            return _STRING_D3_PORT;
 #endif
-#if (_D4_INPUT_PORT_TYPE != _D4_NO_PORT)
-	case _D4_INPUT_PORT:
-		return _STRING_D4_PORT;
+#if(_D4_INPUT_PORT_TYPE != _D4_NO_PORT)
+        case _D4_INPUT_PORT:
+            return _STRING_D4_PORT;
 #endif
-#if (_D5_INPUT_PORT_TYPE != _D5_NO_PORT)
-	case _D5_INPUT_PORT:
-		return _STRING_D5_PORT;
+#if(_D5_INPUT_PORT_TYPE != _D5_NO_PORT)
+        case _D5_INPUT_PORT:
+            return _STRING_D5_PORT;
 #endif
-#if (_D6_INPUT_PORT_TYPE != _D6_NO_PORT)
-	case _D6_INPUT_PORT:
-		return _STRING_D6_PORT;
+#if(_D6_INPUT_PORT_TYPE != _D6_NO_PORT)
+        case _D6_INPUT_PORT:
+            return _STRING_D6_PORT;
 #endif
-	default:
-		return _STRING_A0_PORT;
-	}
+        default:
+            return _STRING_A0_PORT;
+    }
 }
 
+//-----------------------------------------
+BYTE *OsdDisplayGetSourcePortStringP(EnumSourceSearchPort enumSourceSearchPort)
+{
+    BYTE *pucArray = tsOsdNull;
+
+
+    switch (enumSourceSearchPort)
+    {
+#if (_ENABLE_MENU_VGA == _ON)
+#if (_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
+    case _A0_INPUT_PORT:
+        pucArray = tsOsdSourceA0VGA;
+        break;
+#endif
+#endif
+#if (_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
+    case _D0_INPUT_PORT:
+        // pucArray = tsOsdSourceD0DP2;
+        switch (GET_OSD_D0_NAME())
+        {
+        case _SOURCE_NAME_DP1:
+            pucArray = tsOsdSourceD1DP1;
+            break;
+        case _SOURCE_NAME_DP2:
+            pucArray = tsOsdSourceD0DP2;
+            break;
+        case _SOURCE_NAME_PC:
+            pucArray = tsOsdSourcePc;
+            break;
+        }
+        break;
+#endif
+#if (_D1_INPUT_PORT_TYPE != _D1_NO_PORT)
+    case _D1_INPUT_PORT:
+        switch (GET_OSD_D1_NAME())
+        {
+        case _SOURCE_NAME_DP1:
+            pucArray = tsOsdSourceD1DP1;
+            break;
+        case _SOURCE_NAME_DP2:
+            pucArray = tsOsdSourceD0DP2;
+            break;
+        case _SOURCE_NAME_PC:
+            pucArray = tsOsdSourcePc;
+            break;
+        }
+        break;
+#endif
+#if (_D2_INPUT_PORT_TYPE != _D2_NO_PORT)
+    case _D2_INPUT_PORT:
+        switch (GET_OSD_D2_NAME())
+        {
+        case _SOURCE_NAME_HDMI1:
+            pucArray = tsOsdSourceD3HDMI1;
+            break;
+        case _SOURCE_NAME_HDMI2:
+            pucArray = tsOsdSourceD2HDMI2;
+            break;
+        case _SOURCE_NAME_PC2:
+            pucArray = tsOsdSourcePc;
+            break;
+        }
+        break;
+#endif
+#if (_D3_INPUT_PORT_TYPE != _D3_NO_PORT)
+    case _D3_INPUT_PORT:
+        switch (GET_OSD_D3_NAME())
+        {
+        case _SOURCE_NAME_HDMI1:
+            pucArray = tsOsdSourceD3HDMI1;
+            break;
+        case _SOURCE_NAME_HDMI2:
+            pucArray = tsOsdSourceD2HDMI2;
+            break;
+        case _SOURCE_NAME_PC2:
+            pucArray = tsOsdSourcePc;
+            break;
+        case _SOURCE_NAME_SDI:
+            pucArray = tsOsdSourceSDI;
+            break;
+        case _SOURCE_NAME_10GSFP:
+            pucArray = tsOsdSource10GSFP;
+            break;
+        case _SOURCE_NAME_DVI:
+            pucArray = tsOsdSourceDVI;
+            break;
+        }
+        break;
+#endif
+/*
+#if (_D4_INPUT_PORT_TYPE != _D4_NO_PORT)
+    case _D4_INPUT_PORT:
+        pucArray = tsOsdNull;
+        break;
+#endif
+#if (_D5_INPUT_PORT_TYPE != _D5_NO_PORT)
+    case _D5_INPUT_PORT:
+        pucArray = tsOsdNull;
+        break;
+#endif
+#if (_D6_INPUT_PORT_TYPE != _D6_NO_PORT)
+    case _D6_INPUT_PORT:
+        pucArray = tsOsdNull;
+        break;
+#endif
+#if (_D7_INPUT_PORT_TYPE != _D7_NO_PORT)
+    case _D7_INPUT_PORT:
+        pucArray = tsOsdNull;
+        break;
+#endif
+*/
+    default:
+        break;
+    }
+
+    return pucArray;
+}
+/*
+BYTE *OsdDisplayGetSourcePortStringP(void)	
+{
+	BYTE *pucArray = tsOsdNull;
+	
+    switch(SysSourceGetInputPort())
+    {
+#if(_ENABLE_MENU_VGA == _ON)	
+#if(_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
+        case _A0_INPUT_PORT:
+			pucArray = tsOsdSourceA0VGA;
+            break;
+#endif
+#endif
+#if(_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
+        case _D0_INPUT_PORT:
+			pucArray = tsOsdSourceD0DP2;
+            break;
+#endif
+#if(_D1_INPUT_PORT_TYPE != _D1_NO_PORT)
+        case _D1_INPUT_PORT:
+			pucArray = tsOsdSourceD1DP1;
+            break;
+#endif
+#if(_D2_INPUT_PORT_TYPE != _D2_NO_PORT)
+        case _D2_INPUT_PORT:
+			pucArray = tsOsdSourceD2HDMI2;
+            break;
+#endif
+#if(_D3_INPUT_PORT_TYPE != _D3_NO_PORT)
+        case _D3_INPUT_PORT:
+			pucArray = tsOsdSourceD3HDMI1;
+            break;
+#endif
+#if(_D4_INPUT_PORT_TYPE != _D4_NO_PORT)
+        case _D4_INPUT_PORT:
+			pucArray = tsOsdNull;
+            break;
+#endif
+#if(_D5_INPUT_PORT_TYPE != _D5_NO_PORT)
+        case _D5_INPUT_PORT:
+			pucArray = tsOsdNull;
+            break;
+#endif
+#if(_D6_INPUT_PORT_TYPE != _D6_NO_PORT)
+        case _D6_INPUT_PORT:
+			pucArray = tsOsdNull;
+            break;
+#endif
+        default:
+            break;
+			
+    }
+
+	return pucArray;
+}
+*/
+
+BYTE *OsdGetBoardModel(void)	
+{
+    BYTE *pucArray = tsOsdNull;
+    static BYTE xdata tTemp[14];
+    BYTE i;
+
+    strcpy(&tTemp[0], BOARD_MODEL); // 0-3
+    // strcpy(&tTemp[0], _PANEL_NAME); // 0-3
+
+    for (i = 0; i < 13; i++)
+    {
+        if ((tTemp[i] >= '0') && (tTemp[i] <= '9'))
+            tTemp[i] = (tTemp[i] - '0' + _0_);
+        else if ((tTemp[i] >= 'A') && (tTemp[i] <= 'W'))
+            tTemp[i] = (tTemp[i] - 'A') + _A_;
+        else if ((tTemp[i] >= 'X') && (tTemp[i] <= 'Z'))
+            tTemp[i] = (tTemp[i] - 'X') + _X_;
+        else if ((tTemp[i] >= 'a') && (tTemp[i] <= 'z'))
+            tTemp[i] = (tTemp[i] - 'a') + _a_;
+        else if (tTemp[i] == '-')
+            tTemp[i] = _SLINE_;
+        else
+            tTemp[i] = _END_;
+    }
+
+    // tTemp[13] = _END_;
+    pucArray = tTemp;
+
+    return pucArray;
+}
+
+
+
+BYTE *OsdGetBoardVersionString(void)	
+{
+    BYTE *pucArray = tsOsdNull;
+    static BYTE xdata tTemp[20];
+    BYTE i;
+
+    strcpy(&tTemp[0], BOARD_FWPART);
+    tTemp[4] = '-';
+    strcpy(&tTemp[5], CUSTOMER_CODE);
+    tTemp[11] = '-';
+    strcpy(&tTemp[12], BOARD_OPTION1);
+    strcpy(&tTemp[13], BOARD_OPTION2);
+    strcpy(&tTemp[15], BOARD_OPTION3);
+    strcpy(&tTemp[16], BOARD_OPTION4);
+    strcpy(&tTemp[17], BOARD_OPTION5);
+
+    for (i = 0; i < 19; i++)
+    {
+        if ((tTemp[i] >= '0') && (tTemp[i] <= '9'))
+            tTemp[i] = (tTemp[i] - '0' + _0_);
+        else if ((tTemp[i] >= 'A') && (tTemp[i] <= 'W'))
+            tTemp[i] = (tTemp[i] - 'A') + _A_;
+        else if ((tTemp[i] >= 'X') && (tTemp[i] <= 'Z'))
+            tTemp[i] = (tTemp[i] - 'X') + _X_;
+        else if ((tTemp[i] >= 'a') && (tTemp[i] <= 'z'))
+            tTemp[i] = (tTemp[i] - 'a') + _a_;
+        else if (tTemp[i] == '-')
+            tTemp[i] = _SLINE_;
+        else
+            tTemp[i] = _FONT_SPACE_1;
+    }
+    tTemp[19] = _END_;
+    pucArray = tTemp;
+
+    return pucArray;
+}
+
+BYTE *OsdDisplayGetResolutionStringP(void)	
+{
+	BYTE *pucArray = tsOsdNull;
+	
+	OsdPropGetShowResolutionStringAddress();
+    pucArray = g_pucModeInfoData;
+
+	return pucArray;
+}
+
+BYTE *OsdDisplayGetRangeStringP(void)
+{
+    BYTE *pucArray = tsOsdNull;
+
+    OsdPropGetShowRangeStringAddress();
+    pucArray = g_pucModeInfoData;
+
+    return pucArray;
+}
+
+BYTE *OsdDisplayGetAudioStringP(void)	
+{
+    BYTE *pucArray = tsOsdNull;
+
+    OsdPropGetShowAudioStringAddress();
+    pucArray = g_pucModeInfoData;
+
+    return pucArray;
+}
+
+BYTE *OsdDisplayGetHFreqPClkStringP(void)	
+{
+	BYTE *pucArray = tsOsdNull;
+	
+	OsdPropGetShowHFreqPClkStringAddress();
+    pucArray = g_pucModeInfoData;
+
+	return pucArray;
+}
+
+BYTE *OsdDisplayGetVFreqStringP(void)	
+{
+	BYTE *pucArray = tsOsdNull;
+	
+	OsdPropGetShowVFreqStringAddress();
+    pucArray = g_pucModeInfoData;
+
+	return pucArray;
+}
+
+
+BYTE *OsdDisplayGetUserAssignStringP(EnumUserAssign ucUserAssign)
+{
+    BYTE *pucArray = tsOsdNull;
+
+    switch(ucUserAssign)
+    {
+        case _USERASSIGN_MUTE:
+            pucArray = tsOsdMute;
+            break;
+        case _USERASSIGN_ROTATE:
+            pucArray = tsOsdRotate;
+            break;
+        case _USERASSIGN_SCAN:
+            pucArray = tsOsdAspectRatio;
+            break;
+        case _USERASSIGN_CONTRAST:
+            pucArray = tsOsdContrast;
+            break;
+        case _USERASSIGN_VOLUME:
+            pucArray = tsOsdVolume;
+            break;
+        case _USERASSIGN_BACKLIGHT:
+            pucArray = tsOsdBacklight;
+            break;
+        case _USERASSIGN_MONO_COLOR:
+            pucArray = tsOsdMonoColor;
+            break;
+        case _USERASSIGN_MONO:
+            pucArray = tsOsdMono;
+            break;
+        case _USERASSIGN_DP1:
+            pucArray = tsOsdSourceD1DP1;
+            break;
+        case _USERASSIGN_DP2:
+            pucArray = tsOsdSourceD0DP2;
+            break;
+        case _USERASSIGN_HDMI1:
+            pucArray = tsOsdSourceD3HDMI1;
+            break;
+        case _USERASSIGN_HDMI2:
+            pucArray = tsOsdSourceD2HDMI2;
+            break;
+        case _USERASSIGN_REDMODE:
+            pucArray = tsOsdNight;
+            break;
+        case _USERASSIGN_BRIGHTNESS:
+            pucArray = tsOsdBrightness;
+            break;
+        default:
+            pucArray = tsUserAssign_NOT_USE;
+            break;
+    }
+
+    return pucArray;
+}
+//-----------------------------------------
+#if(_VGA_SUPPORT == _ON)
 //--------------------------------------------------
 // Description :
-// Input Value : None
-// Output Value : Source Port Number
+// Input Value :
+// Output Value :
 //--------------------------------------------------
-BYTE OsdDispJudgeSourceType(void)
+BYTE OsdDisplayGetVGAModeString(bit bUserMode)
 {
-	BYTE ucOsdSourcePort = _VGA_A0;
-
-	switch (SysSourceGetInputPort())
-	{
-#if (_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
-	case _A0_INPUT_PORT:
-		ucOsdSourcePort = _VGA_A0;
-		return ucOsdSourcePort;
-#endif
-
-#if (_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
-	case _D0_INPUT_PORT:
-#if (_D0_INPUT_PORT_TYPE == _D0_DVI_PORT)
-		ucOsdSourcePort = _DVI_D0;
-#endif
-
-#if ((_D0_INPUT_PORT_TYPE == _D0_HDMI_PORT) || (_D0_INPUT_PORT_TYPE == _D0_MHL_PORT))
-		ucOsdSourcePort = _HDMI_D0;
-#endif
-
-#if (_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
-		ucOsdSourcePort = _DP_D0;
-#endif
-		return ucOsdSourcePort;
-#endif
-
-#if (_D1_INPUT_PORT_TYPE != _D1_NO_PORT)
-	case _D1_INPUT_PORT:
-#if (_D1_INPUT_PORT_TYPE == _D1_DVI_PORT)
-		ucOsdSourcePort = _DVI_D1;
-#endif
-
-#if ((_D1_INPUT_PORT_TYPE == _D1_HDMI_PORT) || (_D1_INPUT_PORT_TYPE == _D1_MHL_PORT))
-		ucOsdSourcePort = _HDMI_D1;
-#endif
-
-#if (_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-		ucOsdSourcePort = _DP_D1;
-#endif
-		return ucOsdSourcePort;
-#endif
-
-#if (_D2_INPUT_PORT_TYPE != _D2_NO_PORT)
-	case _D2_INPUT_PORT:
-#if ((_D2_INPUT_PORT_TYPE == _D2_DVI_PORT) || (_D2_INPUT_PORT_TYPE == _D2_DUAL_DVI_PORT))
-		if (_DVI_D2 > 0x04)
-		{
-			ucOsdSourcePort = 0x03;
-		}
-		else
-		{
-			ucOsdSourcePort = _DVI_D2;
-		}
-#endif
-
-#if ((_D2_INPUT_PORT_TYPE == _D2_HDMI_PORT) || (_D2_INPUT_PORT_TYPE == _D2_MHL_PORT))
-		if (_HDMI_D2 > 0x12)
-		{
-			ucOsdSourcePort = 0x11;
-		}
-		else
-		{
-			ucOsdSourcePort = _HDMI_D2;
-		}
-#endif
-
-#if (_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-		if (_DP_D2 > 0x10)
-		{
-			ucOsdSourcePort = 0x0F;
-		}
-		else
-		{
-			ucOsdSourcePort = _DP_D2;
-		}
-#endif
-		return ucOsdSourcePort;
-#endif
-
-#if (_D3_INPUT_PORT_TYPE != _D3_NO_PORT)
-	case _D3_INPUT_PORT:
-#if ((_D3_INPUT_PORT_TYPE == _D3_DVI_PORT) || (_D3_INPUT_PORT_TYPE == _D3_DUAL_DVI_PORT))
-		if (_DVI_D3 > 0x04)
-		{
-			ucOsdSourcePort = 0x03;
-		}
-		else
-		{
-			ucOsdSourcePort = _DVI_D3;
-		}
-#endif
-
-#if ((_D3_INPUT_PORT_TYPE == _D3_HDMI_PORT) || (_D3_INPUT_PORT_TYPE == _D3_MHL_PORT))
-		if (_HDMI_D3 > 0x12)
-		{
-			ucOsdSourcePort = 0x11;
-		}
-		else
-		{
-			ucOsdSourcePort = _HDMI_D3;
-		}
-#endif
-		return ucOsdSourcePort;
-#endif
-
-#if (_D4_INPUT_PORT_TYPE != _D4_NO_PORT)
-	case _D4_INPUT_PORT:
-#if ((_D4_INPUT_PORT_TYPE == _D4_DVI_PORT) || (_D4_INPUT_PORT_TYPE == _D4_DUAL_DVI_PORT))
-		if (_DVI_D4 > 0x04)
-		{
-			ucOsdSourcePort = 0x03;
-		}
-		else
-		{
-			ucOsdSourcePort = _DVI_D4;
-		}
-#endif
-
-#if ((_D4_INPUT_PORT_TYPE == _D4_HDMI_PORT) || (_D4_INPUT_PORT_TYPE == _D4_MHL_PORT))
-		if (_HDMI_D4 > 0x12)
-		{
-			ucOsdSourcePort = 0x11;
-		}
-		else
-		{
-			ucOsdSourcePort = _HDMI_D4;
-		}
-#endif
-		return ucOsdSourcePort;
-#endif
-
-#if (_D5_INPUT_PORT_TYPE != _D5_NO_PORT)
-	case _D5_INPUT_PORT:
-#if (_D5_INPUT_PORT_TYPE == _D5_DVI_PORT)
-		if (_DVI_D5 > 0x04)
-		{
-			ucOsdSourcePort = 0x03;
-		}
-		else
-		{
-			ucOsdSourcePort = _DVI_D5;
-		}
-#endif
-
-#if ((_D5_INPUT_PORT_TYPE == _D5_HDMI_PORT) || (_D5_INPUT_PORT_TYPE == _D5_MHL_PORT))
-		if (_HDMI_D5 > 0x12)
-		{
-			ucOsdSourcePort = 0x11;
-		}
-		else
-		{
-			ucOsdSourcePort = _HDMI_D5;
-		}
-#endif
-		return ucOsdSourcePort;
-#endif
-
-#if (_D6_INPUT_PORT_TYPE != _D6_NO_PORT)
-	case _D6_INPUT_PORT:
-#if (_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-		if (_DP_D6 > 0x10)
-		{
-			ucOsdSourcePort = 0x0F;
-		}
-		else
-		{
-			ucOsdSourcePort = _DP_D6;
-		}
-#endif
-		return ucOsdSourcePort;
-#endif
-
-	default:
-		return ucOsdSourcePort;
-	}
+    if(bUserMode == _USER_MODE_TYPE)
+    {
+        return _STRING_VGA_USER_MODE;
+    }
+    else
+    {
+        return _STRING_VGA_PRESET_MODE;
+    }
 }
+#endif
 
 //--------------------------------------------------
 // Description  :
@@ -517,905 +980,2041 @@ BYTE OsdDispJudgeSourceType(void)
 //--------------------------------------------------
 void OsdDispDisableOsd(void)
 {
+#if (_ENABLE_MENU_OLED == _ON)
+    bEnable_OFF_RS_Message = _FALSE;
+#endif	
+    SET_OSD_STATE(_MENU_NONE);
+    SET_OSD_IN_FACTORY_MENU_STATUS(_FALSE);
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+    OsdFuncDisableOsd();
+    OsdFuncCloseWindow(_OSD_WINDOW_ALL);
+    g_ucOsdWidth = 0;
+    g_ucOsdHeight = 0;
+    g_ucOsdWidthB = 0;
+    g_ucOsdHeightB = 0;
+}
 
-	SET_OSD_IN_FACTORY_MENU_STATUS(_FALSE);
-	SET_OSD_STATE(_MENU_NONE);
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	OsdFuncDisableOsd();
-	OsdFuncCloseWindow(_OSD_WINDOW_ALL);
-	g_ucOsdWidth = 0;
-	g_ucOsdHeight = 0;
-	g_ucOsdWidthB = 0;
-	g_ucOsdHeightB = 0;
-	SET_OSD_DOUBLE_SIZE(_OFF);
-}
-#if (_CUSTOMER_TYPE != _CUSTOMER_STANDARD)
-void OsdDispDisableOsd2(void) // LOGO ��
-{
-	SET_OSD_STATE(_MENU_NONE);
-	SET_OSD_IN_FACTORY_MENU_STATUS(_FALSE);
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	OsdFuncDisableOsd();
-	OsdFuncCloseWindow(_OSD_WINDOW_ALL);
-	g_ucOsdWidth = 0;
-	g_ucOsdHeight = 0;
-	g_ucOsdWidthB = 0;
-	g_ucOsdHeightB = 0;
-}
-#endif
 //--------------------------------------------------
 // Description  :
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-// void OsdDispSetPosition(BYTE ucType, EnumOsdPositionType enumOsdPositionType, WORD usHPos, WORD usVPos)
-//{
-//    WORD usx, usy;
-//
-//    if(ucType == _POS_PERCENT)
-//    {
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-//        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90)||(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//        {
-//            usx = 5 + ((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdWidth * 18) / 4) * usHPos) / _OSD_H_POS_MAX;
-//            usy = 3 + ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdHeight * 12) * usVPos ) / _OSD_V_POS_MAX;
-//        }
-//        else
-//        {
-//            usx = 5 + ((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdWidth * 12) / 4) * usHPos) / _OSD_H_POS_MAX;
-//            usy = 3 + ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdHeight * 18) * usVPos ) / _OSD_V_POS_MAX;
-//        }
-// #elif(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-// #if 1//(_PCB_TYPE == _RL6432_SANC2785_1A1DP1HDMI1DUALDVI_DPTX_LVDS)
-//        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90)||(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//        {
-//            usx =  ((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdHeight * 18) / 4) * usHPos) / _OSD_H_POS_MAX;
-//            usy =  ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdWidth * 12) * usVPos ) / _OSD_V_POS_MAX;
-//        }
-//        else
-//        {
-//           if(usHPos == 0)
-//            {
-//               usx =  (((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdWidth * 12) / 4 *2 ) * usHPos) / _OSD_H_POS_MAX)-1;
-//            }
-//           else
-//            {
-//               usx =  (((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdWidth * 12 *2) / 4) * usHPos) / _OSD_H_POS_MAX);
-//            }
-//
-//               usy =  ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdHeight * 18 * 2) * usVPos ) / _OSD_V_POS_MAX;
-//        }
-//
-// #else
-//        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90)||(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//        {
-//            usx = 5 + ((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdHeight * 18) / 4) * usHPos) / _OSD_H_POS_MAX;
-//            usy = 3 + ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdWidth * 12) * usVPos ) / _OSD_V_POS_MAX;
-//        }
-//        else
-//        {
-//            usx = 5 + ((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdWidth * 12) / 4) * usHPos) / _OSD_H_POS_MAX;
-//            usy = 3 + ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdHeight * 18) * usVPos ) / _OSD_V_POS_MAX;
-//        }
-// #endif
-// #else
-//        usx = 5 + ((DWORD)((_PANEL_DH_WIDTH - (WORD)g_ucOsdWidth * 12) / 4) * usHPos) / _OSD_H_POS_MAX;
-//        usy = 3 + ((DWORD)(_PANEL_DV_HEIGHT - (WORD)g_ucOsdHeight * 18) * usVPos ) / _OSD_V_POS_MAX;
-//
-// #endif
-//
-//    }
-//    else
-//    {
-//        usx = usHPos;
-//        usy = usVPos;
-//    }
-//// Lee add for osd mute     20141015 start//
-////    if(usVPos<50)//
-////    {
-//        //if(GET_OSD_BACKLIGHT()>95)
-////        {
-////            ScalerTimerDelayXms(100);
-// //       }
-////    }
-//// Lee add for osd mute     20141015 end//
-//    OsdFuncSetPosition(enumOsdPositionType, usx, usy);
-//}
-
 void OsdDispSetPosition(BYTE ucType, EnumOsdPositionType enumOsdPositionType, WORD usHPos, WORD usVPos)
 {
-	DWORD ulX = 0;
-	DWORD ulY = 0;
-	BYTE ucFonWidth = 12;
-	BYTE ucFonHeight = 18;
-	BYTE ucHorizontalDelayStep = 4;
-	BYTE ucTempWidth = g_ucOsdWidth;
-	BYTE ucTempHeight = g_ucOsdHeight;
-
-	if ((enumOsdPositionType == _OSD_POSITION_GLOBAL_B) ||
-		(enumOsdPositionType == _OSD_POSITION_FONT_B))
-	{
-		ucTempWidth = g_ucOsdWidthB;
-		ucTempHeight = g_ucOsdHeightB;
-	}
-
-	if (ScalerOsdGetHorizontalDelayStep() == _OSD_HORIZONTAL_DELAY_STEP_1_PIXEL)
-	{
-		ucHorizontalDelayStep = 1;
-	}
-
-	if (GET_OSD_DOUBLE_SIZE() == _ON)
-	{
-		ucFonWidth *= 2;
-		ucFonHeight *= 2;
-	}
-
-	if (ucType == _POS_PERCENT)
-	{
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-		if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-			(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-		{
-			ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonHeight) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
-			ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonWidth) * usVPos) / _OSD_V_POS_MAX;
-		}
-		else
-		{
-			ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonWidth) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
-			ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonHeight) * usVPos) / _OSD_V_POS_MAX;
-		}
-#elif (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-
-		if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-		{
-			ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempHeight * ucFonHeight) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
-			ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempWidth * ucFonWidth) * usVPos) / _OSD_V_POS_MAX;
-		}
-		else
-		{
-			ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonWidth) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
-			ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonHeight) * usVPos) / _OSD_V_POS_MAX;
-		}
-
-#else
-		ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonWidth) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MA
-																													  ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonHeight) * usVPos) / _OSD_V_POS_MAX;
-
-#endif
-	}
-	else
-	{
-		// Notice!!! if osd set double size need to chek real position
-		ulX = usHPos;
-		ulY = usVPos;
-	}
-	if (GET_OSD_DOUBLE_SIZE() == _ON)
-	{
-		ulX = ulX / 2;
-		ulY = ulY / 2;
-	}
-
-	OsdFuncSetPosition(enumOsdPositionType, ulX, ulY);
-
-	// DebugMessageYHJ("g_ucOsdWidth", g_ucOsdWidth);
-	// DebugMessageYHJ("g_ucOsdHeight", g_ucOsdHeight);
-	// DebugMessageYHJ("usHPos", usHPos);
-	// DebugMessageYHJ("usVPos", usVPos);
-	// DebugMessageYHJ("ulX", ulX);
-	// DebugMessageYHJ("ulY", ulY);
-}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispMainMenuIconString(BYTE ucIconPos, WORD usIcon, BYTE ucColor)
-{
-	BYTE ucRow = 4;
-	BYTE ucCol = 4;
-	BYTE ucFontPage = _PFONT_PAGE_0;
-	WORD usIconLoad = 0;
-
-	ucRow = ((ucIconPos / 4) ? ROW(14) : ROW(4));
-	ucCol = COL(4) + ((ucIconPos % 4) * 10);
-
-	if (usIcon == _MENU_NONE)
-	{
-		OsdFuncClearOsd(ucRow, (ucCol - 2), WIDTH(10), HEIGHT(5));
-		return;
-	}
-
-	// icon
-	if ((usIcon >= _ICON_A0_PORT) && (usIcon <= _ICON_D6_PORT))
-	{
-		switch (usIcon)
-		{
-		case _ICON_A0_PORT:
-			usIconLoad = _A0_INPUT_TYPE;
-			break;
-		case _ICON_D0_PORT:
-			usIconLoad = _D0_INPUT_TYPE;
-			break;
-		case _ICON_D1_PORT:
-			usIconLoad = _D1_INPUT_TYPE;
-			break;
-		case _ICON_D2_PORT:
-			usIconLoad = _D2_INPUT_TYPE;
-			break;
-		case _ICON_D3_PORT:
-			usIconLoad = _D3_INPUT_TYPE;
-			break;
-		case _ICON_D4_PORT:
-			usIconLoad = _D4_INPUT_TYPE;
-			break;
-		case _ICON_D5_PORT:
-			usIconLoad = _D5_INPUT_TYPE;
-			break;
-		case _ICON_D6_PORT:
-			usIconLoad = _D6_INPUT_TYPE;
-			break;
-		default:
-			break;
-		}
-
-		OsdFontVLCDynamicLoadIcon(ucIconPos, usIconLoad);
-	}
-	else
-	{
-		OsdFontVLCDynamicLoadIcon(ucIconPos, usIcon);
-	}
-	OsdFontPut1BitMainMenuIcon(ucRow, ucCol, (_1DYNAMIC_ICON_START + (ucIconPos * 24)), ucColor, _CP_BG);
-
-	// string
-	ucRow += 4;
-	ucCol -= 2;
-	OsdFuncClearOsd(ucRow, ucCol, WIDTH(10), HEIGHT(1));
-
-	if ((ucIconPos / 4) > 0)
-	{
-		ucFontPage = _PFONT_PAGE_1;
-	}
-
-	if ((usIcon >= _ICON_A0_PORT) && (usIcon <= _ICON_D6_PORT))
-	{
-		OsdPropPutStringCenter(ucRow, ucCol, WIDTH(10), ucFontPage, (usIcon - _ICON_INPUT_END + _STRIN_END), COLOR(ucColor, _CP_BG), _ENGLISH);
-	}
-	else
-	{
-		OsdPropPutStringCenter(ucRow, ucCol, WIDTH(10), ucFontPage, usIcon - 1, COLOR(ucColor, _CP_BG), GET_OSD_LANGUAGE());
-	}
-}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispMainMenuItemSelection(BYTE ucIconPos, BYTE ucState)
-{
-	BYTE ucRow, ucCol;
-	BYTE ucWin = _OSD_WINDOW_8;		  //_OSD_WINDOW_4_1;
-	BYTE ucWinColor = _CP_ORANGE;	  //_CP_BLUE;
-	BYTE ucForegroundColor = _CP_RED; //_CP_ORANGE;
-
-	ucCol = 2; // ((ucIconPos / 4) ? ROW(14) : ROW(4));
-
-	ucRow = 2 + ucIconPos * 4;
-
-	if (ucState == _OSD_UNSELECT)
-	{
-		ucWinColor = _CP_GREEN_119;
-		ucForegroundColor = _CP_BLUE_65;
-	}
-	else if (ucState == _OSD_PRE_SELECT)
-	{
-		ucForegroundColor = _CP_BLUE_120;
-	}
-	else if (ucState == _OSD_SELECT_ADJUST)
-	{
-		ucForegroundColor = _CP_ORANGE_DARK;
-	}
-
-	// OsdFontPut1FuncTableForm(2, 2, _EDGE_LINE,g_ucOsdWidth/5-1 ,3,ucForegroundColor,_CP_BLUE_65,_ARC_WINDOW_0);
-	// OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(21), HEIGHT(10), ucWinColor, ucForegroundColor, _CP_ORANGE);
-
-	OsdFontPut1FuncTableForm(ucRow, ucCol, _EDGE_LINE, _OSD_MAIN_MENU_LV1_LINE_WIDTH, 3, ucForegroundColor, _CP_BLUE_65, _ARC_WINDOW_0);
-	// OsdFontPut1FuncTableForm(ucRow, ucCol, _EDGE_LINE,g_ucOsdWidth/5-1 ,3,ucForegroundColor,_CP_BLUE_65,_ARC_WINDOW_0);
-}
-
-void OsdDispMainMenukeySlideAndOption(BYTE ucOsdPositionState, BYTE OSDState, BYTE SlideNum, BYTE MenuExit, BYTE type)
-{
-
-	BYTE ucrow, uccol, ucFontPoint;
-
-	// WORD g_usAdjustValueNum = 0;
-
-	ucrow = 0;
-	uccol = 0;
-	ucFontPoint = SlideNum + 3;
-	// OSDstate=GET_OSD_STATE();
-
-	if (type == 0)
-	{
-		switch (ucOsdPositionState / 3)
-		{
-		case 0:
-			ucrow = _OSD_NUMBER_1_ROW;
-			break;
-
-		case 1:
-			ucrow = _OSD_NUMBER_2_ROW;
-
-			break;
-		case 2:
-			ucrow = _OSD_NUMBER_3_ROW;
-
-			break;
-		default:
-			break;
-		}
-		switch (ucOsdPositionState % 3)
-		{
-		case 0:
-			uccol = _OSD_NUMBER_2_COL;
-			break;
-
-		case 1:
-			uccol = _OSD_NUMBER_4_COL;
-
-			break;
-		case 2:
-			uccol = _OSD_NUMBER_6_COL;
-
-			break;
-		default:
-			break;
-		}
-	switch (OSDState)
-	{
-	case _MENU_PICTURE_BACKLIGHT_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_BACKLIGHT(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
-		// if (MenuExit == 1)
-		// {
-		// 	OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue / 100, SlideNum, _UNSELECT);
-		// 	OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET - 5), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		// }
-		// else
-		// {
-		// 	OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue / 100, SlideNum, _SELECT);
-		// 	OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET - 5), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		// }
-		break;
-
-	case _MENU_PICTURE_BRIGHTNESS_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BRIGHTNESS(), _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_BRIGHTNESS(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER));
-		break;
-
-	case _MENU_PICTURE_CONTRAST_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_CONTRAST(), _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_CONTRAST(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER));
-		// DebugMessageSystem(" @   GET_OSD_CONTRAST  ",GET_OSD_CONTRAST () );
-		break;
-
-	case _MENU_PICTURE_SHARPNESS_ADJUST:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_SHARPNESS(), _SHARPNESS_MAX, _SHARPNESS_MIN, _OFF, _ON);
-		SET_OSD_SHARPNESS(g_usAdjustValue);
-
-		if (MenuExit == 1)
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHARPNESS(), _SHARPNESS_MAX, _SHARPNESS_MIN, _SHARPNESS_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		}
-		else
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_SELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHARPNESS(), _SHARPNESS_MAX, _SHARPNESS_MIN, _SHARPNESS_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		}
-		return;
-
-	case _MENU_PICTURE_HUE_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_HUE(), _HUE_MAX, _HUE_MIN, _HUE_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_HUE(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _HUE_MAX, _HUE_MIN, _HUE_CENTER));
-		break;
-
-	case _MENU_PICTURE_SATURATION_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SATURATION(), _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_SATURATION(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER));
-		break;
-
-	case _MENU_OSDSETTINGS_OSD_HPOS_ADJUST:
-
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_HPOS(), _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OFF, _ON);
-		SET_OSD_HPOS(g_usAdjustValue);
-		g_usAdjustValue = GET_OSD_HPOS();
-		break;
-
-	case _MENU_OSDSETTINGS_OSD_VPOS_ADJUST:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VPOS(), _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OFF, _ON);
-		SET_OSD_VPOS(g_usAdjustValue);
-		g_usAdjustValue = GET_OSD_VPOS();
-		break;
-	case _MENU_OSDSETTINGS_TRNASPARENCY_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_TRANSPARENCY_STATUS(), _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OSD_TRANSPARENCY_CENTER);
-		// g_usAdjustValue =( (BYTE)OsdDisplayDetOverRange((g_usAdjustValue/10), 10, 0, _OFF)*10);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_TRANSPARENCY_STATUS(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OSD_TRANSPARENCY_CENTER));
-		break;
-
-	case _MENU_OSDSETTINGS_MENU_TIME_ADJUST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_TIME_OUT(), _OSD_TIMEOUT_MAX, _OSD_TIMEOUT_MIN, _OSD_TIMEOUT_CENTER);
-		break;
-
-	case _MENU_COLOR_TEMP_USER_ADJUST_R:
-		// g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_R(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		// g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-		// SET_COLOR_TEMP_TYPE_USER_R(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER));
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_R(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_COLOR_TEMP_TYPE_USER_R(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER));
-		DebugMessageSystem(" @   GET_COLOR_TEMP_TYPE_USER_R  ", GET_COLOR_TEMP_TYPE_USER_R());
-		break;
-
-	case _MENU_COLOR_TEMP_USER_ADJUST_G:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_G(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_COLOR_TEMP_TYPE_USER_G(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER));
-		DebugMessageSystem(" @   GET_COLOR_TEMP_TYPE_USER_G  ", GET_COLOR_TEMP_TYPE_USER_G());
-		break;
-
-	case _MENU_COLOR_TEMP_USER_ADJUST_B:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_B(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_COLOR_TEMP_TYPE_USER_B(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER));
-		//_MENU_COLOR_TEMP_USER_ADJUST_G
-		DebugMessageSystem(" @   GET_COLOR_TEMP_TYPE_USER_B  ", GET_COLOR_TEMP_TYPE_USER_B());
-		break;
-
-	case _MENU_AUDIO_ADJUST:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OFF, _ON);
-		SET_OSD_VOLUME(g_usAdjustValue);
-		break;
-
-#if (_ENABLE_VIDEO_WALL == _ON)
-	case _MENU_OTHERS_VIDEO_WALL_DISP_NUM_ADJ:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VIDEO_WALL_DISP_NUM(), GetVideoWallDisplayNumber(), _VIDEO_WALL_DISP_NUM_MIN, _OFF, _ON);
-		SET_OSD_VIDEO_WALL_DISP_NUM(g_usAdjustValue);
-		if (MenuExit == 1)
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_DISP_NUM(), GetVideoWallDisplayNumber(), _VIDEO_WALL_DISP_NUM_MIN, _VIDEO_WALL_DISP_NUM_CENTER());
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		}
-		else
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_DISP_NUM(), GetVideoWallDisplayNumber(), _VIDEO_WALL_DISP_NUM_MIN, _VIDEO_WALL_DISP_NUM_CENTER());
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		}
-		return;
-
-	case _MENU_OTHERS_VIDEO_WALL_HNUM_ADJ:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VIDEO_WALL_H_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _OFF, _ON);
-		SET_OSD_VIDEO_WALL_H_NUM(g_usAdjustValue);
-		if (MenuExit == 1)
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_H_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _VIDEO_WALL_HV_NUM_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		}
-		else
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_H_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _VIDEO_WALL_HV_NUM_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		}
-		return;
-
-	case _MENU_OTHERS_VIDEO_WALL_VNUM_ADJ:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VIDEO_WALL_V_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _OFF, _ON);
-		SET_OSD_VIDEO_WALL_V_NUM(g_usAdjustValue);
-		if (MenuExit == 1)
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_V_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _VIDEO_WALL_HV_NUM_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		}
-		else
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_V_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _VIDEO_WALL_HV_NUM_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		}
-		return;
-
-	case _MENU_OTHERS_VIDEO_WALL_RS232ID_ADJ:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VIDEO_WALL_RS232ID(), GetVideoWallDisplayNumber(), _VIDEO_WALL_RS232ID_MIN, _OFF, _ON);
-		SET_OSD_VIDEO_WALL_RS232ID(g_usAdjustValue);
-		if (MenuExit == 1)
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_RS232ID(), GetVideoWallDisplayNumber(), _VIDEO_WALL_RS232ID_MIN, _VIDEO_WALL_RS232ID_CENTER());
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		}
-		else
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_RS232ID(), GetVideoWallDisplayNumber(), _VIDEO_WALL_RS232ID_MIN, _VIDEO_WALL_RS232ID_CENTER());
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		}
-		return;
-#endif
-
-#if (_ENABLE_FAN_CONTROL == _ON)
-	case _MENU_OTHERS_FAN_PWM1_ADJ:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM1(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_FAN_PWM1(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER));
-		// if (MenuExit == 1)
-		//{
-		//  OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		//  OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		//}
-		// else
-		//{
-		// OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		// OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		//}
-		break;
-
-	case _MENU_OTHERS_FAN_PWM2_ADJ:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM2(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_FAN_PWM2(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER));
-		// g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_FAN_PWM2(), 100, 0, _OFF, _ON);
-		// SET_OSD_FAN_PWM2(g_usAdjustValue);
-		// if (MenuExit == 1)
-		//{
-		//  OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		//  g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM2(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		//  OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		//}
-		// else
-		//{
-		// OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		// g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM2(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		// OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		//}
-		break;
-
-	case _MENU_OTHERS_FAN_PWM3_ADJ:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM3(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_FAN_PWM3(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER));
-
-		// g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_FAN_PWM3(), 100, 0, _OFF, _ON);
-		// SET_OSD_FAN_PWM3(g_usAdjustValue);
-		// if (MenuExit == 1)
-		//{
-		//  OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		//  g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM3(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		//  OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		//}
-		// else
-		//{
-		// OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		// g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM3(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		// OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		//}
-		break;
-
-	case _MENU_OTHERS_FAN_PWM4_ADJ:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM4(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF, _ON);
-		SET_OSD_FAN_PWM4(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER));
-
-		// g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_FAN_PWM4(), 100, 0, _OFF, _ON);
-		// SET_OSD_FAN_PWM4(g_usAdjustValue);
-		// if (MenuExit == 1)
-		//{
-		//  OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		//  g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM4(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		//  OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		//}
-		// else
-		//{
-		// OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		// g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM4(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		// OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		//}
-		break;
-
-	case _MENU_OTHERS_SHUTDOWN_TEMP_ADJ:
-		g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_SHUTDOWN_TEMP(), 85, 60, _OFF, _ON);
-		SET_OSD_SHUTDOWN_TEMP(g_usAdjustValue);
-		if (MenuExit == 1)
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHUTDOWN_TEMP(), _SHUTDOWN_TEMP_MAX, _SHUTDOWN_TEMP_MIN, _SHUTDOWN_TEMP_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		}
-		else
-		{
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHUTDOWN_TEMP(), _SHUTDOWN_TEMP_MAX, _SHUTDOWN_TEMP_MIN, _SHUTDOWN_TEMP_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		}
-		return;
-#endif
-		// case _MENU_SERVICE_BACKLIGHT_FREQ_ADJ:
-		//  g_usAdjustValue = OsdDisplayDetOverRange_Frequency(GET_OSD_BACKLIGHT_FREQ(), _BACKLIGHT_FREQ_MAX, _BACKLIGHT_FREQ_MIN, _OFF);
-		//  SET_OSD_BACKLIGHT_FREQ(g_usAdjustValue);
-
-		// if (MenuExit == 1)
-		// {
-		//  OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET - 4), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-		//  g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT_FREQ(), _BACKLIGHT_FREQ_MAX, _BACKLIGHT_FREQ_MIN, _BACKLIGHT_FREQ_CENTER);
-		//  OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-
-		// }
-		// else
-		// {
-		//  OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET - 4), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), ucFontPoint, _OSD_NUMBER_SELECT_COLOR);
-		//  g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT_FREQ(), _BACKLIGHT_FREQ_MAX, _BACKLIGHT_FREQ_MIN, _BACKLIGHT_FREQ_CENTER);
-		//  OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		// }
-		// return;
-	default:
-		break;
-	}
-
-	// if(((GET_KEYMESSAGE()) ==_SELECT_KEY_MESSAGE)||(MenuExit==1))
-	if (MenuExit == 1)
-	{
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_UNSELECT_COLOR);
-	}
-	else
-	{
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, SlideNum, _SELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), ucFontPoint, _OSD_NUMBER_SELECT_COLOR);
-	}
-}
-}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispMainMenu(void)
-{
-	BYTE ucTest = 0;
-
-	g_ucFontPointer0 = _OSD_PAGE_0_START;
-	g_ucFontPointer1 = _OSD_PAGE_1_START;
-	g_ucFontPointer2 = _OSD_PAGE_2_START;
-
-	if (ucTest == 1)
-	{
-		//        ScalerDDomainPatternGenAdjustColor(0, 0, 0);
-		//        OsdDispDetOverRange(0, 0, 0, 0);
-
-		//        RTDFactoryPanelUsedTimer();
-		//        OsdFontPut2BitTable(0, 0, tOSD_iREALTEK, 0, 0, 0, 0);
-
-		//        OsdWindowDrawingHighlight(0, 0, 0, 0, 0, 0, 0, 0);
-		//        OsdFuncChangeIconColor1Bit(0, 0, 0, 0, 0);
-
-		ScalerOsdDataPort(0);
-
-		// #if(_DIGITAL_PORT_SUPPORT == _ON)
-		//         ScalerSyncHdcpCheckEnabled(SysSourceGetInputPort());
-		// #endif
-	}
-
-	OsdFuncDisableOsd();
-	// #if(_PANEL_IDX_NAME ==_PANEL_LG_LW550JUL_HMA1)
-	//	SET_OSD_DOUBLE_SIZE(_OFF);
-	// #else
-	//	SET_OSD_DOUBLE_SIZE(_ON);
-	// #endif
-	if ((_PANEL_DH_WIDTH <= 1920) && (_PANEL_DV_HEIGHT <= 1080))
-	{
-		SET_OSD_DOUBLE_SIZE(_OFF);
-	}
-	else
-	{
-		SET_OSD_DOUBLE_SIZE(_ON);
-	}
-	OsdFuncApplyMap(WIDTH(_OSD_MAIN_MENU_WIDTH), HEIGHT(_OSD_MAIN_MENU_HEIGHT), COLOR(_CP_BLUE_120, _CP_BG));
-
-// 20140304 Abel
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_MAIN_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
-#endif
-
-	OsdFuncBlending(_OSD_TRANSPARENCY_ALL);
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
-	// OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-	OsdFontVLCLoadFont(_FOUR_CORNER);
-	OsdFontVLCLoadFont(_MAIN_MENU_2BIT_ICON);
-
-	// Background window
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-		(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(g_ucOsdWidth / 2), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_LIGHTBLUE);
-	}
-	else
-#endif
-	{
-		// OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT( g_ucOsdHeight/2), _CP_BLUE_120);
-		// OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW( g_ucOsdHeight/2+1), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight/2)), _CP_BLUE_120 );//_CP_LIGHTBLUE
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(1), COL(1), WIDTH(g_ucOsdWidth - 2), HEIGHT((g_ucOsdHeight - 2)), _CP_BLUE_65);
-		OsdFontPut1FuncTableForm(0, 0, _LEFT_CORNER_0, g_ucOsdWidth - 2, g_ucOsdHeight - 2, _CP_BLUE_65, _CP_BG, _QUADRANGLE_WINDOW_0);
-		OsdFontPut1FuncHLine(1, 0, _WHITE_EDGE_1, g_ucOsdWidth, _CP_WHITE, _CP_BLUE_65);
-		OsdFontPut1FuncHLine(24, 0, _WHITE_EDGE_1, g_ucOsdWidth, _CP_WHITE, _CP_BLUE_65);
-		OsdFontPut1FuncTableForm(2, 20, _EDGE_LINE, 13, 20, _CP_WHITE, _CP_BLUE_65, _GRID_WINDOW_0);
-		OsdFontPut1FuncTableForm(2, 37, _EDGE_LINE, 13, 20, _CP_WHITE, _CP_BLUE_65, _ARC_WINDOW_0);
-		// OsdFontPut1FuncTableForm(2, 54, _EDGE_LINE,16 ,20,_CP_WHITE,_CP_BLUE_65,_ARC_WINDOW_0);
-	}
-
-	//	OsdFontPut2BitTable(ROW(8), COL(8), tiOSD_MAIN_COLORTEMP_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_120) ,COLOR1(_CP_BLACK) ,COLOR2(_CP_YELLOW) ,COLOR3(_CP_WHITE));
-
-	OsdFontPut2BitTable(ROW(_OSD_NUMBER_5_ROW), COL(_OSD_NUMBER_7_COL), tiOSD_MAIN_BIR_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_BLACK), COLOR2(_CP_YELLOW), COLOR3(_CP_WHITE));
-	OsdFontPut1FuncHLine(6, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(4), COL(7), _PFONT_PAGE_0, _STRING_PICTURE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-	OsdFontPut2BitTable(ROW(_OSD_NUMBER_6_ROW), COL(_OSD_NUMBER_7_COL), tiOSD_MAIN_COLORTEMP_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_GREEN_66), COLOR2(_CP_GREEN_119), COLOR3(_CP_RED));
-	OsdFontPut1FuncHLine(10, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(8), COL(7), _PFONT_PAGE_0, _STRING_COLOR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-	OsdFontPut2BitTable(ROW(11), COL(2), tiOSD_MAIN_OSDSETTING_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_WHITE), COLOR2(_CP_BLUE_65), COLOR3(_CP_LIGHTBLUE));
-	OsdFontPut1FuncHLine(14, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(12), COL(7), _PFONT_PAGE_0, _STRING_ADVANCE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-	OsdFontPut2BitTable(ROW(15), COL(2), tiOSD_MAIN_MISC_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_WHITE), COLOR2(_CP_GREEN_66), COLOR3(_CP_BLUE_65));
-	OsdFontPut1FuncHLine(18, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(16), COL(7), _PFONT_PAGE_0, _STRING_SETUP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-	OsdFontPut2BitTable(ROW(19), COL(2), tiOSD_MAIN_RESET_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_WHITE), COLOR2(_CP_BLACK), COLOR3(_CP_GREEN_66));
-	OsdFontPut1FuncHLine(22, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(20), COL(7), _PFONT_PAGE_0, _STRING_OTHER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-	// OsdPropPutString(ROW(_OSD_NUMBER_13_ROW + 3), COL(_OSD_NUMBER_1_COL + 20), _PFONT_PAGE_0, _STRING_VERSION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL+36), _PFONT_PAGE_0, _STRING_NOW_RESOLUTION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	// OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL+36), _PFONT_PAGE_0, _STRING_VERSION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-
-	// switch(SysSourceGetInputPort())
-	//	{
-	//
-	// #if(_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
-	//				case _A0_INPUT_PORT:
-	//					break;
-	// #endif
-	//
-	// #if(_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
-	//				case _D0_INPUT_PORT:
-	//					OsdPropPutString(ROW(_OSD_NUMBER_4_ROW-2), COL(_OSD_NUMBER_1_COL+38), _PFONT_PAGE_0, _STRING_SETUP_DP, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	//					break;
-	// #endif
-	//
-	// #if(_D1_INPUT_PORT_TYPE != _D1_NO_PORT)
-	//				case _D1_INPUT_PORT:
-	//					OsdPropPutString(ROW(_OSD_NUMBER_4_ROW-2), COL(_OSD_NUMBER_1_COL+38), _PFONT_PAGE_0, _STRING_SETUP_DP, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	//					break;
-	//			// return _STRING_D1_PORT;
-	// #endif
-	//
-	// #if(_D2_INPUT_PORT_TYPE != _D2_NO_PORT)
-	//				case _D2_INPUT_PORT:
-	//					OsdPropPutString(ROW(_OSD_NUMBER_4_ROW-2), COL(_OSD_NUMBER_1_COL+38), _PFONT_PAGE_0, _STRING_SETUP_HDMI, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	//					break;
-	//				  //  return _STRING_D2_PORT;
-	// #endif
-	//
-	// #if(_D3_INPUT_PORT_TYPE != _D3_NO_PORT)
-	//				case _D3_INPUT_PORT:
-	//					OsdPropPutString(ROW(_OSD_NUMBER_4_ROW-2), COL(_OSD_NUMBER_1_COL+38), _PFONT_PAGE_0, _STRING_SETUP_HDMI, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	//					break;
-	//			//	return _STRING_D3_PORT;
-	// #endif
-	// #if(_D4_INPUT_PORT_TYPE != _D4_NO_PORT)
-	//				case _D4_INPUT_PORT:
-	//					 break;
-	//			//	return _STRING_D4_PORT;
-	// #endif
-	//
-	// #if(_D5_INPUT_PORT_TYPE != _D5_NO_PORT)
-	//				case _D5_INPUT_PORT:
-	//					break;
-	// #endif
-	//
-	// #if(_D6_INPUT_PORT_TYPE != _D6_NO_PORT)
-	//				case _D6_INPUT_PORT:
-	//					break;
-	//
-	// #endif
-	//				default:
-	//				break ;
-	//				  // return _STRING_A0_PORT;
-	//	}
-
-	COsdShowPageText(_MENU_PICTURE);
-
-	OsdDispMainMenuItemSelection(0, _OSD_SELECT);
-
-	ScalerOsdDoubleFunction(GET_OSD_DOUBLE_SIZE(), GET_OSD_DOUBLE_SIZE());
-
-	if (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_180)
-	{
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, (_OSD_H_POS_MAX - GET_OSD_HPOS()), (_OSD_V_POS_MAX - GET_OSD_VPOS()));
-	}
-	else
-	{
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
-	}
-
-	// Osd Enable
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	OsdFuncEnableOsd();
-}
-
-#if 0
-void OsdDispLeftMenu(void)
-{
-    BYTE ucTest = 0;
-
-    g_ucFontPointer0 = _OSD_PAGE_0_START;
-    g_ucFontPointer1 = _OSD_PAGE_1_START;
-    g_ucFontPointer2 = _OSD_PAGE_2_START;
-
-    if(ucTest == 1)
+    DWORD ulX  = 0;		//  WORD -> DWORD
+    DWORD ulY = 0;
+    BYTE ucFonWidth = 12;
+    BYTE ucFonHeight = 18;
+    BYTE ucHorizontalDelayStep = 4;
+    BYTE ucTempWidth = g_ucOsdWidth;
+    BYTE ucTempHeight = g_ucOsdHeight;
+
+    if((enumOsdPositionType == _OSD_POSITION_GLOBAL_B) ||
+       (enumOsdPositionType == _OSD_POSITION_FONT_B))
     {
-     //   ScalerDDomainPatternGenAdjustColor(0, 0, 0);
-
-     //   OsdDispDetOverRange(0, 0, 0, 0);
-
-      //  OSTARFactoryPanelUsedTimer();
-      //  OsdFontPut2BitTable(0, 0, tOSD_iREALTEK, 0, 0, 0, 0);
-        
-//        OsdWindowDrawingHighlight(0, 0, 0, 0, 0, 0, 0, 0);
-//        OsdFuncChangeIconColor1Bit(0, 0, 0 , 0, 0);
-
-       ScalerOsdDataPort(0);
-
-//#if(_DIGITAL_PORT_SUPPORT == _ON)
-       // ScalerSyncHdcpCheckEnabled(SysSourceGetInputPort());
-//#endif
-
+        ucTempWidth = g_ucOsdWidthB;
+        ucTempHeight = g_ucOsdHeightB;
     }
 
-    OsdFuncDisableOsd();
+    if(ScalerOsdGetHorizontalDelayStep() == _OSD_HORIZONTAL_DELAY_STEP_1_PIXEL)
+    {
+        ucHorizontalDelayStep = 1;
+    }
 
-    OsdFuncApplyMap(WIDTH(_OSD_LEFT_KEY_WIDTH), HEIGHT(_OSD_LEFT_KEY_HEIGHT), COLOR(_CP_BLUE_120, _CP_BG));
+    if(GET_OSD_DOUBLE_SIZE() == _ON)
+    {
+        ucFonWidth *= 2;
+        ucFonHeight *= 2;
+    }
 
-//20140304 Abel
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_LEFT_KEY_HEIGHT), _DISABLE, 0, _ENABLE);
+    if(ucType == _POS_PERCENT)
+    {
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+           (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+        {
+            ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonHeight) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
+            ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonWidth) * usVPos) / _OSD_V_POS_MAX;
+        }
+        else
+        {
+            ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonWidth) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
+            ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonHeight) * usVPos) / _OSD_V_POS_MAX;
+        }
+#elif(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+           (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+        {
+            ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempHeight * ucFonHeight) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
+            ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempWidth * ucFonWidth) * usVPos) / _OSD_V_POS_MAX;
+        }
+        else
+        {
+            ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonWidth) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
+            ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonHeight) * usVPos) / _OSD_V_POS_MAX;
+        }
+#else
+        ulX = ((((DWORD)(_PANEL_DH_WIDTH) - (DWORD)ucTempWidth * ucFonWidth) / ucHorizontalDelayStep) * usHPos) / _OSD_H_POS_MAX;
+        ulY = (((DWORD)_PANEL_DV_HEIGHT - (DWORD)ucTempHeight * ucFonHeight) * usVPos) / _OSD_V_POS_MAX;
+#endif
+    }
+    else
+    {
+        // Notice!!! if osd set double size need to chek real position
+        ulX = usHPos;
+        ulY = usVPos;
+    }
+	if(GET_OSD_DOUBLE_SIZE() == _ON)
+    {
+        ulX = ulX / 2;
+        ulY = ulY / 2;
+    }
+    OsdFuncSetPosition(enumOsdPositionType, ulX, ulY);
+}
+
+/*
+BYTE FactoryKeyBuf[11]={0,0,0,0,0,0,0,0,0,0,0};	
+BYTE Fcnt=0xff;
+bit fgFctoryTimeCheck=0; 
+bit fgFactoryOK=0;		
+
+//MENU ->DOWN ->DOWN->DOWN-> UP->UP->UP-> DOWN->UP->DOWN->SELECT(EXIT)
+
+//code BYTE tFACTRY_CODE[]={_MENU_KEY_MESSAGE,_FUNC_KEY_MESSAGE,_UP_KEY_MESSAGE,_SELECT_KEY_MESSAGE}; 
+code BYTE tFACTRY_CODE[]={	_MENU_KEY_MESSAGE,
+							_DOWN_KEY_MESSAGE,_DOWN_KEY_MESSAGE,_DOWN_KEY_MESSAGE,
+							_UP_KEY_MESSAGE,_UP_KEY_MESSAGE,_UP_KEY_MESSAGE,
+							_DOWN_KEY_MESSAGE,_UP_KEY_MESSAGE,_DOWN_KEY_MESSAGE,
+							_SELECT_KEY_MESSAGE
+						};
+
+
+void OsdFactoryEnterKeyProcess(BYTE ucKeyMessage)	
+{
+	int i;
+	
+	if(ucKeyMessage==_MENU_KEY_MESSAGE) 
+		Fcnt = 0;
+
+	if(g_usTimerFactoryKeyTimeOut == 0) 	// clear Buffer
+	{
+		Fcnt = 0;
+
+		for(i=0; i<11; i++)
+			FactoryKeyBuf[i] = 0;
+	}
+
+	switch(Fcnt)
+	{
+		case 0:
+			FactoryKeyBuf[0] = ucKeyMessage;
+			Fcnt = 1;
+			//printf("Input Key#1\n");
+			
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 1:
+			//if(FactoryKeyBuf[0] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[1] = ucKeyMessage;
+				Fcnt = 2;
+				//printf("Input Key#2\n");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 2:
+			//if(FactoryKeyBuf[1] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[2] = ucKeyMessage;
+				Fcnt = 3;
+				//printf("Input Key#3\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 3:
+			//if(FactoryKeyBuf[2] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[3] = ucKeyMessage;
+				Fcnt = 4;
+				//printf("Input Key#3\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 4:
+			//if(FactoryKeyBuf[3] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[4] = ucKeyMessage;
+				Fcnt = 5;
+				//printf("Input Key#4\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 5:
+			//if(FactoryKeyBuf[4] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[5] = ucKeyMessage;
+				Fcnt = 6;
+				//printf("Input Key#5\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 6:
+			//if(FactoryKeyBuf[5] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[6] = ucKeyMessage;
+				Fcnt = 7;
+				//printf("Input Key#6\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 7:
+			//if(FactoryKeyBuf[6] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[7] = ucKeyMessage;
+				Fcnt = 8;
+				//printf("Input Key#7\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 8:
+			//if(FactoryKeyBuf[7] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[8] = ucKeyMessage;
+				Fcnt = 9;
+				//printf("Input Key#8\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 9:
+			//if(FactoryKeyBuf[8] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[9] = ucKeyMessage;
+				Fcnt = 10;
+				//printf("Input Key#9\n\r");
+			}
+			g_usTimerFactoryKeyTimeOut = 700; // 700ms
+			break;
+		case 10:
+			//if(FactoryKeyBuf[9] != ucKeyMessage)	// Repeat Key Blocking
+			{
+				FactoryKeyBuf[10] = ucKeyMessage;
+				Fcnt=0xff;
+				//printf("Input Key#10\n\r");
+			
+				for(i=0; i<11; i++)
+				{
+					if(FactoryKeyBuf[i] ==  tFACTRY_CODE[i])
+						fgFactoryOK=1;
+					else
+					{
+						fgFactoryOK=0;
+						break;	
+					}
+				}
+			}
+
+			if(fgFactoryOK)
+			{
+				printf("Factory Key OK!!\n\r");
+				//RTDFactoryMainMenu();
+				SET_OSD_SERVICE(_ON);
+				OsdDispDisableOsd();
+				SET_OSD_STATE(_MENU_SERVICE1);
+				OsdDispMainMenu();
+				fgFactoryOK = 0;
+			}
+			
+			break;
+	}
+}
+*/
+
+extern void SicpIrTransferSend(BYTE ucId, BYTE uc08, BYTE uc09, BYTE uc10 ); 	
+
+
+void OsdDispHotKeyProcess(BYTE ucKeyMessage)	//  Hot Key	
+{
+	switch(ucKeyMessage)
+	{
+		case _VOL_P_KEY_MESSAGE: // _VOL_P_IR_MESSAGE:
+		case _VOL_M_KEY_MESSAGE: // _VOL_M_IR_MESSAGE:
+		
+			if((SysModeGetModeState() == _MODE_STATUS_ACTIVE) /*&& (GET_OSD_STATE() == _MENU_NONE)*/)
+			{
+				if(GET_OSD_STATE() == _MENU_HOTKEY_VOLUME)
+				{
+					if(GET_KEYMESSAGE() == _VOL_P_KEY_MESSAGE)		// Change Key Message
+						SET_KEYMESSAGE(_RIGHT_KEY_MESSAGE);
+					else if(GET_KEYMESSAGE() == _VOL_M_KEY_MESSAGE)
+						SET_KEYMESSAGE(_LEFT_KEY_MESSAGE);
+				}
+				else
+				{
+					OsdDispHotKeyOsdMessage(_MENU_HOTKEY_VOLUME);
+				}
+				
+				if(GET_OSD_VOLUME_MUTE() == _ON)	// Mute Off
+				{
+					SET_OSD_VOLUME_MUTE(_OFF);
+					UserAdjustAudioMuteSwitch();
+					SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+				}
+				
+				ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_DISABLE);
+	        }
+			break;
+			
+		case _LEFT_KEY_MESSAGE:
+		case _RIGHT_KEY_MESSAGE:
+
+#if(_ENABLE_LEFT_RIGHT_KEY_VOLUME == _ON)	
+			if(GET_OSD_STATE()!=_MENU_HOTKEY_VOLUME)
+			{
+				if((SysModeGetModeState() == _MODE_STATUS_ACTIVE) && (GET_OSD_STATE() == _MENU_NONE))
+				{
+					OsdDispHotKeyOsdMessage(_MENU_HOTKEY_VOLUME);
+
+					if(GET_OSD_VOLUME_MUTE() == _ON)	// Mute Off
+					{
+						SET_OSD_VOLUME_MUTE(_OFF);
+						UserAdjustAudioMuteSwitch();
+						SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+					}
+				}
+				ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_DISABLE);
+			}
+			
+#else
+			if(GET_OSD_STATE() == _MENU_HOTKEY_VOLUME)	// Hold Key _LEFT_KEY_MESSAGE / _RIGHT_KEY_MESSAGE
+			{
+				SET_KEYMESSAGE(_NONE_KEY_MESSAGE);
+			}
+#endif
+			break;
+
+		
+		case _MUTE_KEY_MESSAGE: // (Mute hot key )_F1_KEY_MESSAGE => _F3_KEY_MESSAGE
+	
+			if((SysModeGetModeState() == _MODE_STATUS_ACTIVE) /*&& (GET_OSD_STATE() == _MENU_NONE)*/)
+			{
+				/*
+				if(GET_OSD_STATE()==_MENU_HOTKEY_MUTE)
+				{
+					if(GET_KEYMESSAGE() == _F3_KEY_MESSAGE)		// Change Key Message	
+						SET_KEYMESSAGE(_RIGHT_KEY_MESSAGE);
+				}
+				else
+				*/
+				{
+					if(GET_OSD_VOLUME_MUTE() == _ON)	// Toggle Mute
+						SET_OSD_VOLUME_MUTE(_OFF);
+					else
+						SET_OSD_VOLUME_MUTE(_ON);
+					
+					UserAdjustAudioMuteSwitch();
+					SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+					
+					OsdDispHotKeyOsdMessage(_MENU_HOTKEY_MUTE);
+				}
+				ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_DISABLE);	 
+			}
+			break;
+
+		/*
+		case _SETID_KEY_MESSAGE: // _F1_IR_MESSAGE:	//  Not Used
+		
+			if((SysModeGetModeState() == _MODE_STATUS_ACTIVE) )
+			{
+					//OsdDispHotKeyOsdMessage(_MENU_HOTKEY_DISPLAY_MODE);
+					//OsdDispHotKeyOsdMessage(_MENU_HOTKEY_PIP_SWAP);
+					//OsdDispHotKeyOsdMessage(_MENU_HOTKEY_BLK_ONOFF);
+					
+					if(GET_OSD_STATE()==_MENU_IR_BLASTER)
+					{
+						if(GET_OSD_STATE()==_MENU_IR_BLASTER)
+							SicpIrTransferSend(0, 'E', 'X', 'I' );	
+							
+						OsdDispDisableOsd();
+						ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_DISABLE);
+					}
+					else
+					{
+						OsdDispHotKeyOsdMessage(_MENU_IR_BLASTER);
+						//SetFocus(_MENU_SECTION_DIALOG, ROW_OFFSET+_ITEM_3);
+						ScalerTimerReactiveTimerEvent(SEC(5), _USER_TIMER_EVENT_OSD_DISABLE);	
+					}
+			}
+			break;
+		*/
+	}
+}
+
+//--------------------------------------------------
+// Description  :
+// Input Value  :
+// Output Value :
+//--------------------------------------------------
+void OsdDispClearSelectColor(BYTE ucUpDown)
+{
+    if(ucUpDown == _UP)
+    {
+        ScalerOsdWindowDisable(_OSD_WINDOW_4_1);
+    }
+    else
+    {
+        ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
+        // ScalerOsdWindowDisable(_OSD_WINDOW_4_3);
+    }
+}
+
+
+
+//--------------------------------------------------
+// Description  :
+// Input Value  :
+// Output Value :
+//--------------------------------------------------
+
+void OsdSection3ItemPageDraw(BYTE ucMainItem)
+{
+    int i;
+
+    ScalerTimerWaitForEvent(_EVENT_DVS);
+    for (i = 0; i < _OSD_MAIN_MENU_HEIGHT; i++)
+        OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_2_WIN_X), _MENU_SECTION_2_WIDTH, 1); // Clear Item
+
+    switch (ucMainItem)
+    {
+    case _MENU_INPUT_SOURCE1_ADJ:
+        OsdSubMenuItemText(_MENU_INPUT, _MENU_INPUT_SOURCE1_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_INPUT_SOURCE2_ADJ:
+        OsdSubMenuItemText(_MENU_INPUT, _MENU_INPUT_SOURCE2_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_INPUT_SOURCE3_ADJ:
+        OsdSubMenuItemText(_MENU_INPUT, _MENU_INPUT_SOURCE3_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_INPUT_SOURCE4_ADJ:
+        OsdSubMenuItemText(_MENU_INPUT, _MENU_INPUT_SOURCE4_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_PICTURE_GAMMA_ADJ:
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_GAMMA_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#if (_ENABLE_MENU_REGION == _ON)
+    case _MENU_PICTURE_REGION_ADJ:
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_REGION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#endif
+    case _MENU_COLOR_EFFECT_ADJ:
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_EFFECT_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+
+    case _MENU_COLOR_GAMMA_ADJ:
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_GAMMA_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+
+    case _MENU_COLOR_TEMPERATURE_ADJ:
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_TEMPERATURE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_COLOR_SURGICAL_ADJ:
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_SURGICAL_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#if (_ENABLE_MENU_REGION == _ON)
+    case _MENU_COLOR_REGION_ADJ:
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_REGION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#endif
+    case _MENU_SCREEN_OVERSCAN_ADJ:
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_OVERSCAN_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SCREEN_ASPECT_ADJ:
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_ASPECT_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SCREEN_MONO_COLOR_ADJ:
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_MONO_COLOR_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SCREEN_ROTATE_ADJ:
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_ROTATE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    //case _MENU_SCREEN_DISPLAY_MODE_ADJ:
+    //    OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_DISPLAY_MODE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+    //    break;
+    //case _MENU_SCREEN_PIP_POSITION_ADJ:
+    //    OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_PIP_POSITION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+    //    break;
+    //case _MENU_SCREEN_PIP_SIZE_ADJ:
+    //    break;
+//    case _MENU_OSD_ROTATE_ADJ:
+//        OsdSubMenuItemText(_MENU_SETUP, _MENU_OSD_ROTATE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+//        break;
+
+//    case _MENU_OSD_LANGUAGE_ADJ:
+//        OsdSubMenuItemText(_MENU_SETUP, _MENU_OSD_LANGUAGE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+//        break;
+
+    case _MENU_AUDIO_MUTE_ADJ:
+        OsdSubMenuItemText(_MENU_AUDIO, _MENU_AUDIO_MUTE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+
+    case _MENU_AUDIO_SOURCE_ADJ:
+        OsdSubMenuItemText(_MENU_AUDIO, _MENU_AUDIO_SOURCE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+
+//    case _MENU_DP_OPTION_VERSION_ADJ:
+//        OsdSubMenuItemText(_MENU_SETUP, _MENU_DP_OPTION_VERSION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+//        break;
+
+//    case _MENU_DP_OPTION_MST_ADJ:
+//        OsdSubMenuItemText(_MENU_SETUP, _MENU_DP_OPTION_MST_ADJ, COLOR(_CP_WHITE, _CP_BG));
+//        break;
+
+//    case _MENU_DP_OPTION_RESOLUTION_ADJ:
+//        OsdSubMenuItemText(_MENU_SETUP, _MENU_DP_OPTION_RESOLUTION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+//        break;
+
+//    case _MENU_DP_OPTION_CLONE_ADJ:
+//        OsdSubMenuItemText(_MENU_SETUP, _MENU_DP_OPTION_CLONE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+//        break;
+    case _MENU_SETUP_POWERSAVE_ADJ:
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_POWERSAVE_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SETUP_KEYLOCK_ADJ:
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_KEYLOCK_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SETUP_BACKLIGHT_CONTROL_ADJ:
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_BACKLIGHT_CONTROL_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SETUP_RESET_ADJ:
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_RESET_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+    case _MENU_SETUP_STABILIZER_CONTROL_ADJ:
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_STABILIZER_CONTROL_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#endif
+#if (_ENABLE_MENU_VGA == _ON)
+    case _MENU_VGA_AUTO_ADJ:
+        OsdSubMenuItemText(_MENU_VGA, _MENU_VGA_AUTO_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#endif
+    case _MENU_SERVICE_D0NAME_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D0NAME_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_D1NAME_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D1NAME_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_D2NAME_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D2NAME_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_D3NAME_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D3NAME_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_BACKLIGHT_INVERT_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_INVERT_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_LOGO_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_LOGO_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_DP_OPTION_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_DP_OPTION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_LIGHTSENSOR_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_LIGHTSENSOR_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_FAN_OPTION_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_FAN_OPTION_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_USER_BACKUP_CONFIG_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_USER_BACKUP_CONFIG_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;    
+    case _MENU_SERVICE_RESTORE_FACTORY_DEFAULT_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_RESTORE_FACTORY_DEFAULT_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_USERASSIGN_UP_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_UP_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_USERASSIGN_DOWN_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_DOWN_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_USERASSIGN_LEFT_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_LEFT_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_USERASSIGN_RIGHT_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_RIGHT_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_OLED_OFFRS_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_OLED, _MENU_SERVICE_OLED_OFFRS_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_OLED_JB_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_OLED, _MENU_SERVICE_OLED_JB_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_OLED_SEQUENCE_TIME_ADJ:
+        OsdSubMenuItemText(_MENU_SERVICE_OLED, _MENU_SERVICE_OLED_SEQUENCE_TIME_ADJ, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    default:
+        break;
+    }
+}
+
+
+
+void OsdSourcePageDraw(void)
+{
+    int i;
+    for (i = 4; i < _MENU_SOURCE_HEIGHT; i++)
+        OsdFuncClearOsd(ROW(i), COL(0), _MENU_SOURCE_WIDTH, 1); // Clear Item
+
+#if (_ENABLE_MENU_VGA == _ON)
+	OsdPropPutpString(ROW(_ITEM_4), COL(4), _PFONT_PAGE_3, tsOsdSourceAuto, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_5), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_6), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_7), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_8), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_9), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+#else
+	OsdPropPutpString(ROW(_ITEM_4), COL(4), _PFONT_PAGE_3, tsOsdSourceAuto, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    // OsdPropPutpString(ROW(_ITEM_4), COL(4), _PFONT_PAGE_3, tsOsdSourceA0VGA, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_5), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_6), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_7), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdPropPutpString(ROW(_ITEM_8), COL(4), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    
+#endif
+}
+
+
+
+
+void OsdMainMenuPageDraw(void)	
+{
+	if (GET_OSD_SERVICE())
+    {
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+#endif
+        OsdPropPutpString(ROW(_ITEM_1), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdService1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_2), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdService2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_3), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdService3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_4), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdService_UserAssign, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_5), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdOLED, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    }
+    else
+    {
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(7 + 2), _CP_DARKGRAY);
 #endif
 
-    OsdFuncBlending(_OSD_TRANSPARENCY_ALL);
+        OsdPropPutpString(ROW(_ITEM_1), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdInfo, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_2), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdInput, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_3), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdPicture, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_4), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdColor, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_5), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdScreen, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_6), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdAudio, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        OsdPropPutpString(ROW(_ITEM_7), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdSetup, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+
+
+        OsdMainMenuItemDraw();
+    }
+	
+
+}
+void OsdMainMenuItemDraw(void)
+{
+
+    switch (GET_OSD_INPUT_PORT_OSD_ITEM())
+    {
+        case _OSD_INPUT_D0:
+            OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+            break;
+        case _OSD_INPUT_D1:
+            OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+            break;
+        case _OSD_INPUT_D2:
+            OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+            break;
+        case _OSD_INPUT_D3:
+            OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+            break;
+        case _OSD_INPUT_AUTO:
+            OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdSourceAuto, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+            break;
+    }
+
+    OsdPropPutpStringRight(ROW(_ITEM_1), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, OsdDisplayGetResolutionStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+
+    OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdClearText, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    #if(_MEDICAL_SURGICAL == _ON)
+    OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdClearText, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    if (GET_OSD_PCM_STATUS() == _PCM_OSD_BT709)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdBT709, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    else if (GET_OSD_PCM_STATUS() == _PCM_OSD_DCI_P3)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdDCI_P3, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    else if (GET_OSD_PCM_STATUS() == _PCM_OSD_BT2020)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdBT2020, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    else if (GET_OSD_PCM_STATUS() == _PCM_OSD_NATIVE)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdGammaNative, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+
+    #else
+    OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdClearText, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_D56)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempD56, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    else if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_D65)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempD65, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    else if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_D93)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempD93, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    else if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_USER)
+        OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempUser, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    #endif
+    // OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdClearText, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    switch (GET_OSD_ASPECT_RATIO_TYPE())
+    {
+    case _OSD_ASPECT_RATIO_FULL:
+        OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdFill, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        break;
+    case _OSD_ASPECT_RATIO_16_BY_9:
+        OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsd16_9, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        break;
+    case _OSD_ASPECT_RATIO_4_BY_3:
+        OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsd4_3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        break;
+    case _OSD_ASPECT_RATIO_5_BY_4:
+        OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsd5_4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        break;
+    case _OSD_ASPECT_RATIO_ORIGIN:
+        OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdOrigin, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        break;
+    case _OSD_ASPECT_RATIO_USER:
+        OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdSourceAuto, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+        break;
+    }
+  
+    // OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_WIDTH), WIDTH(8), _PFONT_PAGE_0, tsOsdGamma18, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    OsdPropShowNumberRight(ROW(_ITEM_6), COL(_MENU_SECTION_0_SUB_NUM_X), GET_OSD_VOLUME(), (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_0, COLOR(_CP_WHITE, _CP_BG));
+}
+
+
+void OsdSubMenuPageDraw(BYTE ucMainItem)
+{
+    ScalerTimerWaitForEvent(_EVENT_DVS);
+
+#if (_DYNAMIC_OSD_WINDOW != _ON)
+    // OsdWindowDrawingByFont(_MENU_SECTION1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(_OSD_MAIN_MENU_HEIGHT), _CP_DARKGRAY);
+#endif
+    switch (ucMainItem)
+    {
+
+	case _MENU_INFO:
+
+        /*
+        #if(_DYNAMIC_OSD_WINDOW ==_ON)
+                    OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET+2+2), _CP_DARKGRAY);
+        #endif
+                    OsdPropPutpString(ROW(1), COL(_MENU_SECTION_1_STR_X+5+1+2), _PFONT_PAGE_ITEM_10, tsOsdInfo, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+                    OsdSubMenuItemText(_MENU_INFO,_MENU_INFO_FW_VERSION,COLOR(_CP_WHITE, _CP_BG));
+                    OsdSubMenuItemText(_MENU_INFO,_MENU_INFO_SERIAL_NUM,COLOR(_CP_WHITE, _CP_BG));
+        */
+        OsdDispShowInformation();
+        break;
+	
+    case _MENU_INPUT:
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 1 + 2), _CP_DARKGRAY);
+#endif
+            OsdSubMenuItemText(_MENU_INPUT, _MENU_INPUT_SOURCE1, COLOR(_CP_WHITE, _CP_BG));
+            break;
+
+        break;
+    case _MENU_PICTURE:
+        // OsdPropPutpString(ROW(1), COL(_MENU_SECTION_1_STR_X+5+1), _PFONT_PAGE_ITEM_10, tsOsdPicture, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+#if (_ENABLE_MENU_REGION == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 7 + 2), _CP_DARKGRAY);
+#else
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 6 + 2), _CP_DARKGRAY);
+#endif
+#endif
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_BLACKLEVEL, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_CONTRAST, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_CHROMA, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_SHARPNESS, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_GAMMA, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_RESETTODEFAULT, COLOR(_CP_WHITE, _CP_BG));
+#if (_ENABLE_MENU_REGION == _ON)
+        OsdSubMenuItemText(_MENU_PICTURE, _MENU_PICTURE_REGION, COLOR(_CP_WHITE, _CP_BG));
+#endif
+        break;
+    case _MENU_COLOR:
+        // OsdPropPutpString(ROW(1), COL(_MENU_SECTION_1_STR_X + 5 + 1), _PFONT_PAGE_1, tsOsdColor, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+#if (_ENABLE_MENU_REGION == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 8 + 2), _CP_DARKGRAY);
+#else
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 7 + 2), _CP_DARKGRAY);
+#endif
+#endif
+#if(_MEDICAL_SURGICAL == _ON)
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_SURGICAL, COLOR(_CP_WHITE, _CP_BG));
+#else
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_TEMPERATURE, COLOR(_CP_WHITE, _CP_BG));
+#endif
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_BIAS_R, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_BIAS_G, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_BIAS_B, COLOR(_CP_WHITE, _CP_BG));
+
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_GAIN_R, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_GAIN_G, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_GAIN_B, COLOR(_CP_WHITE, _CP_BG));
+#if (_ENABLE_MENU_REGION == _ON)
+        OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_REGION, COLOR(_CP_WHITE, _CP_BG));
+#endif
+        /*
+                if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_USER) //  Change Region -> Redraw User Color Item
+                {
+        #if (_DYNAMIC_OSD_WINDOW == _ON)
+                    OsdWindowDrawingByFont(_OSD_WINDOW_5, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 8 + 2), _CP_DARKGRAY);
+        #endif
+                    OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_TEMP_USER_R, COLOR(_CP_WHITE, _CP_BG));
+                    OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_TEMP_USER_G, COLOR(_CP_WHITE, _CP_BG));
+                    OsdSubMenuItemText(_MENU_COLOR, _MENU_COLOR_TEMP_USER_B, COLOR(_CP_WHITE, _CP_BG));
+                }
+                else
+                {
+        #if (_DYNAMIC_OSD_WINDOW == _ON)
+        #if (_ENABLE_MENU_REGION == _ON)
+                    OsdWindowDrawingByFont(_OSD_WINDOW_5, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 4 + 2), _CP_DARKGRAY);
+        #else
+                    OsdWindowDrawingByFont(_OSD_WINDOW_5, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 3 + 2), _CP_DARKGRAY);
+        #endif
+        #endif
+                    OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH, 1); // Clear Item
+                    OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH, 1);
+                    OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH, 1);
+                }
+                */
+        break;
+    case _MENU_SCREEN:
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 4 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_OVERSCAN, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_ASPECT, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_ROTATE, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_MONO_COLOR, COLOR(_CP_WHITE, _CP_BG));
+        //OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_DISPLAY_MODE, COLOR(_CP_WHITE, _CP_BG));
+        //OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_PIP_POSITION, COLOR(_CP_WHITE, _CP_BG));
+        //OsdSubMenuItemText(_MENU_SCREEN, _MENU_SCREEN_PIP_SIZE, COLOR(_CP_WHITE, _CP_BG));
+
+        break;
+    case _MENU_AUDIO:
+        // OsdPropPutpString(ROW(1), COL(_MENU_SECTION_1_STR_X + 5 + 1 + 1), _PFONT_PAGE_ITEM_10, tsOsdAudio, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 3 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_AUDIO, _MENU_AUDIO_INFO, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_AUDIO, _MENU_AUDIO_VOLUME, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_AUDIO, _MENU_AUDIO_MUTE, COLOR(_CP_WHITE, _CP_BG));
+        break;
+        /*
+                case _MENU_DP_OPTION:
+                    OsdPropPutpString(ROW(1), COL(_MENU_SECTION_1_STR_X+5-1+2), _PFONT_PAGE_ITEM_10, tsOsdDpOption, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+        #if(_DYNAMIC_OSD_WINDOW ==_ON)
+                    OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET+4+2), _CP_DARKGRAY);
+        #endif
+                    OsdSubMenuItemText(_MENU_DP_OPTION,_MENU_DP_OPTION_VERSION,COLOR(_CP_WHITE, _CP_BG));
+                    OsdSubMenuItemText(_MENU_DP_OPTION,_MENU_DP_OPTION_MST,COLOR(_CP_WHITE, _CP_BG));
+                    OsdSubMenuItemText(_MENU_DP_OPTION,_MENU_DP_OPTION_RESOLUTION,COLOR(_CP_WHITE, _CP_BG));
+                    OsdSubMenuItemText(_MENU_DP_OPTION,_MENU_DP_OPTION_CLONE,COLOR(_CP_WHITE, _CP_BG));
+                    break;
+        */
+    case _MENU_SETUP:
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 6 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_POWERSAVE, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_KEYLOCK, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_BACKLIGHT, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_BACKLIGHT_CONTROL, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_RESET, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_STABILIZER_CONTROL, COLOR(_CP_WHITE, _CP_BG));
+#else
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 5 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_POWERSAVE, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_KEYLOCK, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_BACKLIGHT, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_BACKLIGHT_CONTROL, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SETUP, _MENU_SETUP_RESET, COLOR(_CP_WHITE, _CP_BG));
+#endif
+        break;
+
+#if (_ENABLE_MENU_VGA == _ON)
+    case _MENU_VGA:
+        OsdPropPutpString(ROW(1), COL(_MENU_SECTION_1_STR_X + 5 + 1 + 1), _PFONT_PAGE_ITEM_10, tsOsdVga, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 5 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_VGA, _MENU_VGA_AUTO, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_VGA, _MENU_VGA_H_POSI, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_VGA, _MENU_VGA_V_POSI, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_VGA, _MENU_VGA_CLOCK, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_VGA, _MENU_VGA_PHASE, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#endif
+
+    
+    case _MENU_SERVICE1:
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 7 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_SCREENTEST, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_TEMPERATURE, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_WHITEBALANCE, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D0NAME, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D1NAME, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D2NAME, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE1, _MENU_SERVICE_D3NAME, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE2:
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 6 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_MIN, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_MAX, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_INVERT, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_FREQ, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_LOGO, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_STABILUX, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#else
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 6 + 2), _CP_DARKGRAY);
+#endif
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_MIN, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_MAX, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_INVERT, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_BACKLIGHT_FREQ, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_LOGO, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE2, _MENU_SERVICE_LOGO_LIST, COLOR(_CP_WHITE, _CP_BG));
+        break;
+#endif
+    case _MENU_SERVICE3:
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 6 + 2), _CP_DARKGRAY);
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_DP_OPTION, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_LIGHTSENSOR, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_FAN_OPTION, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_FAN_SPEED, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_USER_BACKUP_CONFIG, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE3, _MENU_SERVICE_RESTORE_FACTORY_DEFAULT, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_USERASSIGN:
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 4 + 2), _CP_DARKGRAY);
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_UP, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_DOWN, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_LEFT, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE_USERASSIGN, _MENU_SERVICE_USERASSIGN_RIGHT, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    case _MENU_SERVICE_OLED:
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 3 + 2), _CP_DARKGRAY);
+        OsdSubMenuItemText(_MENU_SERVICE_OLED, _MENU_SERVICE_OLED_OFFRS, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE_OLED, _MENU_SERVICE_OLED_JB, COLOR(_CP_WHITE, _CP_BG));
+        OsdSubMenuItemText(_MENU_SERVICE_OLED, _MENU_SERVICE_OLED_SEQUENCE_TIME, COLOR(_CP_WHITE, _CP_BG));
+        break;
+    default:
+        break;
+    }
+}
+void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
+{
+
+    switch (ucMainItem)
+    {
+    case _MENU_INPUT:
+        switch (ucSubItem)
+        {
+        case _MENU_INPUT_SOURCE1:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSource, ucColor, GET_OSD_LANGUAGE());
+            OsdFuncSetOsdItemFlag();
+            OsdDispNumberAndText(_MENU_INPUT_SOURCE1,  GET_OSD_INPUT_PORT_OSD_ITEM()/*OsdDisplayGetSourcePortStringP(SysSourceGetInputPort())*/, ucColor);
+            break;
+        case _MENU_INPUT_SOURCE1_ADJ:
+#if (_ENABLE_MENU_VGA == _ON)
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
+
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            
+#else
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+            // OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            
+#endif
+            break;
+        case _MENU_INPUT_SOURCE2:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSource2, ucColor, GET_OSD_LANGUAGE());
+            OsdFuncSetOsdItemFlag();
+            OsdDispNumberAndText(_MENU_INPUT_SOURCE2, GET_OSD_INPUT_PORT_OSD_ITEM(), ucColor);
+            break;
+        case _MENU_INPUT_SOURCE2_ADJ:
+#if (_ENABLE_MENU_VGA == _ON)
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
+
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+#else
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+
+            // OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+#endif
+            break;
+        case _MENU_INPUT_SOURCE3:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSource3, ucColor, GET_OSD_LANGUAGE());
+            OsdFuncSetOsdItemFlag();
+            OsdDispNumberAndText(_MENU_INPUT_SOURCE3, GET_OSD_INPUT_PORT_OSD_ITEM(), ucColor);
+            break;
+        case _MENU_INPUT_SOURCE3_ADJ:
+#if (_ENABLE_MENU_VGA == _ON)
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
+
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+#else
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+
+            // OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+#endif
+            break;
+        case _MENU_INPUT_SOURCE4:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSource4, ucColor, GET_OSD_LANGUAGE());
+            OsdFuncSetOsdItemFlag();
+            OsdDispNumberAndText(_MENU_INPUT_SOURCE4, GET_OSD_INPUT_PORT_OSD_ITEM(), ucColor);
+            break;
+        case _MENU_INPUT_SOURCE4_ADJ:
+#if (_ENABLE_MENU_VGA == _ON)
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
+
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+#else
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+
+            // OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+#endif
+            break;
+        }
+        break;
+    case _MENU_PICTURE:
+        switch (ucSubItem)
+        {
+        case _MENU_PICTURE_BLACKLEVEL:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBlacklevel, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_PICTURE_BLACKLEVEL, GET_OSD_BRIGHTNESS(), ucColor);
+            break;
+        case _MENU_PICTURE_CONTRAST:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdContrast, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_PICTURE_CONTRAST, GET_OSD_CONTRAST(), ucColor);
+            break;
+        case _MENU_PICTURE_CHROMA:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdChroma, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_PICTURE_CHROMA, GET_OSD_SATURATION(), ucColor);
+            break;
+        case _MENU_PICTURE_SHARPNESS:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSharpness, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_PICTURE_SHARPNESS, GET_OSD_SHARPNESS(), ucColor);
+            break;
+        case _MENU_PICTURE_GAMMA:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdGamma, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_PICTURE_GAMMA, GET_OSD_GAMMA(), ucColor);
+            break;
+        case _MENU_PICTURE_GAMMA_ADJ:
+#if (_CUSTOMER_TYPE == _CUSTOMER_MEDICAL)
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+#elif (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT) // RC2, RC3
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaRC2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaRC3, ucColor, GET_OSD_LANGUAGE());
+#else
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma20, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma24, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+#endif
+            break;
+        case _MENU_PICTURE_RESETTODEFAULT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdResettoDefault, ucColor, GET_OSD_LANGUAGE());
+            break;
+#if (_ENABLE_MENU_REGION == _ON)
+/*
+        case _MENU_PICTURE_REGION:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdRegion, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_PICTURE_REGION, GET_OSD_SELECT_REGION(), ucColor);
+            break;
+        case _MENU_PICTURE_REGION_ADJ:
+            switch (GET_OSD_DISPLAY_MODE())
+            {
+            case _OSD_DM_1P:
+
+                OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(1), _CP_DARKGRAY);
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd1PFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_2P_LR:
+
+                OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLRL, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLRR, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLRFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_2P_TB:
+
+                OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTBT, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTBB, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTBFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_2P_PIP:
+
+                OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPipMain, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPipSub, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPipFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_3P:
+
+                OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(9), _CP_DARKGRAY);
+
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_13), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_14), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_15), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_4P:
+
+                OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(9), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_13), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_14), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_15), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            }
+            break;
+*/
+#endif
+        }
+        break;
+
+    case _MENU_COLOR:
+        switch (ucSubItem)
+        {
+
+        case _MENU_COLOR_TEMPERATURE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdColorTemp, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_TEMPERATURE, GET_COLOR_TEMP_TYPE(), ucColor);
+            break;
+        case _MENU_COLOR_TEMPERATURE_ADJ:
+#if 0//(_CUSTOMER_TYPE == _CUSTOMER_MEDICAL) 
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(4 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdBT709, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdDCI_P3, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdBT2020, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+#else
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(4 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdTempD56, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdTempD65, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdTempD93, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdTempUser, ucColor, GET_OSD_LANGUAGE());
+#endif
+            break;
+        case _MENU_COLOR_SURGICAL:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdColorGamut, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_SURGICAL, GET_OSD_PCM_STATUS(), ucColor);
+            break;
+        case _MENU_COLOR_SURGICAL_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(4 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdBT709, ucColor, GET_OSD_LANGUAGE());
+            // OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdDCI_P3, ucColor, GET_OSD_LANGUAGE());
+            // OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdBT2020, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdDCI_P3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdBT2020, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_COLOR_BIAS_R:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdRedBIAS, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_BIAS_R, GET_COLOR_BIAS_R(), ucColor);
+            // GET_COLOR_TEMP_TYPE_USER_R()
+            break;
+        case _MENU_COLOR_BIAS_G:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdGreenBIAS, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_BIAS_G, GET_COLOR_BIAS_G(), ucColor);
+            break;
+        case _MENU_COLOR_BIAS_B:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBlueBIAS, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_BIAS_B, GET_COLOR_BIAS_B(), ucColor);
+            break;
+        case _MENU_COLOR_GAIN_R:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdRedGain, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_GAIN_R, GET_COLOR_GAIN_R(), ucColor);
+            break;
+        case _MENU_COLOR_GAIN_G:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdGreenGain, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_GAIN_G, GET_COLOR_GAIN_G(), ucColor);
+            break;
+        case _MENU_COLOR_GAIN_B:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBlueGain, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_GAIN_B, GET_COLOR_GAIN_B(), ucColor);
+            break;
+#if (_ENABLE_MENU_REGION == _ON)
+/*
+        case _MENU_COLOR_REGION:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM8), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdRegion, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_REGION, GET_OSD_SELECT_REGION(), ucColor);
+            break;
+        case _MENU_COLOR_REGION_ADJ:
+            switch (GET_OSD_DISPLAY_MODE())
+            {
+            case _OSD_DM_1P:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(1), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd1PFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_2P_LR:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLRL, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLRR, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLRFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_2P_TB:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTBT, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTBB, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTBFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_2P_PIP:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPipMain, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPipSub, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPipFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_3P:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(9), _CP_DARKGRAY);
+
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _OSD_DM_4P:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(9), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+                break;
+            }
+            break;
+            */
+#endif
+            // NOT USE
+        case _MENU_COLOR_EFFECT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdColorEffect, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_EFFECT, GET_OSD_COLOR_EFFECT(), ucColor);
+            break;
+        case _MENU_COLOR_EFFECT_ADJ:
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5), _CP_DARKGRAY);
+
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdStandard, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGame, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdMovie, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPhoto, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdVidid, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_COLOR_GAMMA:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdGamma, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_COLOR_GAMMA, GET_OSD_GAMMA(), ucColor);
+            break;
+        case _MENU_COLOR_GAMMA_ADJ:
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5), _CP_DARKGRAY);
+
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaOff, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma18, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma20, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma24, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+    case _MENU_SCREEN:
+        switch (ucSubItem)
+        {
+        case _MENU_SCREEN_OVERSCAN:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdOverScan, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_OVERSCAN, GET_OSD_OVERSCAN_STATUS(), ucColor);
+            break;
+
+        case _MENU_SCREEN_ASPECT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdAspectRatio, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_ASPECT, GET_OSD_ASPECT_RATIO_TYPE(), ucColor);
+            break;
+        case _MENU_SCREEN_MONO_COLOR:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdMonoColor, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_MONO_COLOR, GET_OSD_COLOR_EFFECT(), ucColor);
+            break;
+        case _MENU_SCREEN_ROTATE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDispRotate, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_ROTATE, GET_OSD_DISP_ROTATE(), ucColor);
+            break;
+		/*
+        case _MENU_SCREEN_DISPLAY_MODE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDispMode, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_DISPLAY_MODE, GET_OSD_DISPLAY_MODE(), ucColor);
+            break;
+        case _MENU_SCREEN_PIP_POSITION:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdPipPosition, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_PIP_POSITION, GET_OSD_PIP_POSITION_TYPE(), ucColor);
+            break;
+        case _MENU_SCREEN_PIP_SIZE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdPipSize, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SCREEN_PIP_SIZE, GET_OSD_PIP_SIZE(), ucColor);
+            break;
+		*/
+        case _MENU_SCREEN_OVERSCAN_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SCREEN_ASPECT_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+            //OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+            //OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd16_9, ucColor, GET_OSD_LANGUAGE());
+            //OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4_3, ucColor, GET_OSD_LANGUAGE());
+            //OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdFill, ucColor, GET_OSD_LANGUAGE());
+
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdFill, ucColor, GET_OSD_LANGUAGE());
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd16_9, ucColor, GET_OSD_LANGUAGE());
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4_3, ucColor, GET_OSD_LANGUAGE());
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd5_4, ucColor, GET_OSD_LANGUAGE());
+			OsdPropPutpStringLeft(ROW(ROW_OFFSET+_ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOrigin, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SCREEN_MONO_COLOR_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdStd, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdMono, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdNight, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SCREEN_ROTATE_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdRotate0, ucColor, GET_OSD_LANGUAGE());
+            //OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdRotate90, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdRotate180, ucColor, GET_OSD_LANGUAGE());
+            //OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdRotate270, ucColor, GET_OSD_LANGUAGE());
+            break;
+		/*
+        case _MENU_SCREEN_DISPLAY_MODE_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd1P, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PLR, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PTB, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2PPIP, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd3P, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd4P, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SCREEN_PIP_POSITION_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(4 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPipLT, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPipRT, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPipLB, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPipRB, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SCREEN_PIP_SIZE_ADJ:
+            break;
+			
+		*/	
+        }
+        break;
+
+    case _MENU_AUDIO:
+        switch (ucSubItem)
+        {
+        case _MENU_AUDIO_INFO:
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, OsdDisplayGetAudioStringP(), ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_AUDIO_VOLUME:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdVolume, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_AUDIO_VOLUME, GET_OSD_VOLUME(), ucColor);
+            break;
+        case _MENU_AUDIO_MUTE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdMute, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_AUDIO_MUTE, GET_OSD_VOLUME_MUTE(), ucColor);
+            break;
+        case _MENU_AUDIO_MUTE_ADJ:
+
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+    /*
+    case _MENU_DP_OPTION:
+        switch(ucSubItem)
+        {
+            case _MENU_DP_OPTION_VERSION:
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDpVersion, ucColor, GET_OSD_LANGUAGE());
+                OsdDispNumberAndText(_MENU_DP_OPTION_VERSION, GET_OSD_DP_D0_VERSION(), ucColor);	// D0-DP2
+                //OsdDispNumberAndText(_MENU_DP_OPTION_VERSION, GET_OSD_DP_D1_VERSION(), ucColor);	// D1-DP1
+                break;
+            case _MENU_DP_OPTION_VERSION_ADJ:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET+_ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdDpVer1_1, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdDpVer1_2, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdDpVer1_3, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _MENU_DP_OPTION_MST:
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDpMst, ucColor, GET_OSD_LANGUAGE());
+                OsdDispNumberAndText(_MENU_DP_OPTION_MST, GET_OSD_DP_MST(), ucColor);
+                break;
+            case _MENU_DP_OPTION_MST_ADJ:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdMstD0DP2, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdMstD1DP1, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _MENU_DP_OPTION_RESOLUTION:
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDpResolution, ucColor, GET_OSD_LANGUAGE());
+                OsdDispNumberAndText(_MENU_DP_OPTION_RESOLUTION, UserCommonNVRamGetSystemData(_DP_EDID_SELECT), ucColor);
+                break;
+            case _MENU_DP_OPTION_RESOLUTION_ADJ:
+
+                OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3), _CP_DARKGRAY);
+
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd1080P, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd1440P, ucColor, GET_OSD_LANGUAGE());
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsd2160P, ucColor, GET_OSD_LANGUAGE());
+                break;
+            case _MENU_DP_OPTION_CLONE:
+                OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDpCloneMode, ucColor, GET_OSD_LANGUAGE());
+#if(_MULTI_DISPLAY_MAX != 0x01)
+                if(GET_OSD_DISPLAY_MODE() != _OSD_DM_1P)
+                {
+                    OsdDispNumberAndText(_MENU_DP_OPTION_CLONE, GET_OSD_CLONE_MODE_MTP(), ucColor);
+                }
+                else
+#endif
+                {
+                    OsdDispNumberAndText(_MENU_DP_OPTION_CLONE, GET_OSD_CLONE_MODE_1P(), ucColor);
+                }
+                break;
+            case _MENU_DP_OPTION_CLONE_ADJ:
+#if(_MULTI_DISPLAY_MAX != 0x01)
+                if(GET_OSD_DISPLAY_MODE() != _OSD_DM_1P)
+                {
+
+                #if(_ENABLE_MENU_VGA == _ON)
+
+                    OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6), _CP_DARKGRAY);
+
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X+1), _PFONT_PAGE_3, tsOsdOFF2, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD0DP2, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD1DP1, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+                #else
+
+                    OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5), _CP_DARKGRAY);
+
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X+1), _PFONT_PAGE_3, tsOsdOFF2, ucColor, GET_OSD_LANGUAGE());
+                    //OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD0DP2, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD1DP1, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+                #endif
+                }
+                else
+#endif
+                {
+
+                    OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2), _CP_DARKGRAY);
+
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+                    OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+                }
+                break;
+        }
+        break;
+    */
+    case _MENU_SETUP:
+
+        switch (ucSubItem)
+        {
+        case _MENU_SETUP_POWERSAVE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdPowerSave, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_POWERSAVE, GET_OSD_POWERSAVE_TIME(), ucColor);
+            break;
+        case _MENU_SETUP_POWERSAVE_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(4 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSaveOff, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave5Sec, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave30Sec, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave60Sec, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SETUP_KEYLOCK:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdKeyLock, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_KEYLOCK, GET_OSD_KEYLOCK(), ucColor);
+            break;
+        case _MENU_SETUP_KEYLOCK_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdUnLock, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdLock, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SETUP_BACKLIGHT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBacklight, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_BACKLIGHT, GET_OSD_BACKLIGHT(), ucColor);
+            break;
+        case _MENU_SETUP_BACKLIGHT_ADJ:
+            break;
+        case _MENU_SETUP_BACKLIGHT_CONTROL:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBacklightControl, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_BACKLIGHT_CONTROL, GET_OSD_BACKLIGHT_CONTROL(), ucColor);
+            break;
+        case _MENU_SETUP_BACKLIGHT_CONTROL_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdLinear, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdCorved, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SETUP_RESET:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdResettoDefault, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SETUP_RESET_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdNO, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdYES, ucColor, GET_OSD_LANGUAGE());
+            break;
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+        case _MENU_SETUP_STABILIZER_CONTROL:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdStabilizer, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_STABILIZER_CONTROL, GET_OSD_STABILIZER(), ucColor);
+            break;
+        case _MENU_SETUP_STABILIZER_CONTROL_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+#endif
+            /*
+        case _MENU_SETUP_RESET:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdReset, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_RESET, GET_OSD_RESET_MODE(), ucColor);
+            break;
+        case _MENU_SETUP_RESET_ADJ:
+
+            OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2), _CP_DARKGRAY);
+
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdNO, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdYES, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SETUP_POWERSAVE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdPowerSave, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_POWERSAVE, GET_OSD_POWERSAVE_TIME(), ucColor);
+            break;
+        case _MENU_SETUP_POWERSAVE_ADJ:
+
+            OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(4), _CP_DARKGRAY);
+
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSaveOff, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave5Sec, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave30Sec, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave60Sec, ucColor, GET_OSD_LANGUAGE());
+
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave1Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave2Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave5Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave30Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave60Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave120Min, ucColor, GET_OSD_LANGUAGE());
+
+            break;
+        case _MENU_SETUP_SETID:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSetId, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_SETID, GET_OSD_SETID(), ucColor);
+            break;
+        case _MENU_SETUP_BACKLIGHT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBacklight, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SETUP_BACKLIGHT, GET_OSD_BACKLIGHT(), ucColor);
+            break;
+            */
+        }
+        break;
+#if (_ENABLE_MENU_VGA == _ON)
+    case _MENU_VGA:
+        switch (ucSubItem)
+        {
+        case _MENU_VGA_AUTO:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdAutoAdjust, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_VGA_AUTO, GET_VGA_AUTOADJ_MODE(), ucColor);
+            break;
+        case _MENU_VGA_AUTO_ADJ:
+
+            OsdWindowDrawingByFont(_OSD_WINDOW_2, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2), _CP_DARKGRAY);
+
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_VGA_H_POSI:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdHPosition, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_VGA_H_POSI, GET_VGA_MODE_ADJUST_H_POSITION(), ucColor);
+            break;
+        case _MENU_VGA_V_POSI:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdVPosition, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_VGA_V_POSI, GET_VGA_MODE_ADJUST_V_POSITION(), ucColor);
+            break;
+        case _MENU_VGA_CLOCK:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdClock, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_VGA_CLOCK, GET_VGA_MODE_ADJUST_CLOCK(), ucColor);
+            break;
+        case _MENU_VGA_PHASE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdPhase, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_VGA_PHASE, GET_VGA_MODE_ADJUST_PHASE(), ucColor);
+            break;
+        }
+        break;
+#endif
+    case _MENU_INFO:
+        switch (ucSubItem)
+        {
+        case _MENU_INFO_MODEL:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, tsOsdModel, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_INFO_INPUT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, tsOsdInput, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_INFO_FORAMT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, tsOsdFormat, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_INFO_COLOR_TEMP:
+        #if(_MEDICAL_SURGICAL == _ON)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, tsOsdColorGamut, ucColor, GET_OSD_LANGUAGE());
+        #else
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, tsOsdColorTemp, ucColor, GET_OSD_LANGUAGE());
+        #endif
+            break;
+        case _MENU_INFO_RANGE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, tsOsdRange, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_INFO_FW_VERSION:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_INFORMATION, OsdGetBoardVersionString(), ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+    case _MENU_SERVICE1:
+        switch (ucSubItem)
+        {
+
+        case _MENU_SERVICE_SCREENTEST:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdScreenTest, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_TEMPERATURE:
+#if (_ENABLE_FAN_CONTROL == _ON)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdTemperature, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_TEMPERATURE, GET_OSD_MAX_TEMP(), ucColor);
+#endif
+            break;
+        case _MENU_SERVICE_WHITEBALANCE:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdWhiteBalance, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_D0NAME:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdD0Name, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_D0NAME, GET_OSD_D0_NAME(), ucColor);
+            break;
+        case _MENU_SERVICE_D0NAME_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD1DP1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD0DP2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_D1NAME:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdD1Name, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_D1NAME, GET_OSD_D1_NAME(), ucColor);
+            break;
+        case _MENU_SERVICE_D1NAME_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD1DP1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD0DP2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_D2NAME:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdD2Name, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_D2NAME, GET_OSD_D2_NAME(), ucColor);
+            break;
+        case _MENU_SERVICE_D2NAME_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_D3NAME:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdD3Name, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_D3NAME, GET_OSD_D3_NAME(), ucColor);
+            break;
+        case _MENU_SERVICE_D3NAME_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceSDI, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSource10GSFP, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceDVI, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+    case _MENU_SERVICE2:
+        switch (ucSubItem)
+        {
+        case _MENU_SERVICE_BACKLIGHT_MIN:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBacklightMin, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_BACKLIGHT_MIN, GET_BACKLIGHT_MIN(), ucColor);
+            break;
+        case _MENU_SERVICE_BACKLIGHT_MIN_ADJ:
+            break;
+        case _MENU_SERVICE_BACKLIGHT_MAX:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBacklightMax, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_BACKLIGHT_MAX, GET_BACKLIGHT_MAX(), ucColor);
+            break;
+        case _MENU_SERVICE_BACKLIGHT_MAX_ADJ:
+            break;
+        case _MENU_SERVICE_BACKLIGHT_INVERT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBLUInvert, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_BACKLIGHT_INVERT, GET_OSD_BACKLIGHT_INVERT(), ucColor);
+            break;
+        case _MENU_SERVICE_BACKLIGHT_INVERT_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_BACKLIGHT_FREQ:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdBLUFreq, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_BACKLIGHT_FREQ, GET_OSD_BACKLIGHT_FREQ(), ucColor);
+            break;
+        case _MENU_SERVICE_BACKLIGHT_FREQ_ADJ:
+            break;
+        case _MENU_SERVICE_LOGO:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdLOGO, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_LOGO, GET_OSD_LOGO_ON(), ucColor);
+            break;
+        case _MENU_SERVICE_LOGO_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_LOGO_LIST:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdLogoSelect, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_LOGO_LIST, GET_OSD_LOGO_LIST(), ucColor);
+            break;
+        case _MENU_SERVICE_LOGO_LIST_ADJ:
+            break;
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+        case _MENU_SERVICE_STABILUX:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdStabilux, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_STABILUX, GET_OSD_STABILUX(), ucColor);
+            break;
+        case _MENU_SERVICE_STABILUX_ADJ:
+            break;
+#endif
+        }
+        break;
+    case _MENU_SERVICE3:
+        switch (ucSubItem)
+        {
+        case _MENU_SERVICE_DP_OPTION:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdDpOption, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_DP_OPTION, GET_OSD_DP_MST(), ucColor);
+            break;
+        case _MENU_SERVICE_DP_OPTION_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdClone, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdMstD0DP2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdMstD1DP1, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_LIGHTSENSOR:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdLightSensor, ucColor, GET_OSD_LANGUAGE());
+#if (_ENABLE_LIGHT_SENSOR == _ON)
+            OsdDispNumberAndText(_MENU_SERVICE_LIGHTSENSOR, GET_OSD_LIGHT_SENSOR_STATUS(), ucColor);
+#endif
+            break;
+        case _MENU_SERVICE_LIGHTSENSOR_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_FAN_OPTION:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdFanControl, ucColor, GET_OSD_LANGUAGE());
+#if (_ENABLE_FAN_CONTROL == _ON)
+            OsdDispNumberAndText(_MENU_SERVICE_FAN_OPTION, GET_OSD_FAN_STATUS(), ucColor);
+#endif
+            break;
+        case _MENU_SERVICE_FAN_OPTION_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdFanAuto, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_FAN_SPEED:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdFanSpeed, ucColor, GET_OSD_LANGUAGE());
+#if (_ENABLE_FAN_CONTROL == _ON)
+            OsdDispNumberAndText(_MENU_SERVICE_FAN_SPEED, GET_OSD_FAN_PWM(), ucColor);
+#endif
+            break;
+        case _MENU_SERVICE_FAN_SPEED_ADJ:
+            break;
+        case _MENU_SERVICE_USER_BACKUP_CONFIG:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsBACKUP_USER_CONFIG, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_USER_BACKUP_CONFIG_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdNO, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdYES, ucColor, GET_OSD_LANGUAGE());
+            break;  
+        case _MENU_SERVICE_RESTORE_FACTORY_DEFAULT:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdResettoDefault, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_RESTORE_FACTORY_DEFAULT_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdNO, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdYES, ucColor, GET_OSD_LANGUAGE());
+            break;  
+
+        }
+        break;
+    case _MENU_SERVICE_USERASSIGN:
+        switch (ucSubItem)
+        {
+        case _MENU_SERVICE_USERASSIGN_UP:
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH, 1);
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsUserAssign_UpKey, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_USERASSIGN_UP, GET_OSD_USER_ASSIGN_UP(), ucColor);
+            break;
+        case _MENU_SERVICE_USERASSIGN_UP_ADJ:
+            g_usAdjustValue = GET_OSD_USER_ASSIGN_UP();
+            g_usBackupValue = GET_OSD_USER_ASSIGN_UP();
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), _MENU_SECTION_2_WIDTH + 5, 1); // Clear Item
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH+5), HEIGHT(1 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_USERASSIGN_DOWN:
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH, 1);
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsUserAssign_DownKey, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_USERASSIGN_DOWN, GET_OSD_USER_ASSIGN_DOWN(), ucColor);
+            break;
+        case _MENU_SERVICE_USERASSIGN_DOWN_ADJ:
+            g_usAdjustValue = GET_OSD_USER_ASSIGN_DOWN();
+            g_usBackupValue = GET_OSD_USER_ASSIGN_DOWN();
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), _MENU_SECTION_2_WIDTH + 5, 1); // Clear Item
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH+5), HEIGHT(1 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+            break;  
+        case _MENU_SERVICE_USERASSIGN_LEFT:
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH, 1);
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsUserAssign_LeftKey, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_USERASSIGN_LEFT, GET_OSD_USER_ASSIGN_LEFT(), ucColor);
+            break;
+        case _MENU_SERVICE_USERASSIGN_LEFT_ADJ:
+            g_usAdjustValue = GET_OSD_USER_ASSIGN_LEFT();
+            g_usBackupValue = GET_OSD_USER_ASSIGN_LEFT();
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), _MENU_SECTION_2_WIDTH + 5, 1); // Clear Item
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH+5), HEIGHT(1 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+            break;  
+        case _MENU_SERVICE_USERASSIGN_RIGHT:
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH, 1);
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsUserAssign_RightKey, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_USERASSIGN_RIGHT, GET_OSD_USER_ASSIGN_RIGHT(), ucColor);
+            break;
+        case _MENU_SERVICE_USERASSIGN_RIGHT_ADJ:
+            g_usAdjustValue = GET_OSD_USER_ASSIGN_RIGHT();
+            g_usBackupValue = GET_OSD_USER_ASSIGN_RIGHT();
+            OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_WIN_X), _MENU_SECTION_2_WIDTH + 5, 1); // Clear Item
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH+5), HEIGHT(1 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+            break;
+            default:
+                break;  
+        }
+    break;
+#if (_ENABLE_MENU_OLED == _ON)
+    case _MENU_SERVICE_OLED:
+        switch (ucSubItem)
+        {
+        case _MENU_SERVICE_OLED_OFFRS:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdOFFRS, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_OLED_OFFRS, GET_OSD_OLED_OFFRS_STATUS(), ucColor);
+            break;
+        case _MENU_SERVICE_OLED_OFFRS_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOLEDAutoRun, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOLEDEndRun, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOLEDNow, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_OLED_JB:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdJB, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_OLED_JB_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(2 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MENU_SERVICE_OLED_SEQUENCE_TIME:
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdSequenceTime, ucColor, GET_OSD_LANGUAGE());
+            OsdDispNumberAndText(_MENU_SERVICE_OLED_SEQUENCE_TIME, GET_OSD_OLED_SEQUENCE_TIME(), ucColor);
+            break;
+        case _MENU_SERVICE_OLED_SEQUENCE_TIME_ADJ:
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(7 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave30Sec, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave1Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave2Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave5Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave30Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave60Min, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdPowerSave120Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+#endif
+    default:
+        break;
+    }
+}
+
+
+//--------------------------------------------------
+// Description  :
+// Input Value  :
+// Output Value :
+//--------------------------------------------------
+void OsdDispMainMenu(void)	
+{
+	BYTE hPosi,vPosi;	
+	
+	g_ucFontPointer0 = _OSD_PAGE_0_START;
+    g_ucFontPointer1 = _OSD_PAGE_1_START;
+    g_ucFontPointer2 = _OSD_PAGE_2_START;
+	g_ucFontPointer3 = _OSD_PAGE_3_START;	
+	
+	OsdFuncCloseWindow(_OSD_WINDOW_ALL);	//  Menu->Source garbege
+    OsdFuncDisableOsd();
+
+	//------------------------------------------------------------------------------
+	//SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_0);	//  OSD Rotate Test
+	//SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_90);
+	//SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_180);
+	//SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_270);
+
+	//SET_OSD_TRANSPARENCY_STATUS(30);				//  OSD Transparency Test ( 0~255 )
+		
+	//------------------------------------------------------------------------------
+	
+    OsdFuncApplyMap(WIDTH(_OSD_MAIN_MENU_WIDTH), HEIGHT(_OSD_MAIN_MENU_HEIGHT), COLOR(_CP_WHITE, _CP_BG));
+
+//20140304 Abel
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_MAIN_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
+#endif
+
+    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
     OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
 
     // Adjust Color Palette
@@ -1425,278 +3024,83 @@ void OsdDispLeftMenu(void)
     OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
 
     OsdFontVLCLoadFont(_FONT1_GLOBAL);
-    //OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-	 OsdFontVLCLoadFont(_LEFT_MENU_TIME_ICON);
-	 OsdFontVLCLoadFont(_LEFT_MENU_AIM_ICON);
-	 OsdFontVLCLoadFont(_FOUR_CORNER);
-	 OsdFontVLCLoadFont(_LEFT_MENU_NUMBER_ICON);
-   // Background window
-   //20140210 Abel Modify
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90)||(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+    // OsdFontVLCLoadFont(_FONT2_ICON_MENU);
+
+    // Background window
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+       (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
     {
-   
-        OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT( (g_ucOsdHeight/2)-1), _CP_GREEN_119);
-        OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW( (g_ucOsdHeight/2)-1), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight/2)+1), _CP_GRAY_1 );//_CP_LIGHTBLUE
-	 }
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_BLUE);
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(g_ucOsdWidth / 2), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_LIGHTBLUE);
+    }
     else
 #endif
     {
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight)), _CP_BLUE_65 );
-		OsdPropPutString(ROW(4), COL(34), _PFONT_PAGE_2, _STRING_GAME_MENU, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		if(GET_OSD_Left_Menu_Choose()==_LEFT_AIM)
-		{
-
-			SET_OSD_STATE(_Menu_LEFTKEY_GAME);
-			OsdThreeColorChooseTableForm(7, 13,_EDGE_LINE,22 ,10,_CP_WHITE, _CP_BLUE_65,_CP_WHITE,0);
-			OsdThreeColorChooseTableForm(7, 40,_EDGE_LINE,22 ,10,_CP_WHITE, _CP_BLUE_65,_CP_BLUE_65,0);
-			OsdFontPut1BitMainMenuIcon(11, 22, _LEFT_MENU_AIM_ICON_START , _CP_ORANGE_H, _CP_WHITE);	 
-			OsdFontPut1BitMainMenuIcon(11, 49, _LEFT_MENU_TIME_ICON_START , _CP_WHITE, _CP_BG);
-		}
-		else 
-		{
-
-			SET_OSD_STATE(_Menu_LEFTKEY_TIMER);
-			OsdThreeColorChooseTableForm(7, 13,_EDGE_LINE,22 ,10,_CP_WHITE, _CP_BLUE_65,_CP_BLUE_65,0);
-			OsdThreeColorChooseTableForm(7, 40,_EDGE_LINE,22 ,10,_CP_WHITE, _CP_BLUE_65,_CP_WHITE,0);
-			OsdFontPut1BitMainMenuIcon(11, 22, _LEFT_MENU_AIM_ICON_START , _CP_WHITE, _CP_BG);	 
-			OsdFontPut1BitMainMenuIcon(11, 49, _LEFT_MENU_TIME_ICON_START , _CP_ORANGE_H, _CP_WHITE);
-
-		}
-  //background    
+		//OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);
+		//OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY); 
+		//OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(0), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);
+ 
     }
 
+    // Realtek Mark
+    //OsdFontPut1BitTable(ROW(0), COL(32), tOSD_iREALTEK, COLOR(_CP_WHITE, _CP_BG));
+
+	OsdMainMenuPageDraw();	
+
+	//OsdWindowDrawingByFont(_OSD_WINDOW_5_1, ROW(_ITEM_1), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(1), _CP_GRAY);	// Focus Window
+	//OsdWindowDrawingByFont(_OSD_WINDOW_5_2, ROW(_ITEM_1), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(1), _CP_GRAY);
+	//OsdWindowDrawingByFont(_OSD_WINDOW_5_3, ROW(_ITEM_1), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(1), _CP_GRAY);
+	SetFocus(_MENU_SECTION_0, ROW_OFFSET+_ITEM_1);	
+
 	
+		
+	//ScalerOsdWindowDisable(_MENU_SECTION_0_WINDOW);	//  Disable Window Test
+	//ScalerOsdWindowDisable(_MENU_SECTION_1_WINDOW);
+	//ScalerOsdWindowDisable(_MENU_SECTION_2_WINDOW);
+	//-------------------------------------------------------------------------------- //  OSD Slider And Number Test
+	/*
+
+	//OsdDispSliderAndNumber(_MENU_PICTURE_BACKLIGHT, GET_OSD_BACKLIGHT());
+	
+	g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);	
+    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
+	OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_WHITE, _CP_BG));
+	*/
+	//--------------------------------------------------------------------------------
 	
 
-if(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_180)
-  {
-       OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, (_OSD_H_POS_MAX-GET_OSD_HPOS()), (_OSD_V_POS_MAX-GET_OSD_VPOS()));
-  }  
-else
-  {
-       OsdDispSetPosition(_POS_PERCENT,  _OSD_POSITION_GLOBAL_A,GET_OSD_HPOS(), GET_OSD_VPOS());
-}
-
-
-
+	//OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
+	
+	switch(GET_OSD_ROTATE_STATUS())	//  OSD Rotate
+	{
+		case _OSD_ROTATE_DEGREE_0:
+			hPosi = GET_OSD_HPOS();
+			vPosi = GET_OSD_VPOS();
+			break;
+		case _OSD_ROTATE_DEGREE_90:
+			hPosi = _OSD_V_POS_MAX - GET_OSD_VPOS();
+			vPosi = GET_OSD_HPOS();
+			break;
+		case _OSD_ROTATE_DEGREE_180:
+			hPosi = _OSD_H_POS_MAX - GET_OSD_HPOS();
+			vPosi = _OSD_V_POS_MAX - GET_OSD_VPOS();
+			break;
+		case _OSD_ROTATE_DEGREE_270:
+			hPosi = GET_OSD_VPOS();
+			vPosi = _OSD_H_POS_MAX - GET_OSD_HPOS();
+			break;
+		default:
+			hPosi = GET_OSD_HPOS();
+			vPosi = GET_OSD_VPOS();
+			break;		
+	}
+	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, hPosi, vPosi);
+	
     // Osd Enable
     ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
     OsdFuncEnableOsd();
-
 }
-
- void OsdDispLeftAimMenu(void)
- {
-	 BYTE ucTest = 0;
- 
-	 g_ucFontPointer0 = _OSD_PAGE_0_START;
-	 g_ucFontPointer1 = _OSD_PAGE_1_START;
-	 g_ucFontPointer2 = _OSD_PAGE_2_START;
- 
-	 if(ucTest == 1)
-	 {
-	  //   ScalerDDomainPatternGenAdjustColor(0, 0, 0);
- 
-	  //   OsdDispDetOverRange(0, 0, 0, 0);
- 
-	   //  OSTARFactoryPanelUsedTimer();
-	   //  OsdFontPut2BitTable(0, 0, tOSD_iREALTEK, 0, 0, 0, 0);
-		 
- // 	   OsdWindowDrawingHighlight(0, 0, 0, 0, 0, 0, 0, 0);
- // 	   OsdFuncChangeIconColor1Bit(0, 0, 0 , 0, 0);
- 
-		ScalerOsdDataPort(0);
- 
- //#if(_DIGITAL_PORT_SUPPORT == _ON)
-		// ScalerSyncHdcpCheckEnabled(SysSourceGetInputPort());
- //#endif
- 
-	 }
- 
-	 OsdFuncDisableOsd();
- 
-	 OsdFuncApplyMap(WIDTH(_OSD_LEFT_KEY_AIM_WIDTH), HEIGHT(_OSD_LEFT_KEY_AIM_HEIGHT), COLOR(_CP_BG, _CP_BG));
- 
- //20140304 Abel
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	 ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_LEFT_KEY_AIM_HEIGHT), _DISABLE, 0, _ENABLE);
-#endif
- 
-	 //OsdFuncBlending(_OSD_TRANSPARENCY_ALL);
-	 OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
- 
-	 // Adjust Color Palette
-	 OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-	 
-	 OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);	
-	 OsdFuncTransparency(255); 
-	 // Load Font & Icon
-	 OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
- 
-	 OsdFontVLCLoadFont(_FONT1_GLOBAL);
-	 //OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-	  OsdFontVLCLoadFont(_LEFT_MENU_TIME_ICON);
-	  OsdFontVLCLoadFont(_LEFT_MENU_AIM_ICON);
-	  OsdFontVLCLoadFont(_FOUR_CORNER);
- 
-	// Background window
-	//20140210 Abel Modify
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	 if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90)||(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-	 {
-
-		 OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT( (g_ucOsdHeight/2)-1), _CP_GREEN_119);
-		 OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW( (g_ucOsdHeight/2)-1), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight/2)+1), _CP_GRAY_1 );//_CP_LIGHTBLUE
-	  }
-	 else
-#endif
-	 {
-	 OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight)), _CP_BG );
-	 
-	 //OsdFontPut1BitMainMenuIcon(0, 0, _LEFT_MENU_AIM_ICON_START+24 , _CP_BG, _CP_BG);
-	 //OsdFuncClearOsd(ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT(g_ucOsdHeight));
-	 
-	 switch(GET_OSD_AIM())
-	 {
-		 case _AIM_1:
-			 
-	 
-	 
-			 OsdFontPut1BitMainMenuIcon(0, 1, _LEFT_MENU_AIM_ICON_START+24 , _CP_GREEN_119, _CP_BG);
-			 
-			 //OsdFuncClearOsd(ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT(g_ucOsdHeight));
-			 break;
-		 case _AIM_2:
-			 
-	 
-			 OsdFontPut1BitMainMenuIcon(0, 1, _LEFT_MENU_AIM_ICON_START+24 , _CP_ORANGE, _CP_BG);
-			 
-			 //OsdFuncClearOsd(ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT(g_ucOsdHeight));
-			 break;
-		 case _AIM_3:
-	 
-	 
-			 OsdFontPut1BitMainMenuIcon(0, 1, _LEFT_MENU_AIM_ICON_START+48 , _CP_GREEN_119, _CP_BG);
-			 
-			 //OsdFuncClearOsd(ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT(g_ucOsdHeight));
-			 break;
-		 case _AIM_4:
-	 
-	 
-			 OsdFontPut1BitMainMenuIcon(0, 1, _LEFT_MENU_AIM_ICON_START+48 , _CP_ORANGE, _CP_BG);
-			 
-			 //OsdFuncClearOsd(ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT(g_ucOsdHeight));
-			 break;
-			 
-		  default:
-			  break;
-	 }
- 
-   //background    
-	 }
- 
-	 
-	 
- 
-	 OsdDispSetPosition(_POS_PERCENT,  _OSD_POSITION_GLOBAL_A,50, 50);
- 
- 
- 
-	 // Osd Enable
-	 ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	 OsdFuncEnableOsd();
- 
- }
-#endif
-// OsdDispLeftTimerMenuAdjust
-
-// void OsdDispRightMenu(void)
-//{
-//     BYTE ucTest = 0;
-//
-//     g_ucFontPointer0 = _OSD_PAGE_0_START;
-//     g_ucFontPointer1 = _OSD_PAGE_1_START;
-//     g_ucFontPointer2 = _OSD_PAGE_2_START;
-//
-//     if(ucTest == 1)
-//     {
-//      //   ScalerDDomainPatternGenAdjustColor(0, 0, 0);
-//
-//      //   OsdDispDetOverRange(0, 0, 0, 0);
-//
-//       //  OSTARFactoryPanelUsedTimer();
-//       //  OsdFontPut2BitTable(0, 0, tOSD_iREALTEK, 0, 0, 0, 0);
-//
-////        OsdWindowDrawingHighlight(0, 0, 0, 0, 0, 0, 0, 0);
-////        OsdFuncChangeIconColor1Bit(0, 0, 0 , 0, 0);
-//
-//       ScalerOsdDataPort(0);
-//
-////#if(_DIGITAL_PORT_SUPPORT == _ON)
-//       // ScalerSyncHdcpCheckEnabled(SysSourceGetInputPort());
-////#endif
-//
-//    }
-//
-//    OsdFuncDisableOsd();
-//
-//    OsdFuncApplyMap(WIDTH(_OSD_RIGHT_KEY_WIDTH), HEIGHT(_OSD_RIGHT_KEY_HEIGHT), COLOR(_CP_BLUE_120, _CP_BG));
-//
-////20140304 Abel
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-//     ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_RIGHT_KEY_HEIGHT), _DISABLE, 0, _ENABLE);
-// #endif
-//
-//     OsdFuncBlending(_OSD_TRANSPARENCY_ALL);
-//     OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-//
-//     // Adjust Color Palette
-//     OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-//
-//     // Load Font & Icon
-//     OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-//
-//     OsdFontVLCLoadFont(_FONT1_GLOBAL);
-//     //OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-//	 OsdFontVLCLoadFont(_FOUR_CORNER);
-//	OsdFontVLCLoadFont(_MAIN_MENU_2BIT_ICON);
-//
-//    // Background window
-//    //20140210 Abel Modify
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-//     if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90)||(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//     {
-//
-//         OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT( (g_ucOsdHeight/2)-1), _CP_GREEN_119);
-//         OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW( (g_ucOsdHeight/2)-1), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight/2)+1), _CP_GRAY_1 );//_CP_LIGHTBLUE
-//	 }
-//     else
-// #endif
-//     {
-//		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(1), COL(0), WIDTH(g_ucOsdWidth-1), HEIGHT((g_ucOsdHeight-2)), _CP_BLUE_65 );
-//		OsdFontPut1FuncTableForm(0, 0, _LEFT_CORNER_0,g_ucOsdWidth -2,g_ucOsdHeight-2,_CP_BLUE_65,_CP_BG,_QUADRANGLE_WINDOW_0);
-//		OsdFontPut1FuncHLine(1, 0, _WHITE_EDGE_1, g_ucOsdWidth ,_CP_WHITE, _CP_BLUE_65);
-//		OsdFontPut1FuncHLine(8, 0, _WHITE_EDGE_1, g_ucOsdWidth ,_CP_WHITE, _CP_BLUE_65);
-//
-//
-//
-//
-//     }
-//
-//
-//
-//
-//
-//     OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
-//
-//
-//
-//     // Osd Enable
-//     ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-//     OsdFuncEnableOsd();
-//
-// }
 
 // VLC
 // font put 1 bit
@@ -1712,465 +3116,1170 @@ else
 // window
 // draw window
 
-// 170928_02
-void OsdDispHotKeyVolumeMenu(void)
+void OsdDispNumberAndText(WORD usOsdState, WORD usValue, BYTE ucColor)
 {
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	EnumOsdRotateType tempRotateStatus = GET_OSD_ROTATE_STATUS();
-#endif
-	OsdDispDisableOsd();
+    BYTE ucDone = _FALSE;
 
-	g_ucFontPointer0 = _OSD_PAGE1_0_START;
-	g_ucFontPointer1 = _OSD_PAGE1_1_START;
-	g_ucFontPointer2 = _OSD_PAGE1_2_START;
+    g_usAdjustValue = usValue;
 
-	OsdFuncApplyMap(WIDTH(_OSD_HOTKEY_MENU_WIDTH), HEIGHT(6), COLOR(_CP_WHITE, _CP_BG));
+    switch (usOsdState)
+    {
+    //-----------INPUT
+    case _MENU_INPUT_SOURCE1:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _OSD_INPUT_AUTO)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_A0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D1)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D2)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D3)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
 
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(6), _DISABLE, 0, _ENABLE);
-#endif
+    case _MENU_INPUT_SOURCE2:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _OSD_INPUT_AUTO)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_A0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D1)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D2)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D3)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
 
-	OsdFuncBlending(_OSD_TRANSPARENCY_WINDOW_AND_CHARACTER_BACKGROUND);
-	//    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    case _MENU_INPUT_SOURCE3:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _OSD_INPUT_AUTO)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_A0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D1)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D2)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D3)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
 
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
+    case _MENU_INPUT_SOURCE4:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _OSD_INPUT_AUTO)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_A0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D0)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D1)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D2)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_INPUT_D3)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
 
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
-
-	// Background window Modify
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_180))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
-	}
-	else
-#endif
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(7), g_ucOsdHeight, _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(7), WIDTH(g_ucOsdWidth - 7), HEIGHT(g_ucOsdHeight), _CP_LIGHTBLUE);
-	}
-
-	if (GET_OSD_VOLUME_MUTE() == _OFF)
-	{
-		//           OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_VOLUME);
-		//		OsdFontPut1BitBackLightIcon(ROW(1), COL(2), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_ORANGE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_VOLUME);
-		OsdFontPut1BitMainMenuIcon(ROW(1), COL(1), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_ORANGE, _CP_BG);
-
-		// icon
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OSD_VOLUME_CENTER);
-		OsdWindowSlider(ROW(2), COL(9), g_usAdjustValue, _SLIDER_9, _SELECT);
-		OsdPropShowNumber(ROW(2), COL(31), GET_OSD_VOLUME(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_SELECT_COLOR);
-
-		SET_OSD_STATE(_MENU_HOTKEY_VOLUME);
-	}
-	else // MUTE
-	{
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_MUTE);
-		OsdFontPut1BitMainMenuIcon(ROW(1), COL(1), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_ORANGE, _CP_BG);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OSD_VOLUME_CENTER);
-		OsdWindowSlider(ROW(2), COL(9), g_usAdjustValue, _SLIDER_9, _UNSELECT);
-		// icon
-		OsdPropShowNumber(ROW(2), COL(31), GET_OSD_VOLUME(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_GRAY, _CP_BG));
-
-		SET_OSD_STATE(_MENU_HOTKEY_MUTE);
-	}
-
-	ScalerOsdDoubleFunction(GET_OSD_DOUBLE_SIZE(), GET_OSD_DOUBLE_SIZE());
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	switch (tempRotateStatus)
-	{
-	case _OSD_ROTATE_DEGREE_90:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 5, 50);
-		break;
-	case _OSD_ROTATE_DEGREE_270:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 95, 50);
-		break;
-	case _OSD_ROTATE_DEGREE_180:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 5);
-		break;
-	default:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 95);
-		break;
-	}
-	// OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
-
+    //--------------------------------------------------------------------------------------------------------------------------------- PICTURE
+    case _MENU_PICTURE_BLACKLEVEL:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_1, ucColor);
+        break;
+    case _MENU_PICTURE_CONTRAST:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_2, ucColor);
+        break;
+    case _MENU_PICTURE_CHROMA:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_3, ucColor);
+        break;
+    case _MENU_PICTURE_SHARPNESS:
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_4, ucColor);
+        break;
+    case _MENU_PICTURE_GAMMA:
+		OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+#if (_CUSTOMER_TYPE == _CUSTOMER_MEDICAL)
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdClearText6, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _GAMMA_OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_22)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_DICOM)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+        break;
+#elif (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdClearText6, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _GAMMA_OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_22)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaRC2, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_DICOM)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaRC3, ucColor, GET_OSD_LANGUAGE());
+        break;
 #else
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 95);
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdClearText6, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _GAMMA_OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_20)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGamma20, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_22)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_24)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGamma24, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_DICOM)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+        break;
+#endif
+#if (_ENABLE_MENU_REGION == _ON)
+/*
+    case _MENU_PICTURE_REGION:
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        switch (GET_OSD_DISPLAY_MODE())
+        {
+        case _OSD_DM_1P:
+            if (g_usAdjustValue == _OSD_SR_1P_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd1PFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_LR:
+            if (g_usAdjustValue == _OSD_SR_2P_LR_L)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PLRL, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_LR_R)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PLRR, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_LR_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PLRFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_TB:
+            if (g_usAdjustValue == _OSD_SR_2P_TB_T)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PTBT, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_TB_B)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PTBB, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_TB_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PTBFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_PIP:
+            if (g_usAdjustValue == _OSD_SR_2P_PIP_MAIN)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PPipMain, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_PIP_SUB)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PPipSub, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_PIP_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd2PPipFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_3P:
+			if (g_usAdjustValue == _OSD_SR_3P_LT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_LT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_LB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_LB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_4P:
+            if (g_usAdjustValue == _OSD_SR_4P_LT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_LT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_LB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_LB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+*/
+#endif
+    //---------------------------------------------------------------------------------------------------------------------------------- COLOR
+    case _MENU_COLOR_EFFECT:
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _COLOREFFECT_STANDARD)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdStandard, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _COLOREFFECT_GAME)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdGame, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _COLOREFFECT_MOVIE)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdMovie, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _COLOREFFECT_PHOTO)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdPhoto, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _COLOREFFECT_VIVID)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdVidid, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _COLOREFFECT_USER)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdUser, ucColor, GET_OSD_LANGUAGE());
+
+        break;
+    case _MENU_COLOR_GAMMA:
+#if (_CUSTOMER_TYPE == _CUSTOMER_MEDICAL)
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _GAMMA_OFF)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_22)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_DICOM)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+        break;
+#elif (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _GAMMA_OFF)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_22)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGammaRC2, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_DICOM)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGammaRC3, ucColor, GET_OSD_LANGUAGE());
+        break;
+#else
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _GAMMA_OFF)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_20)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGamma18, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_22)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGamma20, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_24)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _GAMMA_DICOM)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdGamma24, ucColor, GET_OSD_LANGUAGE());
+        break;
+#endif
+    case _MENU_COLOR_TEMPERATURE:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _CT_D56)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdTempD56, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _CT_D65)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdTempD65, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _CT_D93)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdTempD93, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _CT_USER)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdTempUser, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_COLOR_SURGICAL:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR + 1), _MENU_SECTION_1_SUB_STR_WIDTH - 1, 1); // Clear Item
+        if (g_usAdjustValue == _PCM_OSD_BT709)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR + 1), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH - 1), _PFONT_PAGE_ITEM_1, tsOsdBT709, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _PCM_OSD_DCI_P3)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR + 1), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH - 1), _PFONT_PAGE_ITEM_1, tsOsdDCI_P3, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _PCM_OSD_BT2020)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR + 1), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH - 1), _PFONT_PAGE_ITEM_1, tsOsdBT2020, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _PCM_OSD_NATIVE)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR + 1), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH - 1), _PFONT_PAGE_ITEM_1, tsOsdGammaNative, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_COLOR_BIAS_R:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _COLOR_BIAS_MAX, _COLOR_BIAS_MIN, _COLOR_BIAS_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_2, ucColor);
+        break;
+    case _MENU_COLOR_BIAS_G:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _COLOR_BIAS_MAX, _COLOR_BIAS_MIN, _COLOR_BIAS_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_3, ucColor);
+        break;
+    case _MENU_COLOR_BIAS_B:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _COLOR_BIAS_MAX, _COLOR_BIAS_MIN, _COLOR_BIAS_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_4, ucColor);
+        break;
+    case _MENU_COLOR_GAIN_R:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _COLOR_GAIN_MAX, _COLOR_GAIN_MIN, _COLOR_GAIN_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_5, ucColor);
+        break;
+    case _MENU_COLOR_GAIN_G:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _COLOR_GAIN_MAX, _COLOR_GAIN_MIN, _COLOR_GAIN_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_6, ucColor);
+        break;
+    case _MENU_COLOR_GAIN_B:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _COLOR_GAIN_MAX, _COLOR_GAIN_MIN, _COLOR_GAIN_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_7, ucColor);
+        break;
+#if (_ENABLE_MENU_REGION == _ON)
+    case _MENU_COLOR_REGION:
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        switch (GET_OSD_DISPLAY_MODE())
+        {
+        case _OSD_DM_1P:
+            if (g_usAdjustValue == _OSD_SR_1P_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd1PFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+		/*	
+        case _OSD_DM_2P_LR:
+            if (g_usAdjustValue == _OSD_SR_2P_LR_L)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PLRL, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_LR_R)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PLRR, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_LR_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PLRFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_TB:
+            if (g_usAdjustValue == _OSD_SR_2P_TB_T)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PTBT, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_TB_B)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PTBB, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_TB_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PTBFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_PIP:
+            if (g_usAdjustValue == _OSD_SR_2P_PIP_MAIN)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PPipMain, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_PIP_SUB)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PPipSub, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_2P_PIP_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd2PPipFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_3P:
+            if (g_usAdjustValue == _OSD_SR_3P_LT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_LT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_LB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_LB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_RB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_3P_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_4P:
+            if (g_usAdjustValue == _OSD_SR_4P_LT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_LT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_LB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_LB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PLBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RT_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRTIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RT_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRTOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RB_INSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRBIn, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_RB_OUTSIDE)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PRBOut, ucColor, GET_OSD_LANGUAGE());
+            else if (g_usAdjustValue == _OSD_SR_4P_FULL)
+                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsd4PFull, ucColor, GET_OSD_LANGUAGE());
+            break;
+        */    
+        }
+        break;
+#endif
+    //---------------------------------------------------------------------------------------------------------------------------------- SCREEN
+    case _MENU_SCREEN_OVERSCAN:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _OSD_ON)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SCREEN_ASPECT:	
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR + 2), _MENU_SECTION_1_SUB_STR_WIDTH , 1);	// Clear Item
+        switch (g_usAdjustValue)
+        {
+        case _OSD_ASPECT_RATIO_FULL:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdFill, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_ASPECT_RATIO_16_BY_9:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsd16_9, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_ASPECT_RATIO_4_BY_3:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsd4_3, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_ASPECT_RATIO_5_BY_4:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsd5_4, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_ASPECT_RATIO_ORIGIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdOrigin, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_ASPECT_RATIO_USER:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+    case _MENU_SCREEN_MONO_COLOR:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        switch (g_usAdjustValue)
+        {
+        case _COLOREFFECT_STANDARD:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdStd, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _COLOREFFECT_MONO:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdMono, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _COLOREFFECT_NIGHT:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdNight, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+
+        break;
+    case _MENU_SCREEN_ROTATE:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        switch (g_usAdjustValue)
+        {
+        case _DISP_ROTATE_0:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdRotate0, ucColor, GET_OSD_LANGUAGE());
+            break;
+        //case _DISP_ROTATE_90:
+        //    OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdRotate90, ucColor, GET_OSD_LANGUAGE());
+        //    break;
+        case _DISP_ROTATE_180:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdRotate180, ucColor, GET_OSD_LANGUAGE());
+            break;
+        //case _DISP_ROTATE_270:
+        //    OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdRotate270, ucColor, GET_OSD_LANGUAGE());
+        //    break;
+        }
+        break;
+	/*	
+    case _MENU_SCREEN_DISPLAY_MODE:
+        switch (g_usAdjustValue)
+        {
+        case _OSD_DM_1P:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsd1P, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_LR:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsd2PLR, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_TB:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsd2PTB, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_2P_PIP:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsd2PPIP, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_3P:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsd3P, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OSD_DM_4P:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsd4P, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+    case _MENU_SCREEN_PIP_POSITION:
+        switch (GET_OSD_PIP_POSITION_TYPE())
+        {
+        case _PIP_POSITON_LT:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, tsOsdPipLT, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _PIP_POSITON_RT:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, tsOsdPipRT, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _PIP_POSITON_LB:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, tsOsdPipLB, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _PIP_POSITON_RB:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, tsOsdPipRB, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _PIP_POSITON_MIDDLE:
+        case _PIP_POSITON_USER:
+            break;
+        }
+        break;
+    case _MENU_SCREEN_PIP_SIZE:
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_7, ucColor);
+        break;
+	*/
+    //---------------------------------------------------------------------------------------------------------------------------------- OSD SETTING
+//    case _MENU_OSD_H_POSITION:
+//        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OSD_H_POS_CENTER);
+//        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_1, ucColor);
+//        break;
+//    case _MENU_OSD_V_POSITION:
+//        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OSD_V_POS_CENTER);
+//        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_2, ucColor);
+//        break;
+//    case _MENU_OSD_TRANSPARENCY:
+//        // g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OSD_TRANSPARENCY_CENTER);
+//        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_3, ucColor);
+//        break;
+//    case _MENU_OSD_TIMEOUT:
+//        // g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_TIMEOUT_MAX, _OSD_TIMEOUT_MIN, _OSD_TIMEOUT_CENTER);
+//        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_4, ucColor);
+//        break;
+//    case _MENU_OSD_ROTATE:
+//        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_5, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+//        if (g_usAdjustValue == _OSD_ROTATE_DEGREE_0)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_5, tsOsdRotate0, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _OSD_ROTATE_DEGREE_90)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_5, tsOsdRotate90, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _OSD_ROTATE_DEGREE_180)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_5, tsOsdRotate180, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _OSD_ROTATE_DEGREE_270)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_5, tsOsdRotate270, ucColor, GET_OSD_LANGUAGE());
+//        break;
+//    case _MENU_OSD_LANGUAGE:
+//        // g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_LANGUAGE(), _CHINESE_T, _ENGLISH, _OFF);
+//        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+//        if (g_usAdjustValue == _ENGLISH)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsdEnglish, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _CHINESE_T)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_6, tsOsdChinese, ucColor, GET_OSD_LANGUAGE());
+//        break;
+    //---------------------------------------------------------------------------------------------------------------------------------- AUDIO
+    case _MENU_AUDIO_VOLUME:
+        g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OSD_VOLUME_CENTER);
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_1, ucColor);
+        break;
+    case _MENU_AUDIO_MUTE:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        // OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _ON)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_AUDIO_SOURCE:
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+		/*
+        if (g_usAdjustValue == _OSD_AUDIO_SOURCE_ANALOG)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdAudioLineIn, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_AUDIO_SOURCE_DIGITAL_REGION_1)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdAudioDigital1, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_AUDIO_SOURCE_DIGITAL_REGION_2)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdAudioDigital2, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_AUDIO_SOURCE_DIGITAL_REGION_3)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdAudioDigital3, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _OSD_AUDIO_SOURCE_DIGITAL_REGION_4)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdAudioDigital4, ucColor, GET_OSD_LANGUAGE());
+        */    
+        break;
+    //---------------------------------------------------------------------------------------------------------------------------------- DP OPTION
+//    case _MENU_DP_OPTION_VERSION:
+//        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+//        if (g_usAdjustValue == _DP_VER_1_DOT_1)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdDpVer1_1, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _DP_VER_1_DOT_2)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdDpVer1_2, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _DP_VER_1_DOT_3)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdDpVer1_3, ucColor, GET_OSD_LANGUAGE());
+//        break;
+//    case _MENU_DP_OPTION_MST:
+//        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+//        if (g_usAdjustValue == _MST_OFF)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+// 
+//        else if (g_usAdjustValue == _MST_D0) // D0-DP2
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdMstD0DP2, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _MST_D1) // D1-DP1
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdMstD1DP1, ucColor, GET_OSD_LANGUAGE());
+// 
+//        break;
+//    case _MENU_DP_OPTION_RESOLUTION:
+//        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+//        if (g_usAdjustValue == _DP_EDID_1080P)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsd1080P, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _DP_EDID_2560_1440)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsd1440P, ucColor, GET_OSD_LANGUAGE());
+//        else if (g_usAdjustValue == _DP_EDID_4K2K_60HZ)
+//            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_3, tsOsd2160P, ucColor, GET_OSD_LANGUAGE());
+//        break;
+//    case _MENU_DP_OPTION_CLONE:
+//        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+//		/*
+//#if (_MULTI_DISPLAY_MAX != 0x01)
+//        if (GET_OSD_DISPLAY_MODE() != _OSD_DM_1P)
+//        {
+//            if (g_usAdjustValue == _OSD_CLONE_MTP_OFF)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+//            else if (g_usAdjustValue == _OSD_CLONE_MTP_A0)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdSourceA0VGA, ucColor, GET_OSD_LANGUAGE());
+//            else if (g_usAdjustValue == _OSD_CLONE_MTP_D0)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdCloneD0DP2, ucColor, GET_OSD_LANGUAGE());
+//            else if (g_usAdjustValue == _OSD_CLONE_MTP_D1)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdCloneD1DP1, ucColor, GET_OSD_LANGUAGE());
+//            else if (g_usAdjustValue == _OSD_CLONE_MTP_D2)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdCloneD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+//            else if (g_usAdjustValue == _OSD_CLONE_MTP_D3)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdCloneD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+//        }
+//        else
+//#endif
+//        {
+//            if (g_usAdjustValue == _OSD_CLONE_1P_OFF)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+//            else if (g_usAdjustValue == _OSD_CLONE_1P_ON)
+//                OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_4, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+//        }
+//		*/
+//        break;
+    //---------------------------------------------------------------------------------------------------------------------------------- SETUP
+    case _MENU_SETUP_POWERSAVE:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _POWER_SAVE_OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdPowerSaveOff, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _POWER_SAVE_5SEC)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdPowerSave5Sec, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _POWER_SAVE_30SEC)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdPowerSave30Sec, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _POWER_SAVE_1MIN)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdPowerSave60Sec, ucColor, GET_OSD_LANGUAGE());
+        /*
+        else if(g_usAdjustValue ==_POWER_SAVE_1MIN)
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdPowerSave1Min, ucColor, GET_OSD_LANGUAGE());
+        else if(g_usAdjustValue ==_POWER_SAVE_2MIN)
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdPowerSave2Min, ucColor, GET_OSD_LANGUAGE());
+        else if(g_usAdjustValue ==_POWER_SAVE_5MIN)
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdPowerSave5Min, ucColor, GET_OSD_LANGUAGE());
+        else if(g_usAdjustValue ==_POWER_SAVE_30MIN)
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdPowerSave30Min, ucColor, GET_OSD_LANGUAGE());
+        else if(g_usAdjustValue ==_POWER_SAVE_60MIN)
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdPowerSave60Min, ucColor, GET_OSD_LANGUAGE());
+        else if(g_usAdjustValue ==_POWER_SAVE_120MIN)
+            OsdPropPutpString(ROW(ROW_OFFSET+_ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_2, tsOsdPowerSave120Min, ucColor, GET_OSD_LANGUAGE());
+        */
+        break;
+    case _MENU_SETUP_KEYLOCK:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _KEY_UNLOCK)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdUnLock, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _KEY_LOCK)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdLock, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SETUP_BACKLIGHT:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (GET_OSD_BACKLIGHT_CONTROL() == _CORVED)
+        {
+            g_usAdjustValue = UserCommonAdjustRealValueToPercentCurved(g_usAdjustValue,_BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
+			OsdPropShowNumberFloat(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_SUB_NUM_X - 2), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_3, ucColor);
+        }
+        else
+        {
+            g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
+            OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_3, ucColor);
+        }
+        break;
+    case _MENU_SETUP_BACKLIGHT_CONTROL:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR + 2), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item    
+        if (g_usAdjustValue == _LINEAR)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdLinear, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _CORVED)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, tsOsdCorved, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SETUP_RESET:
+        break;
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+    case _MENU_SETUP_STABILIZER_CONTROL:
+        if (g_usAdjustValue == _OFF)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _ON)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        break;
+#endif
+        //---------------------------------------------------------------------------------------------------------------------------------- VGA
+#if (_ENABLE_MENU_VGA == _ON)
+    case _MENU_VGA_AUTO:
+        OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdClearText, ucColor, GET_OSD_LANGUAGE());
+        if (g_usAdjustValue == _OFF)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        else if (g_usAdjustValue == _ON)
+            OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _PFONT_PAGE_ITEM_1, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_VGA_H_POSI:
+        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_2, ucColor);
+        break;
+    case _MENU_VGA_V_POSI:
+        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_3, ucColor);
+        break;
+    case _MENU_VGA_CLOCK:
+        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_4, ucColor);
+        break;
+    case _MENU_VGA_PHASE:
+        OsdPropShowNumber(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_5, ucColor);
+        break;
 #endif
 
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+    //---------------------------------------------------------------------------------------------------------------------------------- INFO
+    case _MENU_INFO_FW_VERSION:
+        break;
+    case _MENU_INFO_SERIAL_NUM:
+        break;
 
-	OsdFuncEnableOsd();
+    //----------------------------------------------------------------------------------------------------------------------------------
+    //---------------------------------------------------------------------------------------------------------------------------------- SERVICE
+    case _MENU_SERVICE_TEMPERATURE:
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_2, ucColor);
+        break;
+    case _MENU_SERVICE_D0NAME:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_D1NAME:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_D2NAME:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_6, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_D3NAME:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_7, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+        break;
+    //----------------------------------------------------------------------------------------------------------------------------------
+    // SERVICE2
+    case _MENU_SERVICE_BACKLIGHT_MIN:
+        OsdPropShowNumberRightBig(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_SUB_NUM_X - 3), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_1, ucColor);
+        break;
+    case _MENU_SERVICE_BACKLIGHT_MAX:
+        OsdPropShowNumberRightBig(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_SUB_NUM_X - 3), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_2, ucColor);
+        break;
+    case _MENU_SERVICE_BACKLIGHT_INVERT:
+        if (g_usAdjustValue == _ON)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        else
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_BACKLIGHT_FREQ:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item       
+        OsdPropShowNumberRightFreq(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_SUB_NUM_X - 3), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_4, ucColor);
+        break;
+    case _MENU_SERVICE_LOGO:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _ON)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        else
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        break;
+#if (_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+    case _MENU_SERVICE_STABILUX:
+        OsdPropShowNumberRightBig(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_SUB_NUM_X - 3), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_6, ucColor);
+        break;
+#endif
+    case _MENU_SERVICE_LOGO_LIST:
+        OsdPropShowNumberRightBig(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_1_SUB_NUM_X - 3), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_6, ucColor);
+        break;
+    case _MENU_SERVICE_DP_OPTION:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item    
+        switch (g_usAdjustValue)
+        {
+        case _MST_OFF:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdClone, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MST_D0:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdMstD0DP2, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _MST_D1:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdMstD1DP1, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+#if (_ENABLE_LIGHT_SENSOR == _ON)
+    case _MENU_SERVICE_LIGHTSENSOR:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        if (g_usAdjustValue == _ON)
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+        else
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2, tsOsdOFF, ucColor, GET_OSD_LANGUAGE());
+        break;
+#endif
+#if (_ENABLE_FAN_CONTROL == _ON)
+    case _MENU_SERVICE_FAN_OPTION:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR + 2), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        switch (GET_OSD_FAN_STATUS())
+        {
+        case _AUTO:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdFanAuto, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _ON:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdON, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OFF:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdOFF3, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+
+        break;
+    case _MENU_SERVICE_FAN_SPEED:
+        OsdPropShowNumberRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_SUB_NUM_X), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _PFONT_PAGE_ITEM_4, ucColor);
+        break;
+#endif
+    case _MENU_SERVICE_USERASSIGN_UP:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1); // Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1,  OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_USERASSIGN_DOWN:
+         OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1); // Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_2,  OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_USERASSIGN_LEFT:
+         OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1); // Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3,  OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+        break;
+    case _MENU_SERVICE_USERASSIGN_RIGHT:
+         OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1); // Clear Item
+        OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_4,  OsdDisplayGetUserAssignStringP(g_usAdjustValue), ucColor, GET_OSD_LANGUAGE());
+        break;
+#if (_ENABLE_MENU_OLED == _ON)
+    case _MENU_SERVICE_OLED_OFFRS:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        switch (g_usAdjustValue)
+        {
+        case _OFFRS_AUTO:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdOLEDAutoRun, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OFFRS_END_RUN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdOLEDEndRun, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _OFFRS_NOW_RUN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_1, tsOsdOLEDNow, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+    case _MENU_SERVICE_OLED_SEQUENCE_TIME:
+        OsdFuncClearOsd(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR + 2), _MENU_SECTION_1_SUB_STR_WIDTH, 1);	// Clear Item
+        switch (g_usAdjustValue)
+        {
+			/*
+        case _POWER_SAVE_OFF:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSaveOff, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_5SEC:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave5Sec, ucColor, GET_OSD_LANGUAGE());
+            break;
+            */
+        case _POWER_SAVE_30SEC:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave30Sec_1, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_1MIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave1Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_2MIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave2Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_5MIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave5Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_30MIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave30Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_60MIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave60Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        case _POWER_SAVE_120MIN:
+            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_3, tsOsdPowerSave120Min, ucColor, GET_OSD_LANGUAGE());
+            break;
+        }
+        break;
+#endif
+    default:
+        break;
+    }
 }
 
-void OsdDispHotKeyMuteMenu(void)
-{
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	EnumOsdRotateType tempRotateStatus = GET_OSD_ROTATE_STATUS();
-#endif
-	OsdDispDisableOsd();
 
-	g_ucFontPointer0 = _OSD_PAGE1_0_START;
-	g_ucFontPointer1 = _OSD_PAGE1_1_START;
-	g_ucFontPointer2 = _OSD_PAGE1_2_START;
-
-	OsdFuncApplyMap(WIDTH(_OSD_HOTKEY_MENU_WIDTH), HEIGHT(6), COLOR(_CP_WHITE, _CP_BG));
-
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(6), _DISABLE, 0, _ENABLE);
-#endif
-
-	OsdFuncBlending(_OSD_TRANSPARENCY_WINDOW_AND_CHARACTER_BACKGROUND);
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
-
-	// Background window Modify
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_180))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
-	}
-	else
-#endif
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(7), g_ucOsdHeight, _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(7), WIDTH(g_ucOsdWidth - 7), HEIGHT(g_ucOsdHeight), _CP_LIGHTBLUE);
-	}
-
-	OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_MUTE);
-	OsdFontPut1BitMainMenuIcon(ROW(1), COL(1), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_GRAY, _CP_BG);
-
-	g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OSD_VOLUME_CENTER);
-	OsdWindowSlider(ROW(2), COL(9), g_usAdjustValue, _SLIDER_9, _UNSELECT);
-	// icon
-	//	OsdDispSliderAndNumber(_MENU_HOTKEY_MUTE, GET_OSD_VOLUME());
-	OsdPropShowNumber(ROW(2), COL(31), GET_OSD_VOLUME(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_GRAY, _CP_BG));
-
-	SET_OSD_STATE(_MENU_HOTKEY_MUTE);
-
-	ScalerOsdDoubleFunction(GET_OSD_DOUBLE_SIZE(), GET_OSD_DOUBLE_SIZE());
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	switch (tempRotateStatus)
-	{
-	case _OSD_ROTATE_DEGREE_90:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 5, 50);
-		break;
-	case _OSD_ROTATE_DEGREE_270:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 95, 50);
-		break;
-	case _OSD_ROTATE_DEGREE_180:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 5);
-		break;
-	default:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 95);
-		break;
-	}
-	// OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
-
-#else
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 95);
-#endif
-
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-
-	OsdFuncEnableOsd();
-}
-
-// void OsdDispHotKeyAudioMode(void) //Eric_171010
-//{
-//     OsdDispDisableOsd();
-//
-//     g_ucFontPointer0 = _OSD_PAGE_0_START;
-//     g_ucFontPointer1 = _OSD_PAGE_1_START;
-//     g_ucFontPointer2 = _OSD_PAGE_2_START;
-//
-//     OsdFuncApplyMap(WIDTH(_OSD_HOTKEY_MENU_WIDTH), HEIGHT(8), COLOR(_CP_WHITE, _CP_BG));
-//
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-//     ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_HOTKEY_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
-// #endif
-//
-//     OsdFuncBlending(_OSD_TRANSPARENCY_WINDOW_AND_CHARACTER_BACKGROUND);
-////    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-//
-//    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-//
-//    // Adjust Color Palette
-//    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-//
-//    // Load Font & Icon
-//    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-//
-//    OsdFontVLCLoadFont(_FONT1_GLOBAL);
-//
-//
-//
-//    // Background window Modify
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-//    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//    {
-//        OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);
-//        OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
-//    }
-//    else
-// #endif
-//    {
-//            OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(10),HEIGHT (3 ), _CP_BLUE);
-// //           OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(8), WIDTH(g_ucOsdWidth - 8), HEIGHT(g_ucOsdHeight -2), _CP_LIGHTBLUE);
-//    }
-//
-//
-//
-// // OsdPropPutString(ROW(1), COL(2), _PFONT_PAGE_0, (GET_OSD_AUDIO_MODE()+_STRING_AUDIO_STANDARD), COLOR(_CP_ORANGE, _CP_BG), _ENGLISH);
-//    OsdPropPutStringCenter(ROW(1), COL(1), WIDTH(8), _PFONT_PAGE_0, (GET_OSD_AUDIO_MODE()+_STRING_AUDIO_STANDARD), COLOR(_CP_ORANGE, _CP_BG), _ENGLISH);
-//
-//
-//    SET_OSD_STATE(_MENU_HOTKEY_AUDIOMODE);
-//   ScalerOsdDoubleFunction(_ON, _ON);
-//    OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 42, 45);
-//
-//    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-//
-//
-//    OsdFuncEnableOsd();
-//
-//}
-// void OsdDispHotKeyPictureMode(void) //Eric_171010
-//{
-//    OsdDispDisableOsd();
-//
-//    g_ucFontPointer0 = _OSD_PAGE_0_START;
-//    g_ucFontPointer1 = _OSD_PAGE_1_START;
-//    g_ucFontPointer2 = _OSD_PAGE_2_START;
-//
-//    OsdFuncApplyMap(WIDTH(_OSD_HOTKEY_MENU_WIDTH), HEIGHT(8), COLOR(_CP_WHITE, _CP_BG));
-//
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-//    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_HOTKEY_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
-// #endif
-//
-//    OsdFuncBlending(_OSD_TRANSPARENCY_WINDOW_AND_CHARACTER_BACKGROUND);
-////    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-//
-//    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-//
-//    // Adjust Color Palette
-//    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-//
-//    // Load Font & Icon
-//    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-//
-//    OsdFontVLCLoadFont(_FONT1_GLOBAL);
-//
-//
-//
-//    // Background window Modify
-// #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-//    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//    {
-//        OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);
-//        OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
-//    }
-//    else
-// #endif
-//    {
-//            OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(10),HEIGHT (3 ), _CP_BLUE);
-// //           OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(8), WIDTH(g_ucOsdWidth - 8), HEIGHT(g_ucOsdHeight -2), _CP_LIGHTBLUE);
-//    }
-//
-//
-//
-// // OsdPropPutString(ROW(1), COL(2), _PFONT_PAGE_0, (GET_OSD_AUDIO_MODE()+_STRING_AUDIO_STANDARD), COLOR(_CP_ORANGE, _CP_BG), _ENGLISH);
-//    OsdPropPutStringCenter(ROW(1), COL(1), WIDTH(8), _PFONT_PAGE_0, (GET_OSD_COLOR_EFFECT()+_STRING_COLOREFFECT_STANDARD), COLOR(_CP_ORANGE, _CP_BG), _ENGLISH);
-//
-//    SET_OSD_STATE(_MENU_HOTKEY_PICTUREMODE);
-//   ScalerOsdDoubleFunction(_ON, _ON);
-//    OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 42, 45);
-//
-//    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-//
-//
-//    OsdFuncEnableOsd();
-//
-//}
 //--------------------------------------------------
 // Description    :
 // Input Value    : None
 // Output Value : None
 //--------------------------------------------------
-WORD OsdDisplayDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle, bit bNumberic)
+WORD OsdDisplayDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle)
 {
-	switch (GET_KEYMESSAGE())
-	{
-	case _UP_KEY_MESSAGE:
-	case _RIGHT_KEY_MESSAGE:
-		if (!bNumberic && GET_KEYMESSAGE() == _UP_KEY_MESSAGE)
-		{
-			if (usValue <= usMin)
-			{
-				if (bCycle == _ON)
-				{
-					return usMax;
-				}
-				else
-				{
-					return usMin;
-				}
-			}
-			else
-			{
-				usValue--;
-			}
-		}
-		else
-		{
-			if (usValue >= usMax)
-			{
-				if (bCycle == _ON)
-				{
-					return usMin;
-				}
-				else
-				{
-					return usMax;
-				}
-			}
-			else
-			{
-				usValue++;
-			}
-		}
-		break;
-	case _DOWN_KEY_MESSAGE:
-	case _LEFT_KEY_MESSAGE:
-		if (!bNumberic && GET_KEYMESSAGE() == _DOWN_KEY_MESSAGE)
-		{
-			if (usValue >= usMax)
-			{
-				if (bCycle == _ON)
-				{
-					return usMin;
-				}
-				else
-				{
-					return usMax;
-				}
-			}
-			else
-			{
-				usValue++;
-			}
-		}
-		else
-		{
-			if (usValue <= usMin)
-			{
-				if (bCycle == _ON)
-				{
-					return usMax;
-				}
-				else
-				{
-					return usMin;
-				}
-			}
-			else
-			{
-				usValue--;
-			}
-		}
-		break;
-	default:
+    switch(GET_KEYMESSAGE())
+    {
+        case _UP_KEY_MESSAGE:
+        case _RIGHT_KEY_MESSAGE:
+            if(usValue >= usMax)
+            {
+                if(bCycle == _ON)
+                {
+                    return usMin;
+                }
+                else
+                {
+                    return usMax;
+                }
+            }
+            else
+            {
+                usValue++;
+            }
 
-		break;
-	}
+            break;
+        case _DOWN_KEY_MESSAGE:
+        case _LEFT_KEY_MESSAGE:
+            if (usValue <= usMin)
+            {
+                if(bCycle == _ON)
+                {
+                    return usMax;
+                }
+                else
+                {
+                    return usMin;
+                }
+            }
+            else
+            {
+                usValue--;
+            }
+            break;
 
-	return usValue;
+        default:
+            break;
+    }
+
+    return usValue;
 }
 
+WORD OsdDisplayDetOverRange_Long(WORD usValue, WORD usMax, WORD usMin, bit bCycle)
+{
+    switch (GET_KEYMESSAGE())
+    {
+    case _RIGHT_KEY_MESSAGE:
+    case _UP_KEY_MESSAGE:
+        if (usValue >= usMax)
+        {
+            if (bCycle == _ON)
+            {
+                return usMin;
+            }
+            else
+            {
+                return usMax;
+            }
+        }
+        else
+        {
+            if (GET_KEYREPEATSTART())
+            {
+                if (usValue > usMax - 30)
+                    usValue = usMax;
+                else
+                    usValue = usValue + 30;
+            }
+            else
+            {
+                usValue++;
+            }
+        }
+
+        break;
+
+    case _LEFT_KEY_MESSAGE:
+    case _DOWN_KEY_MESSAGE:
+        if (usValue <= usMin)
+        {
+            if (bCycle == _ON)
+            {
+                return usMax;
+            }
+            else
+            {
+                return usMin;
+            }
+        }
+        else
+        {
+            if (GET_KEYREPEATSTART())
+            {
+                if (usValue < 30)
+                    usValue = usMin;
+                else
+                    usValue = usValue - 30;
+            }
+            else
+            {
+                usValue--;
+            }
+        }
+        break;
+
+    default:
+        break;
+    }
+
+    return usValue;
+}
+
+//--------------------------------------------------
+// Description    :
+// Input Value    : None
+// Output Value : None
+//--------------------------------------------------
 WORD OsdDisplayDetOverRange_Curved(WORD usValue, WORD usMax, WORD usMin, bit bCycle)
 {
-	switch (GET_KEYMESSAGE())
-	{
-	case _RIGHT_KEY_MESSAGE:
-		if (usValue >= usMax)
-		{
-			if (bCycle == _ON)
-			{
-				return usMin;
-			}
-			else
-			{
-				return usMax;
-			}
-		}
-		else
-		{
-			if (GET_KEYREPEATSTART())
-			{
-				if (usValue > usMax - 3)
-					usValue = usMax;
-				else
-					usValue = usValue + 3;
-			}
-			else
-			{
-				usValue++;
-			}
-		}
+    switch (GET_KEYMESSAGE())
+    {
+        
+    case _RIGHT_KEY_MESSAGE:
+    case _UP_KEY_MESSAGE:
+        if (usValue >= usMax)
+        {
+            if (bCycle == _ON)
+            {
+                return usMin;
+            }
+            else
+            {
+                return usMax;
+            }
+        }
+        else
+        {
+            if (GET_KEYREPEATSTART())
+            {
+                if (usValue > usMax - 30)
+                    usValue = usMax;
+                else
+                    usValue = usValue + 30;
+            }
+            else
+            {
+                usValue++;
+            }
+        }
 
-		break;
+        break;
 
-	case _LEFT_KEY_MESSAGE:
-		if (usValue <= usMin)
-		{
-			if (bCycle == _ON)
-			{
-				return usMax;
-			}
-			else
-			{
-				return usMin;
-			}
-		}
-		else
-		{
-			if (GET_KEYREPEATSTART())
-			{
-				if (usValue < 3)
-					usValue = usMin;
-				else
-					usValue = usValue - 3;
-			}
-			else
-			{
-				usValue--;
-			}
-		}
-		break;
+    case _LEFT_KEY_MESSAGE:
+    case _DOWN_KEY_MESSAGE:
+        if (usValue <= usMin)
+        {
+            if (bCycle == _ON)
+            {
+                return usMax;
+            }
+            else
+            {
+                return usMin;
+            }
+        }
+        else
+        {
+            if (GET_KEYREPEATSTART())
+            {
+                if (usValue < (usMin + 30))
+                    usValue = usMin;
+                else
+                    usValue = usValue - 30;
+            }
+            else
+            {
+                usValue--;
+            }
+        }
+        break;
 
-	default:
-		break;
-	}
+    default:
+        break;
+    }
 
-	return usValue;
+    return usValue;
 }
+
+WORD OsdDisplayDetOverRange_Freq(WORD usValue, WORD usMax, WORD usMin, bit bCycle)
+{
+    switch (GET_KEYMESSAGE())
+    {
+    case _RIGHT_KEY_MESSAGE:
+    case _UP_KEY_MESSAGE:
+        if (usValue >= usMax)
+        {
+            if (bCycle == _ON)
+            {
+                return usMin;
+            }
+            else
+            {
+                return usMax;
+            }
+        }
+        else
+        {
+            if (GET_KEYREPEATSTART())
+            {
+                if (usValue > usMax - 100)
+                    usValue = usMax;
+                else if (usValue < 1000)
+                {
+                    usValue = usValue + 100;
+                    if (usValue > 1000)
+                        usValue = 1000;
+                }
+                else
+                {
+                    usValue = usValue + 1000;
+                }
+            }
+            else
+            {
+                if (usValue < 1000)
+                    usValue = usValue + 10;
+                else
+                    usValue = usValue + 1000;
+            }
+        }
+
+        break;
+
+    case _LEFT_KEY_MESSAGE:
+    case _DOWN_KEY_MESSAGE:
+        if (usValue <= usMin)
+        {
+            if (bCycle == _ON)
+            {
+                return usMax;
+            }
+            else
+            {
+                return usMin;
+            }
+        }
+        else
+        {
+            if (GET_KEYREPEATSTART())
+            {
+                if (usValue < 100)
+                    usValue = usMin;
+                else if (usValue <= 1000)
+                    usValue = usValue - 100;
+                else
+                {
+                    usValue = usValue - 1000;
+                }
+            }
+            else
+            {
+                if (usValue <= 1000)
+                    usValue = usValue - 10;
+                else
+                    usValue = usValue - 1000;
+            }
+        }
+        break;
+
+    default:
+        break;
+    }
+
+    return usValue;
+}
+
 //--------------------------------------------------
 // Description  : Six Color Get One Color
 // Input Value  : SixColor
@@ -2178,41 +4287,41 @@ WORD OsdDisplayDetOverRange_Curved(WORD usValue, WORD usMax, WORD usMin, bit bCy
 //--------------------------------------------------
 void OsdDisplaySixColorGetOneColor(BYTE ucColor)
 {
-	switch (ucColor)
-	{
-	case _SIXCOLOR_R:
-		SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueR);
-		SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationR);
-		break;
+    switch(ucColor)
+    {
+        case _SIXCOLOR_R:
+            SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueR);
+            SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationR);
+            break;
 
-	case _SIXCOLOR_Y:
-		SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueY);
-		SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationY);
-		break;
+        case _SIXCOLOR_Y:
+            SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueY);
+            SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationY);
+            break;
 
-	case _SIXCOLOR_G:
-		SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueG);
-		SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationG);
-		break;
+        case _SIXCOLOR_G:
+            SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueG);
+            SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationG);
+            break;
 
-	case _SIXCOLOR_C:
-		SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueC);
-		SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationC);
-		break;
+        case _SIXCOLOR_C:
+            SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueC);
+            SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationC);
+            break;
 
-	case _SIXCOLOR_B:
-		SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueB);
-		SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationB);
-		break;
+        case _SIXCOLOR_B:
+            SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueB);
+            SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationB);
+            break;
 
-	case _SIXCOLOR_M:
-		SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueM);
-		SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationM);
-		break;
+        case _SIXCOLOR_M:
+            SET_OSD_SIX_COLOR_HUE(g_stSixColorData.ucSixColorHueM);
+            SET_OSD_SIX_COLOR_SATURATION(g_stSixColorData.ucSixColorSaturationM);
+            break;
 
-	default:
-		break;
-	}
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------
@@ -2220,351 +4329,746 @@ void OsdDisplaySixColorGetOneColor(BYTE ucColor)
 // Input Value  : SixColor
 // Output Value : None
 //--------------------------------------------------
-// void OsdDisplaySixColorSetOneColor(BYTE ucColor)
-//{
-//    switch(ucColor)
-//    {
-//        case _SIXCOLOR_R:
-//            g_stSixColorData.ucSixColorHueR = GET_OSD_SIX_COLOR_HUE();
-//            g_stSixColorData.ucSixColorSaturationR = GET_OSD_SIX_COLOR_SATURATION();
-//            break;
-//
-//        case _SIXCOLOR_Y:
-//            g_stSixColorData.ucSixColorHueY = GET_OSD_SIX_COLOR_HUE();
-//            g_stSixColorData.ucSixColorSaturationY = GET_OSD_SIX_COLOR_SATURATION();
-//            break;
-//
-//        case _SIXCOLOR_G:
-//            g_stSixColorData.ucSixColorHueG = GET_OSD_SIX_COLOR_HUE();
-//            g_stSixColorData.ucSixColorSaturationG = GET_OSD_SIX_COLOR_SATURATION();
-//            break;
-//
-//        case _SIXCOLOR_C:
-//            g_stSixColorData.ucSixColorHueC = GET_OSD_SIX_COLOR_HUE();
-//            g_stSixColorData.ucSixColorSaturationC = GET_OSD_SIX_COLOR_SATURATION();
-//            break;
-//
-//        case _SIXCOLOR_B:
-//            g_stSixColorData.ucSixColorHueB = GET_OSD_SIX_COLOR_HUE();
-//            g_stSixColorData.ucSixColorSaturationB = GET_OSD_SIX_COLOR_SATURATION();
-//            break;
-//
-//        case _SIXCOLOR_M:
-//            g_stSixColorData.ucSixColorHueM = GET_OSD_SIX_COLOR_HUE();
-//            g_stSixColorData.ucSixColorSaturationM = GET_OSD_SIX_COLOR_SATURATION();
-//            break;
-//
-//        default:
-//            break;
-//    }
-//}
+void OsdDisplaySixColorSetOneColor(BYTE ucColor)
+{
+    switch(ucColor)
+    {
+        case _SIXCOLOR_R:
+            g_stSixColorData.ucSixColorHueR = GET_OSD_SIX_COLOR_HUE();
+            g_stSixColorData.ucSixColorSaturationR = GET_OSD_SIX_COLOR_SATURATION();
+            break;
+
+        case _SIXCOLOR_Y:
+            g_stSixColorData.ucSixColorHueY = GET_OSD_SIX_COLOR_HUE();
+            g_stSixColorData.ucSixColorSaturationY = GET_OSD_SIX_COLOR_SATURATION();
+            break;
+
+        case _SIXCOLOR_G:
+            g_stSixColorData.ucSixColorHueG = GET_OSD_SIX_COLOR_HUE();
+            g_stSixColorData.ucSixColorSaturationG = GET_OSD_SIX_COLOR_SATURATION();
+            break;
+
+        case _SIXCOLOR_C:
+            g_stSixColorData.ucSixColorHueC = GET_OSD_SIX_COLOR_HUE();
+            g_stSixColorData.ucSixColorSaturationC = GET_OSD_SIX_COLOR_SATURATION();
+            break;
+
+        case _SIXCOLOR_B:
+            g_stSixColorData.ucSixColorHueB = GET_OSD_SIX_COLOR_HUE();
+            g_stSixColorData.ucSixColorSaturationB = GET_OSD_SIX_COLOR_SATURATION();
+            break;
+
+        case _SIXCOLOR_M:
+            g_stSixColorData.ucSixColorHueM = GET_OSD_SIX_COLOR_HUE();
+            g_stSixColorData.ucSixColorSaturationM = GET_OSD_SIX_COLOR_SATURATION();
+            break;
+
+        default:
+            break;
+    }
+}
 
 //--------------------------------------------------
 // Description  :
 // Input Value  :
 // Output Value :
 //--------------------------------------------------
-void OsdDispOsdMessage(EnumOSDDispMsg enumMessage)
+
+void OsdDispHotKeySourceMenu(void)	
 {
-	OsdDispDisableOsd();
-	// SET_OSD_DOUBLE_SIZE(_OFF)
-	g_ucFontPointer0 = _OSD_PAGE1_0_START;
-	g_ucFontPointer1 = _OSD_PAGE1_1_START;
-	g_ucFontPointer2 = _OSD_PAGE1_2_START;
+	OsdFuncCloseWindow(_OSD_WINDOW_ALL);	//  Menu->Source garbege
 
-#if 0
-	if (enumMessage == _OSD_DISP_CONNECT_BLUETOOTH_YESNO_MSG)
-	{
-		OsdFuncApplyMap(WIDTH(42), HEIGHT(8), COLOR(_CP_WHITE, _CP_BG));  //170928_01
-	}
-	else
-#endif
-	if (enumMessage == _OSD_DISP_INPUT_SIGNAL_MSG)
-	{
-		OsdFuncApplyMap(WIDTH(18), HEIGHT(5), COLOR(_CP_BLUE_65, _CP_BG)); // HEIGHT(5) -> 4 ���̸� ROTATE 180������ ȭ�� ����
-	}
-	else if (enumMessage == _OSD_DISP_MST_WARNING_MSG)
-	{
-		OsdFuncApplyMap(WIDTH(36), HEIGHT(8), COLOR(_CP_BLUE_65, _CP_BG));
-	}
-	else
-	{
-		OsdFuncApplyMap(WIDTH(36), HEIGHT(8), COLOR(_CP_WHITE, _CP_BG));
-	}
+    OsdFuncDisableOsd();
+    OsdFuncApplyMap(WIDTH(_MENU_SOURCE_WIDTH), HEIGHT(_MENU_SOURCE_HEIGHT), COLOR(_CP_WHITE, _CP_BG));
 
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	if (enumMessage == _OSD_DISP_INPUT_SIGNAL_MSG)
-	{
-		ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(5), _DISABLE, 0, _ENABLE);
-	}
-	else
-	{
-		ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(8), _DISABLE, 0, _ENABLE);
-	}
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_MENU_SOURCE_HEIGHT), _DISABLE, 0, _ENABLE);
 #endif
 
-	OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
+    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
 
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
+    // Adjust Color Palette
+    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
 
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
+    // Load Font & Icon
+    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
 
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
+    OsdFontVLCLoadFont(_FONT1_GLOBAL);
 
-	// Background window Modify
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-		(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_180))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
-	}
-	else
+    // Background window
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+       (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+    {
+        OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);	
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(52), g_ucOsdWidth, _CP_LIGHTBLUE);	
+    }
+    else
 #endif
+    {
+		OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(_MENU_SOURCE_WIDTH), HEIGHT(3), _CP_LIGHTBLUE);	
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0), WIDTH(_MENU_SOURCE_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);	
+    }
+
+	OsdPropPutpString(ROW(1), COL(3), _PFONT_PAGE_3, tsOsdSource, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+
+	OsdSourcePageDraw();
+
+	SetFocus(_MENU_SECTION_SOURCE, _ITEM_4 + GET_OSD_ITEM_INDEX());	
+	
+    //OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
+	//OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 90);	
+
+	switch(GET_OSD_ROTATE_STATUS())	//  OSD Rotate
 	{
-		if (enumMessage == _OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG)
+		case _OSD_ROTATE_DEGREE_0:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 90);
+			break;
+		case _OSD_ROTATE_DEGREE_90:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, _OSD_V_POS_MAX-90, 50);
+			break;
+		case _OSD_ROTATE_DEGREE_180:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, _OSD_H_POS_MAX-50, _OSD_V_POS_MAX-90);
+			break;
+		case _OSD_ROTATE_DEGREE_270:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 90, _OSD_H_POS_MAX-50);
+			break;
+		default:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 90);
+			break;
+	}
+	
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+
+    OsdFuncEnableOsd();
+}
+
+
+//--------------------------------------------------
+// Description  :
+// Input Value  :
+// Output Value :
+//--------------------------------------------------
+
+void OsdDispReactiveOsdMessage(void)	
+{
+	if((SysModeGetModeState() == _MODE_STATUS_POWER_SAVING) ||		//  Menu -> Power Save Message
+	(SysModeGetModeState() == _MODE_STATUS_NOSIGNAL) ||
+	(SysModeGetModeState() == _MODE_STATUS_NOSUPPORT))
+	{
+		//ScalerTimerReactiveTimerEvent(SEC(1), _USER_TIMER_EVENT_OSD_SHOW_POWER_SAVING);
+		//SET_OSD_POWER_SAVING_SHOW_MENU(_FALSE);		//  Reactive Power Saving Message flag
+		if(GET_OSD_BURNIN_MODE()!=_ON)
 		{
-			OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(g_ucOsdWidth), g_ucOsdHeight, _CP_LIGHTBLUE);
-		}
-#if 0
-		else if((enumMessage == _OSD_DISP_CONNECT_BLUETOOTH_YESNO_MSG) ||(enumMessage == _OSD_DISP_DISCONNECT_BLUETOOTH_YESNO_MSG) )//170928_00
-		{
-		    OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(g_ucOsdWidth), g_ucOsdHeight, _CP_LIGHTBLUE);
-		}
-#endif
-		else if (enumMessage == _OSD_DISP_INPUT_SIGNAL_MSG)
-		{
-			OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdWidth), g_ucOsdHeight, _CP_BLUE_65);
+			if(SysModeGetModeState() == _MODE_STATUS_POWER_SAVING)	
+	        {
+				OsdDispDisableOsd();
+	            OsdDispOsdMessage(_OSD_DISP_POWER_SAVING_MSG);	
+	            UserCommonInterfacePanelPowerAction(_BACKLIGHT_ON);
+				//ScalerTimerReactiveTimerEvent(SEC(0), _USER_TIMER_EVENT_OSD_SHOW_POWER_SAVING);
+				
+				printf("MenuExit-_OSD_DISP_POWER_SAVING_MSG\n\r");	
+				ScalerTimerReactiveTimerEvent(SEC(2), _USER_TIMER_EVENT_GO_TO_POWER_SAVING);
+	        }
+			else if(SysModeGetModeState() == _MODE_STATUS_NOSIGNAL)
+			{
+				if(SysSourceGetCableDetect(UserCommonNVRamGetSystemData(_SEARCH_PORT)) == _TRUE)
+				{
+					OsdDispDisableOsd();
+		            OsdDispOsdMessage(_OSD_DISP_NOSIGNAL_MSG);	
+		            UserCommonInterfacePanelPowerAction(_BACKLIGHT_ON);
+					ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_SHOW_POWER_SAVING);
+					printf("MenuExit-_OSD_DISP_NOSIGNAL_MSG\n\r");
+				}
+				else
+				{
+					OsdDispDisableOsd();
+		            OsdDispOsdMessage(_OSD_DISP_NOCABLE_MSG);	
+		            UserCommonInterfacePanelPowerAction(_BACKLIGHT_ON);
+					ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_SHOW_POWER_SAVING);
+					printf("MenuExit-_OSD_DISP_NOCABLE_MSG\n\r");
+				}
+
+				
+			}
+			else if(SysModeGetModeState() == _MODE_STATUS_NOSUPPORT)
+			{
+				OsdDispDisableOsd();
+	            OsdDispOsdMessage(_MODE_STATUS_NOSUPPORT);	
+	            UserCommonInterfacePanelPowerAction(_BACKLIGHT_ON);
+				ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_SHOW_POWER_SAVING);
+
+				printf("MenuExit-_MODE_STATUS_NOSUPPORT\n\r");
+			}
 		}
 		else
 		{
-			OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
-			OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdWidth - 12), g_ucOsdHeight, _CP_LIGHTBLUE);
+			if(SysModeGetModeState() == _MODE_STATUS_POWER_SAVING)	
+			SysModeSetResetTarget(_MODE_ACTION_RESET_TO_NOSIGNAL);
+			
+			ScalerDDomainPatternGenEnable(_ENABLE);
+	        ScalerDDomainBackgroundEnable(_DISABLE);
+
+			UserCommonInterfacePanelPowerAction(_BACKLIGHT_ON);
+
+			
 		}
+				
+			
 	}
-
-	//==== Show page item =======
-	switch (enumMessage)
+	else
 	{
-	case _OSD_DISP_NOSIGNAL_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_NO_SIGNAL);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_NO_SIGNAL_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO_SIGNAL_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		break;
+		OsdDispDisableOsd();
+	}
+}
 
-	case _OSD_DISP_NOCABLE_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_NO_CABLE);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_NO_CABLE_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO_CABLE_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		break;
+//--------------------------------------------------
+// Description  :
+// Input Value  :
+// Output Value :
+//--------------------------------------------------
+void OsdDispHotKeyMuteMessage(void)
+{
+    OsdDispDisableOsd();
 
-	case _OSD_DISP_NOSUPPORT_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_NO_SUPPORT);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_NO_SUPPORT_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO_SUPPORT_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		break;
+    g_ucFontPointer0 = _OSD_PAGE_0_START;
+    g_ucFontPointer1 = _OSD_PAGE_1_START;
+    g_ucFontPointer2 = _OSD_PAGE_2_START;
+    g_ucFontPointer3 = _OSD_PAGE_3_START;
 
-	case _OSD_DISP_FAIL_SAFE_MODE_MSG:
-		OsdPropPutStringCenter(ROW(_OSD_MESSAGE_ROW_START), COL(_OSD_MESSAGE_CENTER_COL_START), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_0, _STRING_NO_SUPPORT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
+    OsdFuncApplyMap(WIDTH(10), HEIGHT(3), COLOR(_CP_WHITE, _CP_BG));
 
-	case _OSD_DISP_AUTO_CONFIG_MSG:
-		// itle
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_AUTO_ADJUST);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(3), _DISABLE, 0, _ENABLE);
+#endif
 
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_AUTO_ADJUST_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_AUTO_ADJUST_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_AUTO_ADJUST_TEXT_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
+    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
 
-		break;
+    // Adjust Color Palette
+    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
 
-	case _OSD_DISP_INPUT_SIGNAL_MSG:
+    // Load Font & Icon
+    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
+
+    OsdFontVLCLoadFont(_FONT1_GLOBAL);
+
+    // Background window Modify
+
+    {
+        {
+            // OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+            // OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdWidth - 12), g_ucOsdHeight, _CP_LIGHTBLUE);
+            // OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(_OSD_DIALOG_BOX_HEIGHT+1), _CP_DARKGRAY);
+        }
+    }
+    // Background window Modify
+#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+    if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+        (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+    {
+    OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(1), HEIGHT(12), _CP_DARKGRAY);
+    }
+    else
+#endif
+    OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(10), HEIGHT(3), _CP_DARKGRAY);
+
+
+    if (GET_OSD_VOLUME_MUTE() == _ON)
+    {
+        OsdPropPutpString(ROW(1), COL(2), _PFONT_PAGE_0, tsOsdMute, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    }
+    else
+    {
+        OsdPropPutpString(ROW(1), COL(2), _PFONT_PAGE_0, tsOsdUnmute, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    }
+
+
+    // OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
+    switch (GET_OSD_ROTATE_STATUS())
+    {
+    case _OSD_ROTATE_DEGREE_0:
+        OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 100, 0);
+        break;
+    case _OSD_ROTATE_DEGREE_90:
+        OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, _OSD_V_POS_MAX - 100, 0);
+        break;
+    case _OSD_ROTATE_DEGREE_180:
+        OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, _OSD_H_POS_MAX - 0, _OSD_V_POS_MAX - 100);
+        break;
+    case _OSD_ROTATE_DEGREE_270:
+        OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 90, _OSD_H_POS_MAX - 0);
+        break;
+    default:
+        OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 0, 100);
+        break;
+    }
+
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+
+    OsdFuncEnableOsd();
+}
+
+void OsdDispHotKeyOsdMessage(BYTE ucHotKeyItem)			
+{
+    OsdDispDisableOsd();
+
+    g_ucFontPointer0 = _OSD_PAGE_0_START;
+    g_ucFontPointer1 = _OSD_PAGE_1_START;
+    g_ucFontPointer2 = _OSD_PAGE_2_START;
+	g_ucFontPointer3 = _OSD_PAGE_3_START;	
+
+    OsdFuncApplyMap(WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(_OSD_DIALOG_BOX_HEIGHT+2), COLOR(_CP_WHITE, _CP_BG));	
+
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_DIALOG_BOX_HEIGHT+2), _DISABLE, 0, _ENABLE);	
+#endif
+
+    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
+
+    // Adjust Color Palette
+    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
+
+    // Load Font & Icon
+    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
+
+    OsdFontVLCLoadFont(_FONT1_GLOBAL);
+
+    // Background window Modify
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+       (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+    {
+        OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);	
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);	
+    }
+    else
+#endif
+    {
+        {
+            //OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+            //OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdWidth - 12), g_ucOsdHeight, _CP_LIGHTBLUE);
+            OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0), WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(_OSD_DIALOG_BOX_HEIGHT+1), _CP_DARKGRAY);	
+        }
+    }
+	
+	OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(3), _CP_LIGHTBLUE);		
+
+	//------------------------------------------------------------- just test
+	//OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_VOLUME);
+    //OsdFontPut1BitMainMenuIcon(ROW(3), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+	//OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_MUTE);
+    //OsdFontPut1BitMainMenuIcon(ROW(3), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+	//--------------------------------------------------------
+	switch(ucHotKeyItem)
 	{
-		OsdPropPutStringCenter(ROW(1), COL(0), WIDTH(18), _PFONT_PAGE_INFORMATION, OsdDisplayGetSourcePortString(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-		OsdPropPutStringCenter(ROW(2), COL(0), WIDTH(18), _PFONT_PAGE_INFORMATION, _STRING_NOW_RESOLUTION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-		// OsdPropPutStringCenter(ROW(2 + 2), COL(0), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_INFORMATION, _STRING_HFREQPCLK, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-		ScalerOsdDoubleFunction(_OSD_DOUBLE_WIDTH_ENABLE, _OSD_DOUBLE_HEIGHT_ENABLE);
-		switch (GET_OSD_ROTATE_STATUS())
-		{
-		case _OSD_ROTATE_DEGREE_90:
-			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 47, 42);
+        case _MENU_HOTKEY_BRIGHTNESS:
+            OsdPropPutpString(ROW(1), COL(10), _PFONT_PAGE_0, tsOsdBrightness, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+
+            g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BRIGHTNESS(), _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER);
+            OsdWindowSlider(ROW(6), COL(2), g_usAdjustValue, _SLIDER_1, _SELECT);
+            OsdPropShowNumber(ROW(4), COL(15), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_WHITE, _CP_BG));
+            SET_OSD_STATE(_MENU_HOTKEY_BRIGHTNESS);
+            break;
+        case _MENU_HOTKEY_CONTRAST:
+            OsdPropPutpString(ROW(1), COL(10), _PFONT_PAGE_0, tsOsdContrast, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+
+            g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_CONTRAST(), _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
+            OsdWindowSlider(ROW(6), COL(2), g_usAdjustValue, _SLIDER_1, _SELECT);
+            OsdPropShowNumber(ROW(4), COL(15), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_WHITE, _CP_BG));
+            SET_OSD_STATE(_MENU_HOTKEY_CONTRAST);
+            break;
+        case _MENU_HOTKEY_VOLUME:
+            OsdPropPutpString(ROW(1), COL(10), _PFONT_PAGE_0, tsOsdVolume, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+
+            g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OSD_VOLUME_CENTER);
+            OsdWindowSlider(ROW(6), COL(2), g_usAdjustValue, _SLIDER_1, _SELECT);
+            OsdPropShowNumber(ROW(4), COL(15), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_WHITE, _CP_BG));
+            SET_OSD_STATE(_MENU_HOTKEY_VOLUME);
+            break;
+        case _MENU_HOTKEY_BACKLIGHT:
+            OsdPropPutpString(ROW(1), COL(10), _PFONT_PAGE_0, tsOsdBacklight, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+            if (GET_OSD_BACKLIGHT_CONTROL() == _ON)
+            {
+                g_usAdjustValue = GET_OSD_BACKLIGHT();
+                g_usAdjustValue = UserCommonAdjustRealValueToPercentCurved(g_usAdjustValue, _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
+                OsdPropShowNumberFloat(ROW(4), COL(10), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_WHITE, _CP_BG));
+            }
+            else
+            {
+                g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
+                OsdPropShowNumber(ROW(4), COL(15), g_usAdjustValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_WHITE, _CP_BG));
+            }
+
+            g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
+            OsdWindowSlider(ROW(6), COL(2), g_usAdjustValue, _SLIDER_1, _SELECT);
+
+            SET_OSD_STATE(_MENU_HOTKEY_BACKLIGHT);
+            break;
+
+		case _MENU_HOTKEY_MUTE:		
+			OsdPropPutpString(ROW(1), COL(11), _PFONT_PAGE_0, tsOsdMute, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
+			if(GET_OSD_VOLUME_MUTE() == _ON)
+			{
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_MUTE);
+	    		OsdFontPut1BitMainMenuIcon(ROW(4), COL(10), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+			}
+			else
+			{
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_VOLUME);
+	    		OsdFontPut1BitMainMenuIcon(ROW(4), COL(10), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+			}
+			SET_OSD_STATE(_MENU_HOTKEY_MUTE);
 			break;
-		case _OSD_ROTATE_DEGREE_270:
-			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 2, 2);
+		case _MENU_HOTKEY_DISPLAY_MODE:
+			SET_OSD_STATE(_MENU_HOTKEY_DISPLAY_MODE);
+			break;
+
+			
+	}
+	
+    //OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
+	switch(GET_OSD_ROTATE_STATUS())	
+	{
+		case _OSD_ROTATE_DEGREE_0:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 90);
+			break;
+		case _OSD_ROTATE_DEGREE_90:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, _OSD_V_POS_MAX-90, 50);
 			break;
 		case _OSD_ROTATE_DEGREE_180:
-			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 2, 45);
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, _OSD_H_POS_MAX-50, _OSD_V_POS_MAX-90);
+			break;
+		case _OSD_ROTATE_DEGREE_270:
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 90, _OSD_H_POS_MAX-50);
 			break;
 		default:
-			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 45, 3);
+			OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 90);
 			break;
-		}
-		ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-		OsdFuncEnableOsd();
-		ScalerTimerActiveTimerEvent(SEC(5), _USER_TIMER_EVENT_OSD_DISABLE);
 	}
-		return;
-	case _OSD_DISP_AUTO_COLOR_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _MENU_COLOR);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_AUTO_COLOR_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_AUTO_COLOR_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_AUTO_COLOR_TEXT_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-
-		break;
-
-	case _OSD_DISP_POWER_SAVING_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_POWER_SAVING);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_POWER_SAVING_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_POWER_SAVING_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_POWER_SAVING_TEXT_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-		break;
-	case _OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_TRUN_OFF_PANEL_UNI_TEXT0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_TRUN_OFF_PANEL_UNI_TEXT1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + 6), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_YES);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_NO);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(27), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-
-		break;
-#if (_FREEZE_SUPPORT == _ON)
-	case _OSD_DISP_DISABLE_FREEZE_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_FREEZE);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_FREEZE_DISABLE_TEXT_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_FREEZE_DISABLE_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_FREEZE_DISABLE_TEXT_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-		break;
-#endif
-#if (_DP_MST_SUPPORT == _ON)
-	case _OSD_DISP_MST_WARNING_MSG:
-		// OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_DP_MST);
-		// OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_MST_WARNING_MSG_0);
-		// OsdFontPut1BitMainMenuIcon(ROW(2), COL(14), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		// OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_MST_WARNING_MSG_1);
-		// OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		// OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_MST_WARNING_MSG_2);
-		// OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_DP_MST);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_MST_WARNING_MSG_0);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_MST_WARNING_MSG_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_MST_WARNING_MSG_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(14 + 6 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-		break;
-#endif
-#if 0
-       case _OSD_DISP_CONNECT_BLUETOOTH_YESNO_MSG:
-            // title
-
-                OsdPropPutString(ROW(3), COL(1), _PFONT_PAGE_0, _STRING_CONNECT_BLUETOOTH_MSG0, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-		  OsdPropPutString(ROW(4), COL(1), _PFONT_PAGE_1, _STRING_CONNECT_BLUETOOTH_MSG1, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
 	
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 
-            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO);
-            OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_YES );
-            OsdFontPut1BitMainMenuIcon(ROW(2), COL(27 + 6), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-            ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_DISABLE);
-           ScalerOsdDoubleFunction(_OSD_DOUBLE_WIDTH_ENABLE, _OSD_DOUBLE_HEIGHT_ENABLE);
+    OsdFuncEnableOsd();
+}
+
+//--------------------------------------------------
+// Description  :
+// Input Value  :
+// Output Value :
+//--------------------------------------------------
+void OsdDispOsdMessage(EnumOSDDispMsg enumMessage)		
+{
+    OsdDispDisableOsd();
+
+    g_ucFontPointer0 = _OSD_PAGE_0_START;
+    g_ucFontPointer1 = _OSD_PAGE_1_START;
+    g_ucFontPointer2 = _OSD_PAGE_2_START;
+	g_ucFontPointer3 = _OSD_PAGE_3_START;	
+
+#if (_ENABLE_MENU_OLED == _ON)
+	if ((enumMessage == _OSD_DISP_JB_MSG) || (enumMessage == _OSD_DISP_OFF_RS_MSG) || (enumMessage == _OSD_DISP_OFF_RS_PWR_SUPPLY_MSG) || (enumMessage == _OSD_DISP_OFF_RS_30SEC_MSG))
+		OsdFuncApplyMap(WIDTH(24), HEIGHT(8), COLOR(_CP_BG, _CP_BG));
+	else
+#endif
+	    OsdFuncApplyMap(WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(_OSD_DIALOG_BOX_HEIGHT), COLOR(_CP_WHITE, _CP_BG));
+
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_DIALOG_BOX_HEIGHT), _DISABLE, 0, _ENABLE);
+#endif
+
+    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
+
+    // Adjust Color Palette
+    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
+
+    // Load Font & Icon
+    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
+
+    OsdFontVLCLoadFont(_FONT1_GLOBAL);
+
+    // Background window Modify
+#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+       (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+    {
+        OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);	
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
+    }
+    else
+#endif
+    {
+        if(enumMessage == _OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG)
+        {
+            OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(g_ucOsdWidth), g_ucOsdHeight, _CP_LIGHTBLUE);	
+        }
+        else
+        {
+			if(enumMessage != _OSD_DISP_INPUT_SIGNAL_MSG)
+            	OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0+2), WIDTH(_OSD_DIALOG_BOX_WIDTH-6), HEIGHT(_OSD_DIALOG_BOX_HEIGHT-2), _CP_DARKGRAY);	
+			else
+				OsdWindowDrawingByFont(_OSD_WINDOW_4_1 , ROW(0), COL(3+2), WIDTH(_OSD_INFO_BOX_WIDTH), HEIGHT(_OSD_INFO_BOX_HEIGHT), _CP_DARKGRAY);
+        }
+
+		
+    }
+		
+    //==== Show page item =======
+    switch(enumMessage)
+    {
+        
+		case _OSD_DISP_INPUT_SIGNAL_MSG:
+			/*
+			OsdFuncClearOsd(ROW(3), COL(0), _OSD_DIALOG_BOX_WIDTH, _OSD_DIALOG_BOX_HEIGHT-3);	// Clear Item	
+			OsdPropPutpStringCenter(ROW(4), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);	
+			OsdPropPutpStringCenter(ROW(5 + 1), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetResolutionStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+			*/
+			OsdPropPutpStringCenter(ROW(3), COL(3+2), WIDTH(20), _PFONT_PAGE_INFORMATION, tsOsdClearLongText, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+			OsdPropPutpStringCenter(ROW(2), COL(3+2), WIDTH(20), _PFONT_PAGE_INFORMATION, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+			OsdPropPutpStringCenter(ROW(3), COL(3+2), WIDTH(20), _PFONT_PAGE_INFORMATION, OsdDisplayGetResolutionStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+			break;
+
+		case _OSD_DISP_NOSIGNAL_MSG:
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_NO_SIGNAL_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(2), COL(7-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO_SIGNAL_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(2), COL(7 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+			OsdPropPutpStringCenter(ROW(2), COL(3-1), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);	
             break;
-        case _OSD_DISP_DISCONNECT_BLUETOOTH_YESNO_MSG:
-            // title
-                OsdPropPutString(ROW(3), COL(1), _PFONT_PAGE_0, _STRING_DISCONNECT_BLUETOOTH_MSG0, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-		  OsdPropPutString(ROW(4), COL(1), _PFONT_PAGE_1, _STRING_DISCONNECT_BLUETOOTH_MSG1, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
 
-//            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_DISCONNECT_BLUETOOTH_TEXT0);
- //           OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_BLUE, _CP_BG);
-//            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISCONNECT_BLUETOOTH_TEXT1);
-//            OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + 6), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO );
-            OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_YES);
-            OsdFontPut1BitMainMenuIcon(ROW(2), COL(27), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-           ScalerOsdDoubleFunction(_OSD_DOUBLE_WIDTH_ENABLE, _OSD_DOUBLE_HEIGHT_ENABLE);
+        case _OSD_DISP_NOCABLE_MSG:
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_NO_CABLE_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(2), COL(7-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO_CABLE_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(2), COL(7 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+			OsdPropPutpStringCenter(ROW(2), COL(3-1), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);	
+            break;
+
+        case _OSD_DISP_NOSUPPORT_MSG:
+			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_NO_SUPPORT_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(2), COL(7-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO_SUPPORT_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(2), COL(7 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+			OsdPropPutpStringCenter(ROW(2), COL(3-1), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);	
+            break;
+			
+        case _OSD_DISP_FAIL_SAFE_MODE_MSG:
+            OsdPropPutStringCenter(ROW(_OSD_MESSAGE_ROW_START), COL(_OSD_MESSAGE_CENTER_COL_START), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_0, _STRING_NO_SUPPORT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+            break;
+
+        case _OSD_DISP_AUTO_CONFIG_MSG:
+			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_AUTO_ADJUST_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_AUTO_ADJUST_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_AUTO_ADJUST_TEXT_2);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6 + 6-1), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_WHITE, _CP_BG);
+            break;
+
+        case _OSD_DISP_AUTO_COLOR_MSG:
+			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_AUTO_COLOR_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_AUTO_COLOR_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_AUTO_COLOR_TEXT_2);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6 + 6-1), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_WHITE, _CP_BG);
+            break;
+
+        case _OSD_DISP_POWER_SAVING_MSG:
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_POWER_SAVING_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_POWER_SAVING_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_POWER_SAVING_TEXT_2);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6 + 6-1), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_WHITE, _CP_BG);
+            break;
+        case _OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG:
+			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_TRUN_OFF_PANEL_UNI_TEXT0);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(3-1), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_TRUN_OFF_PANEL_UNI_TEXT1);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(3 + 6-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            
+            break;
+#if(_FREEZE_SUPPORT == _ON)
+        case _OSD_DISP_DISABLE_FREEZE_MSG:
+			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_FREEZE_DISABLE_TEXT_0);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_FREEZE_DISABLE_TEXT_1);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_FREEZE_DISABLE_TEXT_2);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6 + 6-1), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_WHITE, _CP_BG);
+            break;
+#endif
+#if(_DP_MST_SUPPORT == _ON)
+        case _OSD_DISP_MST_WARNING_MSG:
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_MST_WARNING_MSG_0);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5-1), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_MST_WARNING_MSG_1);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6-1), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+            OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _ICON_MST_WARNING_MSG_2);
+            OsdFontPut1BitMainMenuIcon(ROW(1), COL(5 + 6 + 6-1), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_WHITE, _CP_BG);
             break;
 #endif
 #if (_ENABLE_MENU_OLED == _ON)
-	case _OSD_DISP_OFF_RS_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_OFFRS);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_OFFRS_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_OFFRS_TEXT_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		break;
-
-	case _OSD_DISP_JB_MSG:
-		// title
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_JBCOMP);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-		// icon
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_JB_TEXT_1);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-		OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_JB_TEXT_2);
-		OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-		break;
+			case _OSD_DISP_OFF_RS_MSG:
+				bEnable_OFF_RS_Message = _TRUE;
+#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+				if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+					(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+				{
+				   // OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdWidth, _CP_LIGHTBLUE);
+				}
+				else
 #endif
-	default:
+				{
+					//OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(24), g_ucOsdHeight, _CP_BG);
+				}
+				// title
+				//OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_OFFRS);
+				//OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+				// icon
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_OFFRS_TEXT_1);
+				OsdFontPut1BitMainMenuIcon(ROW(2), COL(6), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_OFFRS_TEXT_2);
+				OsdFontPut1BitMainMenuIcon(ROW(2), COL(6 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+				break;
+		
+			case _OSD_DISP_JB_MSG:
+				bEnable_OFF_RS_Message = _TRUE;
+#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+				if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+					(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+				{
+				   // OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdWidth, _CP_LIGHTBLUE);
+				}
+				else
+#endif
+				{
+					//OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(24), g_ucOsdHeight, _CP_BG);
+				}
+				// title
+				//OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_JBCOMP);
+				//OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+				// icon
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_JB_TEXT_1);
+				OsdFontPut1BitMainMenuIcon(ROW(2), COL(6), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_JB_TEXT_2);
+				OsdFontPut1BitMainMenuIcon(ROW(2), COL(6 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+				break;
+			case _OSD_DISP_OFF_RS_PWR_SUPPLY_MSG:
+				bEnable_OFF_RS_Message = _TRUE;
+#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+				if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+					(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+				{
+				   // OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdWidth, _CP_LIGHTBLUE);
+				}
+				else
+#endif
+				{
+					//OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(24), g_ucOsdHeight, _CP_BG);
+				}
+				// title
+				//OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_OFFRS);
+				//OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+				// icon
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_OFFRS_PWR_SUPPLY_TEXT_1);
+				OsdFontPut1BitMainMenuIcon(ROW(2), COL(6), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_OFFRS_PWR_SUPPLY_TEXT_2);
+				OsdFontPut1BitMainMenuIcon(ROW(2), COL(6 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+				// OsdPropPutStringCenter(ROW(3), COL(12), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_INFORMATION, _STRING_5MIN_AFTER, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
+				// OsdPropPutStringCenter(ROW(4), COL(12), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_INFORMATION, _STRING_START_OFFRS, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
+				break;
+			case _OSD_DISP_OFF_RS_30SEC_MSG:
+				bEnable_OFF_RS_Message = _TRUE;
+#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+				if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+					(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+				{
+				   // OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdWidth, _CP_LIGHTBLUE);
+				}
+				else
+#endif
+				{
+					//OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+					OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(24), g_ucOsdHeight, _CP_BG);
+				}
+				// title
+				//OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_OFFRS);
+				//OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+				// OsdPropPutStringCenter(ROW(6), COL(0), WIDTH(12), _PFONT_PAGE_1, _STRING_END_RUN, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+				//	icon
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_OFFRS_SEQUENCE_TIME_TEXT_1);
+				OsdFontPut1BitMainMenuIcon(ROW(1), COL(6), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_WHITE, _CP_BG);
+				OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_OFFRS_SEQUENCE_TIME_TEXT_2);
+				OsdFontPut1BitMainMenuIcon(ROW(1), COL(6 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_WHITE, _CP_BG);
+		
+				//OsdDisplayGetSequenceTimeP();
+				OsdPropPutpStringCenter(ROW(6), COL(6), WIDTH(12), _PFONT_PAGE_INFORMATION, OsdDisplayGetSequenceTimeP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+				// OsdPropPutStringCenter(ROW(3), COL(12), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_INFORMATION, _STRING_5MIN_AFTER, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
+				// OsdPropPutStringCenter(ROW(4), COL(12), WIDTH(_OSD_MESSAGE_CENTER_COL_END), _PFONT_PAGE_INFORMATION, _STRING_START_OFFRS, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
+				OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, ScalerTimerGetTimerCounter() % 101, ((ScalerTimerGetTimerCounter() >> 3) ^ (ScalerTimerGetTimerCounter() * 31)) % 101);
+				ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+				OsdFuncEnableOsd();
+				return;
+#endif
+
+        case _OSD_DISP_INPUTSOURCE_CHANGE_MSG:
+        OsdWindowDrawingByFont(_OSD_WINDOW_4_1, ROW( 0), COL( 3), WIDTH(_OSD_INFO_BOX_WIDTH), HEIGHT(_OSD_INFO_BOX_HEIGHT), _CP_DARKGRAY);
+
+		switch (GET_OSD_INPUT_PORT_OSD_ITEM())
+		{
+            case _OSD_INPUT_D0:
+                OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                break;
+            case _OSD_INPUT_D1:
+                OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                break;
+            case _OSD_INPUT_D2:
+                OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                break;
+            case _OSD_INPUT_D3:
+                OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                break;
+
+            default:
+                OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, tsOsdSourceAuto, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                break;
+		}
+		//OsdPropPutStringCenter(ROW(3), COL(3), WIDTH(20), _PFONT_PAGE_0, _STRING_RESOLUTION, 0, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+		//OsdPropPutStringCenter(ROW(4), COL(17), WIDTH(5), _PFONT_PAGE_0, _STRING_MAX_FREQUENCY, 0, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 100, 0);
+        //ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+        OsdFuncEnableOsd();
+        return;
 		break;
-	}
+        default:
+            break;
+    }
 
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
+	if(enumMessage != _OSD_DISP_INPUT_SIGNAL_MSG)
+		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
+	else
+	    OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 100, 0);
+	
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-
-	OsdFuncEnableOsd();
+	//SET_OSD_STATE(_MENU_DIALOG_MESSAGE);	
+	
+    OsdFuncEnableOsd();
 }
 
-#if (_VGA_SUPPORT == _ON)
+#if(_VGA_SUPPORT == _ON)
 //--------------------------------------------------
 // Description  :
 // Input Value  : None
@@ -2572,9 +5076,9 @@ void OsdDispOsdMessage(EnumOSDDispMsg enumMessage)
 //--------------------------------------------------
 void OsdDispAutoConfigProc(void)
 {
-	OsdDispOsdMessage(_OSD_DISP_AUTO_CONFIG_MSG);
-	UserCommonAutoConfig();
-	OsdDispDisableOsd();
+    OsdDispOsdMessage(_OSD_DISP_AUTO_CONFIG_MSG);
+    UserCommonAutoConfig();
+    OsdDispDisableOsd();
 }
 //--------------------------------------------------
 // Description  :
@@ -2583,52 +5087,52 @@ void OsdDispAutoConfigProc(void)
 //--------------------------------------------------
 void OsdDisplayAutoBalanceProc(void)
 {
-	OsdDispDisableOsd();
-	OsdDispOsdMessage(_OSD_DISP_AUTO_COLOR_MSG);
+    OsdDispDisableOsd();
+    OsdDispOsdMessage(_OSD_DISP_AUTO_COLOR_MSG);
 
-	if (SysSourceGetSourceType() == _SOURCE_VGA)
-	{
-		if (GET_OSD_COLOR_FORMAT() == _COLOR_SPACE_RGB)
-		{
-			// Perform auto-color for RGB
-			if (ScalerAutoDoWhiteBalance(_AUTO_TUNE_RGB) == _AUTO_SUCCESS)
-			{
-				ScalerAutoGetAutoColorResult(&g_stAdcData);
-				UserCommonNVRamSaveADCSetting(_COLOR_SPACE_RGB);
+    if(SysSourceGetSourceType() == _SOURCE_VGA)
+    {
+        if(GET_OSD_COLOR_FORMAT() == _COLOR_SPACE_RGB)
+        {
+            // Perform auto-color for RGB
+            if(ScalerAutoDoWhiteBalance(_AUTO_TUNE_RGB) == _AUTO_SUCCESS)
+            {
+                ScalerAutoGetAutoColorResult(&g_stAdcData);
+                UserCommonNVRamSaveADCSetting(_COLOR_SPACE_RGB);
 
-#if ((_YPBPR_SUPPORT == _ON) && (_YPBPR_AUTO_METHOD == _YPBPR_AUTO_BY_FORMULA))
-				// Calculate YPbPr gain/offset using formula
-				g_stAdcData = ScalerAutoBalanceYPbPrFromFormula(&g_stAdcData);
-				UserCommonNVRamSaveADCSetting(_COLOR_SPACE_YPBPR);
+#if((_YPBPR_SUPPORT == _ON) && (_YPBPR_AUTO_METHOD == _YPBPR_AUTO_BY_FORMULA))
+                // Calculate YPbPr gain/offset using formula
+                g_stAdcData = ScalerAutoBalanceYPbPrFromFormula(&g_stAdcData);
+                UserCommonNVRamSaveADCSetting(_COLOR_SPACE_YPBPR);
 
-				// Restore RGB gain/offset
-				ScalerAutoGetAutoColorResult(&g_stAdcData);
+                // Restore RGB gain/offset
+                ScalerAutoGetAutoColorResult(&g_stAdcData);
 #endif
-			}
-			else
-			{
-				UserCommonNVRamRestoreADCSetting();
-			}
-		}
-#if ((_YPBPR_SUPPORT == _ON) && (_YPBPR_AUTO_METHOD == _YPBPR_AUTO_BY_SOURCE))
-		else
-		{
-			// Perform auto-color for YPbPr
-			if (ScalerAutoDoWhiteBalance(_AUTO_TUNE_YPBPR) == _AUTO_SUCCESS)
-			{
-				ScalerAutoGetAutoColorResult(&g_stAdcData);
-				UserCommonNVRamSaveADCSetting(_COLOR_SPACE_YPBPR);
-			}
-			else
-			{
-				UserCommonNVRamRestoreADCSetting();
-			}
-		}
+            }
+            else
+            {
+                UserCommonNVRamRestoreADCSetting();
+            }
+        }
+#if((_YPBPR_SUPPORT == _ON) && (_YPBPR_AUTO_METHOD == _YPBPR_AUTO_BY_SOURCE))
+        else
+        {
+            // Perform auto-color for YPbPr
+            if(ScalerAutoDoWhiteBalance(_AUTO_TUNE_YPBPR) == _AUTO_SUCCESS)
+            {
+                ScalerAutoGetAutoColorResult(&g_stAdcData);
+                UserCommonNVRamSaveADCSetting(_COLOR_SPACE_YPBPR);
+            }
+            else
+            {
+                UserCommonNVRamRestoreADCSetting();
+            }
+        }
 #endif
-	}
+    }
 
-	OsdDispDisableOsd();
-	// SET_KEYMESSAGE(_HOLD_KEY_MESSAGE);
+    OsdDispDisableOsd();
+    // SET_KEYMESSAGE(_HOLD_KEY_MESSAGE);
 }
 #endif // End of #if(_VGA_SUPPORT == _ON)
 
@@ -2637,6319 +5141,392 @@ void OsdDisplayAutoBalanceProc(void)
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-void OsdDispOsdReset(void)
+void OsdDispClearSliderAndNumber(void)
 {
-
-	BYTE ucIndex = GET_OSD_LANGUAGE();
-#if (_HDR10_SUPPORT == _ON)
-	int port;
-#endif
-#if (_HIGHLIGHT_WINDOW_SUPPORT == _ON)
-	ScalerColorHLWDDomainEnable(_FUNCTION_OFF);
-#endif
-
-	OsdDispDisableOsd();
-
-	UserCommonNVRamRestoreSystemData();
-	RTDNVRamRestoreOSDData();
-
-	RTDNVRamRestoreUserColorSetting();
-	RTDNVRamLoadColorSetting(GET_COLOR_TEMP_TYPE());
-	RTDNVRamRestoreSixColorData();
-
-	RTDNVRamRestoreBriCon();
-	RTDNVRamRestoreBacklight();
-
-#if (_VGA_SUPPORT == _ON)
-	UserCommonNVRamRestoreModeUserData();
-
-	if (SysSourceGetSourceType() == _SOURCE_VGA)
-	{
-		SET_VGA_MODE_DO_FIRST_AUTO(_TRUE);
-		UserCommonModeSearchInitalUserAndCenterData(g_stVGAModeUserData.ucModeNumber);
-		UserCommonNVRamSaveModeUserData();
-	}
-#endif
-
-#if (_DP_SUPPORT == _ON)
-	// Set Aux Diff mode & Resistance Setting
-	SET_DP_AUX_DIFF_MODE();
-
-	SET_DP_AUX_ADJR_SETTING(UserCommonNVRamGetSystemData(_DP_AUX_ADJR_SETTING));
-
-	UserCommonInterfaceDpAuxSet();
-#endif
-
-	if (ucIndex != GET_OSD_LANGUAGE())
-	{
-		SET_OSD_LANGUAGE(ucIndex);
-		RTDNVRamSaveOSDData();
-	}
-	OsdFuncSetOsdItemFlag();
-#if (_HDR10_SUPPORT == _ON)
-	for (port = _D0_INPUT_PORT; port < _D4_INPUT_PORT; port++)
-	{
-		UserInterfaceGetEmbeddedEDIDData(port);
-	}
-
-	UserCommonInterfaceSetHPD(SysSourceGetInputPort());
-	UserCommonHDR10SupportSwitch();
-	UserCommonHDRAdjust(_HDR_FLOW_OSD_MODE_CHANGE);
-#endif
-
-	SysModeSetResetTarget(_MODE_ACTION_RESET_TO_DISPLAY_SETTING);
-
-	SET_OSD_STATE(_MENU_NONE);
-
-#if (_TWO_CHIP_DATA_EXCHANGE_MODE != _DATA_EXCHANGE_MODE_NONE)
-	UserCommonInterfaceDataExchangeAllDataReset();
-#endif
+    OsdWindowSliderDisable();
+    OsdFuncClearOsd(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_ucOsdWidth, 1);
 }
 
+#if(_DP_SUPPORT == _ON)
 //--------------------------------------------------
-// Description  : Logo showing function
+// Description  : Osd Display Reset Dp Capability Switch
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-#if (_CUSTOMER_TYPE == _CUSTOMER_VIMSE) // 2017.03.22 SUH-EDIT
-void OsdDispShowMainLogo(void)
+void OsdDispResetDpCapabilitySwitch(void)
 {
-	g_ucLogoTimerCounter = 0;
-	//	SET_OSD_DOUBLE_SIZE(_OFF);
+    // Set Aux Diff mode & Resistance Setting
+    SET_DP_AUX_DIFF_MODE();
 
-	ScalerDDomainPatternGenAdjustColor(0, 0, 0);
-	ScalerDDomainPatternGenEnable(_ENABLE);
-	ScalerDDomainBackgroundEnable(_DISABLE);
+    SET_DP_AUX_ADJR_SETTING(UserCommonNVRamGetSystemData(_DP_AUX_ADJR_SETTING));
 
-	OsdDispDisableOsd2();
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-	//	OsdFuncApplyMap(WIDTH(30), HEIGHT(9), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));	// 0x0C
-	OsdFuncApplyMap(WIDTH(60), HEIGHT(17), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG)); // 0x0C
+    UserCommonInterfaceDpAuxSet();
 
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, g_ucOsdHeight, _DISABLE, 0, _ENABLE);
-#endif
-	OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-	OsdFuncTransparency(_OSD_TRANSPARENCY_MAX);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO0);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO1);
+    // Switch All DP Port Dp Version
+    UserCommonInterfaceDPSwitchAllPortDpVersion();
 
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO0, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(30), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	OsdWindowDrawing(_OSD_WINDOW_0, XSTART(0), YSTART(0), XEND(_LOGO_WINDOW_SIZE_X), YEND(_LOGO_WINDOW_SIZE_Y), _LOGO_CP_BG);
-
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
-	OsdFuncEnableOsd();
-
-#if (_INSTANT_TIMER_EVENT_0 == _ON)
-	ScalerTimer0SetTimerCount(16);
+#if(_EMBEDDED_EDID_SUPPORT == _ON)
+    // Switch All DP Port Dp Edid
+    UserCommonInterfaceDPSwitchAllPortEdid();
 #endif
 
-	SET_OSD_LOGO_ON(_ON);
+#if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
+    // Switch All DP Port Dp Lane Count Capability
+    UserCommonInterfaceTypeCU3ModeAllPortCapabilitySwitch();
+#endif
+
+#if(_DP_MST_SUPPORT == _ON)
+    // Switch DP Mst Capability
+    UserCommonInterfaceMstRx0Rx1switch(UserCommonInterfaceGetDpMstCapablePort());
+#endif
 }
 #endif
 
-#if (_CUSTOMER_TYPE != _CUSTOMER_STANDARD) // 2017.03.28 SUH-EDIT
-void OsdDispShowLogo(void)
+
+
+void OsdDispTransferId(BYTE AdjValue)	
 {
-	g_ucLogoTimerCounter = 0;
-	//	SET_OSD_DOUBLE_SIZE(_ON);
-
-	ScalerDDomainPatternGenAdjustColor(0, 0, 0);
-	ScalerDDomainPatternGenEnable(_ENABLE);
-	ScalerDDomainBackgroundEnable(_DISABLE);
-
-	OsdDispDisableOsd2();
-	OsdPaletteSelectPalette(_PALETTE_RTD_LOGO);
-#if (_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-	OsdFuncApplyMap(WIDTH(0x4c), HEIGHT(7), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));
-#elif (_CUSTOMER_TYPE == _CUSTOMER_VIMSE)
-	//	OsdFuncApplyMap(WIDTH(12*4+16*3), HEIGHT(9), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));	// 0x0C
-#if 1
-	OsdFuncApplyMap(WIDTH(12 * 4 + 44 * 3), HEIGHT(9), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG)); // 0x0C
-#else
-	OsdFuncApplyMap(WIDTH(12 * 4 + 16 * 3), HEIGHT(9), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG)); // 0x0C
-#endif
-#elif (_CUSTOMER_TYPE == _CUSTOMER_BAYTEK)
-	// OsdFuncApplyMap(WIDTH(57), HEIGHT(10), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));
-	OsdFuncApplyMap(WIDTH(57), HEIGHT(10), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));
-#elif (_CUSTOMER_TYPE == _CUSTOMER_VIDEOTREE)
-	// OsdFuncApplyMap(WIDTH(80), HEIGHT(18), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));
-	OsdFuncApplyMap(WIDTH(60), HEIGHT(20), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));
-#else  // #if(_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-	OsdFuncApplyMap(WIDTH(70), HEIGHT(10), COLOR(_LOGO_CP_WHITE, _LOGO_CP_BG));
-#endif // #if(_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, g_ucOsdHeight, _DISABLE, 0, _ENABLE);
-#endif
-	OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-	OsdFuncTransparency(_OSD_TRANSPARENCY_MAX);
-#if (_CUSTOMER_TYPE == _CUSTOMER_VIMSE)
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO2);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO3);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO4);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO5);
-#elif (_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO0);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO1);
-#elif (_CUSTOMER_TYPE == _CUSTOMER_BAYTEK)
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO0);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO1);
-#elif (_CUSTOMER_TYPE == _CUSTOMER_VIDEOTREE)
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO0);
-	OsdFontVLCLoadFont(_REALTEK_1BIT_LOGO1);
-
-#endif
-
-#if (_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO0, COLOR(_LOGO_CP_RED_1, _LOGO_CP_BG));
-	OsdFontPut1BitTable(ROW(0), COL(0x2c), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_RED_1, _LOGO_CP_BG));
-	OsdWindowDrawing(_OSD_WINDOW_0, XSTART(1), YSTART(0), XEND(_LOGO_WINDOW_SIZE_X), YEND(_LOGO_WINDOW_SIZE_Y), _LOGO_CP_BG);
-#elif (_CUSTOMER_TYPE == _CUSTOMER_VIMSE)
-#if 1
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO2, COLOR(_LOGO_CP_COLOR1, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(56), tiOSD_REALTEK_1BIT_LOGO3, COLOR(_LOGO_CP_COLOR2, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(112), tiOSD_REALTEK_1BIT_LOGO4, COLOR(_LOGO_CP_COLOR3, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(168), tiOSD_REALTEK_1BIT_LOGO5, COLOR(_LOGO_CP_COLOR4, _LOGO_CP_BLACK));
-#elif 1
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO2, COLOR(_LOGO_CP_COLOR1, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(28), tiOSD_REALTEK_1BIT_LOGO3, COLOR(_LOGO_CP_COLOR2, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(56), tiOSD_REALTEK_1BIT_LOGO4, COLOR(_LOGO_CP_COLOR3, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(84), tiOSD_REALTEK_1BIT_LOGO5, COLOR(_LOGO_CP_COLOR4, _LOGO_CP_BLACK));
-#else
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_COLOR1, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(28), tiOSD_REALTEK_1BIT_LOGO2, COLOR(_LOGO_CP_COLOR2, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(56), tiOSD_REALTEK_1BIT_LOGO3, COLOR(_LOGO_CP_COLOR3, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(84), tiOSD_REALTEK_1BIT_LOGO4, COLOR(_LOGO_CP_COLOR4, _LOGO_CP_BLACK));
-#endif
-	OsdWindowDrawing(_OSD_WINDOW_0, XSTART(0), YSTART(0), XEND(_LOGO_WINDOW_SIZE_X), YEND(_LOGO_WINDOW_SIZE_Y), _LOGO_CP_BG);
-#elif (_CUSTOMER_TYPE == _CUSTOMER_BAYTEK)
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO0, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLUE));
-	OsdFontPut1BitTable(ROW(0), COL(14), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	// OsdWindowDrawing(_OSD_WINDOW_0, XSTART(0), YSTART(0), XEND(_LOGO_WINDOW_SIZE_X), YEND(_LOGO_WINDOW_SIZE_Y), _LOGO_CP_WHITE);
-#elif (_CUSTOMER_TYPE == _CUSTOMER_VIDEOTREE)
-	// OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO0, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	// OsdFontPut1BitTable(ROW(0), COL(42), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK)); //47
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO0, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(44), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK)); // 47
-
-#else  // #if(_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO0, COLOR(_LOGO_CP_RED_1, _LOGO_CP_BG));
-	OsdFontPut1BitTable(ROW(0), COL(19), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_BG, _LOGO_CP_BG));
-	OsdWindowDrawing(_OSD_WINDOW_0, XSTART(1), YSTART(1), XEND(_LOGO_WINDOW_SIZE_X), YEND(_LOGO_WINDOW_SIZE_Y), _LOGO_CP_BLUE);
-#endif // #if(_CUSTOMER_TYPE == _CUSTOMER_THRUPUT)
-
-	//	ScalerOsdChange1BitColor(ROW(0),  COL(19),LENGTH(_ITEM_WIDTH), HEIGHT(1), FG_COLOR(_CP_ORANGE), BG_COLOR(_CP_BG));//
-#if (_CUSTOMER_TYPE == _CUSTOMER_VIDEOTREE)
-	// ScalerOsdHorizontalDelayStep(_OSD_HORIZONTAL_DELAY_STEP_1_PIXEL);
-	// OsdDispSetPosition(_POS_DIRECT, _OSD_POSITION_GLOBAL_A, 0, 0);
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
-#else
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
-#endif
-
-	OsdFuncEnableOsd();
-
-#if (_INSTANT_TIMER_EVENT_0 == _ON)
-	ScalerTimer0SetTimerCount(16);
-#endif
-
-	SET_OSD_LOGO_ON(_ON);
-}
-#endif
-
-#if (_CUSTOMER_TYPE == _CUSTOMER_VIMSE) // 2017.03.22 SUH-EDIT
-BYTE u8_Table[20][4] =
-	{
-		{1, 0, 0, 0}, // 0
-		{2, 0, 0, 0}, // 1
-		{3, 0, 0, 0}, // 2 - repeat start
-		{2, 1, 0, 0}, // 3
-		{1, 2, 0, 0}, // 4
-		{0, 3, 0, 0}, // 5
-		{0, 2, 1, 0}, // 6
-		{0, 1, 2, 0}, // 7
-		{0, 0, 3, 0}, // 8
-		{0, 0, 2, 1}, // 9
-		{0, 0, 1, 2}, // 10
-		{0, 0, 0, 3}, // 11
-		{0, 0, 1, 2}, // 12
-		{0, 0, 2, 1}, // 13
-		{0, 0, 3, 0}, // 14
-		{0, 1, 2, 0}, // 15
-		{0, 2, 1, 0}, // 16
-		{0, 3, 0, 0}, // 17
-		{1, 2, 0, 0}, // 18
-		{2, 1, 0, 0}  // 19 -repeat ended
-};
-BYTE u8_Palette[4][3] =
-	{
-		{0xFF, 0xFF, 0xFF},
-		{0xBB, 0xBA, 0xBA},
-		{0x86, 0x85, 0x85},
-		{0x4D, 0x4D, 0x4D}};
-BYTE u8_Table_RGB[20][4] =
-	{
-		{_LOGO_CP_COLOR2, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 0
-		{_LOGO_CP_COLOR3, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 1
-		{_LOGO_CP_COLOR4, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 2 - repeat start
-		{_LOGO_CP_COLOR3, _LOGO_CP_COLOR2, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 3
-		{_LOGO_CP_COLOR2, _LOGO_CP_COLOR3, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 4
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR4, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 5
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR3, _LOGO_CP_COLOR2, _LOGO_CP_COLOR1}, // 6
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR2, _LOGO_CP_COLOR3, _LOGO_CP_COLOR1}, // 7
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR4, _LOGO_CP_COLOR1}, // 8
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR3, _LOGO_CP_COLOR2}, // 9
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR2, _LOGO_CP_COLOR3}, // 10
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR4}, // 11
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR2, _LOGO_CP_COLOR3}, // 12
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR3, _LOGO_CP_COLOR2}, // 13
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR1, _LOGO_CP_COLOR4, _LOGO_CP_COLOR1}, // 14
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR2, _LOGO_CP_COLOR3, _LOGO_CP_COLOR1}, // 15
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR3, _LOGO_CP_COLOR2, _LOGO_CP_COLOR1}, // 16
-		{_LOGO_CP_COLOR1, _LOGO_CP_COLOR4, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 17
-		{_LOGO_CP_COLOR2, _LOGO_CP_COLOR3, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}, // 18
-		{_LOGO_CP_COLOR3, _LOGO_CP_COLOR2, _LOGO_CP_COLOR1, _LOGO_CP_COLOR1}  // 19 -repeat ended
-};
-
-void OsdDispShowLogoColor(void)
-{
-	BYTE u8_IDX;
-	BYTE u8_Temp;
-	WORD u16_COUNT;
-
-	//	ScalerTimerDelayXms(500);		// 500 ms Delay
-
-	u16_COUNT = 0;
-	do
-	{
-		u8_Temp = u8_Table[u8_IDX][0];
-		ScalerOsdSetColorPalette(7, u8_Palette[u8_Temp][0], u8_Palette[u8_Temp][1], u8_Palette[u8_Temp][2]);
-		u8_Temp = u8_Table[u8_IDX][1];
-		ScalerOsdSetColorPalette(8, u8_Palette[u8_Temp][0], u8_Palette[u8_Temp][1], u8_Palette[u8_Temp][2]);
-		u8_Temp = u8_Table[u8_IDX][2];
-		ScalerOsdSetColorPalette(9, u8_Palette[u8_Temp][0], u8_Palette[u8_Temp][1], u8_Palette[u8_Temp][2]);
-		u8_Temp = u8_Table[u8_IDX][3];
-		ScalerOsdSetColorPalette(10, u8_Palette[u8_Temp][0], u8_Palette[u8_Temp][1], u8_Palette[u8_Temp][2]);
-		ScalerTimerDelayXms(95); // 95ms Delay
-
-		if (++u8_IDX > 19)
-			u8_IDX = 2;
-
-		if (++u16_COUNT > 450) // 45 sec
-			break;
-	} while (1);
-
-	OsdFontPut1BitTable(ROW(0), COL(0), tiOSD_REALTEK_1BIT_LOGO1, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(28), tiOSD_REALTEK_1BIT_LOGO2, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(56), tiOSD_REALTEK_1BIT_LOGO3, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-	OsdFontPut1BitTable(ROW(0), COL(84), tiOSD_REALTEK_1BIT_LOGO4, COLOR(_LOGO_CP_WHITE, _LOGO_CP_BLACK));
-
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-}
-#endif
-
-void COsdShowPageText(BYTE PageNo)
-{
-	CLR_KEYREPEATENABLE();
-	switch (PageNo)
-	{
-	case _MENU_PICTURE:
-
-		// Picture
-		// ScalerOsdWindowDisable(_OSD_WINDOW_4_4);
-		// ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		// ScalerOsdWindowDisable(_OSD_WINDOW_4_3);
-		// if(GET_OSD_COLOR_EFFECT()==_PICTURE_RTS)
-		//			if(GET_OSD_COLOR_EFFECT()==_COLOREFFECT_RTS)
-		{
-#if (_ENABLE_MENU_OLED == _ON)
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_BACKLIGHT, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#else
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_BACKLIGHT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_BRIGHTNESS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_CONTRAST, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SHARPNESS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_HUE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SATURATION, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#if (_ENABLE_MENU_OLED == _ON)
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OLED_SETTINGS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-			//				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_ECO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		// Eric_020180307 : Delete
-		//     			else
-		//     			{
-		//     				OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_BACKLIGHT, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		//     				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_CONTRAST, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		//     				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_ECO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//     			}
-
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_MAINSR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutStringCenter( ROW(4), COL(2),15, _PFONT_PAGE_2, _STRING_COLOR, COLOR(_CP_GRAY, _CP_BG) , GET_OSD_LANGUAGE());
-
-		//			 OsdDispSliderAndNumber(_MENU_PICTURE_CONTRAST, GET_OSD_CONTRAST());
-		// OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_DCR, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-		// OsdPropPutOptionString(ROW(_OSD_NUMBER_1_ROW),COL(_OSD_NUMBER_6_COL), _PFONT_PAGE_1,_STRING_OFF,COLOR(_CP_BLUE, _CP_BG), _ENGLISH); //�趨��	DCRON/OFF
-
-		break;
-#if (_ENABLE_MENU_OLED == _ON)
-	case _MENU_PICTURE_OLED_SETTINGS:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OLED_OFFRS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OLED_JB, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-#endif
-	case _MENU_COLOR:
-
-		// Color
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_1);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-#if (_HDR10_SUPPORT == _ON)
-		if (GET_OSD_HDR_MODE() != _HDR10_MODE_OFF)
-		{
-			if (GET_COLOR_TEMP_TYPE() == _CT_USER)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_RED, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_GREEN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_BLUE, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_RED, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_GREEN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_BLUE, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLORTEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#if (_HDR10_SUPPORT == _ON)
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_HDR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_EFFECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_GAMMA, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#else
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_EFFECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_GAMMA, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-		}
-		else
-#endif
-		{
-			if (GET_COLOR_TEMP_TYPE() == _CT_USER)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_RED, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_GREEN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_BLUE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_RED, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_GREEN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_BLUE, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLORTEMP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#if (_HDR10_SUPPORT == _ON)
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_HDR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_EFFECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_GAMMA, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#else
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_COLOR_EFFECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_GAMMA, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-		}
-		break;
-
-	case _MENU_OSDSETTINGS:
-		// OSDSETTINGS
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_4);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_3);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OSDSET_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//  OsdPropPutOptionString(ROW(_OSD_NUMBER_1_ROW),COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_1,_STRING_Language_TABLE1,COLOR(_CP_LIGHTBLUE, _CP_BG), GET_OSD_LANGUAGE()); //��ȷ��	 LANGUAGE
-
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OSDSET_HORIZONTAL, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//  OsdDispSliderAndNumber(_MENU_OTHER_OSD_HPOS, GET_OSD_HPOS());//
-
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OSDSET_VERTICAL, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//  OsdDispSliderAndNumber(_MENU_OTHER_OSD_VPOS, GET_OSD_VPOS());//
-
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OSDSET_TRANSPARENCY, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//	OsdDispSliderAndNumber(_MENU_OTHER_TRNASPARENCY, GET_OSD_TRANSPARENCY_STATUS());//
-
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OSDSET_OSDTIMEOUT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//  OsdDispSliderAndNumber(_MENU_OTHER_MENU_TIME, GET_OSD_TIME_OUT());//
-
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OSDSET_ROTATE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		//  OsdDispSliderAndNumber(_MENU_OTHER_MENU_TIME, GET_OSD_TIME_OUT());//
-		break;
-
-	case _MENU_SETUP:
-		// SETUP
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SETUP_INPUT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SETUP_AUDIOMUTE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SETUP_AUDIO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SETUP_RESET, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_DP_FORMAT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// if (GET_OSD_DP_MST() != _MST_OFF)
-		// {
-		// 	OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_DP_MST, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 	OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_CLONE, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// }
-		// else if (GET_OSD_CLONE_MODE() != _OSD_CLONE_OFF)
-		// {
-		// 	OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_DP_MST, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 	OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_CLONE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// }
-		// else
-		// {
-		// 	OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_DP_MST, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 	OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_CLONE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// }
-
-		// OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SETUP_RESET, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-
-	case _MENU_OTHER:
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_1);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_8);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_DISPLAY_SIZE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_DISPLAY_ROTATE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_LOW_BLUE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_OVER_DRIVE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-		break;
-		// #if (_ENABLE_VIDEO_WALL == _ON)
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_VIDEO_WALL_SETTINGS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// #else
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_VIDEO_WALL_SETTINGS, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// #endif
-		// #if (_ENABLE_LIGHT_SENSOR == _ON)
-		// 			if (SuccessInitilizeLightSensor())
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_LIGHT_SENSOR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			}
-		// 			else
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_LIGHT_SENSOR, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 			}
-		// #else
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_LIGHT_SENSOR, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// #endif
-		// #if (_ENABLE_FAN_CONTROL == _ON)
-		// 			if (SuccessInitializeFanControl())
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_CONTROLS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			}
-		// 			else
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_CONTROLS, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 			}
-		// #else
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_CONTROLS, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// #endif
-		// #if(_ENABLE_SELF_CHECK == _ON)
-		// 			if (SuccessInitialize_TCS34725())
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SELF_CHECK, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			}
-		// 			else
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SELF_CHECK, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 			}
-		// #else
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SELF_CHECK, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// #endif
-		// //#if(_AUO_PANEL_ALCW_SUPPORT == _ON)
-		// //			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_ALCW_SETTING, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// //#else
-		// //			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_ALCW_SETTING, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// //#endif
-
-		// #if(_FREESYNC_SUPPORT==_ON)
-
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FREESYNC, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// #endif
-		// 			break;
-		// #if (_ENABLE_VIDEO_WALL == _ON)
-		// 		case _MENU_OTHERS_VIDEO_WALL_SETTINGS:
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_VIDEO_WALL, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_DISPLAY_NUMBER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_HORIZONTAL_NUMBER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_VERTICAL_NUMBER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_RS232_ID, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 		  break;
-		// #endif
-		// #if (_ENABLE_FAN_CONTROL == _ON)
-		// 		case _MENU_OTHERS_FAN_CONTROLS:
-		// 			ScalerOsdWindowDisable(_OSD_WINDOW_4_1);
-		// 			if (SuccessInitializeFanControl())
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 				if (GET_OSD_FAN_STATUS() == _ON)
-		// 				{
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 				}
-		// 				else
-		// 				{
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				}
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-		// 				if (GET_OSD_SHUTDOWN_STATUS() == _ON)
-		// 				{
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// 				}
-		// 				else
-		// 				{
-		// 					OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				}
-		// 			}
-		// 			else
-		// 			{
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		// 				OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-
-		// 			}
-		// 			break;
-		// #endif
-
-	case _MENU_SERVICE:
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_4);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_3);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SERVICE_PWM_RES, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SERVICE_CONTROL, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#if (_PIXEL_SHIFT_SUPPORT == _ON)
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SERVICE_PIXEL_SHIFT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SERVICE_PIXEL_SHIFT_TIME, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-		// OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SERVICE_INVERT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_SERVICE_FREQ, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-		break;
-
-	default:
-		break;
-	}
+	if(AdjValue == 0)		// All Set
+		OsdPropPutpString(ROW(6), COL(17), _PFONT_PAGE_ITEM_1, tsOsdAll, COLOR(_CP_YELLOW, _CP_BG), GET_OSD_LANGUAGE());	
+	//else if(AdjValue == 101)// Off
+	//	OsdPropPutpString(ROW(6), COL(17), _PFONT_PAGE_ITEM_1, tsOsdOFF, COLOR(_CP_YELLOW, _CP_BG), GET_OSD_LANGUAGE());
+	else					// 1~100
+		OsdPropShowNumber(ROW(6), COL(20), AdjValue, (_ALIGN_RIGHT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_YELLOW, _CP_BG));
 }
 
-void COsdShowChoosePictureText(BYTE number)
-{
-	CLR_KEYREPEATENABLE();
-	/*		_Countstar=0,
-			_LANGUAGE,
-			_HORIZONTAL,
-			_VERTICAL,
-			_TRANSPARENCY,
-			_OSDTIMEOUT,
-			_FONT_AMOUNT,
-	*/
-
-	switch (number)
-	{
-	case _STRING_BACKLIGHT:
-			g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
-			OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-			OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-	case _STRING_BRIGHTNESS:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BRIGHTNESS(), _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_1, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_1 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-	case _STRING_CONTRAST:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_CONTRAST(), _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_2, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_2 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-	case _STRING_SHARPNESS:
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), GET_OSD_SHARPNESS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_3 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHARPNESS(), _SHARPNESS_MAX, _SHARPNESS_MIN, _SHARPNESS_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_3, _UNSELECT);
-
-		break;
-	case _STRING_HUE:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_HUE(), _HUE_MAX, _HUE_MIN, _HUE_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_4, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_4 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-	case _STRING_SATURATION:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SATURATION(), _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_5, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_5 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-#if (_ENABLE_MENU_OLED == _ON)
-	case _STRING_OLED_SETTINGS:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OLED_OFFRS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OLED_JB, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-	case _STRING_OLED_OFFRS:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_OLED_OFFRS_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-	case _STRING_OLED_JB:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_OLED_JB_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-#endif
-
-	default:
-		break;
-	}
-}
-
-void COsdShowChooseColorText(BYTE number)
-{
-	CLR_KEYREPEATENABLE();
-	/*		_Countstar=0,
-			_LANGUAGE,
-			_HORIZONTAL,
-			_VERTICAL,
-			_TRANSPARENCY,
-			_OSDTIMEOUT,
-			_FONT_AMOUNT,
-	*/
-
-	switch (number)
-	{
-	case _STRING_COLORTEMP:
-		// if(GET_COLOR_TEMP_TYPE()==_CT_6500)
-		//{
-		//	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-
-		//}
-		// else if(GET_COLOR_TEMP_TYPE()==_CT_9300)
-		//{
-		//	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-
-		//}
-		// else if(GET_COLOR_TEMP_TYPE()==_CT_USER)
-		//{
-		//	OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-
-		//}
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW + (3 * GET_COLOR_TEMP_TYPE())), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_9300K, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_7500K, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_6500K, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_5800K, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_SRGB, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_USER_DEFINE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-
-	case _STRING_COLOR_RED:
-		// g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_R(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		// g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_R(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_R(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_6, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_6 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-
-		break;
-
-	case _STRING_COLOR_GREEN:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_G(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_7, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_7 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-
-		break;
-
-	case _STRING_COLOR_BLUE:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_B(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_8, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_8 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-
-#if (_HDR10_SUPPORT == _ON)
-	case _STRING_HDR:
-
-		if (GET_OSD_HDR_MODE() == _HDR10_MODE_OFF)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_HDR_MODE() == _HDR10_MODE_AUTO)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		// else if(GET_OSD_HDR_MODE()==_HDR10_MODE_FORCE_2084)
-		//{
-		//	OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-
-		//}
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_AUTO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_SMPTE2084, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-#endif
-	case _STRING_COLOR_EFFECT:
-		if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_STANDARD)
-		{
-			// OsdFontPut1ChooseIcon(_OSD_NUMBER_1_ROW, _OSD_NUMBER_2_COL+10, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_GAME)
-		{
-			// OsdFontPut1ChooseIcon(_OSD_NUMBER_2_ROW, _OSD_NUMBER_2_COL+10, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_MOVIE)
-		{
-			// OsdFontPut1ChooseIcon(_OSD_NUMBER_3_ROW, _OSD_NUMBER_2_COL+10, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_PHOTO)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_VIVID)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		// else if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_USER)
-		//{
-		//	//OsdFontPut1ChooseIcon(_OSD_NUMBER_11_ROW, _OSD_NUMBER_11_COL, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-		//	OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		// }
-
-		// Eric_020180307 : Delete
-		//     					else if(GET_OSD_COLOR_EFFECT()==_COLOREFFECT_FPS)
-		//     					{
-		//     						//OsdFontPut1ChooseIcon(_OSD_NUMBER_12_ROW, _OSD_NUMBER_2_COL+10, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-		//     						OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		//     					}
-		//     					else if(GET_OSD_COLOR_EFFECT()==_COLOREFFECT_RTS)
-		//     					{
-		//     						//OsdFontPut1ChooseIcon(_OSD_NUMBER_13_ROW, _OSD_NUMBER_2_COL+10, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-		//     						OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		//     					}
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_STANDARD, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_GAME, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_MOVIE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_PHOTO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_VIVID, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_PICTURE_FPS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_PICTURE_RTS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_COLOR_USER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-	case _STRING_GAMMA:
-		if (GET_OSD_GAMMA() == _GAMMA_OFF)
-		{
-			// OsdFontPut1ChooseIcon(_OSD_NUMBER_1_ROW, _OSD_NUMBER_2_COL+10, _CHOOSE_ICON,_CP_WHITE, _CP_BLUE_65);
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_GAMMA() == _GAMMA_18)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_GAMMA() == _GAMMA_20)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_GAMMA() == _GAMMA_22)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_GAMMA() == _GAMMA_24)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-#if (_TECNINT_DICOM)
-		else if (GET_OSD_GAMMA() == _GAMMA_RC2)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-		else if (GET_OSD_GAMMA() == _GAMMA_RC3)
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		}
-#endif
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_18, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_20, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_22, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_24, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#if (_TECNINT_DICOM)
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_RC2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_GAMMA_RC3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-		break;
-
-	default:
-		break;
-	}
-}
-
-void COsdShowChooseOSDSetText(BYTE number)
-{
-	CLR_KEYREPEATENABLE();
-	/*		_Countstar=0,
-			_LANGUAGE,
-			_HORIZONTAL,
-			_VERTICAL,
-			_TRANSPARENCY,
-			_OSDTIMEOUT,
-			_FONT_AMOUNT,
-	*/
-
-	switch (number)
-	{
-	case _STRING_OSDSET_LANGUAGE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-#if (_ENABLE_MENU_OLED == _ON)
-		if (GET_OSD_LANGUAGE() == _ENGLISH)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _CHINESE_T)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _ESPANA)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _FRENCH)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _GERMAN)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL - 1), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _ITALIANO)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _RUSSIAN)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		// else if(GET_OSD_LANGUAGE()==_KOREAN)
-		//{
-		//	ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		//	ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-		//	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_12_ROW),  COL(_OSD_NUMBER_2_COL+9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		// }
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _ESPANA);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _FRENCH);
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _GERMAN);
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _ITALIANO);
-		OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _RUSSIAN);
-		// OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _KOREAN);
-
-#else
-		if (GET_OSD_LANGUAGE() == _ENGLISH)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _ESPANA)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _FRENCH)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _GERMAN)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL - 1), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _ITALIANO)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL + 9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _NEDERLAND)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else if (GET_OSD_LANGUAGE() == _RUSSIAN)
-		{
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-			ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		// else if(GET_OSD_LANGUAGE()==_KOREAN)
-		//{
-		//	ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		//	ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-		//	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_12_ROW),  COL(_OSD_NUMBER_2_COL+9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		// }
-		// else if(GET_OSD_LANGUAGE()==_CHINESE_T)
-		//{
-		//	ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		//	ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-		//	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_13_ROW),  COL(_OSD_NUMBER_2_COL+9), WIDTH(4), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		// }
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _ESPANA);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _FRENCH);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _GERMAN);
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _ITALIANO);
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _NEDERLAND);
-		OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _RUSSIAN);
-		// OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _KOREAN);
-		// OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _CHOOSE_LANGUAGE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-#endif
-
-		break;
-
-	case _STRING_OSDSET_HORIZONTAL:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_HPOS(), _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OSD_H_POS_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_2, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-
-	case _STRING_OSDSET_VERTICAL:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VPOS(), _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OSD_V_POS_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_3, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-
-	case _STRING_OSDSET_TRANSPARENCY:
-
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_TRANSPARENCY_STATUS(), _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OSD_TRANSPARENCY_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_4, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-
-	case _STRING_OSDSET_OSDTIMEOUT:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_TIME_OUT(), _OSD_TIMEOUT_MAX, _OSD_TIMEOUT_MIN, _OSD_TIMEOUT_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_5, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-
-	case _STRING_OSDSET_ROTATE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_0_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_90_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_270_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_180_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_ROTATE_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_ROTATE_STATUS())), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_WHITE, _CP_BG), _CHINESE_T);
-		break;
-	default:
-		break;
-	}
-}
-
-void COsdShowChooseSetupText(BYTE number)
-{
-	CLR_KEYREPEATENABLE();
-
-	switch (number)
-	{
-	case _STRING_SETUP_INPUT:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-		if (GET_OSD_INPUT_PORT_OSD_ITEM() == _OSD_INPUT_AUTO)
-		{
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_INPUT_PORT_OSD_ITEM())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else
-		{
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * (GET_OSD_INPUT_PORT_OSD_ITEM()))), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		break;
-	case _STRING_SETUP_AUDIOMUTE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_VOLUME_MUTE())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-
-	case _STRING_SETUP_AUDIO:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OSD_VOLUME_CENTER);
-		// g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OFF);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), GET_OSD_VOLUME(), _SLIDER_3, _UNSELECT);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_3, _OSD_NUMBER_UNSELECT_COLOR);
-		break;
-
-	case _STRING_DP_FORMAT:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_DP_D0_VERSION())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_DP1_1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_DP1_2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-	case _STRING_DP_MST:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_DP_MST())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_DP1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_DP2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-	case _STRING_CLONE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_CLONE_MODE())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-	default:
-		break;
-	}
-}
-
-void COsdShowChooseOtherText(BYTE number)
-{
-	CLR_KEYREPEATENABLE();
-	/*		_Countstar=0,
-			_LANGUAGE,
-			_HORIZONTAL,
-			_VERTICAL,
-			_TRANSPARENCY,
-			_OSDTIMEOUT,
-			_FONT_AMOUNT,
-	*/
-
-	switch (number)
-	{
-	case _STRING_OTHER_DISPLAY_SIZE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FULLSCREEN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_AUTO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_4_3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_5_4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_1_1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_ASPECT_RATIO_TYPE())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-
-	// case _STRING_OTHER_LOW_BLUE :
-	//	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_5_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-	//	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_WEAK, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_MEDIAN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_STRONG, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_STRONGEST, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW+(3* GET_OSD_LOWBLUELIGHT_STATUS())),  COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	break;
-	case _STRING_OTHER_DISPLAY_ROTATE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_0_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_90_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_180_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_270_DEGREE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_DISP_ROTATE())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-
-		break;
-	case _STRING_OTHER_OVER_DRIVE:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_OD_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-
-	case _STRING_OTHER_FREESYNC:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_FREE_SYNC_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-
-#if (_ENABLE_VIDEO_WALL == _ON)
-	case _STRING_OTHER_VIDEO_WALL_SETTINGS:
-		// OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		// OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_VIDEO_WALL, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_DISPLAY_NUMBER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_HORIZONTAL_NUMBER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_VERTICAL_NUMBER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_RS232_ID, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		break;
-
-	case _STRING_OTHER_VIDEO_WALL:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_VIDEO_WALL_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-	case _STRING_OTHER_DISPLAY_NUMBER:
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), GET_OSD_VIDEO_WALL_DISP_NUM(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_DISP_NUM(), GetVideoWallDisplayNumber(), _VIDEO_WALL_DISP_NUM_MIN, _VIDEO_WALL_DISP_NUM_CENTER());
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-		break;
-	case _STRING_OTHER_HORIZONTAL_NUMBER:
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), GET_OSD_VIDEO_WALL_H_NUM(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_1 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_H_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _VIDEO_WALL_HV_NUM_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_1, _UNSELECT);
-		break;
-	case _STRING_OTHER_VERTICAL_NUMBER:
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), GET_OSD_VIDEO_WALL_V_NUM(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_2 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_V_NUM(), _VIDEO_WALL_HV_NUM_MAX, _VIDEO_WALL_HV_NUM_MIN, _VIDEO_WALL_HV_NUM_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_2, _UNSELECT);
-		break;
-	case _STRING_OTHER_RS232_ID:
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), GET_OSD_VIDEO_WALL_RS232ID(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_3 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_VIDEO_WALL_RS232ID(), GetVideoWallDisplayNumber(), _VIDEO_WALL_RS232ID_MIN, _VIDEO_WALL_RS232ID_CENTER());
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_3, _UNSELECT);
-		break;
-#endif
-#if (_ENABLE_LIGHT_SENSOR == _ON)
-	case _STRING_LIGHT_SENSOR:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		if (SuccessInitilizeLightSensor())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_LIGHT_SENSOR_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_LIGHT_SENSOR_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_GRAY, _CP_BG);
-		}
-		break;
-#endif
-
-#if (_ENABLE_FAN_CONTROL == _ON)
-	case _STRING_OTHER_FAN_CONTROLS:
-		if (SuccessInitializeFanControl())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_SHUTDOWN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_FAN_PWM4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_SHUTDOWN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		break;
-	case _STRING_OTHER_FAN_CONTROLS2:
-		if (SuccessInitializeFanControl())
-		{
-			if (GET_OSD_FAN_STATUS() == _ON)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			if (GET_OSD_SHUTDOWN_STATUS() == _ON)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_TEMP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_PWM4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SHUTDOWN_TEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_TEMP, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		break;
-
-	case _STRING_OTHER_FAN:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		if (SuccessInitializeFanControl())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_AUTO, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_FAN_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_AUTO, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_FAN_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_GRAY, _CP_BG);
-		}
-		break;
-	case _STRING_OTHER_FAN_PWM1:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM1(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-		break;
-	case _STRING_OTHER_FAN_PWM2:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM2(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_1 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-		break;
-	case _STRING_OTHER_FAN_PWM3:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM3(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_2 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-		break;
-	case _STRING_OTHER_FAN_PWM4:
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM4(), _FAN_PWM_MAX, _FAN_PWM_MIN, _FAN_PWM_CENTER);
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_3 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-		break;
-	case _STRING_OTHER_SHUTDOWN:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		if (SuccessInitializeFanControl())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_SHUTDOWN_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_SHUTDOWN_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_GRAY, _CP_BG);
-		}
-		break;
-	case _STRING_OTHER_SHUTDOWN_TEMP:
-		OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET), GET_OSD_SHUTDOWN_TEMP(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-		g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_FAN_PWM4(), _SHUTDOWN_TEMP_MAX, _SHUTDOWN_TEMP_MIN, _SHUTDOWN_TEMP_CENTER);
-		OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-		break;
-	case _STRING_OTHER_TEMP:
-#if (_FANCONTROL_SENSOR_TYPE == _FAN_ADT7470)
-		if (SuccessInitializeFanControl())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp1(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			if (GetTempCount() >= 2)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp2(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			if (GetTempCount() >= 3)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp3(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			if (GetTempCount() >= 3)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp4(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			if (GetTempCount() >= 3)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP5, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp5(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP5, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp1(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp2(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp3(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp4(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP5, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_ADT7470Temp5(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-		}
-#elif (_FANCONTROL_SENSOR_TYPE == _FAN_MAX31785)
-		if (SuccessInitializeFanControl())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp1(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			if (MAX31785TempSensor[1].tempState)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp2(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			if (MAX31785TempSensor[2].tempState)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP3, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp3(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-			if (MAX31785TempSensor[3].tempState)
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP4, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-				OsdPropShowNumberTemp(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp4(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			}
-			else
-			{
-				OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			}
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP1, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp1(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP2, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp2(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP3, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp3(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OTHER_TEMP4, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropShowNumberTemp(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL + 8), Get_MAX31785Temp4(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_2, _OSD_NUMBER_UNSELECT_COLOR);
-		}
-#endif
-		break;
-
-#endif
-
-#if (_ENABLE_SELF_CHECK == _ON)
-	case _STRING_OTHER_SELF_CHECK:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		if (SuccessInitialize_TCS34725())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_SELF_CHECK_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_SELF_CHECK_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_GRAY, _CP_BG);
-		}
-		break;
-#endif
-
-#if (_AUO_PANEL_ALCW_SUPPORT == _ON)
-	case _STRING_OTHER_ALCW_SETTING:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_ALCW())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-#endif
-
-	case _STRING_OTHER_MENU:
-		ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_DISPLAY_ROTATE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_OVER_DRIVE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-
-#if (_ENABLE_VIDEO_WALL == _ON)
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_VIDEO_WALL_SETTINGS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#else
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_VIDEO_WALL_SETTINGS, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-#if (_ENABLE_LIGHT_SENSOR == _ON)
-		if (SuccessInitilizeLightSensor())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_LIGHT_SENSOR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_LIGHT_SENSOR, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		}
-#else
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_LIGHT_SENSOR, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-#if (_ENABLE_FAN_CONTROL == _ON)
-		if (SuccessInitializeFanControl())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_CONTROLS, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_CONTROLS, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		}
-#else
-		OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FAN_CONTROLS, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-#if (_ENABLE_SELF_CHECK == _ON)
-		if (SuccessInitialize_TCS34725())
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SELF_CHECK, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		}
-		else
-		{
-			OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SELF_CHECK, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-		}
-#else
-		OsdPropPutString(ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_SELF_CHECK, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-#if(_AUO_PANEL_ALCW_SUPPORT == _ON)
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_ALCW_SETTING, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#else 
-			OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_ALCW_SETTING, COLOR(_CP_GRAY, _CP_BG), GET_OSD_LANGUAGE());
-#endif 
-#if (_FREESYNC_SUPPORT == _ON)
-
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL), _PFONT_PAGE_1, _STRING_OTHER_FREESYNC, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-#endif
-		break;
-	default:
-		break;
-	}
-}
-
-void COsdShowChooseServiceText(BYTE number)
-{
-	CLR_KEYREPEATENABLE();
-	/*		_Countstar=0,
-			_LANGUAGE,
-			_HORIZONTAL,
-			_VERTICAL,
-			_TRANSPARENCY,
-			_OSDTIMEOUT,
-			_FONT_AMOUNT,
-	*/
-
-	switch (number)
-	{
-	case _STRING_SERVICE_PWM_RES:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SERVICE_255, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SERVICE_4095, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_BACKLIGHT_PWM_RES())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-	case _STRING_SERVICE_CONTROL:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SERVICE_LINEAR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SERVICE_CURVE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_BACKLIGHT_CONTROL())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-#if (_PIXEL_SHIFT_SUPPORT == _ON)
-	case _STRING_SERVICE_PIXEL_SHIFT:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_PIXEL_SHIFT_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-	case _STRING_SERVICE_PIXEL_SHIFT_TIME:
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-		OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_5MIN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_10MIN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_15MIN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_20MIN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_PIXEL_SHIFT_TIME())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-		break;
-#endif
-	// case _STRING_SERVICE_INVERT:
-	//	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-	//	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_11_COL), _PFONT_PAGE_2, _ICON_CHOOSE, COLOR(_CP_BLUE_65, _CP_BG), _CHINESE_T);
-
-	//	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_OFF, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_ON, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	//	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_BACKLIGHT_INVERT())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_WHITE, _CP_BG);
-	//	break;
-	// case _STRING_SERVICE_FREQ:
-	//	OsdPropShowNumber(ROW(_OSD_NUMBER_10_ROW - 2), COL(_OSD_NUMBER_10_COL + _OSD_SLIDE_VALUE_OFFSET - 4), GET_OSD_BACKLIGHT_FREQ(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_5), _SLIDER_0 + 3, _OSD_NUMBER_UNSELECT_COLOR);
-	//	g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT_FREQ(), _BACKLIGHT_FREQ_MAX, _BACKLIGHT_FREQ_MIN, _BACKLIGHT_FREQ_CENTER);
-	//	OsdWindowSlider(ROW(_OSD_NUMBER_10_ROW), COL(_OSD_NUMBER_10_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-	//	break;
-	default:
-		break;
-	}
-}
-#if 0
-void COsdShowChooseLeftMenuText(BYTE number)
-{
-			CLR_KEYREPEATENABLE();
-	/*		_Countstar=0,
-			_LANGUAGE,
-			_HORIZONTAL,
-			_VERTICAL,
-			_TRANSPARENCY,
-			_OSDTIMEOUT,
-			_FONT_AMOUNT,
-	*/
-		
-			switch(number)
-			{
-				case _STRING_LEFT_MENU_AIM:
-					OsdFontPut1BitMainMenuIcon(10, 14, _LEFT_MENU_AIM_ICON_START+24 , _CP_ORANGE_H, _CP_WHITE);
-					//OsdFontPut1FuncTableForm(8, 6, _EDGE_LINE,8 ,6,_CP_WHITE,_CP_BLUE_65,3);
-					OsdFontPut1FuncTableForm(8, 12, _EDGE_LINE,8 ,6,_CP_WHITE,_CP_BLUE_65,_ARC_WINDOW_0);
-					
-					OsdFontPut1BitMainMenuIcon(10, 30, _LEFT_MENU_AIM_ICON_START+24 , _CP_ORANGE_H, _CP_BG);
-					OsdFontPut1FuncTableForm(8, 28, _EDGE_LINE,8 ,6,_CP_WHITE,_CP_BLUE_65,_ARC_WINDOW_0);	
-					
-					OsdFontPut1BitMainMenuIcon(10, 46, _LEFT_MENU_AIM_ICON_START+48 , _CP_ORANGE_H, _CP_BG);	
-					OsdFontPut1FuncTableForm(8, 44, _EDGE_LINE,8 ,6,_CP_WHITE,_CP_BLUE_65,_ARC_WINDOW_0);	
-					
-					OsdFontPut1BitMainMenuIcon(10, 62, _LEFT_MENU_AIM_ICON_START+48 , _CP_ORANGE_H, _CP_BG);	
-					OsdFontPut1FuncTableForm(8, 60, _EDGE_LINE,8 ,6,_CP_WHITE,_CP_BLUE_65,_ARC_WINDOW_0);  
-	
-					break;
-	
-	
-		
-				case _STRING_LEFT_MENU_TIMER :
-					OsdFontPut1FuncAimTableForm(7,7, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 8, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,1);	
-					OsdFontPut1NumberTableForm(8, 10, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 12, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(8, 14, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(8, 16, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					
-					OsdFontPut1FuncAimTableForm(7,8+17, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 8+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,2); 	
-					OsdFontPut1NumberTableForm(8, 10+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 12+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(8, 14+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(8, 16+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-
-					OsdFontPut1FuncAimTableForm(7,8+35, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 8+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,3); 	
-					OsdFontPut1NumberTableForm(8, 10+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 12+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(8, 14+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(8, 16+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-
-					OsdFontPut1FuncAimTableForm(7,8+53, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 8+54, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,4); 	
-					OsdFontPut1NumberTableForm(8, 10+54, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(8, 12+54, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(8, 14+54, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(8, 16+54, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-
-					OsdFontPut1FuncAimTableForm(13,7, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(14, 8, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,5); 	
-					OsdFontPut1NumberTableForm(14, 10, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(14, 12, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(14, 14, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(14, 16, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-
-					OsdFontPut1FuncAimTableForm(13,8+17, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(14, 8+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,6); 	
-					OsdFontPut1NumberTableForm(14, 10+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(14, 12+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(14, 14+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(14, 16+18, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-
-					OsdFontPut1FuncAimTableForm(13,8+35, _EDGE_LINE,11,3,_CP_WHITE,_CP_BLUE_65,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(14, 8+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,9); 	
-					OsdFontPut1NumberTableForm(14, 10+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-					OsdFontPut1NumberTableForm(14, 12+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,10);
-					OsdFontPut1NumberTableForm(14, 14+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);	
-					OsdFontPut1NumberTableForm(14, 16+36, _LEFT_MENU_NUMBER_ICON_START,2 ,3,_CP_WHITE,_CP_BLUE_65,0);
-	
-					break;
-	
-				default:
-					 break;
-			}
-}
-#endif
-
-void COsdShowPageInputString(BYTE InputOsd, BYTE InputType, BYTE NUM, BYTE MAINOSDINF)
-{
-	BYTE NUMchar, NUMinput, cnt, DVISUM, HDMISUM, DPSUM;
-	NUMchar = 0;
-	NUMinput = 0;
-	cnt = 0;
-	DVISUM = 0;
-	HDMISUM = 0;
-	DPSUM = 0;
-
-	MAINOSDINF = MAINOSDINF;
-
-#if (_D0_INPUT_PORT_TYPE == _D0_DVI_PORT)
-	DVISUM++;
-#endif
-#if ((_D0_INPUT_PORT_TYPE == _D0_HDMI_PORT) || (_D0_INPUT_PORT_TYPE == _D0_MHL_PORT))
-	HDMISUM++;
-#endif
-#if (_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
-	DPSUM++;
-#endif
-
-#if (_D1_INPUT_PORT_TYPE == _D1_DVI_PORT)
-	DVISUM++;
-#endif
-#if ((_D1_INPUT_PORT_TYPE == _D1_HDMI_PORT) || (_D1_INPUT_PORT_TYPE == _D1_MHL_PORT))
-	HDMISUM++;
-#endif
-#if (_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-	DPSUM++;
-#endif
-
-#if ((_D2_INPUT_PORT_TYPE == _D2_DVI_PORT) || (_D2_INPUT_PORT_TYPE == _D2_DUAL_DVI_PORT))
-	DVISUM++;
-#endif
-#if ((_D2_INPUT_PORT_TYPE == _D2_HDMI_PORT) || (_D2_INPUT_PORT_TYPE == _D2_MHL_PORT))
-	HDMISUM++;
-#endif
-#if (_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-	DPSUM++;
-#endif
-
-#if ((_D3_INPUT_PORT_TYPE == _D3_DVI_PORT) || (_D3_INPUT_PORT_TYPE == _D3_DUAL_DVI_PORT))
-	DVISUM++;
-#endif
-#if ((_D3_INPUT_PORT_TYPE == _D3_HDMI_PORT) || (_D3_INPUT_PORT_TYPE == _D3_MHL_PORT))
-	HDMISUM++;
-#endif
-
-#if ((_D4_INPUT_PORT_TYPE == _D4_DVI_PORT) || (_D4_INPUT_PORT_TYPE == _D4_DUAL_DVI_PORT))
-	DVISUM++;
-#endif
-#if ((_D4_INPUT_PORT_TYPE == _D4_HDMI_PORT) || (_D4_INPUT_PORT_TYPE == _D4_MHL_PORT))
-	HDMISUM++;
-#endif
-
-#if (_D5_INPUT_PORT_TYPE == _D5_DVI_PORT)
-	DVISUM++;
-#endif
-#if ((_D5_INPUT_PORT_TYPE == _D5_HDMI_PORT) || (_D5_INPUT_PORT_TYPE == _D5_MHL_PORT))
-	HDMISUM++;
-#endif
-
-#if (_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-	DPSUM++;
-#endif
-
-	switch (NUM)
-	{
-	case 2:
-		NUMchar = _2_;
-		break;
-	case 3:
-		NUMchar = _3_;
-		break;
-	case 4:
-		NUMchar = _4_;
-		break;
-	case 5:
-		NUMchar = _5_;
-		break;
-	case 6:
-		NUMchar = _6_;
-		break;
-	default:
-		break;
-	}
-
-#if (_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
-	switch (InputOsd)
-	{
-		/*
-		case 0:
-			NUMinput=_0_;
-			break;
-		case 1:
-			NUMinput=_1_;
-			break;
-			*/
-
-	case 2:
-		NUMinput = _0_;
-		break;
-	case 3:
-		NUMinput = _1_;
-		break;
-	case 4:
-		NUMinput = _2_;
-		break;
-	case 5:
-		NUMinput = _3_;
-		break;
-	case 6:
-		NUMinput = _4_;
-		break;
-	case 7:
-		NUMinput = _5_;
-		break;
-	case 8:
-		NUMinput = _6_;
-		break;
-	default:
-		break;
-	}
-#else
-	switch (InputOsd)
-	{
-	/*
-	case 0:
-		NUMinput=_0_;
-		break;
-			*/
-	case 1:
-		NUMinput = _0_;
-		break;
-	case 2:
-		NUMinput = _1_;
-		break;
-	case 3:
-		NUMinput = _2_;
-		break;
-	case 4:
-		NUMinput = _3_;
-		break;
-	case 5:
-		NUMinput = _4_;
-		break;
-	case 6:
-		NUMinput = _5_;
-		break;
-	case 7:
-		NUMinput = _6_;
-		break;
-	default:
-		break;
-	}
-#endif
-	/*
-		if(InputType == _A0_PORT)
-		{
-			g_pucModeInfoData[cnt++] = _A_;
-			g_pucModeInfoData[cnt++] = _0_;
-		}
-		else
-		{
-			g_pucModeInfoData[cnt++] = _D_;
-			g_pucModeInfoData[cnt++] = NUMinput;
-		}
-		if(MAINOSDINF==0)
-		{
-		   g_pucModeInfoData[cnt++] =0;
-		g_pucModeInfoData[cnt++] =0;
-		}
-		g_pucModeInfoData[cnt++] =0;
-
-	*/
-
-	switch (InputType)
-	{
-	case _INPUT_OSD_VGA:
-		//  g_pucModeInfoData[cnt++] = ___;
-		g_pucModeInfoData[cnt++] = _V_;
-		g_pucModeInfoData[cnt++] = _G_;
-		g_pucModeInfoData[cnt++] = _A_;
-		// g_pucModeInfoData[cnt++] = ___;
-		g_pucModeInfoData[cnt++] = _END_;
-		break;
-
-	case _INPUT_OSD_DVI:
-		//   g_pucModeInfoData[cnt++] = ___;
-		g_pucModeInfoData[cnt++] = _D_;
-		g_pucModeInfoData[cnt++] = _V_;
-		g_pucModeInfoData[cnt++] = _I_;
-		if (NUM >= 2)
-		{
-			g_pucModeInfoData[cnt++] = NUMchar;
-		}
-		else
-		{
-			if (DVISUM >= 2)
-			{
-				g_pucModeInfoData[cnt++] = _1_;
-			}
-			else
-			{
-				// g_pucModeInfoData[cnt++] = ___;
-			}
-		}
-		g_pucModeInfoData[cnt++] = _END_;
-		break;
-
-	case _INPUT_OSD_HDMI:
-		g_pucModeInfoData[cnt++] = _H_;
-		g_pucModeInfoData[cnt++] = _D_;
-		g_pucModeInfoData[cnt++] = _M_;
-		g_pucModeInfoData[cnt++] = _I_;
-		if (NUM >= 2)
-		{
-			g_pucModeInfoData[cnt++] = NUMchar;
-		}
-		else
-		{
-			if (HDMISUM >= 2)
-			{
-				g_pucModeInfoData[cnt++] = _1_;
-			}
-			else
-			{
-				// g_pucModeInfoData[cnt++] = ___;
-			}
-		}
-		g_pucModeInfoData[cnt++] = _END_;
-		break;
-
-	case _INPUT_OSD_DP:
-		if (DPSUM < 2)
-		{
-			g_pucModeInfoData[cnt++] = ___;
-		}
-		g_pucModeInfoData[cnt++] = ___;
-		g_pucModeInfoData[cnt++] = ___;
-		g_pucModeInfoData[cnt++] = _D_;
-		g_pucModeInfoData[cnt++] = _P_;
-		if (NUM >= 2)
-		{
-			g_pucModeInfoData[cnt++] = NUMchar;
-		}
-		else
-		{
-			if (DPSUM >= 2)
-			{
-				g_pucModeInfoData[cnt++] = _1_;
-			}
-			else
-			{
-				// g_pucModeInfoData[cnt++] = ___;
-			}
-		}
-		g_pucModeInfoData[cnt++] = _END_;
-		break;
-
-	default:
-		break;
-	}
-}
-
-void COsdShowPageInputTextSelect(BYTE InputOsd, BYTE InputType, BYTE NUM)
-{
-	BYTE ucrow, uccol;
-	if (GET_OSD_STATE() == _MENU_HOT_INPUT_ADJUST)
-	{
-		ucrow = 2;
-		//  g_usItemNum=InputType;
-		uccol = 4 + (11 * InputOsd);
-
-		COsdShowPageInputString(InputOsd, InputType, NUM, 0);
-
-		OsdPropPutString(ROW(ucrow), COL(uccol), _PFONT_PAGE_2, _STRING_INPUT_SELECT, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	}
-	else
-	{
-		uccol = _OSD_NUMBER_2_COL;
-		//  g_usItemNum=InputType;
-
-		switch (InputOsd)
-		{
-		case 0:
-			ucrow = _OSD_NUMBER_1_ROW;
-			break;
-
-		case 1:
-			ucrow = _OSD_NUMBER_2_ROW;
-
-			break;
-		case 2:
-			ucrow = _OSD_NUMBER_3_ROW;
-
-			break;
-		case 3:
-			ucrow = _OSD_NUMBER_4_ROW;
-
-			break;
-		case 4:
-			ucrow = _OSD_NUMBER_11_ROW;
-
-			break;
-
-		default:
-			break;
-		}
-		COsdShowPageInputString(InputOsd, InputType, NUM, 0);
-
-		OsdPropPutString(ROW(ucrow), COL(uccol), _PFONT_PAGE_2, _STRING_INPUT_SELECT, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	}
-}
-
-void COsdShowPageInputText(void)
-{
-	OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_AUTO_SELECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	OsdPropPutString(ROW(_OSD_NUMBER_2_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SETUP_VGA, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	OsdPropPutString(ROW(_OSD_NUMBER_3_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SETUP_DP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SETUP_HDMI, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	OsdPropPutString(ROW(_OSD_NUMBER_11_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_SETUP_DVI, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	// 	BYTE  DVInum,HDMInum,DPnum;
-	// 	    DVInum=0;
-	// 	    HDMInum=0;
-	// 	    DPnum=0;
-	// 	    if(GET_OSD_STATE() == _MENU_HOT_INPUT_ADJUST)
-	// 	    {
-	// 	      OsdPropPutString(ROW(2), COL(4), _PFONT_PAGE_2, _STRING_AUTO_SELECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	// 	    }
-	// 	    else
-	// 	    {
-	// 	      OsdPropPutString(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_2_COL), _PFONT_PAGE_2, _STRING_AUTO_SELECT, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-	// 	    }
-	// #if((_A0_INPUT_PORT_TYPE !=_A0_NO_PORT) )
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_A0,_INPUT_OSD_VGA,0);
-	// 	 #endif
-
-	// #if((_D0_INPUT_PORT_TYPE == _D0_DVI_PORT))
-	// 	DVInum++;
-	// 	COsdShowPageInputTextSelect(_OSD_INPUT_D0,_INPUT_OSD_DVI,DVInum);
-	// #endif
-	// #if(((_D0_INPUT_PORT_TYPE == _D0_HDMI_PORT)||(_D0_INPUT_PORT_TYPE == _D0_MHL_PORT)))
-	// 	HDMInum++;
-	// 	COsdShowPageInputTextSelect(_OSD_INPUT_D0,_INPUT_OSD_HDMI,HDMInum);
-	// #endif
-	// #if((_D0_INPUT_PORT_TYPE == _D0_DP_PORT))
-	// 	DPnum++;
-	// 	COsdShowPageInputTextSelect(_OSD_INPUT_D0 - _OSD_INPUT_A0,_INPUT_OSD_DP,DPnum);
-	// #endif
-
-	// #if(_D1_INPUT_PORT_TYPE == _D1_DVI_PORT)
-	// 	DVInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D1,_INPUT_OSD_DVI,DVInum);
-	// #endif
-	// #if((_D1_INPUT_PORT_TYPE == _D1_HDMI_PORT)||(_D1_INPUT_PORT_TYPE == _D1_MHL_PORT))
-	// 	HDMInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D1,_INPUT_OSD_HDMI,HDMInum);
-	// #endif
-	// #if(_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-	// 	DPnum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D1 - _OSD_INPUT_A0,_INPUT_OSD_DP,DPnum);
-	// #endif
-
-	// #if((_D2_INPUT_PORT_TYPE == _D2_DVI_PORT)||(_D2_INPUT_PORT_TYPE == _D2_DUAL_DVI_PORT))
-	// 	  DVInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D2,_INPUT_OSD_DVI,DVInum);
-	// #endif
-	// #if((_D2_INPUT_PORT_TYPE == _D2_HDMI_PORT)||(_D2_INPUT_PORT_TYPE == _D2_MHL_PORT))
-	// 	HDMInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D2 - _OSD_INPUT_A0,_INPUT_OSD_HDMI,HDMInum);
-	// #endif
-	// #if(_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-	// 	DPnum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D2,_INPUT_OSD_DP,DPnum);
-	// #endif
-
-	// #if((_D3_INPUT_PORT_TYPE == _D3_DVI_PORT)||(_D3_INPUT_PORT_TYPE == _D3_DUAL_DVI_PORT))
-	// 	  DVInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D3,_INPUT_OSD_DVI,DVInum);
-	// #endif
-	// #if((_D3_INPUT_PORT_TYPE == _D3_HDMI_PORT)||(_D3_INPUT_PORT_TYPE == _D3_MHL_PORT))
-	// 	 HDMInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D3 - _OSD_INPUT_A0,_INPUT_OSD_HDMI,HDMInum);
-	// #endif
-
-	// #if((_D4_INPUT_PORT_TYPE == _D4_DVI_PORT)||(_D4_INPUT_PORT_TYPE == _D4_DUAL_DVI_PORT))
-	// 	  DVInum++;
-	// 	COsdShowPageInputTextSelect(_OSD_INPUT_D4,_INPUT_OSD_DVI,DVInum);
-	// #endif
-	// #if((_D4_INPUT_PORT_TYPE == _D4_HDMI_PORT)||(_D4_INPUT_PORT_TYPE == _D4_MHL_PORT))
-	// 	 HDMInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D4,_INPUT_OSD_HDMI,HDMInum);
-	// #endif
-
-	// #if(_D5_INPUT_PORT_TYPE == _D5_DVI_PORT)
-	// 	  DVInum++;
-	// 	COsdShowPageInputTextSelect(_OSD_INPUT_D5,_INPUT_OSD_DVI,DVInum);
-	// #endif
-	// #if((_D5_INPUT_PORT_TYPE == _D5_HDMI_PORT)||(_D5_INPUT_PORT_TYPE == _D5_MHL_PORT))
-	// 	 HDMInum++;
-	// 	 COsdShowPageInputTextSelect(_OSD_INPUT_D5,_INPUT_OSD_HDMI,HDMInum);
-	// #endif
-
-	// #if(_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-	// 	DPnum++;
-	// 	COsdShowPageInputTextSelect(_OSD_INPUT_D6,_INPUT_OSD_DP,DPnum);
-	// #endif
-}
-
-void OsdDispHotKeyBacklightMenu(void)
-{
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	EnumOsdRotateType tempRotateStatus = GET_OSD_ROTATE_STATUS();
-#endif
-	OsdDispDisableOsd();
-
-	g_ucFontPointer0 = _OSD_PAGE1_0_START;
-	g_ucFontPointer1 = _OSD_PAGE1_1_START;
-	g_ucFontPointer2 = _OSD_PAGE1_2_START;
-
-	OsdFuncApplyMap(WIDTH(_OSD_HOTKEY_MENU_WIDTH), HEIGHT(5), COLOR(_CP_WHITE, _CP_BG));
-
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(5), _DISABLE, 0, _ENABLE);
-#endif
-
-	OsdFuncBlending(_OSD_TRANSPARENCY_WINDOW_AND_CHARACTER_BACKGROUND);
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
-
-	// Background window Modify
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_180))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
-	}
-	else
-#endif
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(7), g_ucOsdHeight, _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(7), WIDTH(g_ucOsdWidth - 7), HEIGHT(g_ucOsdHeight), _CP_LIGHTBLUE);
-	}
-
-	OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_BACKLIGHT);
-	OsdFontPut1BitBackLightIcon(ROW(1), COL(2), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_ORANGE, _CP_BG);
-	// icon
-	// OsdDispSliderAndNumber(_MENU_HOTKEY_BACKLIGHT, GET_OSD_BACKLIGHT());
-
-	g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_BACKLIGHT(), _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
-	OsdWindowSlider(ROW(2), COL(9), g_usAdjustValue, _SLIDER_9, _SELECT);
-	OsdPropShowNumber(ROW(2), COL(31), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _SUB_PAGE_ITEM_1, COLOR(_CP_ORANGE, _CP_BG));
-	SET_OSD_BACKLIGHT(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
-	SET_OSD_STATE(_MENU_HOTKEY_BACKLIGHT);
-
-	ScalerOsdDoubleFunction(GET_OSD_DOUBLE_SIZE(), GET_OSD_DOUBLE_SIZE());
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	switch (tempRotateStatus)
-	{
-	case _OSD_ROTATE_DEGREE_90:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 5, 50);
-		break;
-	case _OSD_ROTATE_DEGREE_270:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 95, 50);
-		break;
-	case _OSD_ROTATE_DEGREE_180:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 5);
-		break;
-	default:
-		OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 95);
-		break;
-	}
-	// OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
-
-#else
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 95);
-#endif
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-
-	OsdFuncEnableOsd();
-}
-
-// Eric_20180306_Delete : Start ---------------------------------
-//     //--------------------------------------------------
-//     // Description  :
-//     // Input Value  :
-//     // Output Value :
-//     //--------------------------------------------------
-//     WORD OsdDispDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle)
-//     {
-//         usValue = usValue;
-//         usMax = usMax;
-//         usMin = usMin;
-//         bCycle = bCycle;
-//         return 0;
-//     }
-
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainMenuItemIndication(BYTE ucItem, BYTE ucAmount, BYTE ucState)
-//    {
-//        BYTE ucI = 0;
-//        BYTE ucRow = 10;
-//        BYTE ucCol = 4;
-//        BYTE ucColor = 0;
-//
-//        if(ucState == _OSD_REJECT)
-//        {
-//            OsdFuncClearOsd(ucRow, ucCol, WIDTH(10), HEIGHT(1));
-//            return;
-//        }
-//
-//        for(ucI = 0; ucI < ucAmount; ucI++)
-//        {
-//            if((ucState == _OSD_SELECT) && (ucI == ucItem))
-//            {
-//                ucColor = COLOR(_CP_PINK, _CP_BG);
-//            }
-//            else
-//            {
-//                ucColor = COLOR(_CP_GRAY, _CP_BG);
-//            }
-//
-//            OsdFontPut1Bit(ucRow, ucCol + ucI, _iINDICATE, ucColor);
-//        }
-//
-//        if(ucAmount < 20)
-//        {
-//            OsdFuncClearOsd(ucRow, ucCol + ucAmount, WIDTH(20 - ucAmount), HEIGHT(1));
-//        }
-//    }
-//    //--------------------------------------------------
-//    // Description :draw Item indication
-//    // Input Value :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainMenuItemIndication2(BYTE ucItem, BYTE ucAmount, BYTE ucState)
-//    {
-//        BYTE ucI = 0;
-//        BYTE ucRow = 10;
-//        BYTE ucCol = 4;
-//        BYTE ucColor = 0;
-//
-//        if(ucState == _OSD_REJECT)
-//        {
-//            OsdFuncClearOsd(ucRow, ucCol, WIDTH(10), HEIGHT(1));
-//            return;
-//        }
-//        switch (ucAmount)
-//        {
-//            case _MENU_ADVANCE_ITEM:
-//                ucI = 0;
-//                while((OSD_ADVANCE_ITEM_PRI[ucI] != _OSD_ADVANCE_NONE) &&(ucI < _OSD_ADVANCE_ITEM_AMOUNT))
-//                {
-//                    if((ucState == _OSD_SELECT) && (ucI == ucItem))
-//                    {
-//                        ucColor = COLOR(_CP_PINK, _CP_BG);
-//                    }
-//                    else
-//                    {
-//                        ucColor = COLOR(_CP_GRAY, _CP_BG);
-//                    }
-//
-//                    OsdFontPut1Bit(ucRow, ucCol + ucI, _iINDICATE, ucColor);
-//                    ucI++;
-//                }
-//
-//                break;
-//        }
-//
-//
-//        if(ucI < 20)
-//        {
-//            OsdFuncClearOsd(ucRow, ucCol + ucI, WIDTH(20 - ucI), HEIGHT(1));
-//        }
-//    }
-//
-//    //--------------------------------------------------
-//    // Description :
-//    // Input Value :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainMenuKeyInfo(BYTE ucItem, BYTE ucState)
-//    {
-//        // _KEY_INFO_ALL
-//        BYTE ucColor = COLOR(_CP_BLUE, _CP_BG);
-//        BYTE ucRow = 20;
-//        BYTE ucCol = 22;
-//        BYTE ucInterval = 5;
-//        BYTE ucIsMainMenu = _FALSE;
-//
-//    #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-//        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-//           (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//        {
-//            if((g_ucOsdWidth == _OSD_MAIN_MENU_HEIGHT) && (g_ucOsdHeight == _OSD_MAIN_MENU_WIDTH))
-//            {
-//                ucIsMainMenu = _TRUE;
-//            }
-//        }
-//        else
-//    #endif
-//        {
-//            if((g_ucOsdWidth == _OSD_MAIN_MENU_WIDTH) && (g_ucOsdHeight == _OSD_MAIN_MENU_HEIGHT))
-//            {
-//                ucIsMainMenu = _TRUE;
-//            }
-//        }
-//
-//        if(ucIsMainMenu == _FALSE)
-//        {
-//            return;
-//        }
-//
-//
-//        if((ucState == _OSD_SELECT) || (ucState == _OSD_HIGHLIGHT))
-//        {
-//            ucColor = COLOR(_CP_PINK, _CP_BG);
-//            ScalerTimerReactiveTimerEvent(SEC(0.05), _USER_TIMER_EVENT_OSD_KEYINFO_UNHIGHLIGHT);
-//        }
-//
-//        switch(ucItem)
-//        {
-//            case _KEY_INFO_ENTER:
-//                if((ucState == _OSD_SELECT) || (ucState == _OSD_UNSELECT))
-//                {
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 0)), tOSD_iKEY_ENTER, ucColor);
-//                }
-//                else if((ucState == _OSD_HIGHLIGHT) || (ucState == _OSD_UNHIGHLIGHT))
-//                {
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 0)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                }
-//                else
-//                {
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 0)), WIDTH(2), HEIGHT(2));
-//                }
-//
-//                break;
-//
-//            case _KEY_INFO_EXIT:
-//                if((ucState == _OSD_SELECT) || (ucState == _OSD_UNSELECT))
-//                {
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 1)), tOSD_iKEY_EXIT, ucColor);
-//                }
-//                else if((ucState == _OSD_HIGHLIGHT) || (ucState == _OSD_UNHIGHLIGHT))
-//                {
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 1)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                }
-//                else
-//                {
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 1)), WIDTH(2), HEIGHT(2));
-//                }
-//                break;
-//
-//            case _KEY_INFO_LEFT:
-//                if((ucState == _OSD_SELECT) || (ucState == _OSD_UNSELECT))
-//                {
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 2)), tOSD_iKEY_LEFT, ucColor);
-//                }
-//                else if((ucState == _OSD_HIGHLIGHT) || (ucState == _OSD_UNHIGHLIGHT))
-//                {
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 2)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                }
-//                else
-//                {
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 2)), WIDTH(2), HEIGHT(2));
-//                }
-//                break;
-//
-//            case _KEY_INFO_RIGHT:
-//                if((ucState == _OSD_SELECT) || (ucState == _OSD_UNSELECT))
-//                {
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 3)), tOSD_iKEY_RIGHT, ucColor);
-//                }
-//                else if((ucState == _OSD_HIGHLIGHT) || (ucState == _OSD_UNHIGHLIGHT))
-//                {
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 3)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                }
-//                else
-//                {
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 3)), WIDTH(2), HEIGHT(2));
-//                }
-//                break;
-//
-//            case _KEY_INFO_BACK:
-//                if((ucState == _OSD_SELECT) || (ucState == _OSD_UNSELECT))
-//                {
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 1)), tOSD_iKEY_BACK, ucColor);
-//                }
-//                else if((ucState == _OSD_HIGHLIGHT) || (ucState == _OSD_UNHIGHLIGHT))
-//                {
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 1)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                }
-//                else
-//                {
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 1)), WIDTH(2), HEIGHT(2));
-//                }
-//                break;
-//
-//            case _KEY_INFO_ALL:
-//                if((ucState == _OSD_SELECT) || (ucState == _OSD_UNSELECT))
-//                {
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 0)), tOSD_iKEY_ENTER, ucColor);
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 1)), tOSD_iKEY_EXIT, ucColor);
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 2)), tOSD_iKEY_LEFT, ucColor);
-//                    OsdFontPut1BitTable(ucRow, (ucCol + (ucInterval * 3)), tOSD_iKEY_RIGHT, ucColor);
-//                }
-//                else if((ucState == _OSD_HIGHLIGHT) || (ucState == _OSD_UNHIGHLIGHT))
-//                {
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 0)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 1)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 2)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                    OsdFuncChangeColor1Bit(ucRow, (ucCol + (ucInterval * 3)), WIDTH(2), HEIGHT(2), ucColor, _FONTFROM_0_255);
-//                }
-//                else
-//                {
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 0)), WIDTH(2), HEIGHT(2));
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 1)), WIDTH(2), HEIGHT(2));
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 2)), WIDTH(2), HEIGHT(2));
-//                    OsdFuncClearOsd(ucRow, (ucCol + (ucInterval * 3)), WIDTH(2), HEIGHT(2));
-//                }
-//                break;
-//
-//            default:
-//                break;
-//        }
-//    }
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-// void OsdDispClearSelectColor(BYTE ucUpDown)
-//{
-//    if(ucUpDown == _UP)
-//    {
-//        ScalerOsdWindowDisable(_OSD_WINDOW_4_1);
-//    }
-//    else
-//    {
-//        ScalerOsdWindowDisable(_OSD_WINDOW_4_2);
-//        // ScalerOsdWindowDisable(_OSD_WINDOW_4_3);
-//    }
-//}
-//
-//    #if(_VGA_SUPPORT == _ON)
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainSubString(BYTE ucState)
-//    {
-//        switch(ucState)
-//        {
-//            case _AUTO_CONFIG_DO:
-//                OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_2, ROW(14), COL(17), WIDTH(10), HEIGHT(5), _CP_LIGHTBLUE, _CP_RED, _CP_BG);
-//                OsdPropPutString(ROW(14), COL(19), _PFONT_PAGE_1, _STRING_AUTO_ADJUST, COLOR(_CP_BG, _CP_BG), GET_OSD_LANGUAGE());
-//                OsdPropPutString(ROW(16), COL(19), _PFONT_PAGE_1, _STRING_PLEASE_WAIT, COLOR(_CP_BG, _CP_BG), GET_OSD_LANGUAGE());
-//                break;
-//
-//            case _AUTO_CONFIG_RESULT:
-//                if(g_usAdjustValue != 100)
-//                {
-//                    OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_2, ROW(14), COL(17), WIDTH(10), HEIGHT(5), _CP_LIGHTBLUE, _CP_RED, _CP_BG);
-//                    OsdPropPutStringCenter(ROW(15), COL(0), WIDTH(_OSD_MAIN_MENU_WIDTH), _PFONT_PAGE_1, _STRING_FAIL, COLOR(_CP_BG, _CP_BG), GET_OSD_LANGUAGE());
-//                }
-//                else
-//                {
-//                    OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_2, ROW(14), COL(17), WIDTH(10), HEIGHT(5), _CP_LIGHTBLUE, _CP_GREEN_119, _CP_BG);
-//                    OsdPropPutStringCenter(ROW(15), COL(0), WIDTH(_OSD_MAIN_MENU_WIDTH), _PFONT_PAGE_1, _STRING_PASS, COLOR(_CP_BG, _CP_BG), GET_OSD_LANGUAGE());
-//                }
-//                break;
-//
-//            default:
-//                break;
-//        }
-//    }
-//    #endif
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainOptionIcon(BYTE ucIconPos, BYTE ucIcon, BYTE ucColor)
-//    {
-//        BYTE ucRow = 4;
-//        BYTE ucCol = 4;
-//
-//        ucRow = ((ucIconPos / 4) ? ROW(14) : ROW(4));
-//        ucCol = COL(4) + ((ucIconPos % 4) * 10);
-//
-//        if(ucIcon == _ICON_NONE)
-//        {
-//            OsdFuncClearOsd(ucRow, (ucCol - 2), WIDTH(10), HEIGHT(5));
-//            return;
-//        }
-//
-//        // icon
-//        OsdFontVLCDynamicLoadIcon(ucIconPos, ucIcon);
-//        OsdFontPut1BitMainMenuIcon(ucRow, ucCol, (_1DYNAMIC_ICON_START + (ucIconPos * 24)), ucColor, _CP_BG);
-//    }
-//
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispMainMenuIconPage(BYTE ucUpDown, BYTE ucState)
-{
-	BYTE pucOsdItemColor[4];
-	BYTE ucI = 0;
-
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	//
-	//        // color selection
-	if (ucUpDown == _UP)
-	{
-		// up
-		for (ucI = 0; ucI < 4; ucI++)
-		{
-			pucOsdItemColor[ucI] = _CP_LIGHTBLUE;
-		}
-	}
-	else
-	{
-		// down
-		for (ucI = 0; ucI < 4; ucI++)
-		{
-			pucOsdItemColor[ucI] = _CP_BLUE;
-		}
-	}
-	//
-	//        // Arrow
-	if (ucUpDown == _UP)
-	{
-		// switch(ucState)
-		//{
-		//                case _ICON_PAGE_CLEAR:
-		//                    OsdDispMainMenuArrow(_UP, _LEFT, _OSD_REJECT);
-		//                    OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_REJECT);
-		//                    break;
-		//
-		//                case _ICON_PAGE_DISPLAY_0:
-		//                case _ICON_PAGE_COLOR_0:
-		//                case _ICON_PAGE_AUDIO_0:
-		//                case _ICON_PAGE_OTHER_0:
-		//                case _ICON_PAGE_EDID_PORT_0:
-		//    #if(_HDR10_SUPPORT == _ON)
-		//                case _ICON_PAGE_HDR_ADJUST:
-		//    #endif
-		//
-		//                    OsdDispMainMenuArrow(_UP, _LEFT, _OSD_REJECT);
-		//                    if((SysSourceGetSourceType() != _SOURCE_VGA) && (ucState == _ICON_PAGE_DISPLAY_0))
-		//                    {
-		//                        OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_REJECT);
-		//                    }
-		//                    else
-		//                    {
-		//                        OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_UNSELECT);
-		//                    }
-		//                    break;
-		//
-		//                case _ICON_PAGE_MAIN_0:
-		//                case _ICON_PAGE_MAIN_1:
-		//                case _ICON_PAGE_MAIN_2:
-		//                case _ICON_PAGE_COLOR_1:
-		//                    OsdDispMainMenuArrow(_UP, _LEFT, _OSD_UNSELECT);
-		//                    OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_UNSELECT);
-		//                    break;
-		//                case _ICON_PAGE_ADVANCE:
-		//                    if((GET_OSD_ITEM_INDEX()/4) == 0)
-		//                        OsdDispMainMenuArrow(_UP, _LEFT, _OSD_REJECT);
-		//                    else
-		//                        OsdDispMainMenuArrow(_UP, _LEFT, _OSD_UNSELECT);
-		//
-		//                    if((GET_OSD_ITEM_INDEX()/4) >= ((_OSD_ADVANCE_ITEM_AMOUNT-1)/4))
-		//                        OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_REJECT);
-		//                    else
-		//                        OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_UNSELECT);
-		//
-		//                    break;
-		//
-		//                case _ICON_PAGE_DISPLAY_1:
-		//                case _ICON_PAGE_COLOR_2:
-		//                case _ICON_PAGE_AUDIO_1:
-		//                case _ICON_PAGE_OTHER_1:
-		//    #if(_HDR10_SUPPORT == _ON)
-		//                case _ICON_PAGE_HDR_ADJUST_1:
-		//    #endif
-		//                case _ICON_PAGE_EDID_PORT_1:
-		//                    OsdDispMainMenuArrow(_UP, _LEFT, _OSD_UNSELECT);
-		//                    OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_REJECT);
-		//                    break;
-		//
-		//                default:
-		//                    OsdDispMainMenuArrow(_UP, _LEFT, _OSD_REJECT);
-		//                    OsdDispMainMenuArrow(_UP, _RIGHT, _OSD_REJECT);
-		//                    break;
-		//}
-	}
-	else
-	{
-		switch (ucState)
-		{
-			//                case _ICON_PAGE_CLEAR:
-			//                    OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-			//                    OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-			//                    break;
-			//
-			//                case _ICON_PAGE_DISPLAY_0:
-			//                case _ICON_PAGE_COLOR_0:
-			//                case _ICON_PAGE_AUDIO_0:
-			//                case _ICON_PAGE_OTHER_0:
-			//                case _ICON_PAGE_GAMMA_0:
-			//                case _ICON_PAGE_TEMPRATURE_0:
-			//                case _ICON_PAGE_COLOR_EFFECT_0:
-			//                case _ICON_PAGE_COLOR_DEMO_0:
-			//                case _ICON_PAGE_COLOR_EFFECT_USER_0:
-			//                case _ICON_PAGE_ASPECT_RATIO_0:
-			//                case _ICON_PAGE_DISP_ROTATE_0:
-			//                case _ICON_PAGE_EDID_PORT_0:
-			//                    if(_DISP_ROTATE_AMOUNT <= 4)
-			//                    {
-			//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-			//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-			//                        break;
-			//                    }
-			//                    OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-			//
-			//                    if((SysSourceGetSourceType() != _SOURCE_VGA) && (ucState == _ICON_PAGE_DISPLAY_0))
-			//                    {
-			//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-			//                    }
-			//                    else
-			//                    {
-			//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-			//                    }
-			//                    break;
-			//
-			//                case _ICON_PAGE_COLOR_1:
-			//
-			//                    OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-			//                    OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-			//                    break;
-			//
-			//                case _ICON_PAGE_COLOR_PCM_0:
-			//    #if((_OCC_SUPPORT == _ON) && (_RGB_3D_GAMMA == _ON))
-			//                    OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-			//    #endif
-			//                    break;
-			//
-			//                case _ICON_PAGE_DISPLAY_1:
-			//                case _ICON_PAGE_COLOR_2:
-			//                case _ICON_PAGE_AUDIO_1:
-			//                case _ICON_PAGE_OTHER_1:
-			//                case _ICON_PAGE_GAMMA_1:
-			//                case _ICON_PAGE_TEMPRATURE_1:
-			//                case _ICON_PAGE_COLOR_EFFECT_1:
-			//                case _ICON_PAGE_COLOR_DEMO_1:
-			//                case _ICON_PAGE_COLOR_PCM_1:
-			//                case _ICON_PAGE_COLOR_EFFECT_USER_1:
-			//                case _ICON_PAGE_ASPECT_RATIO_1:
-			//                case _ICON_PAGE_DISP_ROTATE_1:
-			//                case _ICON_PAGE_EDID_PORT_1:
-			//
-			//                    OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-			//                    OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-			//                    break;
-		case _ICON_PAGE_INPUT_0:
-		case _ICON_PAGE_INPUT_1:
-		case _ICON_PAGE_INPUT_2:
-			OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-			OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-			break;
-		default:
-			OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-			OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-			break;
-		}
-	}
-
-	ucUpDown *= _ICON_POS_DOWN_0;
-
-	switch (ucState)
-	{
-		//            case _ICON_PAGE_CLEAR:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_NONE, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_MAIN_0:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_PICTURE, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_DISPLAY, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_COLOR, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_ADVANCE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_MAIN_1:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_INPUT, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_AUDIO, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_OTHER, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_INFORMATION, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_MAIN_2:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_FACTORY, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_PICTURE_0:
-		//    #if(_HDR10_SUPPORT == _ON)
-		//                if(UserCommonHDRGetHDR10Status() == _HDR10_ON)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                    pucOsdItemColor[1] = _CP_GRAY;
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//                }
-		//    #endif
-		//    #if(_FREESYNC_II_SUPPORT == _ON)
-		//                if(UserCommonHDRGetFreesynIIStatus() == _ON)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                    pucOsdItemColor[1] = _CP_GRAY;
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//                }
-		//    #endif
-		//
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_BACKLIGHT, pucOsdItemColor[0]);
-		//    #if(_BRIGHTNESS_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_BRIGHTNESS, pucOsdItemColor[1]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_BRIGHTNESS, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_CONTRAST_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_CONTRAST, pucOsdItemColor[2]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_CONTRAST, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_SHARPNESS_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_SHARPNESS, pucOsdItemColor[3]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_SHARPNESS, _CP_GRAY);
-		//    #endif
-		//                break;
-		//
-		//            case _ICON_PAGE_DISPLAY_0:
-		//                if(SysSourceGetSourceType() != _SOURCE_VGA)
-		//                {
-		//                    for(ucI = 0; ucI < 4; ucI++)
-		//                    {
-		//                        pucOsdItemColor[ucI] = _CP_GRAY;
-		//                    }
-		//                }
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_HPOS, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_VPOS, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_AUTO_ADJUST, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_CLOCK, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_DISPLAY_1:
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_DISP_ROTATE, pucOsdItemColor[1]);
-		//
-		//    #if(_DISP_LATENCY_ADJUST_SUPPORT == _ON)
-		//    #if(_DISPLAY_ROTATION_SUPPORT == _ON)
-		//                if(GET_OSD_DISP_ROTATE() != _DISP_ROTATE_0)
-		//                {
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//                }
-		//    #endif
-		//    #else
-		//                pucOsdItemColor[2] = _CP_GRAY;
-		//    #endif // End of #if(_DISP_LATENCY_ADJUST_SUPPORT == _ON)
-		//
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_LANTENCY, pucOsdItemColor[2]);
-		//
-		//    #if(_FREEZE_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_FREEZE, pucOsdItemColor[3]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_FREEZE, _CP_GRAY);
-		//    #endif
-		//
-		//                if(SysSourceGetSourceType() != _SOURCE_VGA)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                }
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_PHASE, pucOsdItemColor[0]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_0:
-		//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-		//                if(GET_OSD_LOCAL_DIMMING()== _ON)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                }
-		//    #endif
-		//    #if(_FREESYNC_II_SUPPORT == _ON)
-		//                if(UserCommonHDRGetFreesynIIStatus() == _ON)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                    pucOsdItemColor[1] = _CP_GRAY;
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//                }
-		//    #endif
-		//
-		//    #if(_HDR10_SUPPORT == _ON)
-		//                if(UserCommonHDRGetHDR10Status() == _HDR10_ON)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                    pucOsdItemColor[1] = _CP_GRAY;
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//    #if(_HDR10_LIGHT_ENHANCE_SUPPORT == _ON)
-		//                    if(GET_OSD_HDR_LIGHT_ENHANCE() != 0)
-		//                        pucOsdItemColor[3] = _CP_GRAY;
-		//    #endif
-		//    #if(_HDR10_COLOR_ENHANCE_SUPPORT == _ON)
-		//                    if(GET_OSD_HDR_COLOR_ENHANCE() != 0)
-		//                        pucOsdItemColor[3] = _CP_GRAY;
-		//    #endif
-		//
-		//                }
-		//    #endif
-		//    #if(_SDR_TO_HDR_SUPPORT == _ON)
-		//                if(GET_OSD_SDR_TO_HDR() == _ON)
-		//                {
-		//                    pucOsdItemColor[0] = _CP_GRAY;
-		//                    pucOsdItemColor[1] = _CP_GRAY;
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//                    pucOsdItemColor[3] = _CP_GRAY;
-		//                }
-		//    #endif
-		//
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_PANEL_UNIFORMITY, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_GAMMA, pucOsdItemColor[1]);
-		//    #if(_CONTRAST_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_COLOR_TEMPERATURE, pucOsdItemColor[2]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_COLOR_TEMPERATURE, _CP_GRAY);
-		//    #endif
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_COLOR_EFFECT, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_1:
-		//    #if(_HDR10_SUPPORT == _ON)
-		//                if(UserCommonHDRGetHDR10Status() == _HDR10_ON)
-		//                {
-		//                    pucOsdItemColor[1] = _CP_GRAY;
-		//                    pucOsdItemColor[2] = _CP_GRAY;
-		//                    pucOsdItemColor[3] = _CP_GRAY;
-		//                }
-		//    #endif
-		//
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_COLOR_DEMO, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_PCM, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_HUE, pucOsdItemColor[3]);
-		//
-		//    #if(_COLOR_FORMAT_CONVERT == _ON)
-		//                if((SysSourceGetSourceType() == _SOURCE_VGA) || (SysSourceGetSourceType() == _SOURCE_DVI))
-		//                {
-		//                    OsdDispMainMenuIconString((ucUpDown + 1), _ICON_COLOR_FORMAT, pucOsdItemColor[1]);
-		//                }
-		//                else
-		//    #endif
-		//                {
-		//                    OsdDispMainMenuIconString((ucUpDown + 1), _ICON_COLOR_FORMAT, _CP_GRAY);
-		//                }
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_2:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_SATURATION, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//            case _ICON_PAGE_ADVANCE:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), OsdDispAdvanceIconGet((GET_OSD_ITEM_INDEX()/4)*4+0), (OsdDispAdvanceItemCheck(((GET_OSD_ITEM_INDEX()/4)*4+0)))? pucOsdItemColor[0] : _CP_GRAY);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), OsdDispAdvanceIconGet((GET_OSD_ITEM_INDEX()/4)*4+1), (OsdDispAdvanceItemCheck(((GET_OSD_ITEM_INDEX()/4)*4+1)))? pucOsdItemColor[1] : _CP_GRAY);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), OsdDispAdvanceIconGet((GET_OSD_ITEM_INDEX()/4)*4+2), (OsdDispAdvanceItemCheck(((GET_OSD_ITEM_INDEX()/4)*4+2)))? pucOsdItemColor[2] : _CP_GRAY);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), OsdDispAdvanceIconGet((GET_OSD_ITEM_INDEX()/4)*4+3), (OsdDispAdvanceItemCheck(((GET_OSD_ITEM_INDEX()/4)*4+3)))? pucOsdItemColor[3] : _CP_GRAY);
-		//                break;
-		//
-		//
-		//
-	case _ICON_PAGE_INPUT_0:
-		OsdDispMainMenuIconString((ucUpDown + 0), _ICON_D0_PORT, pucOsdItemColor[0]);
-		OsdDispMainMenuIconString((ucUpDown + 1), _ICON_D1_PORT, pucOsdItemColor[1]);
-		OsdDispMainMenuIconString((ucUpDown + 2), _ICON_D2_PORT, pucOsdItemColor[2]);
-		OsdDispMainMenuIconString((ucUpDown + 3), _ICON_D3_PORT, pucOsdItemColor[3]);
-		break;
-
-	case _ICON_PAGE_INPUT_1:
-		OsdDispMainMenuIconString((ucUpDown + 0), _ICON_D3_PORT, pucOsdItemColor[0]);
-		OsdDispMainMenuIconString((ucUpDown + 1), _ICON_D4_PORT, pucOsdItemColor[1]);
-		OsdDispMainMenuIconString((ucUpDown + 2), _ICON_D5_PORT, pucOsdItemColor[2]);
-		OsdDispMainMenuIconString((ucUpDown + 3), _ICON_D6_PORT, pucOsdItemColor[3]);
-		break;
-
-	case _ICON_PAGE_INPUT_2:
-
-		OsdDispMainMenuIconString((ucUpDown + 0), _ICON_INPUT_AUTO, pucOsdItemColor[0]);
-		OsdDispMainMenuIconString((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		break;
-		//
-		//            case _ICON_PAGE_AUDIO_0:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_VOLUME, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_MUTE, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_STAND_ALONG, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_AUDIO_SOURCE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_AUDIO_1:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_SOUND_MODE, pucOsdItemColor[0]);
-		//    #if(_INTERNAL_AUDIO_TEST_SUPPORT== _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_AUDIO_SELF_TEST, pucOsdItemColor[1]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//    #endif
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_OTHER_0:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_RESET, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_MENU_TIME, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_OSD_HPOS, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_OSD_VPOS, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_OTHER_1:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_LANGUAGE, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_TRNASPARENCY, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_ROTATE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_INFORMATION_0:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_NONE, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_ON_OFF:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_ON, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_OFF, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_ASPECT_RATIO_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_AS_RATIO_FULL, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_AS_RATIO_16_9, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_AS_RATIO_4_3, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_AS_RATIO_5_4, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_ASPECT_RATIO_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_PCM_USER, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_AS_RATIO_ORIGINAL, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_AUDIO_SOURCE:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_AUDIO_ANALOG, pucOsdItemColor[0]);
-		//
-		//                if((SysSourceGetSourceType() == _SOURCE_VGA) ||
-		//                   (SysSourceGetSourceType() == _SOURCE_DVI))
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                }
-		//                else
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown + 1), _ICON_AUDIO_DIGITAL, pucOsdItemColor[1]);
-		//                }
-		//
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_ULTRA_VIVID:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_OFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_ULTRA_VIVID_L, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_ULTRA_VIVID_M, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_ULTRA_VIVID_H, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_GAMMA_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_OFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_1_DOT_8, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_2_DOT_0, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_2_DOT_2, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_GAMMA_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_2_DOT_4, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_TEMPRATURE_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_TEMP_9300, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_TEMP_7500, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_TEMP_6500, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_TEMP_5800, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_TEMPRATURE_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_TEMP_SRGB, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_TEMP_USER, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_EFFECT_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_EFF_STD, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_EFF_GAME, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_COLOR_EFF_MOVIE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_COLOR_EFF_PHOTO, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_EFFECT_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_EFF_VIVID, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_EFF_USER, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_DEMO_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_OFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_DEMO_TYPE1, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_COLOR_DEMO_TYPE2, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_COLOR_DEMO_TYPE3, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_DEMO_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_DEMO_TYPE4, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_DEMO_TYPE5, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_FORMAT:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_FORMAT_RGB, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_FORMAT_YUV, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_TEMPERATURE_USER:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_TEMP_USER_R, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_TEMP_USER_G, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_TEMP_USER_B, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_PCM_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_COLOR_PCM_USER, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_COLOR_PCM_NACTIVE, pucOsdItemColor[3]);
-		//    #if(_OCC_SUPPORT == _ON)
-		//                for(ucI = 0; ucI < 4; ucI++)
-		//                {
-		//                    pucOsdItemColor[ucI] = _CP_BLUE;
-		//                }
-		//    #else
-		//                for(ucI = 0; ucI < 4; ucI++)
-		//                {
-		//                    pucOsdItemColor[ucI] = _CP_GRAY;
-		//                }
-		//    #endif
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_PCM_SRGB, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_PCM_ADOBE_RGB, pucOsdItemColor[1]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_PCM_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_COLOR_PCM_SOFT_PROFT, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_NONE, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_EFFECT_USER_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_TEMP_USER_R, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_EFF_USER_Y, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_TEMP_USER_G, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_COLOR_EFF_USER_C, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_EFFECT_USER_1:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_TEMP_USER_B, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_COLOR_EFF_USER_M, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_COLOR_RGBYCM_HUE_SAT:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_HUE, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_SATURATION, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_PCM_SOFT_PROFT:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_MODE1, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_MODE2, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_OSD_ROTATE:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_0_DEGREE, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_90_DEGREE, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_270_DEGREE, pucOsdItemColor[2]);
-		//    #if(_OSD_ROTATE_CW180_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_180_DEGREE, pucOsdItemColor[3]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_180_DEGREE, _CP_GRAY);
-		//    #endif
-		//                break;
-		//
-		//            case _ICON_PAGE_OD_ADJUST:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_ONOFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_OD_GAIN, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_DP_OPTION:
-		//    #if(_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_D0, pucOsdItemColor[0]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_D0, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_D1, pucOsdItemColor[1]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_D1, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_D2, pucOsdItemColor[2]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_D2, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_D6, pucOsdItemColor[3]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_D6, _CP_GRAY);
-		//    #endif
-		//                break;
-		//
-		//            case _ICON_PAGE_DP_1_DOT_X:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_1_DOT_1, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_1_DOT_2, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_1_DOT_3, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_DP_MST:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_OFF, pucOsdItemColor[0]);
-		//    #if((_D0_INPUT_PORT_TYPE == _D0_DP_PORT) && (_D0_DP_MST_PORT_SUPPORT == _ON))
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_D0, pucOsdItemColor[1]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_D0, _CP_GRAY);
-		//    #endif
-		//
-		//    #if((_D1_INPUT_PORT_TYPE == _D1_DP_PORT) && (_D1_DP_MST_PORT_SUPPORT == _ON))
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_D1, pucOsdItemColor[2]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_D1, _CP_GRAY);
-		//    #endif
-		//
-		//    #if((_D6_INPUT_PORT_TYPE == _D6_DP_PORT) &&
-		//        ((_D6_INPUT_PORT_SWITCH_FROM == _SWITCH_FROM_D0) && (_D0_DP_MST_PORT_SUPPORT == _ON)))
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_D6, pucOsdItemColor[3]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_D6, _CP_GRAY);
-		//    #endif
-		//                break;
-		//
-		//            case _ICON_PAGE_DISP_ROTATE_0:
-		//                OsdDispMainOptionIcon((ucUpDown++), _ICON_0_DEGREE, pucOsdItemColor[0]);
-		//    #if(_DISPLAY_ROTATION_90_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown++), _ICON_90_DEGREE, pucOsdItemColor[0]);
-		//    #endif
-		//    #if(_DISPLAY_ROTATION_180_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown++), _ICON_180_DEGREE, pucOsdItemColor[0]);
-		//    #endif
-		//    #if(_DISPLAY_ROTATION_270_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown++), _ICON_270_DEGREE, pucOsdItemColor[0]);
-		//    #endif
-		//    #if(_DISPLAY_HOR_MIRROR_SUPPORT == _ON)
-		//                if(_DISP_ROTATE_HOR_MIRROR <= 3)
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown++), _ICON_LR_MIRROR, pucOsdItemColor[0]);
-		//                }
-		//    #endif
-		//    #if(_DISPLAY_VER_MIRROR_SUPPORT == _ON)
-		//                if(_DISP_ROTATE_VER_MIRROR <= 3)
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown++), _ICON_UD_MIRROR, pucOsdItemColor[0]);
-		//                }
-		//    #endif
-		//                break;
-		//
-		//            case _ICON_PAGE_DISP_ROTATE_1:
-		//
-		//    #if(_DISPLAY_HOR_MIRROR_SUPPORT == _ON)
-		//                if(_DISP_ROTATE_HOR_MIRROR > 3)
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown++), _ICON_LR_MIRROR, pucOsdItemColor[0]);
-		//                }
-		//    #endif
-		//    #if(_DISPLAY_VER_MIRROR_SUPPORT == _ON)
-		//                if(_DISP_ROTATE_VER_MIRROR > 3)
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown++), _ICON_UD_MIRROR, pucOsdItemColor[0]);
-		//                }
-		//    #endif
-		//                OsdDispMainOptionIcon((ucUpDown++), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown++), _ICON_NONE, pucOsdItemColor[3]);
-		//                if(_DISP_ROTATE_AMOUNT < 6)
-		//                {
-		//                    OsdDispMainOptionIcon((ucUpDown++), _ICON_NONE, pucOsdItemColor[0]);
-		//                }
-		//
-		//
-		//                break;
-		//
-		//            case _ICON_PAGE_LATENCY:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_ULTRA_VIVID_L, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_ULTRA_VIVID_M, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_ULTRA_VIVID_H, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_RESOLUTION:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_DP_1080P, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_DP_2560_1440, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_DP_4K2K_60HZ, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//            case _ICON_PAGE_EDID_PORT_0:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_D0_PORT, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_D1_PORT, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_D2_PORT, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_D3_PORT, pucOsdItemColor[3]);
-		//                break;
-		//            case _ICON_PAGE_EDID_PORT_1:
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_D4_PORT, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_D5_PORT, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//            case _ICON_PAGE_HDMI_VERSIONS:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_1_DOT_4, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_2_DOT_0, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_2_DOT_1, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//
-		//                break;
-		//            case _ICON_PAGE_CLONE_0:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_OFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_ON, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//    #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-		//            case _ICON_PAGE_TYPEC_MODE:
-		//    #if(_D0_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_D0, pucOsdItemColor[0]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_D0, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_D1_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_D1, pucOsdItemColor[2]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_D1, _CP_GRAY);
-		//    #endif
-		//    #if(_D2_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_D2, pucOsdItemColor[2]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_D2, _CP_GRAY);
-		//    #endif
-		//
-		//    #if(_D6_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_D6, pucOsdItemColor[3]);
-		//    #else
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_D6, _CP_GRAY);
-		//    #endif
-		//                break;
-		//            case _ICON_PAGE_TYPEC_MODE_U3_ONOFF:
-		//
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_U3_ON, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_U3_OFF, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//    #endif
-		//
-		//    #if(_HDR10_SUPPORT == _ON)
-		//            case _ICON_PAGE_HDR_ADJUST:
-		//                if(UserCommonHDRGetHDR10Status() == _HDR10_OFF)
-		//                {
-		//                    pucOsdItemColor[1]=pucOsdItemColor[2]=pucOsdItemColor[3]=_CP_GRAY;
-		//                }
-		//
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_HDR_MODE, pucOsdItemColor[0]);
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_DARK_ENHANCE, pucOsdItemColor[1]);
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_HDR_SHARPNESS, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_CONTRAST, pucOsdItemColor[3]);
-		//                break;
-		//            case _ICON_PAGE_HDR_ADJUST_1:
-		//    #if(_HDR10_COLOR_ENHANCE_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_COLOR_ENHANCE, pucOsdItemColor[0]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 0), _ICON_COLOR_ENHANCE, _CP_GRAY);
-		//    #endif
-		//    #if(_HDR10_LIGHT_ENHANCE_SUPPORT == _ON)
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_LIGHT_ENHANCE, pucOsdItemColor[1]);
-		//    #else
-		//                OsdDispMainMenuIconString((ucUpDown + 1), _ICON_LIGHT_ENHANCE, _CP_GRAY);
-		//    #endif
-		//                OsdDispMainMenuIconString((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainMenuIconString((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//
-		//            case _ICON_PAGE_HDR_MODE:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_OFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_INPUT_AUTO, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_HDR10_MODE_FORCE_2084, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//    #endif
-		//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-		//            case _ICON_PAGE_LOCAL_DIMMING:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_ONOFF, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_LD_SMOOTHADJ, pucOsdItemColor[1]);
-		//                OsdDispMainOptionIcon((ucUpDown + 2), _ICON_NONE, pucOsdItemColor[2]);
-		//                OsdDispMainOptionIcon((ucUpDown + 3), _ICON_NONE, pucOsdItemColor[3]);
-		//                break;
-		//    #endif
-		//
-		//            case _ICON_PAGE_OSD_LANGUAGE:
-		//                OsdDispMainOptionIcon((ucUpDown + 0), _ICON_ENGLISH, pucOsdItemColor[0]);
-		//                OsdDispMainOptionIcon((ucUpDown + 1), _ICON_CHINESE_T, pucOsdItemColor[1]);
-		//
-		//                break;
-		//
-		//
-	default:
-		break;
-	}
-}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispMainMenuArrow(BYTE ucUpDown, BYTE ucLeftRight, BYTE ucState)
-{
-	BYTE ucIcon = _iLEFT_00;
-	BYTE ucColor = COLOR(_CP_WHITE, _CP_BG);
-	BYTE ucCol = 1;
-	BYTE ucRow = 5;
-
-	if (ucUpDown == _DOWN)
-	{
-		ucRow = 15;
-		ucColor = COLOR(_CP_BLUE, _CP_BG);
-	}
-
-	if (ucLeftRight == _RIGHT)
-	{
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-		if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-			(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-		{
-			ucCol = g_ucOsdHeight - 2;
-		}
-		else
-#endif
-		{
-			ucCol = g_ucOsdWidth - 2;
-		}
-		ucIcon = _iRIGHT_00;
-	}
-
-	if (ucState == _OSD_SELECT)
-	{
-		ucColor = COLOR(_CP_ORANGE, _CP_BG);
-	}
-
-	if (ucState == _OSD_REJECT)
-	{
-		OsdFontPut1Bit(ucRow, ucCol, ___, ucColor);
-		OsdFontPut1Bit(ucRow + 1, ucCol, ___, ucColor);
-	}
-	else
-	{
-		OsdFontPut1Bit(ucRow, ucCol, ucIcon, ucColor);
-		OsdFontPut1Bit(ucRow + 1, ucCol, ucIcon + 1, ucColor);
-	}
-}
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainMenuOptionSetting(BYTE ucItem, BYTE ucSelectState, BYTE ucOption)
-//    {
-//        BYTE ucRow = 0;
-//        BYTE ucCol = 0;
-//        BYTE ucWin = _OSD_WINDOW_4_2;
-//        BYTE ucWinColor = _CP_LIGHTBLUE;
-//        BYTE ucForegroundColor = _CP_ORANGE;
-//
-//        ucRow = ROW(14);
-//
-//        if(ucSelectState == _SELECT)
-//        {
-//            ucForegroundColor = _CP_ORANGE;
-//        }
-//        else
-//        {
-//            ucForegroundColor = _CP_WHITE;
-//        }
-//
-//        switch(ucItem)
-//        {
-//            case _OPTION_OVERSCAN_ONOFF:
-//            case _OPTION_OVERDRIVE_ONOFF:
-//            case _OPTION_DCR_ONOFF:
-//            case _OPTION_DDCCI_ONOFF:
-//            case _OPTION_MUTE_ONOFF:
-//            case _OPTION_STAND_ALONG_ONOFF:
-//            case _OPTION_PANEL_UNIFORMITY_ONOFF:
-//            case _OPTION_COLOR_EFFC_USER_RGBYCM:
-//            case _OPTION_FREESYNC_ONOFF_TYPE:
-//            case _OPTION_ON_OFF:
-//                if(ucOption == _ON)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_AUDIO_SOURCE:
-//                if(ucOption == _LINE_IN_AUDIO)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else // digital
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_ASPECT_RATIO_TYPE:
-//                if((ucOption == _OSD_ASPECT_RATIO_FULL) ||
-//                   (ucOption == _OSD_ASPECT_RATIO_USER))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if((ucOption == _OSD_ASPECT_RATIO_16_BY_9)||(ucOption == _OSD_ASPECT_RATIO_ORIGIN))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _OSD_ASPECT_RATIO_4_BY_3)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _OSD_ASPECT_RATIO_5_BY_4)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                if(GET_OSD_STATE() == _MENU_ADVANCE_ASPECT_ADJUST)
-//                {
-//                    if(ucOption >= _OSD_ASPECT_RATIO_USER)
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-//                    }
-//                    else
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-//                    }
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_ULTRA_VIVID_TYPE:
-//                if(ucOption == _ULTRA_VIVID_OFF)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _ULTRA_VIVID_L)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _ULTRA_VIVID_M)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _ULTRA_VIVID_H)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_GAMMA_TYPE:
-//                if((ucOption == _GAMMA_OFF) || (ucOption == _GAMMA_24))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _GAMMA_18)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _GAMMA_20)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _GAMMA_22)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                if(GET_OSD_STATE() == _MENU_COLOR_GAMMA_ADJUST)
-//                {
-//                    if(ucOption >= _GAMMA_24)
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-//                    }
-//                    else
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-//                    }
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_TEMPRATURE_TYPE:
-//                if((ucOption == _CT_9300) || (ucOption == _CT_SRGB))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if((ucOption == _CT_7500) || (ucOption == _CT_USER))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _CT_6500)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _CT_5800)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                if(GET_OSD_STATE() == _MENU_COLOR_TEMPERATURE_ADJUST)
-//                {
-//                    if(ucOption >= _CT_SRGB)
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-//                    }
-//                    else
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-//                    }
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_EFFECT_TYPE:
-//                if((ucOption == _COLOREFFECT_STANDARD) || (ucOption == _COLOREFFECT_VIVID))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if((ucOption == _COLOREFFECT_GAME) || (ucOption == _COLOREFFECT_USER))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//
-//                else if(ucOption == _COLOREFFECT_MOVIE)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _COLOREFFECT_PHOTO)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                if(GET_OSD_STATE() == _MENU_COLOR_EFFECT_ADJUST)
-//                {
-//                    if(ucOption >= _COLOREFFECT_VIVID)
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-//                    }
-//                    else
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-//                    }
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_DEMO_TYPE:
-//                if((ucOption == _HL_WIN_OFF) || (ucOption == _HL_WIN_4))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if((ucOption == _HL_WIN_1) || (ucOption == _HL_WIN_5))
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _HL_WIN_2)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _HL_WIN_3)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                if(GET_OSD_STATE() == _MENU_COLOR_DEMO_ADJUST)
-//                {
-//                    if(ucOption >= _HL_WIN_4)
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-//                    }
-//                    else
-//                    {
-//                        OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-//                        OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-//                    }
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_FORMAT_TYPE:
-//                if(ucOption == _COLOR_SPACE_RGB)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else
-//                {
-//                    // digital
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_PCM_TYPE:
-//    #if(_OCC_SUPPORT == _ON)
-//    #if(_RGB_3D_GAMMA == _ON)
-//                if((ucOption == _PCM_OSD_SRGB) || (ucOption == _PCM_OSD_SOFT_PROFT))
-//    #else
-//                if(ucOption == _PCM_OSD_SRGB)
-//    #endif
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _PCM_OSD_ADOBE_RGB)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _PCM_OSD_USER)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _PCM_OSD_NATIVE)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//    #else
-//                if(ucOption == _PCM_OSD_USER)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _PCM_OSD_NATIVE)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//    #endif
-//
-//    #if((_OCC_SUPPORT == _ON) && (_RGB_3D_GAMMA == _ON))
-//                if(ucOption >= _PCM_OSD_SOFT_PROFT)
-//                {
-//                    OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_UNSELECT);
-//                    OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_REJECT);
-//                }
-//                else
-//                {
-//                    OsdDispMainMenuArrow(_DOWN, _LEFT, _OSD_REJECT);
-//                    OsdDispMainMenuArrow(_DOWN, _RIGHT, _OSD_UNSELECT);
-//                }
-//    #endif
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_PCM_SOFT_PROFT_TYPE:
-//
-//                if(ucOption == _PCM_SOFT_MODE_1)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _PCM_SOFT_MODE_2)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_TEMPRATURE_USER_ADJUST:
-//                ucWin = _OSD_WINDOW_4_1;
-//                ucWinColor = _CP_BLUE;
-//                ucRow = ROW(4);
-//                ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                ucForegroundColor = _CP_BLUE_120;
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_EFFC_USER_ADJUST:
-//                ucWin = _OSD_WINDOW_4_1;
-//                ucWinColor = _CP_BLUE;
-//                ucRow = ROW(4);
-//                ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                ucForegroundColor = _CP_BLUE_120;
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_COLOR_RGBYCM_HUE_STA:
-//
-//                if(ucOption == _COLOR_HUE)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _COLOR_SATURATION)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_LANGUAGE_ADJUST:
-//                if(ucOption == _ENGLISH)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _CHINESE_T)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_ROTATE_ADJUST:
-//                if(ucOption == _OSD_ROTATE_DEGREE_0)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _OSD_ROTATE_DEGREE_90)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _OSD_ROTATE_DEGREE_270)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _OSD_ROTATE_DEGREE_180)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_INPUT_SOURCE_TYPE:
-//                if(ucOption == _SOURCE_SWITCH_AUTO_IN_GROUP)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else
-//                {
-//                    if(SysSourceGetInputPort() == _A0_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D0_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D1_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D2_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D3_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D4_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D5_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                    }
-//                    else if(SysSourceGetInputPort() == _D6_INPUT_PORT)
-//                    {
-//                        ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                    }
-//                }
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_DP_PORT_VERSION:
-//                if(ucOption == _DP_VER_1_DOT_1)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _DP_VER_1_DOT_2)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _DP_VER_1_DOT_3)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_DP_MST_TYPE:
-//                if(ucOption == _MST_OFF)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _MST_D0)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _MST_D1)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _MST_D6)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//
-//                break;
-//
-//            case _OPTION_DP_EDID_TYPE:
-//                if(ucOption == _DP_EDID_1080P)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _DP_EDID_2560_1440)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _DP_EDID_4K2K_60HZ)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else //if(ucOption == _DP_EDID_4K2K_30HZ)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//
-//                break;
-//
-//            case _OPTION_CLONE_TYPE:
-//                ucCol = COL(4) + ((GET_OSD_CLONE_MODE() % 4) * 10) - 2;
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//
-//            case _OPTION_DISP_ROTATE_TYPE:
-//                if((ucOption % 4) == _DISP_ROTATE_0)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//
-//                else if((ucOption % 4) == _DISP_ROTATE_0 + 1)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if((ucOption % 4) == _DISP_ROTATE_0 + 2)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if((ucOption % 4) == _DISP_ROTATE_0 + 3)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//
-//                break;
-//
-//            case _OPTION_LATENCY_TYPE:
-//                if(ucOption == _LATENCY_L)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _LATENCY_M)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _LATENCY_H)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//
-//                break;
-//
-//    #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//            case _OPTION_TYPEC_MODE_SELECT:
-//                if(ucOption == _TYPE_C_U3_ON)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                if(ucOption == _TYPE_C_U3_OFF)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//    #endif
-//
-//    #if(_HDR10_SUPPORT == _ON)
-//            case _OPTION_HDR_MODE_SELECT:
-//                if(ucOption == _HDR10_MODE_OFF)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                if(ucOption == _HDR10_MODE_AUTO)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _HDR10_MODE_FORCE_2084)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//    #endif
-//            case _OPTION_LEVEL_TYPE:
-//                if(ucOption == _LEVEL_OFF)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _LEVEL_L)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _LEVEL_M)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _LEVEL_H)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                }
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//                break;
-//            case _OPTION_HDMI_VERSIONS_TYPE:
-//                if(ucOption == _EDID_INDEX_0)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_0 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _EDID_INDEX_1)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_1 % 4) * 10) - 2;
-//                }
-//                else if(ucOption == _EDID_INDEX_2)
-//                {
-//                    ucCol = COL(4) + ((_ITEM_2 % 4) * 10) - 2;
-//                }
-//                //else if(ucOption == _HDMI_EDID_3)
-//                //{
-//                //    ucCol = COL(4) + ((_ITEM_3 % 4) * 10) - 2;
-//                //}
-//                OsdWindowDrawingByFontHighlight(ucWin, ucRow, ucCol, WIDTH(10), HEIGHT(5), ucWinColor, ucForegroundColor, _CP_BG);
-//
-//                break;
-//
-//            default:
-//                break;
-//        }
-//
-//        if(ucItem == _OPTION_COLOR_PCM_TYPE)
-//        {
-//    #if(_OCC_SUPPORT == _ON)
-//            OsdFuncChangeIconColor1Bit(ROW(14), _ITEM_6, WIDTH(g_ucOsdWidth), HEIGHT(4), _CP_BLUE);
-//    #endif
-//        }
-//        else if(ucItem == _OPTION_DP_MST_TYPE)
-//        {
-//        }
-//        else if(ucItem == _OPTION_DISP_ROTATE_TYPE)
-//        {
-//        }
-//        else
-//        {
-//            OsdFuncChangeIconColor1Bit(ROW(14), _ITEM_4, WIDTH(g_ucOsdWidth), HEIGHT(4), _CP_BLUE);
-//        }
-//    }
-
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispClearArrow(BYTE ucUpDown)
-//    {
-//        OsdDispMainMenuArrow(ucUpDown, _LEFT, _OSD_REJECT);
-//        OsdDispMainMenuArrow(ucUpDown, _RIGHT, _OSD_REJECT);
-//    }
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainMenuSubSelect(BYTE ucItem, WORD usOsdState, WORD usOsdStatePrevious)
-//    {
-//        BYTE ucItemPrev = 0;
-//        BYTE ucItemCurr = 0;
-//        switch(ucItem)
-//        {
-//            case _ICON_SUB_SEL_INPUT:
-//                // previous state
-//                if((usOsdStatePrevious >= _MENU_INPUT_AUTO) &&
-//                   (usOsdStatePrevious <= _MENU_INPUT_D6_PORT))
-//                {
-//                    ucItemPrev = usOsdStatePrevious - _MENU_INPUT_AUTO;
-//                }
-//                // current state
-//                if((usOsdState >= _MENU_INPUT_AUTO) && (usOsdState <= _MENU_INPUT_D6_PORT))
-//                {
-//                    ucItemCurr = usOsdState - _MENU_INPUT_AUTO;
-//                }
-//                break;
-//
-//            default:
-//                break;
-//        }
-//
-//        OsdDispMainMenuItemSelection((ucItemPrev % 4) + 4, _OSD_UNSELECT);
-//        OsdDispMainMenuItemSelection((ucItemCurr % 4) + 4, _OSD_SELECT);
-//    }
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispMainMenuCursor(WORD usOsdState, WORD usOsdStatePrevious, bit bInSubsidiary)
-//    {
-//        BYTE ucItem = 0;
-//        BYTE ucAmount = 0;
-//        WORD usOsdCount = 0;
-//
-//        if(bInSubsidiary == _OUTSUBSET)
-//        {
-//            usOsdCount = usOsdState;
-//        }
-//        else
-//        {
-//            usOsdCount = usOsdStatePrevious;
-//        }
-//
-//            if((usOsdCount >= _MENU_PICTURE) && (usOsdCount <= _MENU_FACTORY))
-//            {
-//                ucItem = usOsdCount - _MENU_PICTURE;
-//                ucAmount = (_MENU_FACTORY - _MENU_PICTURE + 1);
-//            }
-//            else if((usOsdCount >= _MENU_PICTURE_BACKLIGHT) &&
-//                    (usOsdCount <= _MENU_PICTURE_SHARPNESS))
-//            {
-//                ucItem = usOsdCount - _MENU_PICTURE_BACKLIGHT;
-//                ucAmount = (_MENU_PICTURE_SHARPNESS - _MENU_PICTURE_BACKLIGHT + 1);
-//            }
-//            else if((usOsdCount >= _MENU_DISPLAY_AUTO) && (usOsdCount <= _MENU_DISPLAY_FREEZE))
-//            {
-//                ucItem = usOsdCount - _MENU_DISPLAY_AUTO;
-//                ucAmount = (_MENU_DISPLAY_FREEZE - _MENU_DISPLAY_AUTO + 1);
-//            }
-//            else if((usOsdCount >= _MENU_COLOR_PANEL_UNIFORMITY) && (usOsdCount <= _MENU_COLOR_SATURATION))
-//            {
-//                ucItem = usOsdCount - _MENU_COLOR_PANEL_UNIFORMITY;
-//                ucAmount = (_MENU_COLOR_SATURATION - _MENU_COLOR_PANEL_UNIFORMITY + 1);
-//            }
-//
-//            else if((usOsdCount >= _MENU_INPUT_AUTO) && (usOsdCount <= _MENU_INPUT_D1_PORT))
-//            {
-//                ucItem = usOsdCount - _MENU_INPUT_AUTO;
-//                ucAmount = (_MENU_INPUT_D1_PORT - _MENU_INPUT_AUTO + 1);
-//            }
-//        #if(_INTERNAL_AUDIO_TEST_SUPPORT== _ON)
-//            else if((usOsdCount >= _MENU_AUDIO_VOLUME) && (usOsdCount <= _MENU_AUDIO_AUDIO_SELF_TEST))
-//            {
-//                ucItem = usOsdCount - _MENU_AUDIO_VOLUME;
-//                ucAmount = (_MENU_AUDIO_AUDIO_SELF_TEST - _MENU_AUDIO_VOLUME + 1);
-//            }
-//        #else
-//            else if((usOsdCount >= _MENU_AUDIO_VOLUME) && (usOsdCount <= _MENU_AUDIO_SOUND_MODE))
-//            {
-//                ucItem = usOsdCount - _MENU_AUDIO_VOLUME;
-//                ucAmount = (_MENU_AUDIO_SOUND_MODE - _MENU_AUDIO_VOLUME + 1);
-//            }
-//        #endif
-//            else if((usOsdCount >= _MENU_OTHER_RESET) && (usOsdCount <= _MENU_OTHER_ROTATE))
-//            {
-//                ucItem = usOsdCount - _MENU_OTHER_RESET;
-//                ucAmount = (_MENU_OTHER_ROTATE - _MENU_OTHER_RESET + 1);
-//            }
-//            else if(usOsdCount == _MENU_COLOR_EFFECT_ADJUST)
-//            {
-//                ucItem = GET_OSD_COLOR_EFFECT() - _COLOREFFECT_STANDARD;
-//                ucAmount = _COLOREFFECT_AMOUNT;
-//            }
-//            else if((usOsdCount >= _MENU_COLOR_TEMP_USER_R) && (usOsdCount <= _MENU_COLOR_TEMP_USER_B))
-//            {
-//                ucItem = usOsdCount - _MENU_COLOR_TEMP_USER_R;
-//                ucAmount = (_MENU_COLOR_TEMP_USER_B - _MENU_COLOR_TEMP_USER_R + 1);
-//            }
-//            else if((usOsdCount >= _MENU_COLOR_EFF_USER_R) && (usOsdCount <= _MENU_COLOR_EFF_USER_M))
-//            {
-//                ucItem = usOsdCount - _MENU_COLOR_EFF_USER_R;
-//                ucAmount = (_MENU_COLOR_EFF_USER_M - _MENU_COLOR_EFF_USER_R + 1);
-//            }
-//
-//            else if((usOsdCount >= _MENU_ADVANCE_OVER_DRIVE_ONOFF) && (usOsdCount <= _MENU_ADVANCE_OVER_DRIVE_GAIN))
-//            {
-//                ucItem = usOsdCount - _MENU_ADVANCE_OVER_DRIVE_ONOFF;
-//                ucAmount = (_MENU_ADVANCE_OVER_DRIVE_GAIN - _MENU_ADVANCE_OVER_DRIVE_ONOFF + 1);
-//            }
-//            else if((usOsdCount >= _MENU_ADVANCE_DP_OPTION_D0) && (usOsdCount <= _MENU_ADVANCE_DP_OPTION_D6))
-//            {
-//                ucItem = usOsdCount - _MENU_ADVANCE_DP_OPTION_D0;
-//                ucAmount = (_MENU_ADVANCE_DP_OPTION_D6 - _MENU_ADVANCE_DP_OPTION_D0 + 1);
-//            }
-//        #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//            else if((usOsdCount >= _MENU_ADVANCE_TYPEC_MODE_D0) && (usOsdCount <= _MENU_ADVANCE_TYPEC_MODE_D6))
-//            {
-//                ucItem = usOsdCount - _MENU_ADVANCE_TYPEC_MODE_D0;
-//                ucAmount = (_MENU_ADVANCE_TYPEC_MODE_D6 - _MENU_ADVANCE_TYPEC_MODE_D0 + 1);
-//            }
-//        #endif
-//        #if(_HDR10_SUPPORT == _ON)
-//            else if((usOsdCount >= _MENU_ADVANCE_HDR_MODE) && (usOsdCount <= _MENU_ADVANCE_HDR_LIGHT_ENHANCE))
-//            {
-//                ucItem = usOsdCount - _MENU_ADVANCE_HDR_MODE;
-//                ucAmount = (_MENU_ADVANCE_HDR_LIGHT_ENHANCE - _MENU_ADVANCE_HDR_MODE + 1);
-//            }
-//        #endif
-//        #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-//            else if((usOsdCount >= _MENU_ADVANCE_HDR_LD_ONOFF) && (usOsdCount <= _MENU_ADVANCE_HDR_LD_SMOOTH_ADJ))
-//            {
-//                ucItem = usOsdCount - _MENU_ADVANCE_HDR_LD_ONOFF;
-//                ucAmount = (_MENU_ADVANCE_HDR_LD_SMOOTH_ADJ - _MENU_ADVANCE_HDR_LD_ONOFF + 1);
-//            }
-//        #endif
-//            else if(usOsdCount == _MENU_ADVANCE_EDID_ADJUST)
-//            {
-//                ucItem = g_usAdjustValue;
-//                ucAmount = (_D5_INPUT_PORT - _D0_INPUT_PORT + 1);
-//            }
-//        #if (_HDMI_MULTI_EDID_SUPPORT == _ON)
-//            else if(usOsdCount == _MENU_ADVANCE_HDMI_VERSION_ADJUST)
-//            {
-//                ucItem = g_usAdjustValue;
-//                usOsdCount = (_D5_INPUT_PORT-_D0_INPUT_PORT+1);
-//            }
-//        #endif
-//            // Selection
-//            if(bInSubsidiary == _OUTSUBSET)
-//            {
-//                OsdDispMainMenuItemSelection((ucItem % 4), _OSD_SELECT);
-//            }
-//            else if(bInSubsidiary == _INSUBSET)
-//            {
-//                OsdDispMainMenuItemSelection((ucItem % 4), _OSD_PRE_SELECT);
-//            }
-//
-//            // indicate
-//            if(bInSubsidiary == _OUTSUBSET)
-//            {
-//                OsdDispMainMenuItemIndication(ucItem, ucAmount, _OSD_SELECT);
-//            }
-//    }
-
-//    //--------------------------------------------------
-//    // Description    :
-//    // Input Value    : None
-//    // Output Value : None
-//    //--------------------------------------------------
-// void OsdDispSliderAndNumber(WORD usOsdState, WORD usValue)
-//{
-//        BYTE ucDone = _FALSE;
-//
-//        g_usAdjustValue = usValue;
-//
-//        switch(usOsdState)
-//        {
-////            case _MENU_PICTURE_BACKLIGHT:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_PICTURE_BRIGHTNESS:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_PICTURE_CONTRAST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_PICTURE_SHARPNESS:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHARPNESS(), _SHARPNESS_MAX, _SHARPNESS_MIN, _SHARPNESS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_PICTURE_BACKLIGHT_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                SET_OSD_BACKLIGHT(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_PICTURE_BRIGHTNESS_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                SET_OSD_BRIGHTNESS(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _BRIGHTNESS_MAX, _BRIGHTNESS_MIN, _BRIGHTNESS_CENTER));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_PICTURE_CONTRAST_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                SET_OSD_CONTRAST(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_PICTURE_SHARPNESS_ADJUST:
-////                g_usAdjustValue= (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _SHARPNESS_MAX, _SHARPNESS_MIN, _OFF);
-////                SET_OSD_SHARPNESS(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_OSD_SHARPNESS(), _SHARPNESS_MAX, _SHARPNESS_MIN, _SHARPNESS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_DISPLAY_HPOS:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_DISPLAY_VPOS:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_DISPLAY_CLOCK:
-////    #if(_AUTO_CLOCK_SAVE_VALUE_OPTION == _CLOCK_SAVE_PERCENT_VALUE)
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////    #else
-////                {
-////                    WORD usClockRangeMax = 0;
-////                    WORD usClockRangeMin = 0;
-////                    WORD usUserIHTotal = 0;
-////
-////                    usClockRangeMax = UserCommonAdjustGetAdcClockRange(_GET_CLOCKRANGE_MAX);
-////                    usClockRangeMin = UserCommonAdjustGetAdcClockRange(_GET_CLOCKRANGE_MIN);
-////                    usUserIHTotal = UserCommonAdjustRealValueToPercent(g_usAdjustValue, usClockRangeMax, usClockRangeMin, (((usClockRangeMax - usClockRangeMin) / 2) + usClockRangeMin));
-////
-////                    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), usUserIHTotal, _SLIDER_0, _UNSELECT);
-////                }
-////    #endif
-////
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_DISPLAY_PHASE:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_DISPLAY_AUTO:
-////    #if(_VGA_SUPPORT == _ON)
-////                g_usAdjustValue = 0;
-////                UserCommonAutoConfig();
-////    #endif
-////                break;
-////
-////            case _MENU_DISPLAY_HPOS_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////
-////    #if(_VGA_SUPPORT == _ON)
-////                if(SysSourceGetSourceType() == _SOURCE_VGA)
-////                {
-////                    SET_VGA_MODE_ADJUST_H_POSITION(g_usAdjustValue);
-////                    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_VGA_MODE_ADJUST_H_POSITION(), _SLIDER_0, _SELECT);
-////                    OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_VGA_MODE_ADJUST_H_POSITION(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                }
-////                else
-////    #endif
-////                {
-////                    SET_DIGITAL_H_POSITION(g_usAdjustValue);
-////                    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_DIGITAL_H_POSITION(), _SLIDER_0, _SELECT);
-////                    OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_DIGITAL_H_POSITION(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                }
-////                break;
-////
-////            case _MENU_DISPLAY_VPOS_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////
-////    #if(_VGA_SUPPORT == _ON)
-////                if(SysSourceGetSourceType() == _SOURCE_VGA)
-////                {
-////                    SET_VGA_MODE_ADJUST_V_POSITION(g_usAdjustValue);
-////                    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_VGA_MODE_ADJUST_V_POSITION(), _SLIDER_0, _SELECT);
-////                    OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_VGA_MODE_ADJUST_V_POSITION(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                }
-////                else
-////    #endif
-////                {
-////                    SET_DIGITAL_V_POSITION(g_usAdjustValue);
-////                    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_DIGITAL_V_POSITION(), _SLIDER_0, _SELECT);
-////                    OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_DIGITAL_V_POSITION(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                }
-////                break;
-////
-////    #if(_VGA_SUPPORT == _ON)
-////            case _MENU_DISPLAY_CLOCK_ADJUST:
-////    #if(_AUTO_CLOCK_SAVE_VALUE_OPTION == _CLOCK_SAVE_PERCENT_VALUE)
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                SET_VGA_MODE_ADJUST_CLOCK(g_usAdjustValue);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_VGA_MODE_ADJUST_CLOCK(), _SLIDER_0, _SELECT);
-////    #else
-////                {
-////                    WORD usClockRangeMax = 0;
-////                    WORD usClockRangeMin = 0;
-////                    WORD usUserIHTotal = 0;
-////
-////                    usClockRangeMax = UserCommonAdjustGetAdcClockRange(_GET_CLOCKRANGE_MAX);
-////                    usClockRangeMin = UserCommonAdjustGetAdcClockRange(_GET_CLOCKRANGE_MIN);
-////                    g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, usClockRangeMax, usClockRangeMin, _OFF);
-////                    SET_VGA_MODE_ADJUST_CLOCK(g_usAdjustValue);
-////                    usUserIHTotal = UserCommonAdjustRealValueToPercent(g_usAdjustValue, usClockRangeMax, usClockRangeMin, (((usClockRangeMax - usClockRangeMin) / 2) + usClockRangeMin));
-////                    OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), usUserIHTotal, _SLIDER_0, _SELECT);
-////                }
-////    #endif
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_VGA_MODE_ADJUST_CLOCK(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_4), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_DISPLAY_PHASE_ADJUST:
-////                g_usAdjustValue= (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _OSD_PHASE_MAX, _OSD_PHASE_MIN, _OFF);
-////                SET_VGA_MODE_ADJUST_PHASE(g_usAdjustValue);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_VGA_MODE_ADJUST_PHASE(), _SLIDER_0, _SELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_VGA_MODE_ADJUST_PHASE(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////    #endif
-////
-////            case _MENU_DISPLAY_DISP_ROTATE_ADJUST:
-////                SET_OSD_DISP_ROTATE(OsdDisplayDetOverRange(GET_OSD_DISP_ROTATE(), (_DISP_ROTATE_AMOUNT - 1), _DISP_ROTATE_0, _OFF));
-////                OsdDispMainMenuOptionSetting(_OPTION_DISP_ROTATE_TYPE, _SELECT, GET_OSD_DISP_ROTATE());
-////                break;
-////
-////            case _MENU_DISPLAY_LATENCY_ADJUST:
-////                SET_OSD_LATENCY(OsdDisplayDetOverRange(GET_OSD_LATENCY(), _LATENCY_AMOUNT, _LATENCY_L, _OFF));
-////                OsdDispMainMenuOptionSetting(_OPTION_LATENCY_TYPE, _SELECT, GET_OSD_LATENCY());
-////                break;
-////
-////            case _MENU_COLOR_HUE:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _HUE_MAX, _HUE_MIN, _HUE_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_COLOR_SATURATION:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////    #if(_GAMMA_FUNCTION == _ON)
-////            case _MENU_COLOR_GAMMA_ADJUST:
-////
-////                SET_OSD_GAMMA(OsdDisplayDetOverRange(GET_OSD_GAMMA(), _GAMMA_AMOUNT, _GAMMA_OFF, _OFF));
-////                OsdDispMainMenuOptionSetting(_OPTION_GAMMA_TYPE, _SELECT, GET_OSD_GAMMA());
-////
-////                break;
-////    #endif // End of #if(_GAMMA_FUNCTION == _ON)
-////
-////            case _MENU_COLOR_TEMPERATURE_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, _CT_USER, _CT_9300, _OFF);
-////                SET_COLOR_TEMP_TYPE(g_usAdjustValue);
-////                OsdDispMainMenuOptionSetting(_OPTION_TEMPRATURE_TYPE, _SELECT, GET_COLOR_TEMP_TYPE());
-////                break;
-////
-////            case _MENU_COLOR_EFFECT_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, _COLOREFFECT_AMOUNT, _COLOREFFECT_STANDARD, _OFF);
-////                SET_OSD_COLOR_EFFECT(g_usAdjustValue);
-////
-////                OsdDispMainMenuOptionSetting(_OPTION_COLOR_EFFECT_TYPE, _SELECT, GET_OSD_COLOR_EFFECT());
-////                break;
-////
-////            case _MENU_COLOR_DEMO_ADJUST:
-////                SET_OSD_HLWIN_TYPE(OsdDisplayDetOverRange(GET_OSD_HLWIN_TYPE(), _HL_WIN_AMOUNT, _HL_WIN_OFF, _OFF));
-////                OsdDispMainMenuOptionSetting(_OPTION_COLOR_DEMO_TYPE, _SELECT, GET_OSD_HLWIN_TYPE());
-////                break;
-////
-////            case _MENU_COLOR_PCM_ADJUST:
-////    #if(_OCC_SUPPORT == _ON)
-////                SET_OSD_PCM_STATUS(OsdDisplayDetOverRange(GET_OSD_PCM_STATUS(), _PCM_OSD_AMOUNT, _PCM_OSD_SRGB, _OFF));
-////                g_usAdjustValue = GET_OSD_PCM_STATUS();
-////    #else
-////                SET_OSD_PCM_STATUS(OsdDisplayDetOverRange(GET_OSD_PCM_STATUS(), _PCM_OSD_AMOUNT, _PCM_OSD_USER, _OFF));
-////    #endif
-////                break;
-////
-////            case _MENU_COLOR_HUE_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _HUE_MAX, _HUE_MIN, _HUE_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                SET_OSD_HUE(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _HUE_MAX, _HUE_MIN, _HUE_CENTER));
-////                break;
-////
-////            case _MENU_COLOR_SATURATION_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                SET_OSD_SATURATION(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER));
-////                break;
-////
-////            case _MENU_ADVANCE_ASPECT_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, _OSD_ASPECT_RATIO_AMOUNT, _OSD_ASPECT_RATIO_FULL, _OFF);
-////                break;
-////
-////            case _MENU_ADVANCE_OVER_SCAN_ADJUST:
-////                SET_OSD_OVERSCAN_STATUS(OsdDisplayDetOverRange(GET_OSD_OVERSCAN_STATUS(), _ON, _OFF, _ON));
-////                OsdDispMainMenuOptionSetting(_OPTION_OVERSCAN_ONOFF, _SELECT, GET_OSD_OVERSCAN_STATUS());
-////                break;
-////
-////
-////            case _MENU_ADVANCE_ULTRA_VIVID_ADJUST:
-////                SET_OSD_ULTRA_VIVID_STATUS(OsdDisplayDetOverRange(GET_OSD_ULTRA_VIVID_STATUS(), _ULTRA_VIVID_AMOUNT, _ULTRA_VIVID_OFF, _OFF));
-////                OsdDispMainMenuOptionSetting(_OPTION_ULTRA_VIVID_TYPE, _SELECT, GET_OSD_ULTRA_VIVID_STATUS());
-////                break;
-////
-////            case _MENU_ADVANCE_DP_MST_ADJUST:
-////
-////                if(GET_KEYMESSAGE() == _LEFT_KEY_MESSAGE)
-////                {
-////                    switch(GET_OSD_DP_MST())
-////                    {
-////                        case _MST_OFF:
-////                            break;
-////
-////                        case _MST_D0:
-////
-////                            if(ucDone == _FALSE)
-////                            {
-////                                SET_OSD_DP_MST(_MST_OFF);
-////                            }
-////
-////                            break;
-////
-////                        case _MST_D1:
-////
-////    #if((_D0_INPUT_PORT_TYPE == _D0_DP_PORT) && (_D0_DP_MST_PORT_SUPPORT == _ON))
-////
-////                            if((GET_OSD_DP_D0_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D0);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////                            if(ucDone == _FALSE)
-////                            {
-////                                SET_OSD_DP_MST(_MST_OFF);
-////                            }
-////
-////                            break;
-////
-////                        case _MST_D6:
-////
-////    #if((_D1_INPUT_PORT_TYPE == _D1_DP_PORT) && (_D1_DP_MST_PORT_SUPPORT == _ON))
-////
-////                            if((GET_OSD_DP_D1_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D1);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////
-////    #if((_D0_INPUT_PORT_TYPE == _D0_DP_PORT) && (_D0_DP_MST_PORT_SUPPORT == _ON))
-////
-////                            if((GET_OSD_DP_D0_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D0);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////                            if(ucDone == _FALSE)
-////                            {
-////                                SET_OSD_DP_MST(_MST_OFF);
-////                            }
-////
-////                            break;
-////
-////                        default:
-////                            break;
-////                    }
-////                }
-////                else if(GET_KEYMESSAGE() == _RIGHT_KEY_MESSAGE)
-////                {
-////                    switch(GET_OSD_DP_MST())
-////                    {
-////                        case _MST_OFF:
-////
-////    #if((_D0_INPUT_PORT_TYPE == _D0_DP_PORT) && (_D0_DP_MST_PORT_SUPPORT == _ON))
-////
-////                            if((GET_OSD_DP_D0_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D0);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////
-////    #if((_D1_INPUT_PORT_TYPE == _D1_DP_PORT) && (_D1_DP_MST_PORT_SUPPORT == _ON))
-////                            if((GET_OSD_DP_D1_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D1);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////
-////    #if((_D6_INPUT_PORT_TYPE == _D6_DP_PORT) &&
-////        ((_D6_INPUT_PORT_SWITCH_FROM == _SWITCH_FROM_D0) && (_D0_DP_MST_PORT_SUPPORT == _ON)))
-////
-////                            if((GET_OSD_DP_D6_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D6);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////                            break;
-////
-////                        case _MST_D0:
-////
-////    #if((_D1_INPUT_PORT_TYPE == _D1_DP_PORT) && (_D1_DP_MST_PORT_SUPPORT == _ON))
-////
-////                            if((GET_OSD_DP_D1_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D1);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////
-////    #if((_D6_INPUT_PORT_TYPE == _D6_DP_PORT) &&
-////        ((_D6_INPUT_PORT_SWITCH_FROM == _SWITCH_FROM_D0) && (_D0_DP_MST_PORT_SUPPORT == _ON)))
-////
-////                            if((GET_OSD_DP_D6_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D6);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////                            if(ucDone == _FALSE)
-////                            {
-////                                SET_OSD_DP_MST(_MST_OFF);
-////                            }
-////
-////                            break;
-////
-////                        case _MST_D1:
-////
-////    #if((_D6_INPUT_PORT_TYPE == _D6_DP_PORT) &&
-////        ((_D6_INPUT_PORT_SWITCH_FROM == _SWITCH_FROM_D0) && (_D0_DP_MST_PORT_SUPPORT == _ON)))
-////                            if((GET_OSD_DP_D6_VERSION() >= _DP_VER_1_DOT_2) && (ucDone == _FALSE))
-////                            {
-////                                SET_OSD_DP_MST(_MST_D6);
-////                                ucDone = _TRUE;
-////                            }
-////    #endif
-////                            if(ucDone == _FALSE)
-////                            {
-////                                SET_OSD_DP_MST(_MST_OFF);
-////                            }
-////
-////                            break;
-////
-////                        case _MST_D6:
-////                            break;
-////
-////                        default:
-////                            break;
-////                    }
-////                }
-////
-////                OsdDispMainMenuOptionSetting(_OPTION_DP_MST_TYPE, _SELECT, GET_OSD_DP_MST());
-////                break;
-////
-////            case _MENU_ADVANCE_DP_EDID_ADJUST:
-////                UserCommonNVRamSetSystemData(_DP_EDID_SELECT, OsdDisplayDetOverRange(UserCommonNVRamGetSystemData(_DP_EDID_SELECT), _DP_EDID_4K2K_60HZ, _DP_EDID_1080P, _OFF));
-////                OsdDispMainMenuOptionSetting(_OPTION_DP_EDID_TYPE, _SELECT, UserCommonNVRamGetSystemData(_DP_EDID_SELECT));
-////                break;
-////
-////            case _MENU_ADVANCE_FREESYNC_ADJUST:
-////                OsdDispMainMenuOptionSetting(_OPTION_FREESYNC_ONOFF_TYPE, _SELECT, GET_OSD_FREE_SYNC_STATUS());
-////                break;
-////
-////            case _MENU_ADVANCE_CLONE_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(GET_OSD_CLONE_MODE(), _OSD_CLONE_ON, _OSD_CLONE_OFF, _ON);
-////                SET_OSD_CLONE_MODE(g_usAdjustValue);
-////                break;
-////
-////            case _MENU_AUDIO_VOLUME:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_OSD_VOLUME(), _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_VOLUME(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_AUDIO_VOLUME_ADJUST:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_VOLUME(), _OSD_VOLUME_MAX, _OSD_VOLUME_MIN, _OFF);
-////                SET_OSD_VOLUME(g_usAdjustValue);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), GET_OSD_VOLUME(), _SLIDER_0, _SELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_VOLUME(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////
-////            case _MENU_AUDIO_MUTE_ON_OFF:
-////                SET_OSD_VOLUME_MUTE(OsdDisplayDetOverRange(GET_OSD_VOLUME_MUTE(), _ON, _OFF, _ON));
-////                OsdDispMainMenuOptionSetting(_OPTION_MUTE_ONOFF, _SELECT, GET_OSD_VOLUME_MUTE());
-////                break;
-////
-////            case _MENU_AUDIO_AUDIO_SOURCE_SELECT:
-////                SET_OSD_AUDIO_SOURCE(OsdDisplayDetOverRange(GET_OSD_AUDIO_SOURCE(), _DIGITAL_AUDIO, _LINE_IN_AUDIO, _ON));
-////                OsdDispMainMenuOptionSetting(_OPTION_AUDIO_SOURCE, _SELECT, GET_OSD_AUDIO_SOURCE());
-////                break;
-////
-////            case _MENU_AUDIO_SOUND_MODE_SELECT:
-////                break;
-////
-////            case _MENU_OTHER_MENU_TIME:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_TIME_OUT(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_TIMEOUT_MAX, _OSD_TIMEOUT_MIN, _OSD_TIMEOUT_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_OTHER_OSD_HPOS:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_HPOS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OSD_H_POS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_OTHER_OSD_VPOS:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_VPOS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OSD_V_POS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_OTHER_TRNASPARENCY:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_TRANSPARENCY_STATUS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OSD_TRANSPARENCY_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_OTHER_MENU_TIME_ADJUST:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _OSD_TIMEOUT_MAX, _OSD_TIMEOUT_MIN, _OFF);
-////                SET_OSD_TIME_OUT(g_usAdjustValue);
-////                SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_TIME_OUT(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_TIMEOUT_MAX, _OSD_TIMEOUT_MIN, _OSD_TIMEOUT_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_OTHER_OSD_HPOS_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OSD_H_POS_CENTER);
-////                g_usAdjustValue= (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                SET_OSD_HPOS(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OSD_H_POS_CENTER));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_HPOS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_H_POS_MAX, _OSD_H_POS_MIN, _OSD_H_POS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_OTHER_OSD_VPOS_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OSD_V_POS_CENTER);
-////                g_usAdjustValue= (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                SET_OSD_VPOS(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OSD_V_POS_CENTER));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_VPOS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_V_POS_MAX, _OSD_V_POS_MIN, _OSD_V_POS_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_OTHER_LANGUAGE_ADJUST:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(GET_OSD_LANGUAGE(), _CHINESE_T, _ENGLISH, _OFF);
-////
-////                break;
-////
-////            case _MENU_OTHER_TRNASPARENCY_ADJUST:
-////                g_usAdjustValue= (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OFF);
-////                SET_OSD_TRANSPARENCY_STATUS(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_TRANSPARENCY_STATUS(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OSD_TRANSPARENCY_MAX, _OSD_TRANSPARENCY_MIN, _OSD_TRANSPARENCY_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_OTHER_ROTATE_ADJUST:
-////    #if(_OSD_ROTATE_CW180_SUPPORT == _ON)
-////                g_usAdjustValue = OsdDisplayDetOverRange(GET_OSD_ROTATE_STATUS(), _OSD_ROTATE_DEGREE_180, _OSD_ROTATE_DEGREE_0, _OFF);
-////    #else
-////                g_usAdjustValue = OsdDisplayDetOverRange(GET_OSD_ROTATE_STATUS(), _OSD_ROTATE_DEGREE_270, _OSD_ROTATE_DEGREE_0, _OFF);
-////    #endif
-////                break;
-////
-////            case _MENU_COLOR_TEMP_USER_R:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_COLOR_TEMP_USER_G:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_COLOR_TEMP_USER_B:
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                break;
-////
-////            case _MENU_COLOR_TEMP_USER_ADJUST_R:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _OFF);
-////                SET_COLOR_TEMP_TYPE_USER_R(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_R(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_COLOR_TEMP_USER_ADJUST_G:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _OFF);
-////                SET_COLOR_TEMP_TYPE_USER_G(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_G(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_COLOR_TEMP_USER_ADJUST_B:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, _USER_RGB_MAX, _USER_RGB_MIN, _OFF);
-////                SET_COLOR_TEMP_TYPE_USER_B(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(GET_COLOR_TEMP_TYPE_USER_B(), _USER_RGB_MAX, _USER_RGB_MIN, _USER_RGB_CENTER);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_COLOR_EFF_USER_R_HUE_ADJUST:
-////            case _MENU_COLOR_EFF_USER_Y_HUE_ADJUST:
-////            case _MENU_COLOR_EFF_USER_G_HUE_ADJUST:
-////            case _MENU_COLOR_EFF_USER_C_HUE_ADJUST:
-////            case _MENU_COLOR_EFF_USER_B_HUE_ADJUST:
-////            case _MENU_COLOR_EFF_USER_M_HUE_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _SIX_COLOR_HUE_MAX, _SIX_COLOR_HUE_MIN, _SIX_COLOR_HUE_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                SET_OSD_SIX_COLOR_HUE(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _SIX_COLOR_HUE_MAX, _SIX_COLOR_HUE_MIN, _SIX_COLOR_HUE_CENTER));
-////                OsdDisplaySixColorSetOneColor(GET_OSD_SIX_COLOR());
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_COLOR_EFF_USER_R_SAT_ADJUST:
-////            case _MENU_COLOR_EFF_USER_Y_SAT_ADJUST:
-////            case _MENU_COLOR_EFF_USER_G_SAT_ADJUST:
-////            case _MENU_COLOR_EFF_USER_C_SAT_ADJUST:
-////            case _MENU_COLOR_EFF_USER_B_SAT_ADJUST:
-////            case _MENU_COLOR_EFF_USER_M_SAT_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _SIX_COLOR_SATURATION_MAX, _SIX_COLOR_SATURATION_MIN, _SIX_COLOR_SATURATION_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                SET_OSD_SIX_COLOR_SATURATION(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _SIX_COLOR_SATURATION_MAX, _SIX_COLOR_SATURATION_MIN, _SIX_COLOR_SATURATION_CENTER));
-////                OsdDisplaySixColorSetOneColor(GET_OSD_SIX_COLOR());
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                break;
-////
-////            case _MENU_ADVANCE_OD_GAIN_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _OD_GAIN_MAX, _OD_GAIN_MIN, _OD_GAIN_CENTER);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                SET_OSD_OD_GAIN(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _OD_GAIN_MAX, _OD_GAIN_MIN, _OD_GAIN_CENTER));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////
-////                break;
-////
-////    #if(_HDR10_SUPPORT == _ON)
-////            case _MENU_ADVANCE_HDR_MODE_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, _HDR10_MODE_FORCE_2084, _HDR10_MODE_OFF, _OFF);
-////                SET_OSD_HDR_MODE(g_usAdjustValue);
-////                OsdDispMainMenuOptionSetting(_OPTION_HDR_MODE_SELECT, _SELECT, GET_OSD_HDR_MODE());
-////                break;
-////
-////            case _MENU_ADVANCE_HDR_DARK_ENHANCE_ONOFF_ADJUST:
-////                SET_OSD_DARK_ENHANCE_STATUS(OsdDisplayDetOverRange(GET_OSD_DARK_ENHANCE_STATUS(), _ON, _OFF, _ON));
-////                OsdDispMainMenuOptionSetting(_OPTION_ON_OFF, _SELECT, GET_OSD_DARK_ENHANCE_STATUS());
-////                break;
-////
-////            case _MENU_ADVANCE_HDR_CONTRAST:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////            case _MENU_ADVANCE_HDR_CONTRAST_ADJUST:
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                SET_OSD_HDR_CONTRAST(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////    #if(_HDR10_COLOR_ENHANCE_SUPPORT == _ON)
-////            case _MENU_ADVANCE_HDR_COLOR_ENHANCE:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), ((WORD)GET_OSD_HDR_COLOR_ENHANCE()*100/_LEVEL_H), _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_HDR_COLOR_ENHANCE(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////            case _MENU_ADVANCE_HDR_COLOR_ENHANCE_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, _LEVEL_H, _LEVEL_OFF, _OFF);
-////                SET_OSD_HDR_COLOR_ENHANCE(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_HDR_COLOR_ENHANCE(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), (g_usAdjustValue*100/_LEVEL_H), _SLIDER_0, _SELECT);
-////                break;
-////    #endif
-////    #if(_HDR10_LIGHT_ENHANCE_SUPPORT == _ON)
-////            case _MENU_ADVANCE_HDR_LIGHT_ENHANCE:
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), ((WORD)GET_OSD_HDR_LIGHT_ENHANCE()*100/_LEVEL_H), _SLIDER_0, _UNSELECT);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_HDR_LIGHT_ENHANCE(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                break;
-////            case _MENU_ADVANCE_HDR_LIGHT_ENHANCE_ADJUST:
-////                g_usAdjustValue = OsdDisplayDetOverRange(g_usAdjustValue, _LEVEL_H, _LEVEL_OFF, _OFF);
-////                SET_OSD_HDR_LIGHT_ENHANCE(g_usAdjustValue);
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), GET_OSD_HDR_LIGHT_ENHANCE(), (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), (g_usAdjustValue*100/_LEVEL_H), _SLIDER_0, _SELECT);
-////                break;
-////    #endif
-////    #endif
-////    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-////            case _MENU_ADVANCE_HDR_LD_SMOOTH_ADJ_ADJUST:
-////                g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, 100, 0, 50);
-////                g_usAdjustValue = (BYTE)OsdDisplayDetOverRange(g_usAdjustValue, 100, 0, _OFF);
-////                OsdWindowSlider(ROW(_SLIDER_0_ROW), COL(_SLIDER_0_COL), g_usAdjustValue, _SLIDER_0, _SELECT);
-////                SET_OSD_LD_ADJ(UserCommonAdjustPercentToRealValue(g_usAdjustValue, 100, 0, 50));
-////                OsdPropShowNumber(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, _OSD_NUMBER_UNSELECT_COLOR);
-////
-////                break;
-////    #endif
-//		case _MENU_HOTKEY_BACKLIGHT:	// 170308
-//			g_usAdjustValue = UserCommonAdjustRealValueToPercent(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
-//			OsdWindowSlider(ROW(2), COL(9), g_usAdjustValue, _SLIDER_0, _SELECT);
-//			OsdPropShowNumber(ROW(2), COL(31), g_usAdjustValue, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_ITEM_1, COLOR(_CP_ORANGE, _CP_BG));
-//			SET_OSD_BACKLIGHT(UserCommonAdjustPercentToRealValue(g_usAdjustValue, _BACKLIGHT_MAX(), _BACKLIGHT_MIN, _BACKLIGHT_CENTER));
-//			break;
-//            default:
-//                break;
-//        }
-//    }
-//
-//    //--------------------------------------------------
-//    // Description    :
-//    // Input Value    : None
-//    // Output Value : None
-//    //--------------------------------------------------
-//    WORD OsdDisplayDetOverRange(WORD usValue, WORD usMax, WORD usMin, bit bCycle)
-//    {
-//        switch(GET_KEYMESSAGE())
-//        {
-//            case _RIGHT_KEY_MESSAGE:
-//                if(usValue >= usMax)
-//                {
-//                    if(bCycle == _ON)
-//                    {
-//                        return usMin;
-//                    }
-//                    else
-//                    {
-//                        return usMax;
-//                    }
-//                }
-//                else
-//                {
-//                    usValue++;
-//                }
-//
-//                break;
-//
-//            case _LEFT_KEY_MESSAGE:
-//                if (usValue <= usMin)
-//                {
-//                    if(bCycle == _ON)
-//                    {
-//                        return usMax;
-//                    }
-//                    else
-//                    {
-//                        return usMin;
-//                    }
-//                }
-//                else
-//                {
-//                    usValue--;
-//                }
-//                break;
-//
-//            default:
-//                break;
-//        }
-//
-//        return usValue;
-//    }
-
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  : None
-//    // Output Value : None
-//    //--------------------------------------------------
-//    void OsdDispClearSliderAndNumber(void)
-//    {
-//        OsdWindowSliderDisable();
-//        OsdFuncClearOsd(ROW(_OSD_NUMBER_1_ROW), COL(_OSD_NUMBER_1_COL), g_ucOsdWidth, 1);
-//    }
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispHotKeyOptionMenu(BYTE ucOption)
-//    {
-//        BYTE uctemp = 0;
-//
-//        OsdFuncCloseWindow(_OSD_WINDOW_ALL);
-//        OsdFuncDisableOsd();
-//        ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-//
-//        OsdFuncApplyMap(WIDTH(36), HEIGHT(8), COLOR(_CP_WHITE, _CP_BG));
-//
-//    #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-//        ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(8), _DISABLE, 0, _ENABLE);
-//    #endif
-//
-//        OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-//        OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-//
-//        // Adjust Color Palette
-//        OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-//
-//        // Load Font & Icon
-//        OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-//
-//        OsdFontVLCLoadFont(_FONT1_GLOBAL);
-//        // OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-//
-//        // Background window
-//    #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-//        if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-//           (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-//        {
-//            OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
-//            OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdWidth, _CP_LIGHTBLUE);
-//        }
-//        else
-//    #endif
-//        {
-//            OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
-//            OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdHeight, _CP_LIGHTBLUE);
-//        }
-//
-//        // title
-//        switch(ucOption)
-//        {
-//            case _HOTKEY_DDCCI:
-//                // icon
-//                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_DDCCI);
-//
-//                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-//                // string
-//                OsdPropPutStringCenter(ROW(6), COL(0), WIDTH(12), _PFONT_PAGE_1, _STRING_DDCCI, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
-//
-//
-//                (GET_OSD_DDCCI_STATUS() == _ON) ? (uctemp = 1) : (uctemp = 2);
-//
-//                OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(3 + (12 * uctemp)), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//
-//                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_ON);
-//                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + (12 * 1)), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-//
-//                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_OFF);
-//                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + (12 * 2)), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-//                break;
-//
-//            case _HOTKEY_DP_D0_OPTION:
-//            case _HOTKEY_DP_D1_OPTION:
-//            case _HOTKEY_DP_D2_OPTION:
-//            case _HOTKEY_DP_D6_OPTION:
-//
-//                g_usAdjustValue=ucOption;
-//                // icon
-//                if(ucOption == _HOTKEY_DP_D0_OPTION)
-//                {
-//                    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_D0);
-//                    (GET_OSD_DP_D0_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                else if(ucOption == _HOTKEY_DP_D1_OPTION)
-//                {
-//                    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_D1);
-//                    (GET_OSD_DP_D1_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                else if(ucOption == _HOTKEY_DP_D2_OPTION)
-//                {
-//                    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_D2);
-//                    (GET_OSD_DP_D2_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                else if(ucOption == _HOTKEY_DP_D6_OPTION)
-//                {
-//                    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_D6);
-//                    (GET_OSD_DP_D6_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//
-//                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-//                // string
-//                OsdPropPutStringCenter(ROW(6), COL(0), WIDTH(12), _PFONT_PAGE_1, _STRING_DP_OPTION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-//                OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(3 + (12 * uctemp)), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_1_DOT_1);
-//                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + (12 * 1)), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-//                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_1_DOT_2);
-//                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + (12 * 2)), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-//                break;
-//
-//            default:
-//                break;
-//        }
-//        OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
-//
-//        ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-//
-//        OsdFuncEnableOsd();
-//    }
-//
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispHotKeyOptionMenuSwitch(BYTE ucOption)
-//    {
-//        BYTE uctemp = 0;
-//
-//        switch(ucOption)
-//        {
-//            case _HOTKEY_DDCCI:
-//                SET_OSD_DDCCI_STATUS(~(GET_OSD_DDCCI_STATUS()));
-//                (GET_OSD_DDCCI_STATUS() == _ON) ? (uctemp = 1) : (uctemp = 2);
-//                OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(3 + (12 * uctemp)), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//                UserCommonInterfaceDdcciSwitch(GET_OSD_DDCCI_STATUS(), SysSourceGetInputPort());
-//                break;
-//
-//            case _HOTKEY_DP_D0_OPTION:
-//            case _HOTKEY_DP_D1_OPTION:
-//            case _HOTKEY_DP_D2_OPTION:
-//            case _HOTKEY_DP_D6_OPTION:
-//                if(ucOption == _HOTKEY_DP_D0_OPTION)
-//                {
-//                    SET_OSD_DP_D0_VERSION(~(GET_OSD_DP_D0_VERSION()));
-//                    (GET_OSD_DP_D0_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                else if(ucOption == _HOTKEY_DP_D1_OPTION)
-//                {
-//                    SET_OSD_DP_D1_VERSION(~(GET_OSD_DP_D1_VERSION()));
-//                    (GET_OSD_DP_D1_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                else if(ucOption == _HOTKEY_DP_D2_OPTION)
-//                {
-//                    SET_OSD_DP_D2_VERSION(~(GET_OSD_DP_D2_VERSION()));
-//                    (GET_OSD_DP_D2_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                else if(ucOption == _HOTKEY_DP_D6_OPTION)
-//                {
-//                    SET_OSD_DP_D6_VERSION(~(GET_OSD_DP_D6_VERSION()));
-//                    (GET_OSD_DP_D6_VERSION() == _DP_VER_1_DOT_1) ? (uctemp = 1) : (uctemp = 2);
-//                }
-//                OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(3 + (12 * uctemp)), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//                break;
-//
-//            default:
-//                break;
-//        }
-//
-//        RTDNVRamSaveOSDData();
-//    }
-//
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispHotKeySourceMenuIcon(BYTE ucPort)
-{
-	BYTE ucCol = 5;
-
-	if (GET_OSD_STATE() == _MENU_HOTKEY_SOURCE)
-	{
-		OsdFuncClearOsd(ROW(6), COL(13), WIDTH(47), HEIGHT(1));
-		OsdPropPutStringCenter(ROW(6), COL(0), WIDTH(12), _PFONT_PAGE_1, _STRING_SETUP, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-
-		// Left & Right Arrow
-		OsdFontPut1Bit(ROW(3), COL(13), _iLEFT_00, COLOR(_CP_BLUE, _CP_BG));
-		OsdFontPut1Bit(ROW(3) + 1, COL(13), _iLEFT_00 + 1, COLOR(_CP_BLUE, _CP_BG));
-
-		OsdFontPut1Bit(ROW(3), COL(62), _iRIGHT_00, COLOR(_CP_BLUE, _CP_BG));
-		OsdFontPut1Bit(ROW(3) + 1, COL(62), _iRIGHT_00 + 1, COLOR(_CP_BLUE, _CP_BG));
-
-#if (_ENABLE_MENU_VGA == _ON)
-		if (_OSD_INPUT_A0 <= ucPort && ucPort <= _OSD_INPUT_D3)
-#else
-		if ((_OSD_INPUT_D0 <= ucPort) && (ucPort <= _OSD_INPUT_D3))
-#endif
-		{
-			// A0
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _A0_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 1)), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 1)), _PFONT_PAGE_1, _STRING_A0_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// D0
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _D0_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 2)), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 2)), _PFONT_PAGE_1, _STRING_D0_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// // D1
-			// OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _D1_INPUT_TYPE);
-			// OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 2)), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-			// OsdPropPutString(ROW(6), COL(ucCol + (12 * 2)), _PFONT_PAGE_1, _STRING_D1_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// D2
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _D2_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 3)), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 3)), _PFONT_PAGE_1, _STRING_D2_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// D3
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_DOWN_0, _D3_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 4)), (_1DYNAMIC_ICON_START + (4 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 4)), _PFONT_PAGE_1, _STRING_D3_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-		}
-		else if ((ucPort > _OSD_INPUT_D3) && (ucPort <= _OSD_INPUT_D6))
-		{
-			// D3
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _D3_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 1)), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 1)), _PFONT_PAGE_1, _STRING_D3_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// D4
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _D4_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 2)), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 2)), _PFONT_PAGE_1, _STRING_D4_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// D5
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_3, _D5_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 3)), (_1DYNAMIC_ICON_START + (3 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 3)), _PFONT_PAGE_1, _STRING_D5_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// D6
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_DOWN_0, _D6_INPUT_TYPE);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 4)), (_1DYNAMIC_ICON_START + (4 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 4)), _PFONT_PAGE_1, _STRING_D6_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-		}
-		else
-		{
-
-			// auto
-			OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_INPUT_AUTO);
-			OsdFontPut1BitMainMenuIcon(ROW(2), COL(ucCol + (12 * 1)), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
-			OsdPropPutString(ROW(6), COL(ucCol + (12 * 1)), _PFONT_PAGE_1, _STRING_AUTOSELECT_PORT, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-
-			// None
-			OsdFuncClearOsd(ROW(2), COL(3 + (12 * 2)), WIDTH(32), HEIGHT(4));
-		}
-	}
-	else
-	{
-
-		if ((ucPort >= _OSD_INPUT_D6) && (ucPort <= _OSD_INPUT_AUTO))
-		{
-			OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_INPUT_2);
-		}
-		else if ((ucPort >= _OSD_INPUT_A0) && (ucPort <= _OSD_INPUT_D3))
-		{
-			OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_INPUT_0);
-		}
-		else if ((ucPort >= _OSD_INPUT_D5) && (ucPort <= _OSD_INPUT_D6))
-		{
-			OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_INPUT_1);
-		}
-	}
-}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispHotKeySourceMenu(void)
-{
-	if (SysSourceGetScanType() == _SOURCE_SWITCH_AUTO_IN_GROUP)
-	{
-		SET_OSD_INPUT_PORT_OSD_ITEM(_OSD_INPUT_AUTO);
-	}
-	// else if (GET_OSD_INPUT_PORT_OSD_ITEM() != _OSD_INPUT_AUTO)
-	//{
-	//	SET_OSD_INPUT_PORT_OSD_ITEM(SysRegionGetPortType(_DISPLAY_RGN_1P));
-	// }
-	// if (GET_OSD_INPUT_PORT_OSD_ITEM () == _OSD_INPUT_AUTO)
-	{
-		g_usBackupValue = GET_OSD_INPUT_PORT_OSD_ITEM();
-	}
-	// else // EnumSourceSearchPort �� EnumOSDInputPortDef ���� ���� �մϴ�.
-	//{
-	//	g_usBackupValue = GET_OSD_INPUT_PORT_OSD_ITEM() ;//
-	// }
-	SET_OSD_STATE(_MENU_HOTKEY_SOURCE);
-	OsdFuncDisableOsd();
-	OsdFuncApplyMap(WIDTH(_OSD_HOTKEY_SOURCE_MENU_WIDTH), HEIGHT(_OSD_HOTKEY_SOURCE_MENU_HEIGHT), COLOR(_CP_BLACK, _CP_BG));
-
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_HOTKEY_SOURCE_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
-#endif
-
-	OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
-
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
-
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
-
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
-
-	// Background window
-#if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) || (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(52), g_ucOsdWidth, _CP_LIGHTBLUE);
-	}
-	else
-#endif
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(52), g_ucOsdHeight, _CP_LIGHTBLUE);
-	}
-
-	// title
-	// icon
-	// _MENU_INPUT
-	OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_INPUT);
-
-	OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
-
-	// highligh window
-	OsdDispHotKeySourceMenuSwitch(g_usBackupValue);
-	OsdDispHotKeySourceMenuIcon(g_usBackupValue);
-
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
-
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-
-	OsdFuncEnableOsd();
-}
-
-//--------------------------------------------------
-// Description  :
-// Input Value  :
-// Output Value :
-//--------------------------------------------------
-void OsdDispHotKeySourceMenuSwitch(BYTE ucPort)
-{
-
-#if (_ENABLE_MENU_VGA == _ON)
-	if (GET_OSD_STATE() == _MENU_HOTKEY_SOURCE)
-	{
-		if (ucPort == _OSD_INPUT_AUTO)
-		{
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(0), COL(3 + (12 * (ucPort + 1))), WIDTH(10), HEIGHT(8), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-		}
-		else
-		{
-			ucPort -= _OSD_INPUT_A0;
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(0), COL(3 + (12 * (ucPort + 1))), WIDTH(10), HEIGHT(8), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-		}
-	}
-	else
-	{
-		if (!(ucPort == _OSD_INPUT_AUTO))
-			ucPort -= 1;
-
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_2, ROW(14), COL(4 + ((ucPort % 4) * 10) - 2), WIDTH(10), HEIGHT(5), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-	}
-#else
-	if (GET_OSD_STATE() == _MENU_HOTKEY_SOURCE)
-	{
-		if (ucPort == _OSD_INPUT_AUTO)
-		{
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(0), COL(3 + (12 * (ucPort + 1))), WIDTH(10), HEIGHT(8), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-		}
-		else
-		{
-			ucPort -= _OSD_INPUT_D0;
-			OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(0), COL(3 + (12 * (ucPort + 1))), WIDTH(10), HEIGHT(8), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-		}
-	}
-	else
-	{
-		if (ucPort != _OSD_INPUT_A0)
-			ucPort -= 1;
-
-		OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_2, ROW(14), COL(4 + ((ucPort % 4) * 10) - 2), WIDTH(10), HEIGHT(5), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-	}
-#endif
-}
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispPanelUniformityMsgSwitch(void)
-//    {
-//        BYTE uctemp = 0;
-//        SET_OSD_PANEL_UNIFORMITY(~(GET_OSD_PANEL_UNIFORMITY()));
-//        (GET_OSD_PANEL_UNIFORMITY() == _ON) ? (uctemp = 1) : (uctemp = 0);
-//        OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(18 + (9 * uctemp)), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//    }
-
-//
-//
-//    //--------------------------------------------------
-//    // Description  : OSD information function
-//    // Input Value  : None
-//    // Output Value : None
-//    //--------------------------------------------------
-//    void OsdDispShowInformation(void)
-//    {
-//    #if(_FREESYNC_SUPPORT == _ON)
-//        if(ScalerSyncGetFREESYNCEnable() == _TRUE)
-//        {
-//            ScalerTimerActiveTimerEvent(SEC(1), _USER_TIMER_EVENT_OSD_SHOW_FREESYNC_VFREQ);
-//        }
-//    #endif
-//
-//        OsdPropPutString(ROW(14), COL(16), _PFONT_PAGE_1, OsdDisplayGetSourcePortString(), COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-//
-//    #if(_FREESYNC_SUPPORT == _ON)
-//        SET_FREESYNC_OSD_ADDRESS(g_ucFontPointer1);
-//    #endif
-//
-//        OsdPropPutString(ROW(14 + 1), COL(16), _PFONT_PAGE_1, _STRING_NOW_RESOLUTION, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-//        OsdPropPutString(ROW(14 + 2), COL(16), _PFONT_PAGE_1, _STRING_HFREQPCLK, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-//
-//    #if(_VGA_SUPPORT == _ON)
-//        if(SysSourceGetSourceType() == _SOURCE_VGA)
-//        {
-//            OsdPropPutString(ROW(14 + 3), COL(16), _PFONT_PAGE_1, OsdDisplayGetVGAModeString(g_stVGAModeUserData.b1IsPresetMode), COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-//            OsdPropShowNumber(ROW(14 + 3), COL(16 + 8), g_stVGAModeUserData.ucModeNumber, (_ALIGN_LEFT | _FORCE_SHOW_NUMBER_OFF | _SHOW_3), _PFONT_PAGE_1, COLOR(_CP_BLUE, _CP_BG));
-//        }
-//    #endif
-//
-//    #if(_DIGITAL_PORT_SUPPORT == _ON)
-//        if((SysSourceGetInputPort() == _D0_INPUT_PORT) ||
-//           (SysSourceGetInputPort() == _D1_INPUT_PORT) ||
-//           (SysSourceGetInputPort() == _D2_INPUT_PORT) ||
-//           (SysSourceGetInputPort() == _D3_INPUT_PORT) ||
-//           (SysSourceGetInputPort() == _D4_INPUT_PORT) ||
-//           (SysSourceGetInputPort() == _D5_INPUT_PORT))
-//        {
-//            OsdPropPutString(ROW(14 + 3), COL(16), _PFONT_PAGE_1, _STRING_HDCP_MODE, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-//        }
-//    #endif
-//    #if(_FREESYNC_SUPPORT == _ON)
-//        if(ScalerSyncGetFREESYNCEnable() == _TRUE)
-//        {
-//            OsdPropPutString(ROW(14 + 4), COL(16), _PFONT_PAGE_1, _STRING_FREESYNC_SUPPORT_V_RANGE, COLOR(_CP_BLUE, _CP_BG), _ENGLISH);
-//        }
-//    #endif
-//    }
-//
-#if ((_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE) || (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE))
 //--------------------------------------------------
 // Description  : OSD information function
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-void OsdDispOsdRotateSwitch(void)
+void OsdDispShowInformation(void)	
 {
-	BYTE ucTest = 0;
 
-	g_ucFontPointer0 = _OSD_PAGE_0_START;
-	g_ucFontPointer1 = _OSD_PAGE_1_START;
-	g_ucFontPointer2 = _OSD_PAGE_2_START;
-
-	if (ucTest == 1)
+#if (_DYNAMIC_OSD_WINDOW == _ON)
+	OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 6 + 2), _CP_DARKGRAY);
+#endif
+	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_MODEL, COLOR(_CP_WHITE, _CP_BG));
+	OsdPropPutpStringRight(ROW(_ITEM_1), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, OsdGetBoardModel(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_INPUT, COLOR(_CP_WHITE, _CP_BG));
+	OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_FORAMT, COLOR(_CP_WHITE, _CP_BG));
+	OsdPropPutpStringRight(ROW(_ITEM_3), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, OsdDisplayGetResolutionStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_COLOR_TEMP, COLOR(_CP_WHITE, _CP_BG));
 	{
-		//        ScalerDDomainPatternGenAdjustColor(0, 0, 0);
-		//        OsdDispDetOverRange(0, 0, 0, 0);
+#if(_MEDICAL_SURGICAL == _ON)
+        {
+            switch (GET_OSD_PCM_STATUS())
+            {
+            case _PCM_OSD_BT709:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdBT709, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            case _PCM_OSD_DCI_P3:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdDCI_P3, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            case _PCM_OSD_BT2020:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdBT2020, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            case _PCM_OSD_NATIVE:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdGammaNative, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            default:
+                break;
+            }
+        }
+#else
+        {
+            switch (GET_COLOR_TEMP_TYPE())
+            {
+            case _CT_D56:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdTempD56, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            case _CT_D65:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdTempD65, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            case _CT_D93:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdTempD93, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            case _CT_USER:
+                OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, tsOsdTempUser, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+                break;
+            default:
+                break;
+            }
+        }
+#endif
+	}
+	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_RANGE, COLOR(_CP_WHITE, _CP_BG));
+	OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, OsdDisplayGetRangeStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+	
+	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_FW_VERSION, COLOR(_CP_WHITE, _CP_BG));
 
-		//        RTDFactoryPanelUsedTimer();
-		//        OsdFontPut2BitTable(0, 0, tOSD_iREALTEK, 0, 0, 0, 0);
 
-		//        OsdWindowDrawingHighlight(0, 0, 0, 0, 0, 0, 0, 0);
-		//        OsdFuncChangeIconColor1Bit(0, 0, 0, 0, 0);
+}
 
-		ScalerOsdDataPort(0);
 
-		// #if(_DIGITAL_PORT_SUPPORT == _ON)
-		//         ScalerSyncHdcpCheckEnabled(SysSourceGetInputPort());
-		// #endif
+#if((_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE) || (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE))
+//--------------------------------------------------
+// Description  : OSD information function
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void OsdDispOsdRotateSwitch(void)	
+{
+//	BYTE hPosi,vPosi;
+//			
+//	OsdFuncCloseWindow(_OSD_WINDOW_ALL);
+//    OsdFuncDisableOsd();
+
+//	OsdFuncApplyMap(WIDTH(_OSD_MAIN_MENU_WIDTH), HEIGHT(_OSD_MAIN_MENU_HEIGHT), COLOR(_CP_WHITE, _CP_BG));
+
+////20140304 Abel
+//#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
+//    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_MAIN_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
+//#endif
+
+//    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+//    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
+
+//    // Adjust Color Palette
+//    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
+
+//    // Load Font & Icon
+//    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
+
+//    OsdFontVLCLoadFont(_FONT1_GLOBAL);
+//    // OsdFontVLCLoadFont(_FONT2_ICON_MENU);
+
+//    // Background window
+//#if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
+//    if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+//       (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+//    {
+//        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_BLUE);
+//        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(g_ucOsdWidth / 2), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_LIGHTBLUE);
+//    }
+//    else
+//#endif
+//    {
+//        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);	
+//		//OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);	
+//		//OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(0), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);
+// 
+//    }
+
+
+//    // Realtek Mark
+//    //OsdFontPut1BitTable(ROW(0), COL(32), tOSD_iREALTEK, COLOR(_CP_WHITE, _CP_BG));
+
+//	OsdMainMenuPageDraw();	
+
+//	SetFocus(_MENU_SECTION_0, ROW_OFFSET+_ITEM_4);	
+
+//	OsdSubMenuPageDraw(_MENU_OSD_SETTING);
+//	SET_OSD_STATE(_MENU_OSD_ROTATE);
+//	SetFocus(_MENU_SECTION_1, ROW_OFFSET+_ITEM_5);	
+
+//	//OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
+//	
+//	switch(GET_OSD_ROTATE_STATUS())	
+//	{
+//		case _OSD_ROTATE_DEGREE_0:
+//			hPosi = GET_OSD_HPOS();
+//			vPosi = GET_OSD_VPOS();
+//			break;
+//		case _OSD_ROTATE_DEGREE_90:
+//			hPosi = _OSD_V_POS_MAX - GET_OSD_VPOS();
+//			vPosi = GET_OSD_HPOS();
+//			break;
+//		case _OSD_ROTATE_DEGREE_180:
+//			hPosi = _OSD_H_POS_MAX - GET_OSD_HPOS();
+//			vPosi = _OSD_V_POS_MAX - GET_OSD_VPOS();
+//			break;
+//		case _OSD_ROTATE_DEGREE_270:
+//			hPosi = GET_OSD_VPOS();
+//			vPosi = _OSD_H_POS_MAX - GET_OSD_HPOS();
+//			break;
+//		default:
+//			hPosi = GET_OSD_HPOS();
+//			vPosi = GET_OSD_VPOS();
+//			break;
+//				
+//	}
+//	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, hPosi, vPosi);
+
+//    // Osd Enable
+//    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+//    OsdFuncEnableOsd();
+}
+#endif
+
+#if(_ENABLE_REVERSE_SCAN == _ON)	
+void OsdDispOsdReverseScanSwitch(void)	
+{
+/*	
+	if(GET_OSD_REVERSE_SCAN()==_ON)	
+	{
+		PCB_PANEL_REVERSE(_PANEL_REVERSE_ON);	//  Panel Reverse Scan
+	#if(_ENABLE_REVERSE_SCAN_BOE == _ON)		
+		SET_OSD_DISP_ROTATE(_DISP_ROTATE_VER_MIRROR);	// V-Flip ( BOE Panel )
+		SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_0);
+	#else
+		SET_OSD_DISP_ROTATE(_DISP_ROTATE_180);			// HV-Flip( LG Panel  )
+		SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_180);
+	#endif
+	}
+	else
+	{
+		PCB_PANEL_REVERSE(_PANEL_REVERSE_OFF);
+		SET_OSD_DISP_ROTATE(_DISP_ROTATE_0);			// NO-Flip
+		SET_OSD_ROTATE_STATUS(_OSD_ROTATE_DEGREE_0);
 	}
 
-	OsdFuncDisableOsd();
+	OsdDispOsdRotateSwitch();
+	SysModeSetResetTarget(_MODE_ACTION_RESET_TO_DISPLAY_SETTING);
+	SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+*/
+	if(GET_OSD_REVERSE_SCAN()==_ON)
+	{
+		//PCB_PANEL_REVERSE(_PANEL_REVERSE_ON); 
+	}
+	else
+	{
+		//PCB_PANEL_REVERSE(_PANEL_REVERSE_OFF); 
+	}
 
-	SET_OSD_DOUBLE_SIZE(_ON);
+}
+#endif
 
-	OsdFuncApplyMap(WIDTH(_OSD_MAIN_MENU_WIDTH), HEIGHT(_OSD_MAIN_MENU_HEIGHT), COLOR(_CP_BLUE_120, _CP_BG));
+#if (_ENABLE_MENU_OLED == _ON)
 
-	// 20140304 Abel
+void OsdDispHotKeyOffRSMenu()
+{
+    BYTE uctemp = 0;
+
+    OsdFuncCloseWindow(_OSD_WINDOW_ALL);
+    OsdFuncDisableOsd();
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+
+    OsdFuncApplyMap(WIDTH(36), HEIGHT(8), COLOR(_CP_WHITE, _CP_BG));
+
 #if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_HARDWARE)
-	ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_MAIN_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
+    ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(8), _DISABLE, 0, _ENABLE);
 #endif
 
-	OsdFuncBlending(_OSD_TRANSPARENCY_ALL);
-	OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
+    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
 
-	// Adjust Color Palette
-	OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
+    // Adjust Color Palette
+    OsdPaletteSelectPalette(_PALETTE_MAIN_MENU);
 
-	// Load Font & Icon
-	OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
+    // Load Font & Icon
+    OsdFuncSet2BitIconOffset(_2BIT_ICON_OFFSET);
 
-	OsdFontVLCLoadFont(_FONT1_GLOBAL);
-	// OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-	OsdFontVLCLoadFont(_FOUR_CORNER);
-	OsdFontVLCLoadFont(_MAIN_MENU_2BIT_ICON);
+    OsdFontVLCLoadFont(_FONT1_GLOBAL);
+    // OsdFontVLCLoadFont(_FONT2_ICON_MENU);
 
-	// Background window
+    // Background window
 #if (_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
-	if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
-		(GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
-	{
-		OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_BLUE);
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(g_ucOsdWidth / 2), COL(0), WIDTH(g_ucOsdHeight), HEIGHT(g_ucOsdWidth / 2), _CP_LIGHTBLUE);
-	}
-	else
+    if ((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
+        (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
+    {
+        OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);
+        OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdWidth, _CP_LIGHTBLUE);
+    }
+    else
 #endif
-	{
-		// OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(0), WIDTH(g_ucOsdWidth), HEIGHT( g_ucOsdHeight/2), _CP_BLUE_120);
-		// OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW( g_ucOsdHeight/2+1), COL(0), WIDTH(g_ucOsdWidth), HEIGHT((g_ucOsdHeight/2)), _CP_BLUE_120 );//_CP_LIGHTBLUE
-		OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(1), COL(1), WIDTH(g_ucOsdWidth - 2), HEIGHT((g_ucOsdHeight - 2)), _CP_BLUE_65);
-		OsdFontPut1FuncTableForm(0, 0, _LEFT_CORNER_0, g_ucOsdWidth - 2, g_ucOsdHeight - 2, _CP_BLUE_65, _CP_BG, _QUADRANGLE_WINDOW_0);
-		OsdFontPut1FuncHLine(1, 0, _WHITE_EDGE_1, g_ucOsdWidth, _CP_WHITE, _CP_BLUE_65);
-		OsdFontPut1FuncHLine(24, 0, _WHITE_EDGE_1, g_ucOsdWidth, _CP_WHITE, _CP_BLUE_65);
-		OsdFontPut1FuncTableForm(2, 20, _EDGE_LINE, 13, 20, _CP_WHITE, _CP_BLUE_65, _GRID_WINDOW_0);
-		OsdFontPut1FuncTableForm(2, 37, _EDGE_LINE, 13, 20, _CP_WHITE, _CP_BLUE_65, _ARC_WINDOW_0);
-		// OsdFontPut1FuncTableForm(2, 54, _EDGE_LINE, 16, 20, _CP_WHITE, _CP_BLUE_65, _ARC_WINDOW_0);
-	}
+    {
+        OsdWindowDrawingByFont(_OSD_WINDOW_1, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
+        OsdWindowDrawingByFont(_OSD_WINDOW_0, ROW(0), COL(12), WIDTH(24), g_ucOsdHeight, _CP_LIGHTBLUE);
+    }
 
-	OsdFontPut2BitTable(ROW(_OSD_NUMBER_5_ROW), COL(_OSD_NUMBER_7_COL), tiOSD_MAIN_BIR_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_BLACK), COLOR2(_CP_YELLOW), COLOR3(_CP_WHITE));
-	OsdFontPut1FuncHLine(6, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(4), COL(7), _PFONT_PAGE_0, _STRING_PICTURE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    // icon
+    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_0, _ICON_OFFRS);
 
-	OsdFontPut2BitTable(ROW(_OSD_NUMBER_6_ROW), COL(_OSD_NUMBER_7_COL), tiOSD_MAIN_COLORTEMP_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_GREEN_66), COLOR2(_CP_GREEN_119), COLOR3(_CP_RED));
-	OsdFontPut1FuncHLine(10, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(8), COL(7), _PFONT_PAGE_0, _STRING_COLOR, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdFontPut1BitMainMenuIcon(ROW(2), COL(3), (_1DYNAMIC_ICON_START + (0 * 24)), _CP_WHITE, _CP_BG);
+    // string
+    //			OsdPropPutStringCenter(ROW(6), COL(0), WIDTH(12), _PFONT_PAGE_1, _STRING_END_RUN, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
 
-	OsdFontPut2BitTable(ROW(11), COL(2), tiOSD_MAIN_OSDSETTING_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_WHITE), COLOR2(_CP_BLUE_65), COLOR3(_CP_LIGHTBLUE));
-	OsdFontPut1FuncHLine(14, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(12), COL(7), _PFONT_PAGE_0, _STRING_ADVANCE, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    // uctemp = 1;
 
-	OsdFontPut2BitTable(ROW(15), COL(2), tiOSD_MAIN_MISC_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_WHITE), COLOR2(_CP_GREEN_66), COLOR3(_CP_BLUE_65));
-	OsdFontPut1FuncHLine(18, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(16), COL(7), _PFONT_PAGE_0, _STRING_SETUP, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_DISP_POWEROFF_OFFRS_TEXT_1);
+    OsdFontPut1BitMainMenuIcon(ROW(2), COL(18), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
+    OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_DISP_POWEROFF_OFFRS_TEXT_2);
+    OsdFontPut1BitMainMenuIcon(ROW(2), COL(18 + 6), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
+    /*
+                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_1, _ICON_YES);
+                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + (12 * 1)), (_1DYNAMIC_ICON_START + (1 * 24)), _CP_BLUE, _CP_BG);
 
-	OsdFontPut2BitTable(ROW(19), COL(2), tiOSD_MAIN_RESET_ICON, (_PALETTE_INDEX0 << 4) | COLOR0(_CP_BLUE_65), COLOR1(_CP_WHITE), COLOR2(_CP_BLACK), COLOR3(_CP_GREEN_66));
-	OsdFontPut1FuncHLine(22, 2, _WHITE_EDGE_2, _OSD_MAIN_MENU_LV1_LINE_WIDTH, _CP_WHITE, _CP_BLUE_65);
-	OsdPropPutString(ROW(20), COL(7), _PFONT_PAGE_0, _STRING_OTHER, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                OsdFontVLCDynamicLoadIcon(_ICON_POS_UP_2, _ICON_NO);
+                OsdFontPut1BitMainMenuIcon(ROW(2), COL(3 + (12 * 2)), (_1DYNAMIC_ICON_START + (2 * 24)), _CP_BLUE, _CP_BG);
+    */
+    OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, 50, 50);
 
-	// OsdPropPutString(ROW(_OSD_NUMBER_4_ROW), COL(_OSD_NUMBER_1_COL + 36), _PFONT_PAGE_0, _STRING_NOW_RESOLUTION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	// OsdPropPutString(ROW(_OSD_NUMBER_13_ROW), COL(_OSD_NUMBER_1_COL + 36), _PFONT_PAGE_0, _STRING_VERSION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	// OsdPropPutString(ROW(_OSD_NUMBER_13_ROW + 3), COL(_OSD_NUMBER_1_COL + 20), _PFONT_PAGE_0, _STRING_VERSION, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
+    ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 
-	ScalerOsdWindowDisable(_OSD_WINDOW_4_1);
-	ScalerOsdWindowDisable(_OSD_WINDOW_4_6);
-	COsdShowPageText(_MENU_OSDSETTINGS);
+    OsdFuncEnableOsd();
+}
 
-	OsdDispMainMenuItemSelection(_MENU_OSDSETTINGS - 1, _OSD_SELECT);
-	SET_OSD_STATE(_MENU_OSDSETTINGS_ROTATE_ADJUST);
-	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(_OSD_NUMBER_12_ROW), COL(_OSD_NUMBER_1_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_2), HEIGHT(1), _CP_BLACK, _CP_RED, _CP_BG);
-	OsdFontPut1FuncTableForm(2, 37, _EDGE_LINE, 13, 20, _CP_WHITE, _CP_BLUE_65, _GRID_WINDOW_0);
-	COsdShowChooseOSDSetText(_STRING_OSDSET_ROTATE);
-	OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_6, ROW(_OSD_NUMBER_1_ROW + (3 * GET_OSD_ROTATE_STATUS())), COL(_OSD_NUMBER_2_COL), WIDTH(_OSD_WINDOW_CHOOSE_WIDTH_1), HEIGHT(1), _CP_BLACK, _CP_RED, _CP_BG);
+void uint_to_str(DWORD value, BYTE *str)
+{
+    BYTE temp[10];
+    BYTE i = 0, j = 0;
 
-	ScalerOsdDoubleFunction(GET_OSD_DOUBLE_SIZE(), GET_OSD_DOUBLE_SIZE());
+    if (value == 0)
+    {
+        str[0] = '0';
+        str[1] = '\0';
+        return;
+    }
 
-	OsdDispSetPosition(_POS_PERCENT, _OSD_POSITION_GLOBAL_A, GET_OSD_HPOS(), GET_OSD_VPOS());
+    while (value > 0)
+    {
+        temp[i++] = (value % 10) + '0';
+        value /= 10;
+    }
 
-	// Osd Enable
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	OsdFuncEnableOsd();
+    for (j = 0; j < i; ++j)
+    {
+        str[j] = temp[i - j - 1];
+    }
+    str[i] = '\0';
+}
+
+void uint_to_str2digit(DWORD value, BYTE *str)
+{
+    str[0] = (value / 10) + '0';
+    str[1] = (value % 10) + '0';
+    str[2] = '\0';
+}
+
+BYTE *OsdDisplayGetSequenceTimeP(void)
+{
+    static BYTE xdata tTemp[13];  
+    BYTE temp[10];
+    BYTE i;
+
+    DWORD minutes = g_ulRemainingTimeMs / 60000;
+    DWORD seconds = (g_ulRemainingTimeMs % 60000) / 1000;
+
+    uint_to_str(minutes, temp);
+    strcpy(tTemp, temp);
+    strcat(tTemp, ":");
+    uint_to_str2digit(seconds, temp);  
+    strcat(tTemp, temp);
+
+    for (i = 0; i < 12; i++)
+    {
+        if ((tTemp[i] >= '0') && (tTemp[i] <= '9'))
+            tTemp[i] = (tTemp[i] - '0' + _0_);
+        else if (tTemp[i] == ':')
+            tTemp[i] = _COLON_;
+        else
+            tTemp[i] = _FONT_SPACE_1;
+    }
+    tTemp[12] = _END_;
+
+    return tTemp;
 }
 #endif
 
-#if (_ENABLE_VIDEO_WALL == _ON)
-// H, V Number �� Display Number �ڵ� ���.
-BYTE GetVideoWallDisplayNumber(void)
-{
-	BYTE returnVaule = 1;
-
-	if (GET_OSD_VIDEO_WALL_H_NUM() == 0 || GET_OSD_VIDEO_WALL_V_NUM() == 0)
-	{
-		returnVaule = GET_OSD_VIDEO_WALL_H_NUM() + GET_OSD_VIDEO_WALL_V_NUM();
-		if (returnVaule == 0)
-			returnVaule = 1; // Min = 1
-	}
-	else
-	{
-		returnVaule = GET_OSD_VIDEO_WALL_H_NUM() * GET_OSD_VIDEO_WALL_V_NUM();
-	}
-	return returnVaule;
-}
-
-BYTE GetVideoWallStatus(void)
-{
-	return GET_OSD_VIDEO_WALL_STATUS();
-}
-BYTE GetVideoWallRS232ID(void)
-{
-	return GET_OSD_VIDEO_WALL_RS232ID();
-}
-#endif
-
-//    //--------------------------------------------------
-//    // Description : re-draw Advance Menu
-//    // Input Value  : High: clean all & redraw ;  Low: Change selected color only
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispAdvanceMenuReDraw(bit bRedrawLevel)
-//    {
-//        SET_OSD_STATE(_MENU_ADVANCE_ITEM);
-//        OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX() % 4), _OSD_SELECT);
-//        OsdDispMainMenuItemIndication2(GET_OSD_ITEM_INDEX(), GET_OSD_STATE(), _OSD_SELECT);
-//        if(bRedrawLevel == _HIGH)
-//        {
-//            OsdDispMainMenuIconPage(_UP, _ICON_PAGE_ADVANCE);
-//            OsdDispClearSliderAndNumber();
-//            OsdDispClearSelectColor(_DOWN);
-//            OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//        }
-//        OsdDispAdvanceItemSwitch(GET_OSD_ITEM_INDEX());
-//    }
-//
-//    //--------------------------------------------------
-//    // Description  : Check Advance Sub Item exist or not
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    bit OsdDispAdvanceItemCheck(BYTE ucIndex)
-//    {
-//            switch(OSD_ADVANCE_ITEM_PRI[ucIndex])
-//            {
-//    #if(_ASPECT_RATIO_SUPPORT == _ON)
-//                case _OSD_ADVANCE_ASPECT:
-//                    break;
-//    #endif
-//    #if(_OVERSCAN_SUPPORT == _ON)
-//                case _OSD_ADVANCE_OVERSCAN:
-//                    break;
-//    #endif
-//    #if(_OD_SUPPORT == _ON)
-//                case _OSD_ADVANCE_OVERDRIVE:
-//                    break;
-//    #endif
-//                case _OSD_ADVANCE_DDCCI:
-//                    break;
-//
-//    #if(_ULTRA_VIVID_SUPPORT == _ON)
-//                case _OSD_ADVANCE_ULTRAVIVID:
-//    #if(_HDR10_SUPPORT == _ON)
-//                    if((UserCommonHDRGetHDR10Status() == _HDR10_ON) && (GET_OSD_HDR_SHARPNESS() == _ON))
-//                        return _FALSE;
-//    #endif
-//                    break;
-//    #endif
-//    #if(_DCR_SUPPORT == _ON)
-//                case _OSD_ADVANCE_DCR:
-//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-//                    if(GET_OSD_LOCAL_DIMMING() == _ON)
-//                    {
-//                        return _FALSE;
-//                    }
-//    #endif
-//                    break;
-//    #endif
-//    #if(_DP_SUPPORT == _ON)
-//                case _OSD_ADVANCE_DPOPTION:
-//                    break;
-//    #if(_DP_MST_SUPPORT == _ON)
-//                case _OSD_ADVANCE_DPMST:
-//                    break;
-//    #endif
-//                case _OSD_ADVANCE_DP_RESOLUTION:
-//                    break;
-//                case _OSD_ADVANCE_CLONE:
-//                    break;
-//    #endif
-//    #if((_FREESYNC_SUPPORT == _ON)||(_FREESYNC_II_SUPPORT == _ON))
-//                case _OSD_ADVANCE_FREESYNC:
-//                    break;
-//    #endif
-//    #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//                case _OSD_ADVANCE_TYPEC_MODE:
-//                    break;
-//    #endif
-//    #if(_HDR10_SUPPORT == _ON)
-//                case _OSD_ADVANCE_HDR:
-//                    break;
-//    #endif
-//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-//                case _OSD_ADVANCE_LOCALDIMMING:
-//                    break;
-//    #endif
-//    #if(_PIXEL_SHIFT_SUPPORT == _ON)
-//                case _OSD_ADVANCE_PIXELSHIFT:
-//                    break;
-//    #endif
-//    #if (_HDMI_MULTI_EDID_SUPPORT == _ON)
-//                case _OSD_ADVANCE_HDMI_VERSIONS:
-//                    break;
-//    #endif
-//    #if (_SDR_TO_HDR_SUPPORT == _ON)
-//                case _OSD_ADVANCE_SDR_TO_HDR:
-//    #if(_HDR10_SUPPORT == _ON)
-//                    if((UserCommonHDRGetHDR10Status() == _HDR10_ON))
-//                        return _FALSE;
-//    #endif
-//    #if(_FREESYNC_II_SUPPORT == _ON)
-//                    if(UserCommonHDRGetFreesynIIStatus() == _ON)
-//                    {
-//                        return _FALSE;
-//                    }
-//    #endif
-//
-//                    break;
-//    #endif
-//
-//
-//                case _OSD_ADVANCE_NONE:
-//                default:
-//                    return _FALSE;
-//                    break;
-//            }
-//            return _TRUE;
-//    }
-//    //--------------------------------------------------
-//    // Description  :
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    bit OsdDispAdvanceItemCountbyKeyMessage(void)
-//    {
-//        BYTE ucBackup = GET_OSD_ITEM_INDEX();
-//        do
-//        {
-//            if(GET_OSD_ITEM_INDEX() > _OSD_ADVANCE_ITEM_AMOUNT)
-//                return _FALSE;
-//
-//            if(GET_KEYMESSAGE() == _RIGHT_KEY_MESSAGE)
-//            {
-//                if(GET_OSD_ITEM_INDEX() >= (_OSD_ADVANCE_ITEM_AMOUNT-1))
-//                {
-//                    SET_OSD_ITEM_INDEX(ucBackup);
-//                    return _FALSE;
-//                }
-//
-//                SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX()+1);
-//            }
-//            if(GET_KEYMESSAGE() == _LEFT_KEY_MESSAGE)
-//            {
-//                if(GET_OSD_ITEM_INDEX() <= 0)
-//                {
-//                    SET_OSD_ITEM_INDEX(ucBackup);
-//                    return _FALSE;
-//                }
-//
-//                SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX()-1);
-//
-//            }
-//        }while (OsdDispAdvanceItemCheck(GET_OSD_ITEM_INDEX()) == _FALSE) ;
-//        if(GET_KEYMESSAGE() == _RIGHT_KEY_MESSAGE)
-//        {
-//            if(((ucBackup % 4) == 3)||((GET_OSD_ITEM_INDEX() % 4) == 0))
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_ADVANCE);
-//        }
-//        if(GET_KEYMESSAGE() == _LEFT_KEY_MESSAGE)
-//        {
-//            if(((ucBackup % 4) == 0) || ((GET_OSD_ITEM_INDEX() % 4) == 3))
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_ADVANCE);
-//
-//        }
-//
-//        return _TRUE;
-//
-//    }
-//    //--------------------------------------------------
-//    // Description  : Get Advance Sub item Icon
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    BYTE OsdDispAdvanceIconGet(BYTE ucIndex)
-//    {
-//        if(ucIndex < _OSD_ADVANCE_ITEM_AMOUNT)
-//        {
-//            switch(OSD_ADVANCE_ITEM_PRI[ucIndex])
-//            {
-//    #if(_ASPECT_RATIO_SUPPORT == _ON)
-//                case _OSD_ADVANCE_ASPECT:
-//                    return _ICON_ASPECT;
-//                    break;
-//    #endif
-//    #if(_OVERSCAN_SUPPORT == _ON)
-//                case _OSD_ADVANCE_OVERSCAN:
-//                    return _ICON_OVER_SCAN;
-//                    break;
-//    #endif
-//    #if(_OD_SUPPORT == _ON)
-//                case _OSD_ADVANCE_OVERDRIVE:
-//                    return _ICON_OVER_DRIVE;
-//                    break;
-//    #endif
-//                case _OSD_ADVANCE_DDCCI:
-//                    return _ICON_DDCCI;
-//                    break;
-//
-//    #if(_ULTRA_VIVID_SUPPORT == _ON)
-//                case _OSD_ADVANCE_ULTRAVIVID:
-//                    return _ICON_ULTRAVIVID;
-//                    break;
-//    #endif
-//    #if(_DCR_SUPPORT == _ON)
-//                case _OSD_ADVANCE_DCR:
-//                    return _ICON_DCR;
-//                    break;
-//    #endif
-//    #if(_DP_SUPPORT == _ON)
-//                case _OSD_ADVANCE_DPOPTION:
-//                    return _ICON_DP_OPTION;
-//                    break;
-//    #if(_DP_MST_SUPPORT == _ON)
-//                case _OSD_ADVANCE_DPMST:
-//                    return _ICON_DP_MST;
-//                    break;
-//    #endif
-//                case _OSD_ADVANCE_DP_RESOLUTION:
-//                    return _ICON_RESOLUTION;
-//                    break;
-//                case _OSD_ADVANCE_CLONE:
-//                    return _ICON_CLONE;
-//                    break;
-//    #endif
-//    #if((_FREESYNC_SUPPORT == _ON)||(_FREESYNC_II_SUPPORT == _ON))
-//                case _OSD_ADVANCE_FREESYNC:
-//                    return _ICON_FREESYNC;
-//                    break;
-//    #endif
-//    #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//                case _OSD_ADVANCE_TYPEC_MODE:
-//                    return _ICON_TYPEC_MODE;
-//                    break;
-//    #endif
-//    #if(_HDR10_SUPPORT == _ON)
-//                case _OSD_ADVANCE_HDR:
-//                    return _ICON_HDR;
-//                    break;
-//    #endif
-//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-//                case _OSD_ADVANCE_LOCALDIMMING:
-//                    return _ICON_LOCAL_DIMMING;
-//                    break;
-//    #endif
-//    #if(_PIXEL_SHIFT_SUPPORT == _ON)
-//                case _OSD_ADVANCE_PIXELSHIFT:
-//                    return _ICON_PIXEL_SHIFT;
-//                    break;
-//    #endif
-//    #if (_HDMI_MULTI_EDID_SUPPORT == _ON)
-//                case _OSD_ADVANCE_HDMI_VERSIONS:
-//                    return _ICON_HDMI_VERSIONS;
-//                    break;
-//    #endif
-//    #if (_SDR_TO_HDR_SUPPORT == _ON)
-//                case _OSD_ADVANCE_SDR_TO_HDR:
-//                    return _ICON_SDR_TO_HDR;
-//                    break;
-//    #endif
-//
-//                case _OSD_ADVANCE_NONE:
-//                default:
-//                    break;
-//            }
-//        }
-//        return _ICON_NONE;
-//    }
-//    //--------------------------------------------------
-//    // Description  :Advane sub Item switcht
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispAdvanceItemSwitch(BYTE ucIndex)
-//    {
-//        switch(OSD_ADVANCE_ITEM_PRI[ucIndex])
-//        {
-//    #if(_ASPECT_RATIO_SUPPORT == _ON)
-//            case _OSD_ADVANCE_ASPECT:
-//                OsdDispMainMenuOptionSetting(_OPTION_ASPECT_RATIO_TYPE, _UNSELECT, GET_OSD_ASPECT_RATIO_TYPE());
-//               if(GET_OSD_ASPECT_RATIO_TYPE() == _OSD_ASPECT_RATIO_ORIGIN)
-//                {
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ASPECT_RATIO_1);
-//                }
-//                else
-//                {
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ASPECT_RATIO_0);
-//                }
-//                break;
-//    #endif
-//    #if(_OVERSCAN_SUPPORT == _ON)
-//            case _OSD_ADVANCE_OVERSCAN:
-//                OsdDispMainMenuOptionSetting(_OPTION_OVERSCAN_ONOFF, _UNSELECT, GET_OSD_OVERSCAN_STATUS());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//    #endif
-//    #if(_OD_SUPPORT == _ON)
-//            case _OSD_ADVANCE_OVERDRIVE:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_OD_ADJUST);
-//                break;
-//    #endif
-//            case _OSD_ADVANCE_DDCCI:
-//                OsdDispMainMenuOptionSetting(_OPTION_DDCCI_ONOFF, _UNSELECT, GET_OSD_DDCCI_STATUS());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//
-//    #if(_ULTRA_VIVID_SUPPORT == _ON)
-//            case _OSD_ADVANCE_ULTRAVIVID:
-//                OsdDispMainMenuOptionSetting(_OPTION_ULTRA_VIVID_TYPE, _UNSELECT, GET_OSD_ULTRA_VIVID_STATUS());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ULTRA_VIVID);
-//                break;
-//    #endif
-//    #if(_DCR_SUPPORT == _ON)
-//            case _OSD_ADVANCE_DCR:
-//                OsdDispMainMenuOptionSetting(_OPTION_DCR_ONOFF, _UNSELECT, GET_OSD_DCR_STATUS());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//    #endif
-//    #if(_DP_SUPPORT == _ON)
-//            case _OSD_ADVANCE_DPOPTION:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_DP_OPTION);
-//                break;
-//    #if(_DP_MST_SUPPORT == _ON)
-//            case _OSD_ADVANCE_DPMST:
-//                OsdDispMainMenuOptionSetting(_OPTION_DP_MST_TYPE, _UNSELECT, GET_OSD_DP_MST());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_DP_MST);
-//                break;
-//    #endif
-//            case _OSD_ADVANCE_DP_RESOLUTION:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                g_usAdjustValue=0;
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_EDID_PORT_0);
-//                break;
-//            case _OSD_ADVANCE_CLONE:
-//                    OsdDispMainMenuOptionSetting(_OPTION_CLONE_TYPE, _UNSELECT, GET_OSD_CLONE_MODE());
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLONE_0);
-//                break;
-//    #endif
-//    #if((_FREESYNC_SUPPORT == _ON)||(_FREESYNC_II_SUPPORT == _ON))
-//            case _OSD_ADVANCE_FREESYNC:
-//                OsdDispMainMenuOptionSetting(_OPTION_FREESYNC_ONOFF_TYPE, _UNSELECT, GET_OSD_FREE_SYNC_STATUS());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//    #endif
-//
-//    #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//            case _OSD_ADVANCE_TYPEC_MODE:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_TYPEC_MODE);
-//                break;
-//    #endif
-//    #if(_HDR10_SUPPORT == _ON)
-//            case _OSD_ADVANCE_HDR:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_HDR_ADJUST);
-//                break;
-//    #endif
-//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-//            case _OSD_ADVANCE_LOCALDIMMING:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_LOCAL_DIMMING);
-//                break;
-//    #endif
-//    #if(_PIXEL_SHIFT_SUPPORT == _ON)
-//            case _OSD_ADVANCE_PIXELSHIFT:
-//                OsdDispMainMenuOptionSetting(_OPTION_ON_OFF, _UNSELECT, _OFF);
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//    #endif
-//    #if (_HDMI_MULTI_EDID_SUPPORT == _ON)
-//            case _OSD_ADVANCE_HDMI_VERSIONS:
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                g_usAdjustValue=0;
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_EDID_PORT_0);
-//                break;
-//    #endif
-//    #if (_SDR_TO_HDR_SUPPORT == _ON)
-//            case _OSD_ADVANCE_SDR_TO_HDR:
-//                OsdDispMainMenuOptionSetting(_OPTION_ON_OFF, _UNSELECT, GET_OSD_SDR_TO_HDR());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//    #endif
-//
-//            case _OSD_ADVANCE_NONE:
-//            default:
-//                break;
-//        }
-//    }
-//    //--------------------------------------------------
-//    // Description  :Advance sub item select
-//    // Input Value  :
-//    // Output Value :
-//    //--------------------------------------------------
-//    void OsdDispAdvanceItemSelect(BYTE ucIndex)
-//    {
-//        switch(OSD_ADVANCE_ITEM_PRI[ucIndex])
-//        {
-//    #if(_ASPECT_RATIO_SUPPORT == _ON)
-//            case _OSD_ADVANCE_ASPECT:
-//                g_usBackupValue = GET_OSD_ASPECT_RATIO_TYPE();
-//                SET_OSD_STATE(_MENU_ADVANCE_ASPECT_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_ASPECT_RATIO_TYPE, _SELECT, GET_OSD_ASPECT_RATIO_TYPE());
-//                break;
-//    #endif
-//    #if(_OVERSCAN_SUPPORT == _ON)
-//            case _OSD_ADVANCE_OVERSCAN:
-//                g_usBackupValue = GET_OSD_OVERSCAN_STATUS();
-//                SET_OSD_STATE(_MENU_ADVANCE_OVER_SCAN_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_OVERSCAN_ONOFF, _SELECT, GET_OSD_OVERSCAN_STATUS());
-//                break;
-//    #endif
-//    #if(_OD_SUPPORT == _ON)
-//            case _OSD_ADVANCE_OVERDRIVE:
-//                SET_OSD_STATE(_MENU_ADVANCE_OVER_DRIVE_ONOFF);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_OD_ADJUST);
-//                OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                OsdDispMainMenuOptionSetting(_OPTION_OVERDRIVE_ONOFF, _UNSELECT, GET_OSD_OD_STATUS());
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                break;
-//    #endif
-//            case _OSD_ADVANCE_DDCCI:
-//                g_usBackupValue = GET_OSD_DDCCI_STATUS();
-//                SET_OSD_STATE(_MENU_ADVANCE_DDCCI_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_DDCCI_ONOFF, _SELECT, GET_OSD_DDCCI_STATUS());
-//                break;
-//
-//    #if(_ULTRA_VIVID_SUPPORT == _ON)
-//            case _OSD_ADVANCE_ULTRAVIVID:
-//                g_usBackupValue = GET_OSD_ULTRA_VIVID_STATUS();
-//                SET_OSD_STATE(_MENU_ADVANCE_ULTRA_VIVID_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_ULTRA_VIVID_TYPE, _SELECT, GET_OSD_ULTRA_VIVID_STATUS());
-//                break;
-//    #endif
-//    #if(_DCR_SUPPORT == _ON)
-//            case _OSD_ADVANCE_DCR:
-//                g_usBackupValue = GET_OSD_DCR_STATUS();
-//                SET_OSD_STATE(_MENU_ADVANCE_DCR_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_DCR_ONOFF, _SELECT, GET_OSD_DCR_STATUS());
-//                break;
-//    #endif
-//    #if(_DP_SUPPORT == _ON)
-//            case _OSD_ADVANCE_DPOPTION:
-//    #if(_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
-//                SET_OSD_STATE(_MENU_ADVANCE_DP_OPTION_D0);
-//    #elif(_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-//                SET_OSD_STATE(_MENU_ADVANCE_DP_OPTION_D1);
-//    #elif(_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-//                SET_OSD_STATE(_MENU_ADVANCE_DP_OPTION_D2);
-//    #elif(_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-//                SET_OSD_STATE(_MENU_ADVANCE_DP_OPTION_D6);
-//    #endif
-//
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//                OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_DP_OPTION);
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                OsdDispClearSelectColor(_DOWN);
-//    #if(_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
-//                OsdDispMainMenuOptionSetting(_OPTION_DP_PORT_VERSION, _UNSELECT, GET_OSD_DP_D0_VERSION());
-//    #elif(_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
-//                OsdDispMainMenuOptionSetting(_OPTION_DP_PORT_VERSION, _UNSELECT, GET_OSD_DP_D1_VERSION());
-//    #elif(_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
-//                OsdDispMainMenuOptionSetting(_OPTION_DP_PORT_VERSION, _UNSELECT, GET_OSD_DP_D2_VERSION());
-//    #elif(_D6_INPUT_PORT_TYPE == _D6_DP_PORT)
-//                OsdDispMainMenuOptionSetting(_OPTION_DP_PORT_VERSION, _UNSELECT, GET_OSD_DP_D6_VERSION());
-//    #endif
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_DP_1_DOT_X);
-//
-//                break;
-//    #if(_DP_MST_SUPPORT == _ON)
-//            case _OSD_ADVANCE_DPMST:
-//                // when Auto Search is disable, MST can be selected
-//                if((SysSourceGetScanType() == _SOURCE_SWITCH_FIXED_PORT))
-//                {
-//                    g_usBackupValue = GET_OSD_DP_MST();
-//                    SET_OSD_STATE(_MENU_ADVANCE_DP_MST_ADJUST);
-//                    OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                    OsdDispMainMenuOptionSetting(_OPTION_DP_MST_TYPE, _SELECT, GET_OSD_DP_MST());
-//                }
-//                else
-//                {
-//                    OsdDispOsdMessage(_OSD_DISP_MST_WARNING_MSG);
-//                    SET_OSD_STATE(_MENU_NONE);
-//                    ScalerTimerReactiveTimerEvent(SEC(3), _USER_TIMER_EVENT_OSD_DISABLE);
-//                }
-//                break;
-//    #endif
-//            case _OSD_ADVANCE_DP_RESOLUTION:
-//                g_usAdjustValue=0;
-//                SET_OSD_STATE(_MENU_ADVANCE_EDID_ADJUST);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_EDID_PORT_0);
-//                OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                switch(GET_PORT_TYPE(SysSourceGetInputPortType(_D0_INPUT_PORT+g_usAdjustValue)))
-//                {
-//                    case _PORT_DP:
-//                        OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_RESOLUTION);
-//                        OsdDispMainMenuOptionSetting(_OPTION_DP_EDID_TYPE, _UNSELECT, UserCommonNVRamGetSystemData(_EDID_D0_SELECT+g_usAdjustValue));
-//                        break;
-//
-//                    case _PORT_HDMI20:
-//                    case _PORT_HDMI:
-//                    case _PORT_MHL:
-//                    default:
-//                        break;
-//                }
-//                break;
-//            case _OSD_ADVANCE_CLONE:
-//                SET_OSD_STATE(_MENU_ADVANCE_CLONE_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                g_usBackupValue = GET_OSD_CLONE_MODE();
-//                OsdDispMainMenuOptionSetting(_OPTION_CLONE_TYPE, _SELECT, GET_OSD_CLONE_MODE());
-//                break;
-//    #endif
-//    #if((_FREESYNC_SUPPORT == _ON)||(_FREESYNC_II_SUPPORT == _ON))
-//            case _OSD_ADVANCE_FREESYNC:
-//                SET_OSD_STATE(_MENU_ADVANCE_FREESYNC_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_FREESYNC_ONOFF_TYPE, _SELECT, GET_OSD_FREE_SYNC_STATUS());
-//                g_usBackupValue=GET_OSD_FREE_SYNC_STATUS();
-//                break;
-//    #endif
-//
-//    #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//            case _OSD_ADVANCE_TYPEC_MODE:
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//    #if(_D0_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//                SET_OSD_STATE(_MENU_ADVANCE_TYPEC_MODE_D0);
-//                g_usBackupValue = GET_OSD_D0_TYPEC_U3_MODE();
-//    #elif(_D1_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//                SET_OSD_STATE(_MENU_ADVANCE_TYPEC_MODE_D1);
-//                g_usBackupValue = GET_OSD_D1_TYPEC_U3_MODE();
-//    #elif(_D2_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//                SET_OSD_STATE(_MENU_ADVANCE_TYPEC_MODE_D2);
-//                g_usBackupValue = GET_OSD_D2_TYPEC_U3_MODE();
-//    #elif(_D6_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
-//                SET_OSD_STATE(_MENU_ADVANCE_TYPEC_MODE_D6);
-//                g_usBackupValue = GET_OSD_D6_TYPEC_U3_MODE();
-//    #endif
-//
-//                OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_DP_OPTION);
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                OsdDispClearSelectColor(_DOWN);
-//                OsdDispMainMenuOptionSetting(_OPTION_TYPEC_MODE_SELECT, _UNSELECT, g_usBackupValue);
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_TYPEC_MODE_U3_ONOFF);
-//                break;
-//    #endif
-//
-//    #if(_HDR10_SUPPORT == _ON)
-//            case _OSD_ADVANCE_HDR:
-//                if(GET_OSD_PANEL_UNIFORMITY() == _ON)
-//                {
-//                    g_usBackupValue = _FROM_STATE_HDR;
-//                    g_usAdjustValue = GET_OSD_PANEL_UNIFORMITY();
-//                    OsdDispOsdMessage(_OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG);
-//                    OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(27), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//                    SET_OSD_STATE(_MENU_PANEL_UNIFORMITY_MSG_ADJUST);
-//                }
-//                else
-//                {
-//                    SET_OSD_STATE(_MENU_ADVANCE_HDR_MODE);
-//                    OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//                    OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                    OsdDispMainMenuIconPage(_UP, _ICON_PAGE_HDR_ADJUST);
-//                    OsdDispMainMenuOptionSetting(_OPTION_HDR_MODE_SELECT, _UNSELECT, GET_OSD_HDR_MODE());
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_HDR_MODE);
-//                }
-//                break;
-//    #endif
-//    #if(_OSD_LOCAL_DIMMING_SUPPORT == _ON)
-//            case _OSD_ADVANCE_LOCALDIMMING:
-//                if(GET_OSD_PANEL_UNIFORMITY() == _ON)
-//                {
-//                    g_usBackupValue = _FROM_STATE_LD;
-//                    g_usAdjustValue = GET_OSD_PANEL_UNIFORMITY();
-//                    OsdDispOsdMessage(_OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG);
-//                    OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(27), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//                    SET_OSD_STATE(_MENU_PANEL_UNIFORMITY_MSG_ADJUST);
-//                }
-//                else
-//                {
-//                    SET_OSD_STATE(_MENU_ADVANCE_HDR_LD_ONOFF);
-//                    OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//                    OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                    OsdDispMainMenuIconPage(_UP, _ICON_PAGE_LOCAL_DIMMING);
-//                    OsdDispMainMenuOptionSetting(_OPTION_ON_OFF, _UNSELECT, GET_OSD_LOCAL_DIMMING());
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                }
-//                break;
-//    #endif
-//    #if(_PIXEL_SHIFT_SUPPORT == _ON)
-//            case _OSD_ADVANCE_PIXELSHIFT:
-//                SET_OSD_STATE(_MENU_ADVANCE_PIXEL_SHIFT_ADJUST);
-//                OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                OsdDispMainMenuOptionSetting(_OPTION_ON_OFF, _SELECT, _OFF);
-//                break;
-//    #endif
-//    #if (_HDMI_MULTI_EDID_SUPPORT == _ON)
-//             case _OSD_ADVANCE_HDMI_VERSIONS:
-//                g_usAdjustValue=0;
-//                SET_OSD_STATE(_MENU_ADVANCE_HDMI_VERSION_ADJUST);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_CLEAR);
-//                OsdDispMainMenuIconPage(_UP, _ICON_PAGE_EDID_PORT_0);
-//                OsdDispMainMenuCursor(GET_OSD_STATE(), GET_OSD_STATE_PREVIOUS(), _OUTSUBSET);
-//                OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_CLEAR);
-//                switch(GET_PORT_TYPE(SysSourceGetInputPortType(_D0_INPUT_PORT+g_usAdjustValue)))
-//                {
-//                    case _PORT_DP:
-//                         break;
-//
-//                    case _PORT_HDMI20:
-//                    case _PORT_HDMI:
-//                    case _PORT_MHL:
-//
-//                        OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_HDMI_VERSIONS );
-//                        OsdDispMainMenuOptionSetting(_OPTION_HDMI_VERSIONS_TYPE, _UNSELECT, OsdFuncGetHdmiPortVersion(_D0_INPUT_PORT + g_usAdjustValue));
-//                        break;
-//
-//                    default:
-//                        break;
-//                }
-//                break;
-//    #endif
-//    #if (_SDR_TO_HDR_SUPPORT == _ON)
-//            case _OSD_ADVANCE_SDR_TO_HDR:
-//                if(GET_OSD_PANEL_UNIFORMITY() == _ON)
-//                {
-//                    g_usBackupValue = _FROM_STATE_SDRTOHDR;
-//                    g_usAdjustValue = GET_OSD_PANEL_UNIFORMITY();
-//                    OsdDispOsdMessage(_OSD_DISP_PANEL_UNIFORMITY_ONOFF_MSG);
-//                    OsdWindowDrawingByFontHighlight(_OSD_WINDOW_4_1, ROW(2), COL(27), WIDTH(6), HEIGHT(4), _CP_LIGHTBLUE, _CP_ORANGE, _CP_BG);
-//                    SET_OSD_STATE(_MENU_PANEL_UNIFORMITY_MSG_ADJUST);
-//                }
-//                else
-//                {
-//                    SET_OSD_STATE(_MENU_ADVANCE_SDR_TO_HDR_ADJUST);
-//                    OsdDispMainMenuItemSelection((GET_OSD_ITEM_INDEX()% 4), _OSD_PRE_SELECT);
-//                    OsdDispMainMenuOptionSetting(_OPTION_ON_OFF, _SELECT, GET_OSD_SDR_TO_HDR());
-//                    OsdDispMainMenuIconPage(_DOWN, _ICON_PAGE_ON_OFF);
-//                    g_usBackupValue = GET_OSD_SDR_TO_HDR();
-//                }
-//                break;
-//    #endif
-//            case _OSD_ADVANCE_NONE:
-//            default:
-//                break;
-//        }
-//    }
-
-// Eric_20180306_Delete : End ---------------------------------
-
-#endif // #if(_OSD_TYPE == _REALTEK_2014_OSD)
+#endif//#if(_OSD_TYPE == _REALTEK_2014_OSD)

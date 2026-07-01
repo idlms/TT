@@ -51,6 +51,8 @@
 #define _CUSTOMER_MEDICAL				0xFF
 #define _CUSTOMER_TYPE                  _CUSTOMER_MEDICAL//_CUSTOMER_TECNNIT//_CUSTOMER_TECNNIT
 
+#define _MEDICAL_SURGICAL                _ON //BT709
+
 //--------------------------------------------------------------------------
 //--------------------------------------------------
 // Version Code of NVRam
@@ -223,7 +225,7 @@
 //-------------------------------------------------
 // PCM (Load Code Table) Option
 //-------------------------------------------------
-#define _PCM_FUNCTION                                           _OFF
+#define _PCM_FUNCTION                                           _ON
 
 //-------------------------------------------------
 // 3D Gamma (Load Code Table) Option

@@ -53,14 +53,110 @@
 #define _OSD_ROTATE_SOFTWARE                        1
 #define _OSD_ROTATE_HARDWARE                        2
 
+//--------------------------------------------------
+// Definitions of DCR THD Setting
+//--------------------------------------------------
+#define _DCR_THESHOLD1                              0x20
+#define _DCR_THESHOLD2                              0x180
+
+#if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
+#if(_TYPE_C_PORT_CTRL_MODAL_OPERATION_SUPPORT == _ON)
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_LENOVO_ALT_MODE)
+//--------------------------------------------------
+// Macro for Lenovo Alt Mode Docking Event Queue Control
+//--------------------------------------------------
+#define GET_D0_TYPE_C_DOCK_EVENT_QUEUE(x)           (g_stDockEventQueue.pstDockEvent[x])
+#define SET_D0_TYPE_C_DOCK_EVENT_QUEUE(x)           (g_stDockEventQueue.pstDockEvent[g_stDockEventQueue.b2DockEventTail] = (x))
+#define CLR_D0_TYPE_C_DOCK_EVENT_QUEUE()            (memset(&g_stDockEventQueue.pstDockEvent[g_stDockEventQueue.b2DockEventHead], 0, sizeof(StructTypeCLenovoDockEvent)))
+
+#define GET_D0_TYPE_C_DOCK_EVENT_CNT()              (g_stDockEventQueue.b2DockEventCnt)
+#define ADD_D0_TYPE_C_DOCK_EVENT_CNT()              (g_stDockEventQueue.b2DockEventCnt += 1)
+#define SUB_D0_TYPE_C_DOCK_EVENT_CNT()              (g_stDockEventQueue.b2DockEventCnt -= 1)
+#define CLR_D0_TYPE_C_DOCK_EVENT_CNT()              (g_stDockEventQueue.b2DockEventCnt = 0)
+
+#define GET_D0_TYPE_C_DOCK_EVENT_HEAD()             (g_stDockEventQueue.b2DockEventHead)
+#define ADD_D0_TYPE_C_DOCK_EVENT_HEAD()             (g_stDockEventQueue.b2DockEventHead = (g_stDockEventQueue.b2DockEventHead + 1) % 3)
+#define CLR_D0_TYPE_C_DOCK_EVENT_HEAD()             (g_stDockEventQueue.b2DockEventHead = 0)
+
+#define GET_D0_TYPE_C_DOCK_EVENT_TAIL()             (g_stDockEventQueue.b2DockEventTail)
+#define ADD_D0_TYPE_C_DOCK_EVENT_TAIL()             (g_stDockEventQueue.b2DockEventTail = (g_stDockEventQueue.b2DockEventTail + 1) % 3)
+#define CLR_D0_TYPE_C_DOCK_EVENT_TAIL()             (g_stDockEventQueue.b2DockEventTail = 0)
+#endif
+
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_ACER_ALT_MODE)
+#define GET_D0_TYPE_C_ACER_USER_EVENT()             (g_stUsbTypeCAcerUserEvent.enumEvent)
+#define SET_D0_TYPE_C_ACER_USER_EVENT(x)            (g_stUsbTypeCAcerUserEvent.enumEvent = (g_stUsbTypeCAcerUserEvent.enumEvent | (x)))
+#define CLR_D0_TYPE_C_ACER_USER_EVENT(x)            (g_stUsbTypeCAcerUserEvent.enumEvent = (g_stUsbTypeCAcerUserEvent.enumEvent & (EnumTypeCAcerUserEvent)(~(x))))
+
+#define GET_D0_TYPE_C_ACER_USER_VDM_CNT()           (g_stUsbTypeCAcerUserEvent.b3VdmCnt)
+#define SET_D0_TYPE_C_ACER_USER_VDM_CNT(x)          (g_stUsbTypeCAcerUserEvent.b3VdmCnt = (x))
+
+#define GET_D0_TYPE_C_ACER_USER_VDM_DATA(x)         (g_stUsbTypeCAcerUserEvent.pucVdmData[x])
+#define SET_D0_TYPE_C_ACER_USER_VDM_DATA(x, y)      (g_stUsbTypeCAcerUserEvent.pucVdmData[x] = (y))
+#endif
+
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_HP_ALT_MODE)
+#define GET_D0_TYPE_C_HP_USER_EVENT()               (g_stUsbTypeCHpUserEvent.enumEvent)
+#define SET_D0_TYPE_C_HP_USER_EVENT(x)              (g_stUsbTypeCHpUserEvent.enumEvent = (g_stUsbTypeCHpUserEvent.enumEvent | (x)))
+#define CLR_D0_TYPE_C_HP_USER_EVENT(x)              (g_stUsbTypeCHpUserEvent.enumEvent = (g_stUsbTypeCHpUserEvent.enumEvent & (EnumTypeCHpUserEvent)(~(x))))
+
+#define GET_D0_TYPE_C_HP_USER_VDM_CNT()             (g_stUsbTypeCHpUserEvent.b3VdmCnt)
+#define SET_D0_TYPE_C_HP_USER_VDM_CNT(x)            (g_stUsbTypeCHpUserEvent.b3VdmCnt = (x))
+
+#define GET_D0_TYPE_C_HP_USER_VDM_DATA(x)           (g_stUsbTypeCHpUserEvent.pucVdmData[x])
+#define SET_D0_TYPE_C_HP_USER_VDM_DATA(x, y)        (g_stUsbTypeCHpUserEvent.pucVdmData[x] = (y))
+#endif
+
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_DELL_ALT_MODE)
+#define GET_D0_TYPE_C_DELL_USER_EVENT()             (g_stUsbTypeCDellUserEvent.enumEvent)
+#define SET_D0_TYPE_C_DELL_USER_EVENT(x)            (g_stUsbTypeCDellUserEvent.enumEvent = (g_stUsbTypeCDellUserEvent.enumEvent | (x)))
+#define CLR_D0_TYPE_C_DELL_USER_EVENT(x)            (g_stUsbTypeCDellUserEvent.enumEvent = (g_stUsbTypeCDellUserEvent.enumEvent & (EnumTypeCDellUserEvent)(~(x))))
+
+#define GET_D0_TYPE_C_DELL_USER_VDM_CNT()           (g_stUsbTypeCDellUserEvent.b3VdmCnt)
+#define SET_D0_TYPE_C_DELL_USER_VDM_CNT(x)          (g_stUsbTypeCDellUserEvent.b3VdmCnt = (x))
+
+#define GET_D0_TYPE_C_DELL_USER_VDM_DATA(x)         (g_stUsbTypeCDellUserEvent.pucVdmData[x])
+#define SET_D0_TYPE_C_DELL_USER_VDM_DATA(x, y)      (g_stUsbTypeCDellUserEvent.pucVdmData[x] = (y))
+#endif
+#endif  // End of #if(_TYPE_C_PORT_CTRL_MODAL_OPERATION_SUPPORT == _ON)
+
+#if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+//--------------------------------------------------
+// MACRO for Type-C Port Controller
+//--------------------------------------------------
+#define GET_TYPE_C_PORT_CTRL_POWER_OFF_FLG()        (g_bTypeCPortControllerPowerOffFlag)
+#define SET_TYPE_C_PORT_CTRL_POWER_OFF_FLG()        (g_bTypeCPortControllerPowerOffFlag = _TRUE)
+#define CLR_TYPE_C_PORT_CTRL_POWER_OFF_FLG()        (g_bTypeCPortControllerPowerOffFlag = _FALSE)
+#endif
+#endif
+#endif
+
+//--------------------------------------------------
+// Definitions of Motion Blur Reduction
+//--------------------------------------------------
+#if(_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+#if(_RTK_ADVANCED_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+#define _RTK_ADV_MBR_MIN_ENABLE_IVF                 600
+#endif
+#endif
+
 //****************************************************************************
 // VARIABLE EXTERN
 //****************************************************************************
-#if((_FLASH_PARTITION_TYPE == _FLASH_PARTITION_USER) && (_CODE_DIGITAL_SIGNATURE_SUPPORT == _SIGNATURE_TYPE_OFF))
-extern BYTE code tFLASH_PARTITION_BOOTTABLE[];
+
+//extern code void (*OperationTable[])(void);
+extern code void (*OperationTable[][8])(void);	// Change OperationTable
+#if((_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON) && ((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON)))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+extern bit g_bTypeCPortControllerPowerOffFlag;
+#endif
 #endif
 
-extern code void (*OperationTable[])(void);
+#if(_HDMI_CEC_SUPPORT == _ON)
+extern bit g_bCecLaPollingStart;
+extern BYTE g_ucCecLaCnt;
+#endif
 
 //****************************************************************************
 // STRUCT / TYPE / ENUM DEFINITTIONS
@@ -92,6 +188,33 @@ typedef enum
     _FLASH_ITEMID_MODE_USER_DATA_END = _FLASH_ITEMID_MODE_USER_DATA + _MODE_SLOT_AMOUNT - 1 // 34
 } EnumFlashItemIDType;
 
+//--------------------------------------------------
+// Struct for Lenovo Alt Mode Docking Event Queue
+//--------------------------------------------------
+typedef struct
+{
+    BYTE b2DockEventCnt : 2;
+    BYTE b2DockEventHead : 2;
+    BYTE b2DockEventTail : 2;
+    StructTypeCLenovoDockEvent pstDockEvent[3];
+}StructTypeCLenovoDockEventQueue;
+
+//--------------------------------------------------
+// Enum for TTS Play Event
+//--------------------------------------------------
+typedef enum
+{
+    _AUDIO_TTS_EVENT_NONE = 0,
+    _AUDIO_TTS_EVENT_POWER_ON,
+    _AUDIO_TTS_EVENT_POWER_NORMAL,
+    _AUDIO_TTS_EVENT_OSD_SHOW,
+    _AUDIO_TTS_EVENT_OSD_TIMING,
+    _AUDIO_TTS_EVENT_KEY_LEFT,
+    _AUDIO_TTS_EVENT_KEY_RIGHT,
+    _AUDIO_TTS_EVENT_KEY_ENTER,
+    _AUDIO_TTS_EVENT_KEY_BACK,
+} EnumAudioTtsEvent;
+
 //****************************************************************************
 // FUNCTION EXTERN
 //****************************************************************************
@@ -115,11 +238,20 @@ extern void UserInterfaceAdjustYpeaking(void);
 extern void UserAdjustFREESYNCODMeasure(void);
 #endif
 
+extern void BurnInModeProcess(void);	
 
 //-------------------------------------------------------
 // Adjust Backlight
 //-------------------------------------------------------
 extern void UserAdjustBacklight(WORD usBacklight);
+
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT)
+//-------------------------------------------------------
+// Adjust Stabilizer
+//-------------------------------------------------------
+extern bit UserAdjustStabilux(WORD usStabilux);
+extern bit UserAdjustStabilizer(BYTE ub1Stabilizer);
+#endif
 
 //-------------------------------------------------------
 // Dp Load Edid Related
@@ -129,12 +261,21 @@ extern EnumEdidSelection UserAdjustGetDpEdidIndex(BYTE ucInputPort);
 #endif
 
 //-------------------------------------------------------
+// Dp Version Force Update by Application
+//-------------------------------------------------------
+#if(_DP_SUPPORT == _ON)
+extern void UserAdjustDpVersionForceUpdate(BYTE ucInputPort, bit bEnable, EnumDpVersionType enumDpVersionType);
+#endif
+
+//-------------------------------------------------------
 // Audio Related
 //-------------------------------------------------------
 #if(_AUDIO_SUPPORT == _ON)
+extern void UserAdjustAudioTtsPlayEvent(EnumAudioTtsEvent enumTtsEvent);
 extern void UserAdjustAudioMuteSwitch(void);
 extern void UserAdjustAudioVolume(BYTE ucVolume);
 extern WORD UserAdjustAudioVolumeMapping(BYTE ucVolume);
+extern EnumAudioSamplingFreqType UserInterfaceAudioGetUserSamplingFreq(void);
 #endif // End of #if(_AUDIO_SUPPORT == _ON)
 
 //-------------------------------------------------------
@@ -142,6 +283,9 @@ extern WORD UserAdjustAudioVolumeMapping(BYTE ucVolume);
 //-------------------------------------------------------
 #if(_DCR_SUPPORT == _ON)
 extern void UserInterfaceAdjustDCRHandler(void);
+#if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+extern void UserAdjustDCRTHD(void);
+#endif
 #endif
 
 //-------------------------------------------------------
@@ -226,6 +370,24 @@ extern void UserAdjustEmbeddedDpSwitch(void);
 #endif
 
 //-------------------------------------------------------
+// Type-C Port Controller
+//-------------------------------------------------------
+#if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
+#if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+extern void UserAjustTypeCPowerControl(EnumPowerAction enumSwitch);
+#endif
+#endif
+#endif
+
+//-------------------------------------------------------
+// HDR
+//-------------------------------------------------------
+#if((_EMBEDDED_EDID_SUPPORT == _ON) && (_DP_HDR10_SUPPORT == _ON) && (_DP_SUPPORT == _ON))
+extern void UserAdjustHdrCheckDpVersion(WORD usHdrMode);
+#endif
+
+//-------------------------------------------------------
 // SDRToHDR
 //-------------------------------------------------------
 #if(_SDR_TO_HDR_SUPPORT == _ON)
@@ -259,8 +421,8 @@ extern void UserAdjustPCM(BYTE ucPCM);
 //-------------------------------------------------------
 // Pixel Shift
 //-------------------------------------------------------
-#if(_PIXEL_SHIFT_SUPPORT== _ON)
-extern void UserAdjustPixelShifting(BYTE ucPixelShift);
+#if(_PIXEL_SHIFT_SUPPORT == _ON)
+extern void UserAdjustPixelShifting(void);
 #endif
 
 #endif
@@ -269,12 +431,11 @@ extern void UserAdjustPixelShifting(BYTE ucPixelShift);
 //-------------------------------------------------------
 // RGB Output Gamma
 //-------------------------------------------------------
-#if(_OGC_SUPPORT != _ON)
 #if(_RGB_GAMMA_FUNCTION == _ON)
 extern void UserAdjustRGBGamma(BYTE ucGamma);
 #endif
 #endif
-#endif
+
 
 #ifndef __USER_ADJUST_UNIFORMITY__
 //-------------------------------------------------------
@@ -307,10 +468,6 @@ extern void UserInterfaceTimer1InstantAccess_EXINT(void);
 extern void UserInterfaceTimer2InstantAccess_EXINT(void);
 #endif
 
-#if(_UART_SUPPORT == _ON)
-//extern void UserInterfaceUartIntHandler_SERIALPORT(void);
-#endif
-
 #if(_DEBUG_MESSAGE_SUPPORT == _OFF)
 extern BYTE UserInterfaceGetDdcciStatus_EXINT1(void);
 extern BYTE UserInterfaceGetFactoryCommand_EXINT1(void);
@@ -327,7 +484,7 @@ extern BYTE UserInterfaceDdcciHDMIFreesyncOpcode_EXINT1(void);
 extern EnumHdmiEdidLocation UserInterfaceGetMultiHdmiEdidLocated(BYTE ucInputport, BYTE ucEdidIndex);
 extern EnumEdidSelection UserInterfaceGetMultiHdmiEdidIndex(BYTE ucInputPort);
 #endif
-
+extern void rebuildEdid(BYTE *bEdid);
 #if((_EMBEDDED_EDID_SUPPORT == _ON) && (_WRITE_EDID_LOCATION_BY_USER_SUPPORT == _ON))
 extern void UserInterfaceGetEmbeddedEDIDData(EnumInputPortEdid enumInputPort);
 #endif
@@ -385,13 +542,21 @@ extern void UserInterfaceKeyPadLedControl(BYTE ucKeyPadLed);
 //-------------------------------------------------------
 // User Information
 //-------------------------------------------------------
+extern EnumSourceDetectionInfo UserInterfaceSourceBypassDetection(void);
 extern bit UserInterfaceGetLogoStatus(void);
 extern bit UserInterfaceGetdNoSupportStatus(void);
 extern bit UserInterfaceGetDclkNoSupportStatus(void);
 extern bit UserInterfaceGetActiveByPassStatus(void);
 extern bit UserInterfaceGetCableResetStatus(void);
 extern bit UserInterfaceGetForcePSStatus(void);
+
+#if(_HDMI_SUPPORT == _ON)
+extern EnumUserForcePSTmdsHpdToggle UserInterfaceForcePSWakeupTmdsHpdToggle(void);
+#endif
+
 extern bit UserInterfaceGetIntoPSStatus(void);
+extern EnumUserForceFakePS UserInterfaceGetFakePSStatus(void);
+extern EnumUserForceFakePowerOff UserInterfaceGetFakePowerOffStatus(void);
 extern bit UserInterfaceGetNVRamDataStatus(EnumNvramCheckType enumNvramCheckType);
 extern bit UserInterfaceGetDisplaySettingBacklightAction(void);
 
@@ -463,6 +628,10 @@ extern bit UserInterfaceGetRGBQuantizationLimitRangeStatus(EnumColorRGBQuantizat
 extern bit UserInterfaceGetYCCQuantizationFullRangeStatus(EnumColorYCCQuantization enumColorYCCQuantization);
 #endif
 
+#if(_HIGHLIGHT_WINDOW_SUPPORT == _ON)
+extern EnumFunctionOnOFF UserInterfaceGetDemoModeType(void);
+#endif
+
 extern void UserInterfaceAdjustActiveByPassColorProc(void);
 extern void UserInterfaceAdjustColorProc(void);
 
@@ -501,6 +670,7 @@ extern bit UserInterfaceAdjustMHLMscRCPProc(BYTE ucKeyCode);
 #endif
 
 extern EnumFreeSyncSupport UserInterfaceGetFreeSyncEnable(EnumSourceSearchPort enumSourcePort);
+extern EnumDpAdaptiveSyncSupport UserInterfaceGetDpAdaptiveSyncEnable(EnumSourceSearchPort enumSourcePort);
 
 #if(_DP_SUPPORT == _ON)
 extern EnumDpVersionType UserInterfaceGetDPVersion(BYTE ucInputPort);
@@ -512,6 +682,19 @@ extern void UserInterfaceEmbeddedDpSwitch(void);
 #endif
 #endif // End of #if(_DP_SUPPORT == _ON)
 
+#if(_DP_FREESYNC_SUPPORT == _ON)
+extern EnumDrrFreeSyncDpGetIVF UserInterfaceDisplayDpFreeSyncGetIVFmaxFromLut(WORD *pusVfreqMax);
+#endif
+
+#if(_HDMI_FREESYNC_SUPPORT == _ON)
+extern EnumDrrFreeSyncHdmiGetIVF UserInterfaceDisplayHdmiFreeSyncGetIVFmaxFromLut(WORD *pusVfreqMax);
+#endif
+
+#if(_USB3_RETIMER_SUPPORT == _ON)
+extern EnumUSBPDSupportStatus UserInterfaceGetUSBPDSupportStatus(void);
+extern EnumUSBPSSupportStatus UserInterfaceGetUSBPSSupportStatus(void);
+#endif
+
 //-------------------------------------------------------
 // AUDIO
 //-------------------------------------------------------
@@ -519,7 +702,8 @@ extern void UserInterfaceEmbeddedDpSwitch(void);
 extern bit UserInterfaceGetAudioReadyToPlayStatus(void);
 extern bit UserInterfaceGetAudioMuteStatus(void);
 extern EnumAudioInputSource UserInterfaceGetAudioSource(void);
-extern bit UserInterfaceGetAudioNonLPCMStatus(void);
+extern EnumAudioCodingType UserInterfaceGetAudioNonLPCMStatus(void);
+extern EnumAudioMuteStatus UserInterfaceAudioGetOutputMuteStatus(void);
 extern WORD UserInterfaceGetAudioVolume(void);
 
 #if(_EMBEDDED_DAC_SUPPORT == _ON)
@@ -533,39 +717,150 @@ extern bit UserInterfaceGetAudioStandAloneStatus(void);
 extern void UserInterfaceAdjustAudioResetProc(void);
 extern void UserInterfaceAdjustAudioPowerProc(EnumPowerStatus enumPowStatus);
 extern void UserInterfaceAdjustAudioAmpMuteProc(bit bMute);
+#if(_AUDIO_OSD_MUTE_SEPARATE_CONTROL_SUPPORT == _ON)
+extern void UserInterfaceAudioExternalCodecProc(bit bEnable);
+#endif
+
+#if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+extern bit UserInterfaceAudioGetTtsSupport(void);
+extern BYTE UserInterfaceAudioGetTtsPlayAudioVolume(void);
+extern BYTE UserInterfaceAudioGetTtsPlayTextVolume(void);
+#endif // End of #if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+
 #endif // End of #if(_AUDIO_SUPPORT == _ON)
 #endif // End of #ifndef __USER_INTERFACE__
+
+//-------------------------------------------------------
+// Motion Blur Reduction
+//-------------------------------------------------------
+#if(_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+extern void UserInterfaceMbrBacklightAdjust(EnumMbrBacklightMode enumBacklightMode, bit bLightCtrl, WORD usDVTotal);
+extern void UserInterfaceMbrAdimAdjust(EnumMbrBacklightMode enumBacklightMode, bit bLightCtrl);
+extern EnumMbrPDimCtrl UserInterfaceMbrGetPdimControl(EnumMbrBacklightMode enumBacklightMode, bit bLightCtrl);
+extern void UserInterfaceMbrPdimAdjust(EnumMbrBacklightMode enumBacklightMode, bit bLightCtrl);
+extern EnumMbrBacklightMode UserInterfaceMbrGetBacklightMode(void);
+extern BYTE UserInterfaceMbrGetBacklightDuty(void);
+extern BYTE UserInterfaceMbrGetBacklightPos(void);
+extern EnumMbrBacklightSeq UserInterfaceMbrGetBacklightSequence(bit bLightCtrl);
+extern WORD UserInterfaceMbrGetBacklightSequenceDelay(bit bLightCtrl);
+#if(_RTK_ADVANCED_MOTION_BLUR_REDUCTION_SUPPORT == _ON)
+extern EnumRtkAdvMbrUserStatus UserInterfaceGetRtkAdvMbrSetting(void);
+#endif
+#endif
+
+//-------------------------------------------------------
+// RTD2014UserInterfaceCec.c
+//-------------------------------------------------------
+extern void UserInterfaceCecReceivedNotify(StructCecRxReceivedInfo *pstCecRxInfo);
+extern bit UserInterfaceCecTransmitInfoPrepare(StructCecTxTransmitInfo *pstCecTxInfo);
+extern void UserInterfaceCecHighLevelFlow(void);
 
 //-------------------------------------------------------
 // RTD2014UserTypeCInterface.c
 //-------------------------------------------------------
 #ifndef __USER_TYPECINTERFACE__
+
 #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
 extern EnumTypeCU3ModeType UserInterfaceTypeCGetOsdU3ModeSelection(BYTE ucInputPort);
-
-#if(_TYPE_C_RTS5400_SERIES_PDO_INFO_SUPPORT == _ON)
-extern bit UserInterfaceTypeCPDO(BYTE ucInputPort);
+#if(_TYPE_C_PIN_ASSIGNMENT_E_SUPPORT_SWITCH_SUPPORT == _ON)
+extern EnumTypeCPinAssignmentESupportStatus UserInterfaceTypeCGetOsdPinAssignmentESupportSelection(BYTE ucInputPort);
 #endif
 
-extern EnumTypeCPinCfgCapType UserInterfaceTypeCGetPinConfigType(BYTE ucInputPort, EnumTypeCU3ModeType enumU3ModeSel);
-
-#if(_DP_USB_HUB_SUPPORT == _ON)
-extern bit UserInterfaceTypeCUSBSupport(BYTE ucInputPort);
-extern bit UserInterfaceTypeCGetUSBSupportStatus(BYTE ucInputPort);
-extern void UserInterfaceTypeCOsdHubProc(BYTE ucInputPort, BYTE ucUsbHubInfo);
+#if(_DP_TYPE_C_HUB_COMMUNICATION_SUPPORT == _ON)
+extern bit UserInterfaceTypeCHubProcSupport(BYTE ucInputPort);
+extern void UserInterfaceTypeCOsdHubProc(BYTE ucInputPort);
 extern WORD UserInterfaceTypeCUsbHubSetPollingStep(BYTE ucInputPort);
-extern bit UserInterfaceTypeCUsbHubU3InfoDectectUserFlow(BYTE ucInputPort);
+extern bit UserInterfaceTypeCUsbHubDetectDFPStatusUserFlow(BYTE ucInputPort);
 extern bit UserInterfaceTypeCUsbHubSetSSMode(BYTE ucInputPort, bit bEn);
-extern BYTE UserInterfaceTypeCUsbHubDetectSSDevicePlugInfo(BYTE ucInputPort);
+extern EnumHubDspDetectStatus UserInterfaceTypeCUsbHubDetectDFPStatus(BYTE ucInputPort);
+#if(_BILLBOARD_HUB_SUPPORT == _ON)
+extern void UserInterfaceTypeCUsbHubBillboardControl(BYTE ucInputPort, EnumBillboardCtrl enumAtion);
+#endif
+#endif // End of #if(_DP_TYPE_C_HUB_COMMUNICATION_SUPPORT == _ON)
 
-#endif // End of #if(_DP_USB_HUB_SUPPORT == _ON)
+#if((_PORT_CTRL_RTS_DET_CONNECTION_BY_USER == _ON) || (_PORT_CTRL_USER_DET_CONNECTION_BY_USER == _ON))
+extern EnumTypeCAttachStatus UserInterfaceTypeCGetPortControllerCcAttach(BYTE ucInputPort);
+extern EnumTypeCAltModeStatus UserInterfaceTypeCGetPortControllerAltModeReady(BYTE ucInputPort);
+#endif  // End of #if((_PORT_CTRL_RTS_DET_CONNECTION_BY_USER == _ON) || (_PORT_CTRL_USER_DET_CONNECTION_BY_USER == _ON))
 
 #if(_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON)
+#if(_EXT_PORT_CTRL_LANE_SWAP_BY_SCALER_SUPPORT == _ON)
+extern EnumTypeCOrientation UserInterfaceTypeCGetPortControllerOrientation(BYTE ucInputPort);
+#endif
+extern EnumTypeCPowerRole UserInterfaceTypeCPortControllerGetUserPowerRole(BYTE ucInputPort);
+extern EnumTypeCPdoNumber UserInterfaceTypeCPortControllerGetUserPartnerPdoCnt(BYTE ucInputPort, EnumTypeCPowerRole enumPowerRole);
+extern void UserInterfaceTypeCPortControllerGetUserPartnerPdo(BYTE ucInputPort, EnumTypeCPowerRole enumPowerRole, BYTE ucPdoIndex, StructTypeCUserPDO *pstPartnerPDO);
+extern void UserInterfaceTypeCPortControllerGetUserPdoStatus(BYTE ucInputPort, WORD *pusVoltage, WORD *pusCurrent);
+extern void UserInterfaceTypeCPortControllerGetUserRequestedSrcPdo(BYTE ucInputPort, StructTypeCUserPDO *pstSrcPDO);
 extern bit UserInterfaceTypeCPortControllerReconnect(BYTE ucInputPort);
+extern bit UserInterfaceTypeCPortControllerConfigUserPinAssignment(BYTE ucInputPort, EnumTypeCPinCfgCapType enumPinAssignment);
+extern bit UserInterfaceTypeCPortControllerConfigUserMultiFunction(BYTE ucInputPort, EnumTypeCMultiFuncStatus enumMultiFunction);
 extern EnumTypeCUserPortCtrlFailureType UserInterfaceTypeCGetPinCfgType(BYTE ucInputPort, EnumTypeCPinCfgType *penumPinCfgtype);
-#endif // End of #if(_USB_HUB_USERDECITION_SUPPORT == _ON)
+extern void UserInterfaceTypeCPortControllerUserCcFunctionControl(BYTE ucInputPort, EnumTypeCCcFunction enumCcFunction);
+#if((_TYPE_C_PORT_CTRL_MODAL_OPERATION_SUPPORT == _ON) && (_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_LENOVO_ALT_MODE))
+extern EnumTypeCLenovoAltModeStatus UserInterfaceTypeCPortControllerGetUserLenovoAltModeReady(BYTE ucInputPort);
+extern EnumTypeCLenovoDeviceType UserInterfaceTypeCPortControllerGetUserLenovoDeviceType(BYTE ucInputPort);
+extern void UserInterfaceTypeCPortControllerSetUserLenovoDockingEvent(BYTE ucInputPort, StructTypeCLenovoDockEvent stLenovoDockEvent);
+extern StructTypeCLenovoSysEvent UserInterfaceTypeCPortControllerGetUserLenovoSystemEvent(BYTE ucInputPort);
+extern bit UserInterfaceTypeCPortControllerCheckUserLenovoDockingEventBusy(BYTE ucInputPort);
+#endif
+#endif // End of #if(_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON)
+
+#if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
+extern EnumTypeCPinCfgCapType UserInterfaceTypeCGetPinConfigType(BYTE ucInputPort, EnumTypeCU3ModeType enumU3ModeSel, EnumTypeCPinAssignmentESupportStatus enumPinAssignmentESupportSel);
+extern EnumTypeCMultiFuncStatus UserInterfaceTypeCGetMultiFuncConfig(BYTE ucInputPort, EnumTypeCU3ModeType enumU3ModeSel);
+extern EnumTypeCPinMismatchAction UserInterfaceTypeCGetPinAssignmentMismatchAction(BYTE ucInputPort);
+extern EnumTypeCAltModeWaitStatus UserInterfaceTypeCGetDpAltModeWaitStatus(BYTE ucInputPort);
+extern EnumTypeCFunctionSupport UserInterfaceTypeCGetFunctionSupport(BYTE ucInputPort);
+extern EnumTypeCOperationMode UserInterfaceTypeCGetOperationMode(BYTE ucInputPort);
+extern void UserInterfaceTypeCPinAssignSuccessProc(BYTE ucInputPort, EnumTypeCPinCfgType enumPinAssignment);
+#if(_TYPE_C_PORT_CTRL_MODAL_OPERATION_SUPPORT == _ON)
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_LENOVO_ALT_MODE)
+extern EnumTypeCLenovoCheckDeviceTypeResult UserInterfaceTypeCCheckLenovoDeviceTypeValid(BYTE ucInputPort, EnumTypeCLenovoDeviceType enumLenovoDeviceType);
+extern void UserInterfaceTypeCGetLenovoDockingEvent(BYTE ucInputPort, StructTypeCLenovoDockEvent *pstLenovoDockEvent);
+extern void UserInterfaceTypeCLenovoAltModeHandler(BYTE ucInputPort, StructTypeCLenovoSysEvent stLenovoSysEvent);
+#endif
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_ACER_ALT_MODE)
+extern void UserInterfaceTypeCGetAcerUserEvent(BYTE ucInputPort, StructTypeCAcerUserEvent *pstAcerUserEvent);
+extern void UserInterfaceTypeCAcerAltModeHandler(BYTE ucInputPort, StructTypeCAcerSysEvent stAcerSysEvent);
+#endif
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_HP_ALT_MODE)
+extern void UserInterfaceTypeCGetHpUserEvent(BYTE ucInputPort, StructTypeCHpUserEvent *pstHpUserEvent);
+extern void UserInterfaceTypeCHpAltModeHandler(BYTE ucInputPort, StructTypeCHpSysEvent stHpSysEvent);
+#endif
+#if(_TYPE_C_VENDOR_ALT_MODE == _TYPE_C_DELL_ALT_MODE)
+extern EnumTypeCDellInitCompleteStatus UserInterfaceTypeCGetDellAltModeInitComplete(BYTE ucInputPort);
+extern void UserInterfaceTypeCDellAltModeHandler(BYTE ucInputPort, StructTypeCDellSysEvent stDellSysEvent);
+extern void UserInterfaceTypeCGetDellUserEvent(BYTE ucInputPort, StructTypeCDellUserEvent *pstDellUserEvent);
+#endif
+#endif  // End of #if(_TYPE_C_PORT_CTRL_MODAL_OPERATION_SUPPORT == _ON)
+#if(_PORT_CONTROLLER_EMBEDDED_SUPPORT == _ON)
+extern EnumTypeCEmbPdoReference UserInterfaceTypeCPdoReference(BYTE ucInputPort, EnumTypeCPowerRole enumPowerRole);
+extern EnumTypeCEmbRdoReference UserInterfaceTypeCRdoReference(BYTE ucInputPort);
+extern WORD UserInterfaceTypeCGetMaxPower(BYTE ucInputPort);
+extern EnumTypeCPdoNumber UserInterfaceTypeCGetPdoCount(BYTE ucInputPort, EnumTypeCPowerRole enumPowerRole);
+extern void UserInterfaceTypeCGetSrcPdoInfo(BYTE ucInputPort, BYTE ucPdoIndex, StructTypeCUserPDO *pstTypeCUserSrcPdo);
+extern void UserInterfaceTypeCGetSnkPdoInfo(BYTE ucInputPort, BYTE ucPdoIndex, StructTypeCUserPDO *pstTypeCUserSnkPdo);
+extern void UserInterfaceTypeCGetRdoInfo(BYTE ucInputPort, StructTypeCUserRDO *pstTypeCUserRdo);
+#if(_TYPE_C_EMB_VBUS_PROTECT_MODE == _VBUS_PROTECT_BY_USER)
+extern void UserInterfaceTypeCGetProtectInfo(BYTE ucInputPort, BYTE ucPdoIndex, StructTypeCUserProtectInfo *pstTypeCUserProtectInfo);
+#endif
+#if(_DP_USB_HUB_SUPPORT == _ON)
+extern EnumHubInputPort UserInterfaceTypeCHubInputPort(BYTE ucInputPort);
+#endif
+#endif // End of #if(_PORT_CONTROLLER_EMBEDDED_SUPPORT == _ON)
+
+#if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+extern EnumTypeCPortCtrlReconnectStatus UserInterfaceTypeCPortControllerGetPowerOnReconnectStatus(EnumPowerAction enumSwitch);
+#endif
+#endif // End of #if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#endif // End of #if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
 #endif // End of #if(_DP_TYPE_C_CONNECTOR_SUPPORT == _ON)
 #endif // End of #ifndef __USER_TYPECINTERFACE__
-DWORD UserInterfacePowerSaveTimes(void);
-#endif//#if(_OSD_TYPE == _REALTEK_2014_OSD)
+
+extern void DpmsLedToggle(void);
+
+
+#endif// #if(_OSD_TYPE == _REALTEK_2014_OSD)
 

@@ -28,27 +28,22 @@
 //****************************************************************************
 // DEFINITIONS / MACROS
 //****************************************************************************
-#define _RGB_BLACK                                0,   0,   0
+#define _RGB_BLACK                              0,     0,   0
 #define _RGB_WHITE                              255, 255, 255
 #define _RGB_RED                                255,   0,   0
-#define _RGB_GREEN_119                          7,  227,  119 
-#define _RGB_GREEN_66                            9,  127,  141
+#define _RGB_GREEN_119                          19,  119,  19
+#define _RGB_BLUE                               0,    68, 166
 #define _RGB_YELLOW                             255, 255,   0
 #define _RGB_GRAY                               96,  96,   96
-#define _RGB_BLUE_65                          0,   0,   0 //12,   7,  65 
-#define _RGB_ORANGE                           140,0,0  //255,111,4//255, 196,   0
-#define _RGB_LIGHTBLUE                          200, 225, 225//208, 208, 208
-#define _RGB_SELECTBOTTOM                        58,  70,  80
+#define _RGB_DARKGRAY                           0,  0,   0
+#define _RGB_BLUE_120                           0,   30,  120
+#define _RGB_ORANGE                             255, 196,   0
+#define _RGB_LIGHTBLUE                          208, 208, 208
+#define _RGB_SELECTBOTTOM                       58,   70,  80
 #define _RGB_PINK                               255, 128, 255
-#define _RGB_GRAY1                          30,  30,   30        
+
 #define _RGB_ORANGE_H                           250, 180,  40
 #define _RGB_ORANGE_DARK                        224, 120,   7
-
-#define _RGB_GREEN_241                          255,  255,  255 
-#define _RGB_GREEN_39                             10,    39, 21
-#define _RGB_BLUE_158                          17, 124, 158//208, 208, 208
-#define _RGB_BLUE_120                           0,   30,  120 
-
 
 
 #define _LOGO_BLACK                             0,     0,   0
@@ -66,6 +61,12 @@
 #define _LOGO_ORANGE_H                          250, 180,  40
 #define _LOGO_ORANGE_L                          235, 160,   5
 
+#define _LOGO_RED1                               237, 28, 36
+#define _LOGO_GRAY1                              73,  73,  72
+#define _LOGO_RED2                               136, 10, 38
+#define _LOGO_GRAY2                              120,  120,  120
+
+#define _LOGO_BLACK_2                             24,   24,   21
 //****************************************************************************
 // STRUCT / TYPE / ENUM DEFINITTIONS
 //****************************************************************************
@@ -74,6 +75,7 @@
 //****************************************************************************
 // CODE TABLES
 //****************************************************************************
+/*
 BYTE code tPALETTE_RTD_LOGO[] =
 {
     _LOGO_BLACK,
@@ -93,30 +95,53 @@ BYTE code tPALETTE_RTD_LOGO[] =
     _LOGO_ORANGE_H,
     _LOGO_GRAY,
 };
+*/
+BYTE code tPALETTE_RTD_LOGO[] =
+{
+    _LOGO_BLACK,
+    _LOGO_WHITE,
+    _LOGO_RED,
+    _LOGO_GREEN,
+    _LOGO_BLUE,
+    _LOGO_YELLOW,
+    _LOGO_GRAY,
+#if	 (_CUSTOMER_TYPE == _CUSTOMER_VIMSE)
+	0xFF, 0xFF, 0xFF,
+	0xBB, 0xBA, 0xBA,
+	0x86, 0x85, 0x85,
+	0x4D, 0x4D, 0x4D,
+#else
+    _LOGO_BLACK_2,
+    _LOGO_LIGHTBLUE,
+    _LOGO_SELECTBOTTOM,
+    _LOGO_PINK,
+#endif
+    _LOGO_RED1,
+    _LOGO_GREEN,
+    _LOGO_RED2,
+    _LOGO_GRAY2,
+    _LOGO_GRAY1,
 
+};
 
 BYTE code tPALETTE_MAIN_MENU[] =
 {
     _RGB_BLACK,
     _RGB_WHITE,
-    _RGB_BLUE_65,
+    _RGB_BLUE_120,
     _RGB_GREEN_119,
-    _RGB_GREEN_66,
+    _RGB_BLUE,
     _RGB_YELLOW,
-    _RGB_RED,
+    _RGB_GRAY,
     _RGB_ORANGE,
     _RGB_LIGHTBLUE,
     _RGB_SELECTBOTTOM,
     _RGB_PINK,
-    _RGB_GRAY,
+    _RGB_RED,
     _RGB_GREEN_119,
     _RGB_ORANGE_DARK,
-    _RGB_ORANGE,//_RGB_ORANGE_H,
-    _RGB_GRAY1, 
-	_RGB_GREEN_241,
-	_RGB_GREEN_39,
-	_RGB_BLUE_158, 
-	_RGB_BLUE_120, 
+    _RGB_ORANGE_H,
+    _RGB_DARKGRAY,	
 
 };
 

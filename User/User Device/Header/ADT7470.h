@@ -11,6 +11,7 @@
  * @date  2016-07-12
  */
 #if	(_ENABLE_FAN_CONTROL == _ON &&  _FANCONTROL_SENSOR_TYPE == _FAN_ADT7470)
+
 #ifndef _DFRobot_ADT7470_H_
 #define _DFRobot_ADT7470_H_
 
@@ -34,7 +35,7 @@
 
 
 bit Initialize_ADT7470(void);
-//BYTE GetTempCount(void);
+BYTE GetTempCount(void);
 SBYTE Get_ADT7470Temperature(void);
 SBYTE Get_ADT7470Temp1(void);
 SBYTE Get_ADT7470Temp2(void);

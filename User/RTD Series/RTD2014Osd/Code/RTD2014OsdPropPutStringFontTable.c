@@ -19,8 +19,8 @@
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-//BYTE OsdPutStringPropFontTable(BYTE ucLanguage, WORD ucFontPoint)
-//{
-//    return *(tOSD_TABLE_LANGUAGE_FONT_BODY[ucLanguage] + ucFontPoint);
-//}
+BYTE OsdPutStringPropFontTable(BYTE ucLanguage, WORD ucFontPoint)
+{
+    return *(tOSD_TABLE_LANGUAGE_FONT_BODY[ucLanguage] + ucFontPoint);
+}
 

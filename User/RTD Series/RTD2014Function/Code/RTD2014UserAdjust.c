@@ -48,16 +48,13 @@ BYTE code tIR_INITIAL_TABLE[] =
 {
 #if(_IR_PROTOCAL == _IR_NEC_DTV328)
     #include "IRRemote/NEC_DTV328.h"
-#elif(_IR_PROTOCAL == _IR_NEC_TYPE1)
-	#include "IRRemote/NEC_DTV328.h"
+
 #elif(_IR_PROTOCAL == _IR_SONY_B102P)
     #include "IRRemote/SONY_B102P.h"
 
 #elif(_IR_PROTOCAL == _IR_PHILIPS_RC6)
     #include "IRRemote/PHILIPS_RC6.h"
 
-#elif(_IR_PROTOCAL == _IR_LG_TYPE)
-	#include "IRRemote/NEC_DTV328.h"
 #endif // End of #if(_IR_PROTOCAL == _IR_NEC_DTV328)
 };
 #endif
@@ -73,6 +70,11 @@ WORD g_usHLWinVPos;
 WORD g_usHLWinVHeight;
 #endif
 
+#if((_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON) && ((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON)))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+bit g_bTypeCPortControllerPowerOffFlag = _FALSE;
+#endif
+#endif
 
 //****************************************************************************
 // FUNCTION DECLARATIONS
@@ -81,6 +83,14 @@ WORD g_usHLWinVHeight;
 // Adjust Backlight
 //-------------------------------------------------------
 void UserAdjustBacklight(WORD usBacklight);
+
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT )
+//-------------------------------------------------------
+// Adjust Stabilizer
+//-------------------------------------------------------
+bit UserAdjustStabilux(WORD usStabilux);
+bit UserAdjustStabilizer(BYTE ub1Stabilizer);
+#endif
 
 //-------------------------------------------------------
 // Dp Load Edid Related
@@ -93,6 +103,10 @@ EnumEdidSelection UserAdjustGetDpEdidIndex(BYTE ucInputPort);
 // Audio Related
 //-------------------------------------------------------
 #if(_AUDIO_SUPPORT == _ON)
+#if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+void UserAdjustAudioTtsPlayEvent(EnumAudioTtsEvent enumTtsEvent);
+#endif // End of #if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+
 void UserAdjustAudioMuteSwitch(void);
 void UserAdjustAudioVolume(BYTE ucVolume);
 WORD UserAdjustAudioVolumeMapping(BYTE ucVolume);
@@ -189,7 +203,7 @@ void UserAdjustEmbeddedDpSwitch(void);
 // Pixel Shift
 //-------------------------------------------------------
 #if(_PIXEL_SHIFT_SUPPORT == _ON)
-void UserAdjustPixelShifting(BYTE ucPixelShift);
+void UserAdjustPixelShifting(void);
 #endif
 
 //-------------------------------------------------------
@@ -197,6 +211,40 @@ void UserAdjustPixelShifting(BYTE ucPixelShift);
 //-------------------------------------------------------
 #if(_SDR_TO_HDR_SUPPORT == _ON)
 void UserAdjustSDRToHDR(bit bOn);
+#endif
+
+//-------------------------------------------------------
+// DCR
+//-------------------------------------------------------
+#if(_DCR_SUPPORT == _ON)
+#if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+void UserAdjustDCRTHD(void);
+#endif
+#endif
+
+//-------------------------------------------------------
+// Type-C Port Controller
+//-------------------------------------------------------
+#if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
+#if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+void UserAjustTypeCPowerControl(EnumPowerAction enumSwitch);
+#endif
+#endif
+#endif
+
+//-------------------------------------------------------
+// HDR
+//-------------------------------------------------------
+#if((_EMBEDDED_EDID_SUPPORT == _ON) && (_DP_HDR10_SUPPORT == _ON) && (_DP_SUPPORT == _ON))
+void UserAdjustHdrCheckDpVersion(WORD usHdrMode);
+#endif
+
+//-------------------------------------------------------
+// DP Version
+//-------------------------------------------------------
+#if(_DP_SUPPORT == _ON)
+void UserAdjustDpVersionForceUpdate(BYTE ucInputPort, bit bEnable, EnumDpVersionType enumDpVersionType);
 #endif
 
 //****************************************************************************
@@ -207,17 +255,82 @@ void UserAdjustSDRToHDR(bit bOn);
 // Input Value  : None
 // Output Value : None
 //--------------------------------------------------
-#define BACKLIGHT_NON_LINEAR_CURVE_GAMMA                   2.33f
 
+#define BACKLIGHT_NON_LINEAR_CURVE_GAMMA                   2.33f
 void UserAdjustBacklight(WORD usBacklight)
 {
-    if(GET_OSD_BACKLIGHT_CONTROL())
-		usBacklight = _BACKLIGHT_MAX() - usBacklight;
+    if (GET_OSD_BACKLIGHT_CONTROL() == _ON)
+	{
+		DWORD usBacklightCuved = 0;
+		//usBacklightCuved = (float)(_BACKLIGHT_MAX - _BACKLIGHT_MIN)*pow((float)usBacklight / (float)(_BACKLIGHT_MAX - _BACKLIGHT_MIN), BACKLIGHT_NON_LINEAR_CURVE_GAMMA) + 0.5 + _BACKLIGHT_MIN;
+        usBacklightCuved = (float)(_BACKLIGHT_MAX - _BACKLIGHT_MIN)*pow((float)(usBacklight - _BACKLIGHT_MIN ) / (float)(_BACKLIGHT_MAX - _BACKLIGHT_MIN), BACKLIGHT_NON_LINEAR_CURVE_GAMMA) + 0.5 + _BACKLIGHT_MIN;
+        if (usBacklightCuved >= 4080) usBacklightCuved = _BACKLIGHT_MAX;
 		
-        // Adjust backlight by changing PWM duty
+        if(GET_OSD_BACKLIGHT_INVERT())
+                    usBacklightCuved =(4095 - _BACKLIGHT_MIN) - usBacklightCuved + _BACKLIGHT_MIN;
+                //usBacklightCuved = _BACKLIGHT_MAX - usBacklightCuved  + _BACKLIGHT_MIN;
+		// Adjust backlight by changing PWM duty
+		PCB_BACKLIGHT_PWM(usBacklightCuved);
+	}
+	else
+	{
+        if(GET_OSD_BACKLIGHT_INVERT())
+        {
+            usBacklight = (4095 - _BACKLIGHT_MIN) - usBacklight + _BACKLIGHT_MIN;
+        }
 		PCB_BACKLIGHT_PWM(usBacklight);
-	DebugMessageSystem("usBacklight",usBacklight);
+	}
+} 
+
+#if(_CUSTOMER_TYPE == _CUSTOMER_TECNNIT )
+//--------------------------------------------------
+// Description  : Adjust Stabilizer
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+#define TECNINT_STABILISER_ADDR 0x1E
+bit UserAdjustStabilizer(BYTE ub1Stabilizer)
+{
+    // Adjust backlight by changing PWM duty
+
+
+    bit breturn;
+    BYTE u8Addr = 0x00;
+    BYTE u8Value;
+
+     if(ub1Stabilizer)
+     u8Value = 0x02;
+     else
+     u8Value = 0x00;
+
+     breturn = ScalerMcuHwIICWrite(TECNINT_STABILISER_ADDR, 1, u8Addr, 1, &u8Value, _HW_IIC_PIN_200_201);
+
+    return breturn;
 }
+//--------------------------------------------------
+// Description  : Adjust Stabilux
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+bit UserAdjustStabilux(WORD usStabilux)
+{
+    // Adjust backlight by changing PWM duty
+
+
+    bit breturn;
+    BYTE u8Addr = 0xF0;
+    BYTE u8Value[2];
+    u8Value[0] = (usStabilux >> 8) &  0xFF;
+    u8Value[1] = usStabilux & 0xFF;
+    breturn = ScalerMcuHwIICWrite(TECNINT_STABILISER_ADDR, 1, u8Addr, 2, &u8Value, _HW_IIC_PIN_200_201);
+/*
+     u8Addr = 0x00;
+     u8Value[0] = 0x02;
+     breturn = ScalerMcuHwIICWrite(TECNINT_STABILISER_ADDR, 1, u8Addr, 1, &u8Value, _PCB_SYS_EEPROM_IIC);
+*/
+    return breturn;
+}
+#endif
 
 //----------------------------------------------------------------------------
 // Not Kernel Related Function
@@ -245,6 +358,13 @@ EnumEdidSelection UserAdjustGetDpEdidIndex(BYTE ucInputPort)
     if((UserInterfaceHDRGetHDR10ModeStatus(ucInputPort) != _HDR10_MODE_OFF))
     {
         ucIndex += 0x03;
+    }
+#endif
+
+#if(_DP_ADAPTIVESYNC_SUPPORT == _ON)
+    if((GET_OSD_DP_ADAPTIVE_SYNC_STATUS() == _ON))
+    {
+        ucIndex += ((GET_OSD_FREE_SYNC_STATUS() == _ON) ? 0x06 : 0x03);
     }
 #endif
 
@@ -288,6 +408,49 @@ EnumEdidSelection UserAdjustGetDpEdidIndex(BYTE ucInputPort)
 #endif
 
 #if(_AUDIO_SUPPORT == _ON)
+#if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+//--------------------------------------------------
+// Description  : Adjust TTS Play Event
+// Input Value  : EnumAudioTtsEvent
+// Output Value : None
+//--------------------------------------------------
+void UserAdjustAudioTtsPlayEvent(EnumAudioTtsEvent enumTtsEvent)
+{
+    StructAudioTtsSegment *stTtsSegment;
+
+    if(UserCommonAudioTtsGetPlaybackStatus() == _TTS_PROCESSING)
+    {
+        return;
+    }
+    else if(UserCommonAudioTtsGetPlaybackStatus() == _TTS_PLAY_ERROR)
+    {
+        // Check Error Segment
+        UserCommonAudioTtsGetErrorSegment();
+
+        return;
+    }
+
+    // TTS Event Judgment
+    switch(enumTtsEvent)
+    {
+        case _AUDIO_TTS_EVENT_POWER_ON:
+
+            // Set TTS Data Info
+            stTtsSegment.ucDataAddress = 0x00;
+            stTtsSegment.ucDataLength= 1;
+
+            // Active TTS Data Play
+            UserCommonAudioTtsSetPlaybackAcitveEvent(stTtsSegment, UserInterfaceAudioGetTtsPlayTextVolume(), UserInterfaceAudioGetTtsPlayAudioVolume());
+
+            break;
+
+        case _AUDIO_TTS_EVENT_NONE:
+        default:
+            break;
+    }
+}
+#endif // End of #if(_AUDIO_TTS_SUPPORT_TYPE == _AUDIO_TTS_EMBEDDED_TYPE)
+
 //--------------------------------------------------
 // Description  : Mute/Unmute Aduio Volume
 // Input Value  : bMute
@@ -305,20 +468,7 @@ void UserAdjustAudioMuteSwitch(void)
 //--------------------------------------------------
 void UserAdjustAudioVolume(BYTE ucVolume)
 {
-	//if(ucVolume < 15)
-	//{
-	//	ucVolume = ucVolume *3;	//171213
-
-	//}
-	//else
-	//{
-	//	ucVolume = ucVolume *3;	//171213
-	//	ucVolume += 10; 
-	//}	
-
     ScalerAudioDigitalAdjustVolume(UserAdjustAudioVolumeMapping(ucVolume));
-
-	ScalerAudioExternAdjVolume(GET_OSD_VOLUME()); //Eric_171009_02
 }
 
 //--------------------------------------------------
@@ -438,14 +588,43 @@ void UserAdjustColorEffectMode(void)
             ScalerColorSixColorInitial();
 #endif
             break;
+		case _COLOREFFECT_MONO:
+        case _COLOREFFECT_NIGHT:
+			ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+#if(_DCC_FUNCTION == _ON)
+#if(_ICM_SUPPORT == _ON)
+            ScalerColorDCCEnable(_FUNCTION_OFF);
+#else
+            ScalerColorDCCEnable(_FUNCTION_OFF);
+#endif
+
+#endif // End of #if(_DCC_FUNCTION == _ON)
+
+#if(_ICM_SUPPORT == _ON)
+           ScalerColorICMEnable(_FUNCTION_OFF);
+#endif
+
+#if(_SIX_COLOR_SUPPORT == _ON)
+            for(ucIndex = 0; ucIndex < 6; ucIndex++)
+            {
+				SET_OSD_SIX_COLOR(ucIndex);
+                OsdDisplaySixColorGetOneColor(ucIndex);
+                ScalerColorSixColorAdjust(ucIndex, GET_OSD_SIX_COLOR_HUE(), _SIX_COLOR_SATURATION_MIN);
+            }
+
+            ScalerColorSixColorInitial();
+#endif
+
+#if(_ICM_SUPPORT == _ON)
+            ScalerColorICMEnable(_FUNCTION_ON);
+#endif
+            break; //BLACK AND WHITE
+
 
         case _COLOREFFECT_MOVIE:
         case _COLOREFFECT_GAME:
         case _COLOREFFECT_PHOTO:
         case _COLOREFFECT_VIVID:
- //       case _COLOREFFECT_FPS :
- //       case _COLOREFFECT_RTS:
-
             ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 #if(_DCC_FUNCTION == _ON)
             ScalerColorDCCEnable(_FUNCTION_OFF);
@@ -488,7 +667,7 @@ void UserAdjustColorEffectMode(void)
 }
 #endif // End of #if(_SIX_COLOR_SUPPORT == _ON)
 
-#if(_CONTRAST_SUPPORT == _ON)
+#if 0//(_CONTRAST_SUPPORT == _ON)
 //--------------------------------------------------
 // Description  : User Adjust Contrast
 // Input Value  : 12 bit input, old 8 bit contrast input value must left shift 4 bit
@@ -499,11 +678,8 @@ void UserAdjustContrast(WORD usContrast)
 {
 #if(_HIGHLIGHT_WINDOW_SUPPORT == _ON)
     WORD pusData[6] = {0};
-
-#if(_TECNINT_DICOM)
-	if(GET_OSD_GAMMA() > _GAMMA_24)
-		return;
-#endif
+	WORD pusCenter = _COLOR_GAIN_CENTER << 4;
+	
 #if(_CTS_TYPE == _CTS_GEN_1_12BIT)
     pusData[3] = 0x800;
     pusData[4] = 0x800;
@@ -516,29 +692,83 @@ void UserAdjustContrast(WORD usContrast)
 
 #else
     WORD pusData[3] = {0};
+	WORD pusCenter = _COLOR_GAIN_CENTER << 4;
 #endif
+	
+#if(_CTS_TYPE == _CTS_GEN_1_12BIT)	
 
-#if(_CTS_TYPE == _CTS_GEN_1_12BIT)
-    pusData[0] = (WORD)(((DWORD)g_stColorProcData.usColorTempR * usContrast / 2048) > 4095) ? 4095 : (WORD)((DWORD)g_stColorProcData.usColorTempR * usContrast / 2048);
-    pusData[1] = (WORD)(((DWORD)g_stColorProcData.usColorTempG * usContrast / 2048) > 4095) ? 4095 : (WORD)((DWORD)g_stColorProcData.usColorTempG * usContrast / 2048);
-    pusData[2] = (WORD)(((DWORD)g_stColorProcData.usColorTempB * usContrast / 2048) > 4095) ? 4095 : (WORD)((DWORD)g_stColorProcData.usColorTempB * usContrast / 2048);
+	pusData[0] = (WORD)(((DWORD)(g_stColorProcData.usColorTempR - pusCenter + g_stColorProcData.usColorGainR) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempR - pusCenter + g_stColorProcData.usColorGainR) * usContrast / 2048);
+    pusData[1] = (WORD)(((DWORD)(g_stColorProcData.usColorTempG - pusCenter + g_stColorProcData.usColorGainG) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempG - pusCenter + g_stColorProcData.usColorGainG) * usContrast / 2048);
+    pusData[2] = (WORD)(((DWORD)(g_stColorProcData.usColorTempB - pusCenter + g_stColorProcData.usColorGainB) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempB - pusCenter + g_stColorProcData.usColorGainB) * usContrast / 2048);
 
-    if(_PANEL_DISP_BIT_MODE == _PANEL_DISP_30_BIT)
+    if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_NIGHT)
+    {
+        pusData[1] = pusData[2] = 0; // Night mode, set G and B to 0    
+    }
+
+if(_PANEL_DISP_BIT_MODE == _PANEL_DISP_30_BIT)
     {
         // 10-bit Panel
         pusData[0] = UserCommonAdjust10bitPanelCompensate(pusData[0]);
         pusData[1] = UserCommonAdjust10bitPanelCompensate(pusData[1]);
         pusData[2] = UserCommonAdjust10bitPanelCompensate(pusData[2]);
     }
+#if(_CONTRAST_6BIT_PANEL_COMPENSATE == _ON)
+    else if(_PANEL_DISP_BIT_MODE == _PANEL_DISP_18_BIT)
+    {
+#if(_GAMMA_FUNCTION == _ON)
+        if(GET_OSD_GAMMA() == _GAMMA_OFF)
+#endif
+        {
+            pusData[0] = UserCommonAdjust6bitPanelCompensate(pusData[0]);
+            pusData[1] = UserCommonAdjust6bitPanelCompensate(pusData[1]);
+            pusData[2] = UserCommonAdjust6bitPanelCompensate(pusData[2]);
+        }
+    }
+#endif
 
-#else
-    pusData[0] = (WORD)(((DWORD)g_stColorProcData.usColorTempR * usContrast / 128) > 255) ? 255 : (WORD)((DWORD)g_stColorProcData.usColorTempR * usContrast / 128);
-    pusData[1] = (WORD)(((DWORD)g_stColorProcData.usColorTempG * usContrast / 128) > 255) ? 255 : (WORD)((DWORD)g_stColorProcData.usColorTempG * usContrast / 128);
-    pusData[2] = (WORD)(((DWORD)g_stColorProcData.usColorTempB * usContrast / 128) > 255) ? 255 : (WORD)((DWORD)g_stColorProcData.usColorTempB * usContrast / 128);
+#else	
 
+	pusData[0] = (WORD)(((DWORD)(g_stColorProcData.usColorTempR - pusCenter + g_stColorProcData.usColorGainR) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempR - pusCenter + g_stColorProcData.usColorGainR) * usContrast / 2048);
+    pusData[1] = (WORD)(((DWORD)(g_stColorProcData.usColorTempG - pusCenter + g_stColorProcData.usColorGainG) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempG - pusCenter + g_stColorProcData.usColorGainG) * usContrast / 2048);
+    pusData[2] = (WORD)(((DWORD)(g_stColorProcData.usColorTempB - pusCenter + g_stColorProcData.usColorGainB) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempB - pusCenter + g_stColorProcData.usColorGainB) * usContrast / 2048);
+
+    if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_NIGHT)
+    {
+        pusData[1] = pusData[2] = 0; // Night mode, set G and B to 0    
+    }
+/
+#if(_CONTRAST_6BIT_PANEL_COMPENSATE == _ON)
+    if(_PANEL_DISP_BIT_MODE == _PANEL_DISP_18_BIT)
+    {
+#if(_GAMMA_FUNCTION == _ON)
+        if(GET_OSD_GAMMA() == _GAMMA_OFF)
+#endif
+        {
+            pusData[0] = UserCommonAdjust6bitPanelCompensate(pusData[0]);
+            pusData[1] = UserCommonAdjust6bitPanelCompensate(pusData[1]);
+            pusData[2] = UserCommonAdjust6bitPanelCompensate(pusData[2]);
+        }
+    }
+#endif
 #endif
 
     ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+
+#if(_CONTRAST_BY_SRGB_SUPPORT == _ON)
+
+   pusData[0] = pusData[0] * 4;
+   pusData[1] = pusData[1] * 4;
+   pusData[2] = pusData[2] * 4;
+   UserCommonAdjustContrastBysRGB(pusData);
+
+#else
 
 #if(_HIGHLIGHT_WINDOW_SUPPORT == _ON)
     if(GET_OSD_HLWIN_TYPE() == _HL_WIN_OFF)
@@ -556,10 +786,78 @@ void UserAdjustContrast(WORD usContrast)
 #endif
 
     ScalerColorContrastEnable(_FUNCTION_ON);
+#endif
+
 }
 #endif
 
-#if(_BRIGHTNESS_SUPPORT == _ON)
+#if(_CONTRAST_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : User Adjust Contrast
+// Input Value  : 12 bit input, old 8 bit contrast input value must left shift 4 bit
+//                0 (00h) ~ 1(800h) ~  2(FFFh)
+// Output Value : void
+//--------------------------------------------------
+void UserAdjustContrast(WORD usContrast)
+{
+
+
+    WORD pusData[3] = {0};
+    WORD pusCenter = _COLOR_GAIN_CENTER << 4;
+    //pusData[0] = (WORD)(((DWORD)g_stColorProcData.usColorTempR * usContrast / 2048) > 4095) ? 4095 : (WORD)((DWORD)g_stColorProcData.usColorTempR * usContrast / 2048);
+    //pusData[1] = (WORD)(((DWORD)g_stColorProcData.usColorTempG * usContrast / 2048) > 4095) ? 4095 : (WORD)((DWORD)g_stColorProcData.usColorTempG * usContrast / 2048);
+    //pusData[2] = (WORD)(((DWORD)g_stColorProcData.usColorTempB * usContrast / 2048) > 4095) ? 4095 : (WORD)((DWORD)g_stColorProcData.usColorTempB * usContrast / 2048);
+    if( GET_OSD_GAMMA() == _GAMMA_DICOM)
+    {
+        ScalerColorContrastEnable(_FUNCTION_OFF);
+        return;
+    }
+    
+    //test = g_stColorProcData.usColorGainB[GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION())];
+
+    pusData[0] = (WORD)(((DWORD)(g_stColorProcData.usColorTempR - pusCenter + g_stColorProcData.usColorGainR) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempR - pusCenter + g_stColorProcData.usColorGainR) * usContrast / 2048);
+    pusData[1] = (WORD)(((DWORD)(g_stColorProcData.usColorTempG - pusCenter + g_stColorProcData.usColorGainG) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempG - pusCenter + g_stColorProcData.usColorGainG) * usContrast / 2048);
+    pusData[2] = (WORD)(((DWORD)(g_stColorProcData.usColorTempB - pusCenter + g_stColorProcData.usColorGainB) * usContrast / 2048) > 4095) ? \
+    4095 : (WORD)((DWORD)(g_stColorProcData.usColorTempB - pusCenter + g_stColorProcData.usColorGainB) * usContrast / 2048);
+
+    if (GET_OSD_COLOR_EFFECT() == _COLOREFFECT_NIGHT)
+    {
+        pusData[1] = pusData[2] = 0; // Night mode, set G and B to 0    
+    }
+
+    // if(_PANEL_DISP_BIT_MODE == _PANEL_DISP_30_BIT)
+    // {
+    //     // 10-bit Panel
+    //     pusData[0] = UserCommonAdjust10bitPanelCompensate(pusData[0]);
+    //     pusData[1] = UserCommonAdjust10bitPanelCompensate(pusData[1]);
+    //     pusData[2] = UserCommonAdjust10bitPanelCompensate(pusData[2]);
+    // }
+
+#if(_HIGHLIGHT_WINDOW_SUPPORT == _ON)
+    if(GET_OSD_HLWIN_TYPE() == _HL_WIN_OFF)
+    {
+        ScalerColorContrastAdjust(_CONTRAST_COEF_A, pusData);
+        ScalerColorContrastAdjust(_CONTRAST_COEF_B, &pusData[3]);
+    }
+    else
+    {
+        ScalerColorContrastAdjust(_CONTRAST_COEF_B, pusData);
+        ScalerColorContrastAdjust(_CONTRAST_COEF_A, &pusData[3]);
+    }
+#else
+    ScalerColorContrastAdjust(_CONTRAST_COEF_A, pusData);
+    ScalerColorContrastAdjust(_CONTRAST_COEF_B, &pusData[3]);
+#endif
+
+    ScalerColorContrastEnable(_FUNCTION_ON);
+}
+#endif
+
+
+
+#if 0//(_BRIGHTNESS_SUPPORT == _ON)
 //--------------------------------------------------
 // Description  : User Adjust Brightness
 // Input Value  : 10 bit input, old 8 bit brightness input value must left shift 2 bit
@@ -570,7 +868,8 @@ void UserAdjustBrightness(WORD usBrightness)
 {
 #if(_HIGHLIGHT_WINDOW_SUPPORT == _ON)
     WORD pusData[6] = {0};
-
+	WORD pusCenter = _COLOR_BIAS_CENTER << 2;
+	
 #if(_BRI_TYPE == _BRI_GEN_1_10BIT)
     pusData[3] = 0x200;
     pusData[4] = 0x200;
@@ -583,12 +882,13 @@ void UserAdjustBrightness(WORD usBrightness)
 
 #else
     WORD pusData[3] = {0};
+	WORD pusCenter = _COLOR_BIAS_CENTER << 2;
 #endif
 
-    pusData[0] = usBrightness;
-    pusData[1] = usBrightness;
-    pusData[2] = usBrightness;
-
+	pusData[0] = (usBrightness - pusCenter) + g_stColorProcData.usColorBIASR;
+    pusData[1] = (usBrightness - pusCenter) + g_stColorProcData.usColorBIASG;
+    pusData[2] = (usBrightness - pusCenter) + g_stColorProcData.usColorBIASB;
+	
 #if(_HIGHLIGHT_WINDOW_SUPPORT == _ON)
     if(GET_OSD_HLWIN_TYPE() == _HL_WIN_OFF)
     {
@@ -607,7 +907,39 @@ void UserAdjustBrightness(WORD usBrightness)
     ScalerColorBrightnessEnable(_FUNCTION_ON);
 }
 #endif
+#if(_BRIGHTNESS_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : User Adjust Brightness
+// Input Value  : 10 bit input, old 8 bit brightness input value must left shift 2 bit
+//                -2048(00h) ~ 0(200h) ~  +2044(3FFh)
+// Output Value : void
+//--------------------------------------------------
+void UserAdjustBrightness(WORD usBrightness)
+{
+    WORD pusData[3] = {0};
+    WORD pusCenter = _COLOR_BIAS_CENTER << 2;
+    //pusData[0] = usBrightness;
+    //pusData[1] = usBrightness;
+    //pusData[2] = usBrightness;
 
+    pusData[0] = (usBrightness - pusCenter) + g_stColorProcData.usColorBIASR;
+    pusData[1] = (usBrightness - pusCenter) + g_stColorProcData.usColorBIASG;
+    pusData[2] = (usBrightness - pusCenter) + g_stColorProcData.usColorBIASB;
+
+/*
+    DebugMessageSystem("usBrightness",usBrightness);
+    DebugMessageSystem("pusCenter",pusCenter);
+    DebugMessageSystem("usColorBIASR", g_stColorProcData.usColorBIASR >> 2);
+    DebugMessageSystem("usColorBIASG", g_stColorProcData.usColorBIASG >> 2);
+    DebugMessageSystem("usColorBIASB", g_stColorProcData.usColorBIASB >> 2);
+    DebugMessageSystem("pusData[0]",pusData[0]);
+
+*/
+    ScalerColorBrightnessAdjust(_BRIGHTNESS_COEF_A, pusData);
+    ScalerColorBrightnessAdjust(_BRIGHTNESS_COEF_B, &pusData[3]);
+    ScalerColorBrightnessEnable(_FUNCTION_ON);
+}
+#endif
 
 #if(_GLOBAL_HUE_SATURATION == _ON)
 //--------------------------------------------------
@@ -617,7 +949,20 @@ void UserAdjustBrightness(WORD usBrightness)
 //--------------------------------------------------
 void UserAdjustGlobalHueSat(SWORD shHue, WORD usSat)  // for OSD Adjust & Dianliang:  Display Off & ON
 {
-    UserCommonAdjustGlobalHueSat(_DEFAULT_HUE - shHue, usSat);
+    if(GET_OSD_PCM_STATUS() != _PCM_OSD_NATIVE)
+    {
+        return;
+    }
+#if(_GLOBAL_COLOR_CONVERT_HUE_SATURATION_FUNCTION == _ON)
+    if(GET_OSD_PCM_STATUS() != _PCM_OSD_NATIVE)
+    {
+        UserCommonAdjustColorConvertHueSat(_DEFAULT_HUE - shHue, usSat);
+    }
+    else
+#endif
+    {
+        UserCommonAdjustGlobalHueSat(_DEFAULT_HUE - shHue, usSat);
+    }
 }
 #endif  // Enf of #if(_GLOBAL_HUE_SATURATION == _ON)
 
@@ -931,18 +1276,15 @@ void UserAdjustEmbeddedDpSwitch(void)
 // Input Value  :
 // Output Value :
 //--------------------------------------------------
-void UserAdjustPixelShifting(BYTE ucPixelShift)
+void UserAdjustPixelShifting(void)
 {
 #if(_PIXEL_SHIFT_MODE == _PIXEL_SHIFT_IN_IDOMAIN)
-    //BYTE ucPixelShift = 0;
+    BYTE ucPixelShift = 0;
 
     WORD usVdelay = 0;
     WORD usHdelay = 0;
-    BYTE ucVstep = 4;
-    BYTE ucHstep = 4;
-
-	static WORD usNoVdelay = 0; // Pixel Shift Off �� ��, ���� ���� Vdelay �� 
-	static WORD usNoHdelay = 0; // Pixel Shift Off �� ��, ���� ���� Hdelay �� 
+    BYTE ucVstep = 2;
+    BYTE ucHstep = 2;
 
 #if(_FORMAT_CONVERSION_SUPPORT == _ON)
     if(ScalerFmtCnvFtoPGetStatus() == _TRUE)
@@ -965,21 +1307,9 @@ void UserAdjustPixelShifting(BYTE ucPixelShift)
         usHdelay = ScalerVgipGetCaptureHDelay();
         usVdelay = ScalerVgipGetCaptureVDelay();
     }
-	if (ucPixelShift == 9) //�ʱ�ȭ
-	{
 
-		usNoVdelay = usVdelay;
-		usNoHdelay = usHdelay;
-		//DebugMessageYHJ("*SET usHdelay before", usNoHdelay);
-		//DebugMessageYHJ("*SET usVdelay before", usNoVdelay);
-		ScalerGlobalWatchDog(_ENABLE);
-		return;
-	}
-	//DebugMessageYHJ("*ucPixelShift", ucPixelShift);
-	//DebugMessageYHJ("*usHdelay before", usNoHdelay);
-	//DebugMessageYHJ("*usVdelay before", usNoVdelay);
-    //for(ucPixelShift = 0; ucPixelShift < 8; ucPixelShift++)
-    //{
+    for(ucPixelShift = 0; ucPixelShift < 8; ucPixelShift++)
+    {
         ScalerTimerDelayXms(200);
 
         switch(ucPixelShift)
@@ -1019,8 +1349,6 @@ void UserAdjustPixelShifting(BYTE ucPixelShift)
                 break;
 
             default:
-				usVdelay = usNoVdelay;
-				usHdelay = usNoHdelay;
                 break;
         }
 
@@ -1038,10 +1366,7 @@ void UserAdjustPixelShifting(BYTE ucPixelShift)
             ScalerVgipSetCaptureVDelay(usVdelay);
             ScalerGlobalIDomainDBApply(_DB_APPLY_POLLING);
         }
-    //}
-		//DebugMessageYHJ("ucPixelShift", ucPixelShift);
-		//DebugMessageYHJ("usHdelay after", usHdelay);
-		//DebugMessageYHJ("usVdelay after", usVdelay);
+    }
 
     ScalerTimerWaitForEvent(_EVENT_IVS);
     ScalerGlobalWatchDog(_ENABLE);
@@ -1072,8 +1397,8 @@ void UserAdjustPixelShifting(BYTE ucPixelShift)
 
     ScalerMDomainSetCaptureWindowEnable(_ENABLE);
 
-    //for(ucPixelShift = 0; ucPixelShift < 8; ucPixelShift++)
-    //{
+    for(ucPixelShift = 0; ucPixelShift < 8; ucPixelShift++)
+    {
         ScalerTimerDelayXms(200);
         switch(ucPixelShift)
         {
@@ -1163,7 +1488,7 @@ void UserAdjustPixelShifting(BYTE ucPixelShift)
             default:
                 break;
         }
-    //}
+    }
 
     ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
     ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
@@ -1194,4 +1519,192 @@ void UserAdjustSDRToHDR(bit bOn)
     }
 }
 #endif // End of #if(_SDR_TO_HDR_SUPPORT == _ON)
+
+#if(_DCR_SUPPORT == _ON)
+#if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : User Adjust DCR initial
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void UserAdjustDCRTHD(void)
+{
+    // Adjust DCR Threshold & Source
+#if(_DCR_BIT_MODE == _DCR_GEN_1_0_10BIT)
+    ScalerColorDCRAdjust(_DCR_THESHOLD1, _DCR_THESHOLD2, _MEASURE_AVERAGE);
+#elif((_DCR_BIT_MODE == _DCR_GEN_0_0_8BIT) || (_DCR_BIT_MODE == _DCR_GEN_0_1_8BIT))
+    ScalerColorDCRAdjust((_DCR_THESHOLD1 >> 2), (_DCR_THESHOLD2 >> 2), _MEASURE_AVERAGE);
+#endif
+}
+#endif // End of #if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+#endif // End of #if(_DCR_SUPPORT == _ON)
+
+#if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
+#if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+//--------------------------------------------------
+// Description  : User Control Type-C Port Controller Power
+// Input Value  : ucSwitch --> Power Action
+// Output Value : None
+//--------------------------------------------------
+void UserAjustTypeCPowerControl(EnumPowerAction enumSwitch)
+{
+    switch(enumSwitch)
+    {
+        case _POWER_ACTION_AC_ON_TO_NORMAL:
+
+            //Switch On Port Controller Power By PCB Control
+            PCB_PORT_CTRL_POW_RTD_USER(_PORT_CTRL_POWER_ON);
+            CLR_TYPE_C_PORT_CTRL_POWER_OFF_FLG();
+
+            break;
+
+        case _POWER_ACTION_PS_TO_NORMAL:
+        case _POWER_ACTION_OFF_TO_NORMAL:
+
+            if(GET_PCB_PORT_CTRL_POW_STATUS_RTD_USER() == _PORT_CTRL_POWER_OFF)
+            {
+                // Switch On Port Conroller Power By PCB Control
+                PCB_PORT_CTRL_POW_RTD_USER(_PORT_CTRL_POWER_ON);
+            }
+
+            break;
+
+        case _POWER_ACTION_AC_ON_TO_OFF:
+        case _POWER_ACTION_NORMAL_TO_OFF:
+        case _POWER_ACTION_PS_TO_OFF:
+        case _POWER_ACTION_NORMAL_TO_PS:
+
+#if((_D0_INPUT_PORT_TYPE != _D0_NO_PORT) && ((_D0_DP_TYPE_C_PORT_CTRL_TYPE == _PORT_CONTROLLER_RTS5400_SERIES) || (_D0_DP_TYPE_C_PORT_CTRL_TYPE == _PORT_CONTROLLER_USER )))
+            if(SysSourceGetCableDetect(_D0_INPUT_PORT) == _FALSE)
+#elif((_D1_INPUT_PORT_TYPE != _D1_NO_PORT) && ((_D1_DP_TYPE_C_PORT_CTRL_TYPE == _PORT_CONTROLLER_RTS5400_SERIES) || (_D1_DP_TYPE_C_PORT_CTRL_TYPE == _PORT_CONTROLLER_USER )))
+            if(SysSourceGetCableDetect(_D1_INPUT_PORT) == _FALSE)
+#elif((_D6_INPUT_PORT_TYPE != _D6_NO_PORT) && ((_D6_DP_TYPE_C_PORT_CTRL_TYPE == _PORT_CONTROLLER_RTS5400_SERIES) || (_D6_DP_TYPE_C_PORT_CTRL_TYPE == _PORT_CONTROLLER_USER )))
+            if(SysSourceGetCableDetect(_D6_INPUT_PORT) == _FALSE)
+#endif
+            {
+                // Switch Off Repeater Power By PCB Control
+                PCB_PORT_CTRL_POW_RTD_USER(_PORT_CTRL_POWER_OFF);
+                SET_TYPE_C_PORT_CTRL_POWER_OFF_FLG();
+            }
+            else
+            {
+                CLR_TYPE_C_PORT_CTRL_POWER_OFF_FLG();
+            }
+
+            break;
+
+        default:
+
+            break;
+    }
+}
+#endif // End of #if(_TWO_CHIP_DATA_EXCHANGE_MODE == _DATA_EXCHANGE_MODE_NONE)
+#endif // End of #if((_PORT_CONTROLLER_RTS5400_SERIES_SUPPORT == _ON) || (_PORT_CONTROLLER_USERDECITION_SUPPORT == _ON))
+#endif // End of #if(_DP_TYPE_C_PORT_CTRL_SUPPORT == _ON)
+
+#if((_EMBEDDED_EDID_SUPPORT == _ON) && (_DP_HDR10_SUPPORT == _ON) && (_DP_SUPPORT == _ON))
+//--------------------------------------------------
+// Description  : Switch Dp Version to 1.4, if HDR On
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void UserAdjustHdrCheckDpVersion(WORD usHdrMode)
+{
+    // Switch Dp Version to 1.3, if HDR Function Support
+    if(usHdrMode != _HDR10_MODE_OFF)
+    {
+#if(_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
+        if(GET_OSD_DP_D0_VERSION() <= _DP_VER_1_DOT_2)
+        {
+            SET_OSD_DP_D0_VERSION(_DP_VER_1_DOT_3);
+
+            SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+
+            UserCommonInterfaceDpVersionSwitch(_D0_INPUT_PORT, UserInterfaceGetDPVersion(_D0_INPUT_PORT), UserInterfaceGetDpMSTCapablePort());
+        }
+#endif
+
+#if(_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
+        if(GET_OSD_DP_D1_VERSION() <= _DP_VER_1_DOT_2)
+        {
+            SET_OSD_DP_D1_VERSION(_DP_VER_1_DOT_3);
+
+            SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+
+            UserCommonInterfaceDpVersionSwitch(_D1_INPUT_PORT, UserInterfaceGetDPVersion(_D1_INPUT_PORT), UserInterfaceGetDpMSTCapablePort());
+        }
+#endif
+
+#if(_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
+        if(GET_OSD_DP_D2_VERSION() <= _DP_VER_1_DOT_2)
+        {
+            SET_OSD_DP_D2_VERSION(_DP_VER_1_DOT_3);
+
+            SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+
+            UserCommonInterfaceDpVersionSwitch(_D2_INPUT_PORT, UserInterfaceGetDPVersion(_D2_INPUT_PORT), UserInterfaceGetDpMSTCapablePort());
+        }
+#endif
+    }
+}
+#endif // End of #if((_EMBEDDED_EDID_SUPPORT == _ON) && (_DP_HDR10_SUPPORT == _ON) && (_DP_SUPPORT == _ON))
+
+#if(_DP_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : DP Version Force Update
+// Input Value  : enumInputPort, bEnable, enumDpVersionType
+// Output Value : None
+//--------------------------------------------------
+void UserAdjustDpVersionForceUpdate(BYTE ucInputPort, bit bEnable, EnumDpVersionType enumDpVersionType)
+{
+    EnumOSDDpPortVersionDef enumOSDDpPortVersionDef = enumDpVersionType - 0x11;
+
+    switch(ucInputPort)
+    {
+#if(_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
+        case _D0_INPUT_PORT:
+
+            if((GET_OSD_DP_D0_VERSION() < enumOSDDpPortVersionDef) && (bEnable == _ENABLE))
+            {
+                SET_OSD_DP_D0_VERSION(enumOSDDpPortVersionDef);
+
+                UserCommonInterfaceDpVersionSwitch(_D0_INPUT_PORT, UserInterfaceGetDPVersion(_D0_INPUT_PORT), UserCommonInterfaceGetDpMstCapablePort());
+            }
+
+            break;
+#endif
+
+#if(_D1_INPUT_PORT_TYPE == _D1_DP_PORT)
+        case _D1_INPUT_PORT:
+
+            if((GET_OSD_DP_D1_VERSION() < enumOSDDpPortVersionDef) && (bEnable == _ENABLE))
+            {
+                SET_OSD_DP_D1_VERSION(enumOSDDpPortVersionDef);
+
+                UserCommonInterfaceDpVersionSwitch(_D1_INPUT_PORT, UserInterfaceGetDPVersion(_D1_INPUT_PORT), UserCommonInterfaceGetDpMstCapablePort());
+            }
+
+            break;
+#endif
+
+#if(_D2_INPUT_PORT_TYPE == _D2_DP_PORT)
+        case _D2_INPUT_PORT:
+
+            if((GET_OSD_DP_D2_VERSION() < enumOSDDpPortVersionDef) && (bEnable == _ENABLE))
+            {
+                SET_OSD_DP_D2_VERSION(enumOSDDpPortVersionDef);
+
+                UserCommonInterfaceDpVersionSwitch(_D2_INPUT_PORT, UserInterfaceGetDPVersion(_D2_INPUT_PORT), UserCommonInterfaceGetDpMstCapablePort());
+            }
+
+            break;
+#endif
+
+        default:
+            break;
+    }
+}
+#endif // End of #if(_DP_SUPPORT == _ON)
+
 #endif//#if(_OSD_TYPE == _REALTEK_2014_OSD)

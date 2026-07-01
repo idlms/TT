@@ -48,17 +48,17 @@
 //****************************************************************************
 EnumLDActionMode UserInterfaceGetLocaldimmingActionMode(void);
 EnumLDStatus UserInterfaceGetLocalDimmingStatus(void);
-WORD UserInterfaceGetLocalDimmingPWMSmoothLevel(void);
-EnumLDSDRColorMode UserInterfaceGetLocalDimmingColorMode(void);
-#if(_OGC_SUPPORT == _ON)
-BYTE UserInterfaceGetLocalDimmingGammaIndex(void);
-#endif
+BYTE UserInterfaceGetLocalDimmingPWMSmoothLevel(void);
 void UserInterfaceLocalDimmingAdjustPCM(void);
 
 EnumLDStatus UserInterfaceGetLocalDimmingNoSupportStatus(void);
-EnumPCHDRMode UserInterfaceGetPCHDRMode(void);
+EnumLDPCHDRMode UserInterfaceGetPCHDRVerifyMode(void);
 #if(_UNIFORMITY_SUPPORT == _ON)
 EnumUniformityStatus UserInterfaceGetUniformityStatus(void);
+#endif
+
+#if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+void UserInterfaceTunnelPatternDetectOff(void);
 #endif
 
 //****************************************************************************
@@ -100,80 +100,9 @@ EnumLDStatus UserInterfaceGetLocalDimmingStatus(void)
 // Input Value  : None
 // Output Value : 0 ~ 100
 //--------------------------------------------------
-WORD UserInterfaceGetLocalDimmingPWMSmoothLevel(void)
+BYTE UserInterfaceGetLocalDimmingPWMSmoothLevel(void)
 {
-    return GET_OSD_LD_ADJ();
-}
-
-#if(_OGC_SUPPORT == _ON)
-//--------------------------------------------------
-// Description  : Set Led Driver Pwm Frequency
-// Input Value  : None
-// Output Value : 0 ~ 100
-//--------------------------------------------------
-BYTE UserInterfaceGetLocalDimmingGammaIndex(void)
-{
-    return (GET_OSD_GAMMA() - 1);
-}
-#endif
-
-//--------------------------------------------------
-// Description  : Get SDR code to Lv gamma type
-// Input Value  : None
-// Output Value : EnumLDColorMode
-//--------------------------------------------------
-
-EnumLDSDRColorMode UserInterfaceGetLocalDimmingColorMode(void)
-{
-#if(_PCM_FUNCTION == _ON)
-    if(GET_OSD_PCM_STATUS() != _PCM_OSD_NATIVE)
-    {
-        switch(GET_OSD_PCM_STATUS())
-        {
-            #if(_OCC_SUPPORT == _ON)
-            case _PCM_OSD_SRGB:
-                return _LD_PCM_SRGB;
-                break;
-
-            case _PCM_OSD_ADOBE_RGB:
-                return _LD_GAMMA_22;
-                break;
-            #endif
-
-            default:
-                break;
-        }
-    }
-    else
-#endif // End of #if(_PCM_FUNCTION == _ON)
-    {
-        switch(GET_OSD_GAMMA())
-        {
-            case _GAMMA_OFF:
-                break;
-
-            case _GAMMA_18:
-                return _LD_GAMMA_18;
-                break;
-
-            case _GAMMA_20:
-                return _LD_GAMMA_20;
-                break;
-
-            case _GAMMA_22:
-                return _LD_GAMMA_22;
-                break;
-
-            case _GAMMA_24:
-                return _LD_GAMMA_24;
-                break;
-
-            default:
-                break;
-        }
-    }
-
-    return _LD_GAMMA_22;
+    return GET_OSD_LD_ADJ(); // recommend 50 or the value will pass corner pattern
 }
 
 //--------------------------------------------------
@@ -203,13 +132,12 @@ EnumLDStatus UserInterfaceGetLocalDimmingNoSupportStatus(void)
     // SDRtoHDR can support local dimming
     if(GET_OSD_SDR_TO_HDR() == _ON)
     {
-        return _LD_ENABLE;
+        return _LD_DISABLE;
     }
 #endif
 
     // Non OCC/OGC Mode can't supprt local dimming(Ex. user define gamma/ X-rite)
-    if((GET_OSD_PCM_STATUS() == _PCM_OSD_NATIVE) &&
-       (GET_OSD_GAMMA() == _GAMMA_OFF))
+    if(UserInterfaceSDROCCOGCMode() == _SDR_NONE_CALIBRATION_BY_OGC_TOOL)
     {
         return _LD_DISABLE;
     }
@@ -218,22 +146,13 @@ EnumLDStatus UserInterfaceGetLocalDimmingNoSupportStatus(void)
 }
 
 //--------------------------------------------------
-// Description  : Get PCHDR Mode
+// Description  : Get PCHDR verify Mode
 // Input Value  : None
-// Output Value : PCHDR mode/ normal mode
+// Output Value : PCHDR verify mode/ PCHDR normal mode
 //--------------------------------------------------
-EnumPCHDRMode UserInterfaceGetPCHDRMode(void)
+EnumLDPCHDRMode UserInterfaceGetPCHDRVerifyMode(void)
 {
-#if(_HDR10_SUPPORT == _ON)
-    if(UserCommonHDRGetHDR10Status() == _HDR10_ON)
-    {
-        return _LD_PCHDR_MODE;
-    }
-    else
-#endif
-    {
-        return _LD_NONE_PCHDR_MODE;
-    }
+    return _LD_PCHDR_NORMAL_MODE;
 }
 
 #if(_UNIFORMITY_SUPPORT == _ON)
@@ -255,5 +174,23 @@ EnumUniformityStatus UserInterfaceGetUniformityStatus(void)
 }
 #endif
 
+#if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : Adjust All High Light Window Effect Space
+// Input Value  : None
+// Output Value : None
+//--------------------------------------------------
+void UserInterfaceTunnelPatternDetectOff(void)
+{
+    // Set previous HLW effect space
+    UserAdjustHighLightWindowEffectSpace();
+    UserAdjustHLWinType(GET_OSD_HLWIN_TYPE());
+
+#if(_DCR_SUPPORT== _ON)
+    // Set previous DCR
+    UserAdjustDCRTHD();
+#endif
+}
+#endif // End of #if(_LD_TUNNEL_DETECT_SUPPORT == _ON)
 #endif // End of #if((_OSD_TYPE == _REALTEK_2014_OSD) && (_LOCAL_DIMMING_SUPPORT == _ON))
 

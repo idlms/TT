@@ -18,6 +18,7 @@
 #include "ADT7470.h"
 #include "RL6449_Project.h"
 #if	(_ENABLE_FAN_CONTROL == _ON && _FANCONTROL_SENSOR_TYPE == _FAN_ADT7470)
+
 bit _ADT7470Initialised;///<init flag.
 bit _setconfigADT7470;
 bit WriteReg_ADT7470(BYTE ui8Addr, BYTE ui8Value);
@@ -75,10 +76,10 @@ bit SuccessInitialize_ADT7470(void)
 	return _ADT7470Initialised;
 }
 
-//BYTE GetTempCount(void)
-//{
-//	return tempSensorCount;
-//}
+BYTE GetTempCount(void)
+{
+	return tempSensorCount;
+}
 
 void _Get_TempSensorCount(void)
 {

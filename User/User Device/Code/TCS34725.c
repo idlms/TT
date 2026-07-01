@@ -15,7 +15,7 @@
 #include "UserCommonInclude.h"
 #include "Global.h"
 #include "TCS34725.h"
-#include "RL6449_Project.h"
+#include "RL6410_Project.h"
 
 #if	(_ENABLE_SELF_CHECK == _ON)
 bit _tcs34725Initialised;///<init flag.
@@ -85,7 +85,7 @@ void Enable_TCS34725(void)
 	BYTE reg;
 	WriteReg_TCS34725(TCS34725_ENABLE, TCS34725_ENABLE_PON);
 	ScalerTimerDelayXms(3);
-	reg= TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN;
+	reg = TCS34725_ENABLE_PON | TCS34725_ENABLE_AEN;
 	WriteReg_TCS34725(TCS34725_ENABLE, reg);
 }
 
@@ -134,7 +134,7 @@ bit Initialize_TCS34725(void)
 
 void SetIntegrationTime_TCS34725(tcs34725IntegrationTime_t it)
 {
-	
+
 	if (!_tcs34725Initialised) Initialize_TCS34725();
 	if (_tcs34725Initialised)
 	{
@@ -150,7 +150,7 @@ void SetIntegrationTime_TCS34725(tcs34725IntegrationTime_t it)
 
 void SetGain_TCS34725(tcs34725Gain_t gain)
 {
-	
+
 	if (!_tcs34725Initialised) Initialize_TCS34725();
 	if (_tcs34725Initialised)
 	{

@@ -36,16 +36,7 @@
 //****************************************************************************
 // CODE TABLES
 //****************************************************************************
-#if(_DEVICE_LED_DRIVER_TYPE == _DEVICE_LED_DRIVER_NONE)
-WORD code tGDPWMLUT[_GD_PANEL_PWM_MAX + 1] =
-{
-#ifdef _GD_PWM_LUT_TABLE
-#include _GD_PWM_LUT_TABLE
-#else
-    0
-#endif
-};
-#endif
+
 
 //****************************************************************************
 // VARIABLE DECLARATIONS
@@ -61,26 +52,21 @@ void UserInterfaceGlobalDimmingAdjustPCM(void);
 //****************************************************************************
 // FUNCTION DEFINITIONS
 //****************************************************************************
-
 //--------------------------------------------------
 // Description  :
-// Input Value  : None
+// Input Value  : 0~ 2048
 // Output Value :
 //--------------------------------------------------
 void UserInterfaceGlobalDimmingAdjustPWM(WORD usPWMValue)
 {
     WORD usNormPWM = 0;
 #if(_DEVICE_LED_DRIVER_TYPE != _DEVICE_LED_DRIVER_NONE)
-    {
-        usNormPWM = ((DWORD)usPWMValue * _DEVICE_LED_DRIVER_PWM_MAX) / _GD_PANEL_PWM_MAX;
-        DeviceInterfaceLedDriverPwm(_PANEL_PWM_LOCAL_ALL, usPWMValue);
-    }
+    usNormPWM = ((DWORD)usPWMValue * _DEVICE_LED_DRIVER_PWM_MAX) / _GD_PANEL_PWM_MAX;
+    ExternalDeviceInterfaceLedDriverPwm(_PANEL_PWM_LOCAL_ALL, usNormPWM, _DEVICE_CALI_OFF);
 #else
-    {
-        WORD usTempPWM = tGDPWMLUT[usPWMValue];
-        usNormPWM = ((DWORD)usTempPWM * _BACKLIGHT_MAX()) / _GD_PANEL_PWM_MAX;
-        UserAdjustBacklight(usNormPWM);
-    }
+    usNormPWM = ((DWORD)usPWMValue * _BACKLIGHT_MAX) / _GD_PANEL_PWM_MAX;
+    // Adjust backlight by changing PWM duty
+    PCB_BACKLIGHT_PWM(usNormPWM);
 #endif
 }
 
@@ -103,5 +89,15 @@ void UserInterfaceGlobalDimmingAdjustPCM(void)
 
 #endif
 }
-#endif // End of #if((_OSD_TYPE == _REALTEK_2014_OSD) && (_LOCAL_DIMMING_SUPPORT == _ON))
+
+//--------------------------------------------------
+// Description  : Get Global Dimming OSD Status
+// Input Value  : void
+// Output Value : _GD_ENABLE or _GD_DISABLE
+//--------------------------------------------------
+EnumGDStatus UserInterfaceGetGlobalDimmingStatus(void)
+{
+    return _GD_ENABLE;
+}
+#endif // End of #if((_OSD_TYPE == _REALTEK_2014_OSD) && (_Global_DIMMING_SUPPORT == _ON))
 

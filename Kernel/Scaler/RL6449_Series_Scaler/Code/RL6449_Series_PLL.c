@@ -225,7 +225,7 @@ void ScalerPLLSetDPLLRefPLL(DWORD ulFreq)
     // [3] 0:Use PI, 1:Bypass PI
     // [2:0] PI Current setting
     ScalerSetBit(P38_D0_DPTX_CMU0, ~(_BIT7 | _BIT6 | _BIT5 | _BIT4 | _BIT3 | _BIT2 | _BIT1 | _BIT0), (_BIT6 | _BIT5 | _BIT4 | _BIT1 | _BIT0));
-    DebugMessageScaler("ulCMUFreq",ulCMUFreq);
+
     if (ulCMUFreq > _DPTX_PLL_BOUNDRY_3)
     {
         // Phy range = 3~6 GHz

@@ -58,6 +58,9 @@ EnumHDR10DarkEnhanceStatus UserInterfaceHDRGetHDR10DarkEnhanceStatus(void);
 
 #if(_HDR10_LIGHT_ENHANCE_SUPPORT == _ON)
 EnumHDR10LightEnhanceStatus UserInterfaceHDRGetHDR10LightEnhanceStatus(void);
+#if(_BACKLIGHT_DIMMING_SUPPORT == _ON)
+BYTE UserInterfaceHDRGetHDR10LightEnhanceGain(void);
+#endif
 #endif
 
 #if(_DCC_FUNCTION == _ON)
@@ -70,10 +73,15 @@ BYTE UserInterfaceHDRGetHDR10ICMTableBank(void);
 code BYTE *UserInterfaceHDRGetHDR10ICMTable(void);
 #endif
 
+#if((_HDR10_FIXED_POINT_TONEMAPPING_SUPPORT == _ON) || (_HDR10_USER_DEFINE_FIXED_POINT_TONEMAPPING_SUPPORT == _ON))
+EnumHDR10FixedPointToneMappingStatus UserInterfaceHDRGetHDR10FixedPointTMStatus(void);
+#endif
+
+extern void UserInterfaceHDRGetHDR10UserAssignTable(StructHDR10Table *pstHDR10Table);
 #endif
 
 #if(_FREESYNC_II_SUPPORT == _ON)
-void UserInterfaceHDRFreeSyncIIProc(void);
+void UserInterfaceHDRAdjustFreeSyncIIProc(void);
 #endif
 
 //****************************************************************************
@@ -97,9 +105,7 @@ void UserInterfaceHDRAdjustSDRProc(void)
 #if((_DCC_FUNCTION == _ON) || (_ICM_SUPPORT == _ON))
         UserAdjustColorEffectMode();
 #endif
-#if(_SDR_TO_HDR_SUPPORT == _ON)
         OsdFuncColorPcmAdjust();
-#endif
     }
     UserAdjustBacklight(GET_OSD_BACKLIGHT());
 }
@@ -143,7 +149,7 @@ void UserInterfaceHDRAdjustHDR10Proc(void)
 #if(_CONTRAST_SUPPORT == _ON)
     UserCommonHDRAdjustHDR10Contrast(GET_OSD_HDR_CONTRAST());
 #endif
-    UserAdjustBacklight(_BACKLIGHT_MAX());
+    UserAdjustBacklight(_BACKLIGHT_MAX);
 }
 
 //--------------------------------------------------
@@ -211,6 +217,37 @@ EnumHDR10LightEnhanceStatus UserInterfaceHDRGetHDR10LightEnhanceStatus(void)
         return _HDR10_LIGHTENHANCE_OFF;
     }
 }
+
+#if(_BACKLIGHT_DIMMING_SUPPORT == _ON)
+//--------------------------------------------------
+// Description  : Get HDR10 Light Enhance Gain Value, user should return value corresponded to Light Enhance table used.
+// Input Value  : None
+// Output Value : HDR10 Light Enhance Gain Value / 100, e.g. return 160 when actual gain value is 1.60, and Gain Value range should be 100 ~ 160!!
+//--------------------------------------------------
+BYTE UserInterfaceHDRGetHDR10LightEnhanceGain(void)
+{
+    if(UserCommonHDRGetHDR10Status() == _HDR10_ON)
+    {
+        switch(GET_OSD_HDR_LIGHT_ENHANCE())
+        {
+            default:
+            case _HDR10_LIGHTENHANCE_NONE:
+                return 100;
+
+            case _HDR10_LIGHTENHANCE_TYPE_120:
+                return 120;
+
+            case _HDR10_LIGHTENHANCE_TYPE_140:
+                return 140;
+
+            case _HDR10_LIGHTENHANCE_TYPE_160:
+                return 160;
+        }
+    }
+
+    return 100;
+}
+#endif
 #endif
 
 #if(_DCC_FUNCTION == _ON)
@@ -231,41 +268,34 @@ BYTE UserInterfaceHDRGetHDR10DCCTableBank(void)
 //--------------------------------------------------
 code BYTE *UserInterfaceHDRGetHDR10DCCTable(EnumHDR10LightEnhanceMaxMasteringLv enumHDR10LightEnhanceMaxMasteringLv)
 {
+    enumHDR10LightEnhanceMaxMasteringLv = enumHDR10LightEnhanceMaxMasteringLv;
+
 #if(_HDR10_LIGHT_ENHANCE_SUPPORT == _ON)
-    EnumHDR10LightEnhanceType enumHDR10LightEnhanceType = GET_OSD_HDR_LIGHT_ENHANCE();
-
-    if(enumHDR10LightEnhanceType != _HDR10_LIGHTENHANCE_NONE)
+    switch((EnumHDR10LightEnhanceType)GET_OSD_HDR_LIGHT_ENHANCE())
     {
-        switch(enumHDR10LightEnhanceType)
-        {
-            case _HDR10_LIGHTENHANCE_TYPE_120:
-                return tDCC_LIGHTENHANCE_120_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
-                break;
+        case _HDR10_LIGHTENHANCE_NONE:
+            break;
 
-            case _HDR10_LIGHTENHANCE_TYPE_140:
-                return tDCC_LIGHTENHANCE_140_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
-                break;
+        case _HDR10_LIGHTENHANCE_TYPE_120:
+            return tDCC_LIGHTENHANCE_120_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
 
-            case _HDR10_LIGHTENHANCE_TYPE_160:
-                return tDCC_LIGHTENHANCE_160_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
-                break;
+        case _HDR10_LIGHTENHANCE_TYPE_140:
+            return tDCC_LIGHTENHANCE_140_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
 
-            default:
-                return tDCC_LIGHTENHANCE_120_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
-                break;
-        }
+        case _HDR10_LIGHTENHANCE_TYPE_160:
+            return tDCC_LIGHTENHANCE_160_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
+
+        default:
+            return tDCC_LIGHTENHANCE_120_TABLE[enumHDR10LightEnhanceMaxMasteringLv];
     }
 #endif
+
     if(GET_OSD_COLOR_EFFECT() != _COLOREFFECT_USER)
     {
         return tDCC_HDR10_TABLE[GET_OSD_COLOR_EFFECT()];
     }
-    else
-    {
-        return tDCC_HDR10_TABLE[0];
-    }
 
-    enumHDR10LightEnhanceMaxMasteringLv = enumHDR10LightEnhanceMaxMasteringLv;
+    return tDCC_HDR10_TABLE[0];
 }
 #endif
 
@@ -323,26 +353,38 @@ code BYTE *UserInterfaceHDRGetHDR10ICMTable(void)
 }
 #endif
 
+#if((_HDR10_FIXED_POINT_TONEMAPPING_SUPPORT == _ON) || (_HDR10_USER_DEFINE_FIXED_POINT_TONEMAPPING_SUPPORT == _ON))
+//--------------------------------------------------
+// Description  : Get HDR10 Fixed Point Tone Mapping Status
+// Input Value  : None
+// Output Value : EnumHDR10FixedPointToneMappingStatus
+//--------------------------------------------------
+EnumHDR10FixedPointToneMappingStatus UserInterfaceHDRGetHDR10FixedPointTMStatus(void)
+{
+    return _HDR10_FIXED_POINT_TM_OFF;
+}
+#endif
+
+//--------------------------------------------------
+// Description  : Get HDR10 User assigned PCM Table Status. If status is on, please assigned PCM table addr & bank;
+// Input Value  : None
+// Output Value : StructHDR10UserAssignTable
+//--------------------------------------------------
+void UserInterfaceHDRGetHDR10UserAssignTable(StructHDR10Table *pstHDR10Table)
+{
+    pstHDR10Table->enumHDR10UserAssignTableStatus = _HDR10_USER_ASSIGNED_TABLE_OFF;
+}
 #endif // End of #if(_HDR10_SUPPORT == _ON)
 
 #if(_FREESYNC_II_SUPPORT == _ON)
 //--------------------------------------------------
-// Description  : None
-// Input Value  : None
+// Description  : Adjust SDR to FreeSync II flow
+// Input Value  : void
 // Output Value : None
 //--------------------------------------------------
-void UserInterfaceHDRFreeSyncIIProc(void)
+void UserInterfaceHDRAdjustFreeSyncIIProc(void)
 {
-    if(GET_FREESYNC_II_BACKLIGHT_CONTROL_ENABLE_SETTING() == _OFF)
-    {
-        UserAdjustBacklight(_BACKLIGHT_MAX());
-    }
-    else
-    {
-        UserAdjustBacklight(GET_FREESYNC_II_BACKLIGHT_CONTROL_RATIO_SETTING());
-    }
 }
 #endif // End of #if(_FREESYNC_II_SUPPORT == _ON)
-
 #endif // End of #if(_ULTRA_HDR_SUPPORT == _ON)
 
