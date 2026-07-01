@@ -224,8 +224,8 @@ code StructOsdUserDataType g_stOSDDefaultData =		//  OSD Default Data
 	*/
 	(WORD)_DEFAULT_BACKLIGHT_MAX, // 0x0800,                   // usBackLight;	// (4095)
 	_LINEAR,					  // BYTE b1BacklightControl : 1;	
-    _OSD_H_POS_MIN,//64,//62,//50,//55,//50,                       // ucOsdHPos;	
-    _OSD_V_POS_MIN,//50,//4,//50,                       // ucOsdVPos;	
+    100,//64,//62,//50,//55,//50,                       // ucOsdHPos;	
+    100,//50,//4,//50,                       // ucOsdVPos;	
     30,//10,                       // ucOsdTimeout;		
     0,                        // ucAspectOriginRatio
     20,//30,//0,                        // ucTransparency;	

@@ -35,7 +35,7 @@
 #define _RGB_BLUE                               0,    68, 166
 #define _RGB_YELLOW                             255, 255,   0
 #define _RGB_GRAY                               96,  96,   96
-#define _RGB_DARKGRAY                           0,  0,   0
+#define _RGB_DARKGRAY                           10,  10,   10
 #define _RGB_BLUE_120                           0,   30,  120
 #define _RGB_ORANGE                             255, 196,   0
 #define _RGB_LIGHTBLUE                          208, 208, 208

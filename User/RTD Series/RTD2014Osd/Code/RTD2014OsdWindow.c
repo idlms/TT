@@ -153,7 +153,7 @@ void OsdWindowDrawingByFont(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth,
     {
         usVstart = ((ucRow) * 18);
     }
-    usVend = usVstart + (18 * (ucHeight - 2 ));
+    usVend = usVstart + (18 * (ucHeight));
 
     OsdWindowDrawing(ucWindow, usHstart, usVstart, usHend, usVend, ucColor);
 	

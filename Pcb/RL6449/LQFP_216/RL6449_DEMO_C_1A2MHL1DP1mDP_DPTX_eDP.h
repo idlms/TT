@@ -35,7 +35,7 @@
 //--------------------------------------------------
 // A0 Input Port
 //--------------------------------------------------
-#define _A0_INPUT_PORT_TYPE                     _A0_NO_PORT 
+#define _A0_INPUT_PORT_TYPE                     _A0_VGA_PORT
 
 #define _A0_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE// _EDID_SIZE_NONE(External EEPROM)//_EDID_SIZE_128(Embedded EDID )
 #define _A0_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
@@ -67,16 +67,18 @@
 //--------------------------------------------------
 #define _D2_INPUT_PORT_TYPE                     _D2_HDMI_PORT
 #define _D2_DDC_CHANNEL_SEL                     _DDC2
-#define _D2_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256//_EDID_SIZE_NONE	// _EDID_SIZE_NONE(External EEPROM)//_EDID_SIZE_256(Embedded EDID )
+#define _D2_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE
 #define _D2_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_USER
+#define _D2_EDID_EXTERNAL_EEPROM_MAX_SIZE       _EDID_EEPROM_SIZE_256
 
 //--------------------------------------------------
 // D3 Input Port
 //--------------------------------------------------
 #define _D3_INPUT_PORT_TYPE                     _D3_HDMI_PORT
 #define _D3_DDC_CHANNEL_SEL                     _DDC3
-#define _D3_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256//_EDID_SIZE_NONE	// _EDID_SIZE_NONE(External EEPROM)//_EDID_SIZE_256(Embedded EDID )
+#define _D3_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE
 #define _D3_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_USER
+#define _D3_EDID_EXTERNAL_EEPROM_MAX_SIZE       _EDID_EEPROM_SIZE_256
 												
 /////////////////////////////
 // Search Group & Priority //
@@ -326,7 +328,7 @@
 //-----------------------------------------------
 // Macro of 12V to 5V Regulator for MyDP or MHL
 //-----------------------------------------------
-#define bREGULATOR_5V                           (MCU_FE1B_PORT73_PIN_REG) // Pin_160, P7.3 ( SMPS ) 
+#define bREGULATOR_5V                           (MCU_FE22_PORT82_PIN_REG) // Pin_180, P8.2
 
 #define _REGULATOR_5V_ON                        0
 #define _REGULATOR_5V_OFF                       1
@@ -343,6 +345,11 @@
 //--------------------------------------------------
 // Macro of Panel Power Up/Down
 //--------------------------------------------------
+// #define bPANELPOWER                             (MCU_FE19_PORT71_PIN_REG) // Pin_158, P7.1
+
+// #define _PANEL_CONTROL_ON                       0
+// #define _PANEL_CONTROL_OFF                      1
+
 #define bPANELPOWER                             (MCU_FE24_PORT84_PIN_REG) // Pin_184, P8.4 
 
 #define _PANEL_CONTROL_ON                       1//0	// TCON VCC
@@ -632,10 +639,10 @@
 //-----------------------------------------------
 // Macro of PCB External Audio AMP Control	
 //-----------------------------------------------
-#define bPCBAMPMUTECONTROL                      (MCU_FE2D_PORT95_PIN_REG)	// Pin_199, P9.5	
+#define bPCBAMPMUTECONTROL                      (MCU_FE13_PORT63_PIN_REG)	// Pin_199, P9.5	
 
-#define _AMP_MUTE_ON                            1
-#define _AMP_MUTE_OFF                           0
+#define _AMP_MUTE_ON                            0
+#define _AMP_MUTE_OFF                           1
 
 #define PCB_AMP_MUTE(x)                         {\
                                                     bPCBAMPMUTECONTROL = (x);\
@@ -799,11 +806,11 @@
 //--------------------------------------------------
 // Macro of LED On/Off
 //--------------------------------------------------
-#define bLED1                                   (MCU_FE2B_PORT93_PIN_REG) // Pin_197, P9.3 // RED	
-#define bLED2                                   (MCU_FE29_PORT91_PIN_REG) // Pin_195, P9.1 // GREEN 
+#define bLED2                                   (MCU_FE28_PORT90_PIN_REG) // Pin_184, P8.4
+#define bLED1                                   (MCU_FE28_PORT90_PIN_REG) // Pin_194, P9.0
 
-#define _LED_ON                                 0
-#define _LED_OFF                                1
+#define _LED_ON                                 1
+#define _LED_OFF                                0
 
 #define PCB_LED_AC_ON_INITIAL()                 {\
                                                     bLED1 = _LED_OFF;\
@@ -811,18 +818,18 @@
                                                 }
 
 #define PCB_LED_ACTIVE()                        {\
-                                                    bLED1 = _LED_OFF;\
-                                                    bLED2 = _LED_ON;\
-                                                }
-                                                
-#define PCB_LED_IDLE()                          {\
                                                     bLED1 = _LED_ON;\
                                                     bLED2 = _LED_OFF;\
                                                 }
 
+#define PCB_LED_IDLE()                          {\
+                                                    bLED1 = _LED_OFF;\
+                                                    bLED2 = _LED_ON;\
+                                                }
+
 #define PCB_LED_POWER_SAVING()                  {\
-                                                    bLED1 = _LED_ON;\
-                                                    bLED2 = _LED_OFF;\
+                                                    bLED1 = _LED_OFF;\
+                                                    bLED2 = _LED_ON;\
                                                 }
 
 #define PCB_LED_ON()                            {\
@@ -856,6 +863,7 @@
                                                     bLED1 = _LED_OFF;\
                                                     bLED2 = _LED_OFF;\
                                                 }
+
 
 
 #define PCB_LED_TYPE_RED()						{\
@@ -893,7 +901,6 @@
 #define PCB_ADKEY2()                            (AD_KEY2)
 
 
-
 //--------------------------------------
 
 /*
@@ -909,7 +916,31 @@ _UP_KEY_MASK	: 0x78
 _EXIT_KEY_MASK	: 0xD0
 
 */
-
+#if 0
+#define PCB_KEY_STATE(ucV0, ucV1,\
+                      ucV2, ucV3, ucKeyState)   {\
+                                                    if((0x88 <= (ucV1)) && ((ucV1) < 0x95))\
+                                                    {\
+                                                        (ucKeyState) |= _UP_KEY_MASK;\
+                                                    }\
+                                                    if((0x75 <= (ucV1)) && ((ucV1) < 0x85))\
+                                                    {\
+                                                        (ucKeyState) |= _DOWN_KEY_MASK;\
+                                                    }\
+                                                    if((0x00 <= (ucV1)) && ((ucV1) < 0x10))\
+                                                    {\
+                                                        (ucKeyState) |= _POWER_KEY_MASK;\
+                                                    }\
+                                                    if((0x85 <= (ucV2)) && ((ucV2) < 0xa0))\
+                                                    {\
+                                                        (ucKeyState) |= _MENU_KEY_MASK;\
+                                                    }\
+                                                    if((0x77 <= (ucV2)) && ((ucV2) < 0x84))\
+                                                    {\
+                                                        (ucKeyState) |= _SELECT_KEY_MASK;\
+                                                    }\
+                                                }
+#else
 #define PCB_KEY_STATE(ucV0, ucV1,\
                       ucV2, ucV3, ucKeyState)   {\
                                                     if((0x0 <= (ucV1)) && ((ucV1) < 0x18))\
@@ -941,7 +972,7 @@ _EXIT_KEY_MASK	: 0xD0
                                                         (ucKeyState) |= _SELECT_KEY_MASK;\
                                                     }\
                                                 }
-
+#endif
 //-----------------------------------------------
 // Macro of DIP SWITCH
 //-----------------------------------------------                                              

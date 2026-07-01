@@ -39,13 +39,13 @@
 #define _BLACK_LEVEL_THRESHOLD                   (32)
 #define _USER_ADJUST_OFFSET_RANGE                (5)
 
-#if(_PANEL_ADC_OFFSET_BIAS < 0)
-#undef _PANEL_ADC_OFFSET_BIAS
-#define _PANEL_ADC_OFFSET_BIAS                   (0)
-#elif(_PANEL_ADC_OFFSET_BIAS > _USER_ADJUST_OFFSET_RANGE)
-#undef _PANEL_ADC_OFFSET_BIAS
-#define _PANEL_ADC_OFFSET_BIAS                   (_USER_ADJUST_OFFSET_RANGE)
-#endif
+// #if(_PANEL_ADC_OFFSET_BIAS < 0)
+// #undef _PANEL_ADC_OFFSET_BIAS
+// #define _PANEL_ADC_OFFSET_BIAS                   (0)
+// #elif(_PANEL_ADC_OFFSET_BIAS > _USER_ADJUST_OFFSET_RANGE)
+// #undef _PANEL_ADC_OFFSET_BIAS
+// #define _PANEL_ADC_OFFSET_BIAS                   (_USER_ADJUST_OFFSET_RANGE)
+// #endif
 
 #define GET_AUTO_RESULT_WORD2()                  (ScalerGetWord(&g_stRegVgaAuto.uc_14_AUTO_PHASE_3))
 #define GET_AUTO_RESULT_WORD1()                  (ScalerGetWord(&g_stRegVgaAuto.uc_15_AUTO_PHASE_2))

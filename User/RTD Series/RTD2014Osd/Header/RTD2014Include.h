@@ -3151,9 +3151,9 @@ typedef enum
 //--------------------------------------------------
 
 #define _OSD_MAIN_MENU_WIDTH 44 + 2 + 5 + 5 // (14+22+8 + 2)	
-#define _OSD_MAIN_MENU_HEIGHT 19
+#define _OSD_MAIN_MENU_HEIGHT 12//19
 
-#define _MENU_SECTION_0_WIDTH 14 + 5
+#define _MENU_SECTION_0_WIDTH 10//14 + 5
 #define _MENU_SECTION_1_WIDTH 21
 #define _MENU_SECTION_2_WIDTH 8
 
@@ -3286,22 +3286,22 @@ typedef enum
 #define _SLIDER_0_ROW                               16
 #define _SLIDER_0_COL                               11
 
-//#define _ITEM_0                                     0
-#define _ITEM_1                                     0
-#define _ITEM_2                                     1
-#define _ITEM_3                                     2
-#define _ITEM_4                                     3
-#define _ITEM_5                                     4
-#define _ITEM_6                                     5
-#define _ITEM_7                                     6
-#define _ITEM_8                                     7
-#define _ITEM_9                                     8
-#define _ITEM_10                                    9
-#define _ITEM_11                                    10
-#define _ITEM_12                                    11
-#define _ITEM_13                                    12
-#define _ITEM_14                                    13
-#define _ITEM_15                                    14
+#define _ITEM_0                                     0
+#define _ITEM_1                                     1
+#define _ITEM_2                                     2
+#define _ITEM_3                                     3
+#define _ITEM_4                                     4
+#define _ITEM_5                                     5
+#define _ITEM_6                                     6
+#define _ITEM_7                                     7
+#define _ITEM_8                                     8
+#define _ITEM_9                                     9
+#define _ITEM_10                                    10
+#define _ITEM_11                                    11
+#define _ITEM_12                                    12
+#define _ITEM_13                                    13
+#define _ITEM_14                                    14
+#define _ITEM_15                                    15
 
 
 #define _NONE_ITEM                                  16

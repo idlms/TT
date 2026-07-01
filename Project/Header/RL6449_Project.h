@@ -49,16 +49,16 @@
 #define _CUSTOMER_AWERONET              0x0A
 
 #define _CUSTOMER_MEDICAL				0xFF
-#define _CUSTOMER_TYPE                  _CUSTOMER_MEDICAL//_CUSTOMER_TECNNIT//_CUSTOMER_TECNNIT
+#define _CUSTOMER_TYPE                  _CUSTOMER_STANDARD//_CUSTOMER_TECNNIT//_CUSTOMER_TECNNIT
 
-#define _MEDICAL_SURGICAL                _ON //BT709
+#define _MEDICAL_SURGICAL                _OFF //BT709
 
 //--------------------------------------------------------------------------
 //--------------------------------------------------
 // Version Code of NVRam
 //--------------------------------------------------
-#define _CHECKSUM                                   0x1E	//  EEPROM Checksum	 
-#define _VERSION_CODE                               0x2F
+#define _CHECKSUM                                   0x10	//  EEPROM Checksum	 
+#define _VERSION_CODE                               0x20
 //--------------------------------------------------
 // Pcb Option
 //--------------------------------------------------
@@ -454,6 +454,12 @@
 /////////
 // VGA //
 /////////
+//--------------------------------------------------
+// VGA YPBPR Option
+//--------------------------------------------------
+#define _YPBPR_SUPPORT                                          _ON
+#define _SOG_SUPPORT                                            _ON
+#define _VGA_COMPOSITE_SUPPORT                                  _ON
 
 //--------------------------------------------------
 // VGA Mode Search condition reference by picture width Option

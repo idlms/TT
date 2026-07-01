@@ -33,11 +33,11 @@
 // 0 ~ 2 (0: P1D1i<I>, 1: P1D1o<PP>, 2: P1D1o<OD> & d2_hdmi_hpd_int<I>)
 
 // DDCSCL_VGA => NC
-#define _PIN_65                                 (0 & 0x0F) // Page 10-0x02[2:0] 8->0
+#define _PIN_65                                 (8 & 0x0F) // Page 10-0x02[2:0]
 // 0 ~ 8 (0: P1D2i<I>, 1: P1D2o<PP>, 2: P1D2o<OD>, 8: ddcsclvga<OD>)
 
 // DDCSDA_VGA => NC
-#define _PIN_66                                 (0 & 0x0F) // Page 10-0x03[2:0] 8->0
+#define _PIN_66                                 (8 & 0x0F) // Page 10-0x03[2:0]
 // 0 ~ 8 (0: P1D3i<I>, 1: P1D3o<PP>, 2: P1D3o<OD>, 8: ddcsdavga<I>)
 
 // VGA_CABLE_DET => AUDIO DET
@@ -117,11 +117,11 @@
 // 0 ~ 5 (0: P4D4i<I>, 1: P4D4o<PP>, 2: P4D4o<OD>, 3: audio_houtr, 4: sd3, 5: spdif3)
 
 // LINE_INL
-#define _PIN_113_OFF_REGION                     (0 & 0x0F) // Page 10-0x15[2:0]
+#define _PIN_113_OFF_REGION                     (3 & 0x0F) // Page 10-0x15[2:0]
 // 0 ~ 4 (0: P4D5i<I>, 1: P4D5o<PP>, 2: P4D5o<OD>, 3: line_inl, 4: ws)
 
 // LINE_INR
-#define _PIN_114_OFF_REGION                     (0 & 0x0F) // Page 10-0x16[2:0]
+#define _PIN_114_OFF_REGION                     (3 & 0x0F) // Page 10-0x16[2:0]
 // 0 ~ 4 (0: P4D6i<I>, 1: P4D6o<PP>, 2: P4D6o<OD>, 3: line_inr, 4: sck)
 
 // AUDIO_REF
@@ -171,12 +171,12 @@
 //        8: iicsda1)
 
 // ADJBACKLITE
-#define _PIN_151_OFF_REGION                     (4 & 0x0F) // Page 10-0x22[2:0]
+#define _PIN_151_OFF_REGION                     (3 & 0x0F) // Page 10-0x22[2:0]
 // 0 ~ 5 (0: P6D2i<I>, 1: P6D2o<PP>, 2: P6D2o<OD>, 3: pwm2<PP>, 4: pwm2<OD>,
 //        5: tcon[3])
 
 // 8b_10b_V-by-One
-#define _PIN_152_OFF_REGION                     (2 & 0x0F) // Page 10-0x23[2:0] 0->2
+#define _PIN_152_OFF_REGION                     (1 & 0x0F) // Page 10-0x23[2:0] 0->2
 // 0 ~ 7 (0: P6D3i<I>, 1: P6D3o<PP>, 2: P6D3o<OD>, 3: pwm5<PP>, 4: pwm5<OD>,
 //        5: tcon[2],  6:test4b_out0, 7: test4b_out1)
 
@@ -189,11 +189,11 @@
 // 0 ~ 8 (0: P6D5i<I>, 1: P6D5o<PP>, 2: P6D5o<OD>, 3: int0, 4: t1, 8: usb_spi_si)
 
 // EVDD_DET
-#define _PIN_155_OFF_REGION                     (0 & 0x0F) // Page 10-0x26[2:0]
+#define _PIN_155_OFF_REGION                     (1 & 0x0F) // Page 10-0x26[2:0]
 // 0 ~ 8 (0: P6D6i<I>, 1: P6D6o<PP>, 2: P6D6o<OD>, 3: int1, 4: t2, 8: usb_spi_so)
 
 // ERROR_DET
-#define _PIN_156_OFF_REGION                     (0 & 0x0F) // Page 10-0x27[2:0]
+#define _PIN_156_OFF_REGION                     (1 & 0x0F) // Page 10-0x27[2:0]
 // 0 ~ 8 (0: P6D7i<I>, 1: P6D7o<PP>, 2: P6D7o<OD>, 3: irqb, 4: ttl_dvs,
 //        8: usb_spi_ceb0)
 
@@ -207,12 +207,12 @@
 //        6: test4b_out1)
 
 // A_SCL => AC_DET_REV => OFF_RS
-#define _PIN_159_OFF_REGION                     (0 & 0x0F) // Page 10-0x2A[2:0]	1->0
+#define _PIN_159_OFF_REGION                     (2 & 0x0F) // Page 10-0x2A[2:0]
 // 0 ~ 6 (0: P7D2i<I>, 1: P7D2o<PP>, 2: P7D2o<OD>, 3: sck, 4: tcon[13],
 //        5: test4b_out2, 6: test4b_out3)
 
 // A_SDA => OFF_RS => X00001 (SMPS ON)
-#define _PIN_160_OFF_REGION                     (1 & 0x0F) // Page 10-0x2B[2:0] 0->1
+#define _PIN_160_OFF_REGION                     (2 & 0x0F) // Page 10-0x2B[2:0]
 // 0 ~ 7 (0: P7D3i<I>, 1: P7D3o<PP>, 2: P7D3o<OD>, 3: mck, 4: test4b_out0,
 //        5: test4b_out1, 6:test4b_out2, 7:test4b_out3)
 
@@ -222,22 +222,22 @@
 //        5: spdif0, 6: sd0)
 
 // FAN_ON = > GPIO1
-#define _PIN_163_OFF_REGION                     (0 & 0x0F) // Page 10-0x2D[2:0] 1->0
+#define _PIN_163_OFF_REGION                     (1 & 0x0F) // Page 10-0x2D[2:0] 1->0
 // 0 ~ 5 (0: P7D5i<I>, 1: P7D5o<PP>, 2: P7D5o<OD>, 3: tcon[5], 4: spdif1,
 //        5: sd1)
 
 // AUDIO_MUTE  => GPIO2
-#define _PIN_164_OFF_REGION                     (0 & 0x0F) // Page 10-0x2E[2:0]	2->0
+#define _PIN_164_OFF_REGION                     (1 & 0x0F) // Page 10-0x2E[2:0]	2->0
 // 0 ~ 6 (0: P7D6i<I>, 1: P7D6o<PP>, 2: P7D6o<OD>, 3: tcon[1], 4: spdif2,
 //        5: sd2, 6: cryclk)
 
 // AMP_SHUTDOWN => GPIO3
-#define _PIN_165_OFF_REGION                     (0 & 0x0F) // Page 10-0x2F[2:0]	1->0
+#define _PIN_165_OFF_REGION                     (1 & 0x0F) // Page 10-0x2F[2:0]	1->0
 // 0 ~ 7 (0: P7D7i<I>, 1: P7D7o<PP>, 2: P7D7o<OD>, 3: tcon[6], 4: spdif3, 5: sd3,
 //        6: disp_frame_start_in, 7: disp_frame_start_out)
 
 // NC => PTN3460_PWR_DOWN => GPIO4
-#define _PIN_166_OFF_REGION                     (0 & 0x0F) // Page 10-0x30[2:0]	1->0
+#define _PIN_166_OFF_REGION                     (2 & 0x0F) // Page 10-0x30[2:0]	1->0
 // 0 ~ 6 (0: P8D0i<I>, 1: P8D0o<PP>, 2: P8D0o<OD>, 3: PWM3<PP>, 4: PWM3<OD>,
 //        5: TCON[8], 6: m1_idomain_vs_out)
 
@@ -247,7 +247,7 @@
 //        5: test4b_out1, 6: test4b_out2, 7:test4b_out3)
 
 // MHL_5V_EN => => PWR_CTRL => NC
-#define _PIN_180                                (0 & 0x0F) // Page 10-0x32[2:0] 2->0
+#define _PIN_180                                (1 & 0x0F) // Page 10-0x32[2:0] 2->0
 // 0 ~ 7 (0: P8D2i<I>, 1: P8D2o<PP>, 2: P8D2o<OD>, 3: ttl_den, 4: Test4b_out0,
 //        5: Test4b_out1, 6: Test4b_out2, 7: Test4b_out3)
 
@@ -262,7 +262,7 @@
 //        5: tcon[11], 6: clko)
 
 // onBACKLITE => BACKLIGHT_ON
-#define _PIN_185                                (2 & 0x0F) // Page 10-0x35[2:0]
+#define _PIN_185                                (1 & 0x0F) // Page 10-0x35[2:0]
 // 0 ~ 6 (0: P8D5i<I>, 1: P8D5o<PP>, 2: P8D5o<OD>, 3: pwm1<PP>, 4: pwm1<OD>,
 //        5: tcon[7], 6: m1_idomain_den_out)
 
@@ -276,12 +276,12 @@
 //        4: Test4b_out0, 5: Test4b_out1, 6: Test4b_out2, 7: Test4b_out3)
 
 // KP_LED2 => IRDA
-#define _PIN_194                                (6 & 0x0F) // Page 10-0x38[2:0]
+#define _PIN_194                                (1 & 0x0F) // Page 10-0x38[2:0]
 // 0 ~ 6 (0: P9D0i<I>, 1: P9D0o<PP>, 2: P9D0o<OD>, 3: pwm2<PP>, 4: pwm2<OD>,
 //        5: tcon[6], 6: irda_in)
 
 // VBUS_EN_2 => LED_B => LED2
-#define _PIN_195                                (2 & 0x0F) // Page 10-0x39[2:0]
+#define _PIN_195                                (0 & 0x0F) // Page 10-0x39[2:0]
 // 0 ~ 6 (0: P9D1i<I>, 1: P9D1o<PP>, 2: P9D1o<OD>, 3: PWM4<PP>, 4: PWM4<OD>
 //        5: tcon[7], 6: pwm_out)
 
@@ -291,7 +291,7 @@
 //        5: test4b_out1, 6:test4b_out2, 7:test4b_out3)
 
 // HDMI_MHL_SEL_2 => EX_SDA => LED1
-#define _PIN_197                                (2 & 0x0F) // Page 10-0x3B[2:0]
+#define _PIN_197                                (0 & 0x0F) // Page 10-0x3B[2:0]
 // 0 ~ 7 (0: P9D3i<I>, 1: P9D3o<PP>, 2: P9D3o<OD>, 3: tcon[4], 4: test4b_out0
 //        5: test4b_out1, 6:test4b_out2, 7:test4b_out3)
 
@@ -311,7 +311,7 @@
 //        5: tcon[11], 8: iicscl2)
 
 // VBUS_EN_3 => GPIO_EXT => EXT_I2C => NC
-#define _PIN_201                                (0 & 0x0F) // Page 10-0x3F[2:0]	8->0
+#define _PIN_201                                (1 & 0x0F) // Page 10-0x3F[2:0]
 // 0 ~ 8 (0: P9D7i<I>, 1: P9D7o<PP>, 2: P9D7o<OD>, 3: pwm3<PP>, 4: pwm3<OD>
 //        5: tcon[0], 8: iicsda2)
 

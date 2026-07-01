@@ -1587,10 +1587,11 @@ void OsdSourcePageDraw(void)
 
 void OsdMainMenuPageDraw(void)	
 {
+    int i;
 	if (GET_OSD_SERVICE())
     {
 #if (_DYNAMIC_OSD_WINDOW == _ON)
-        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH + _MENU_SECTION_1_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
 #endif
         OsdPropPutpString(ROW(_ITEM_1), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdService1, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
         OsdPropPutpString(ROW(_ITEM_2), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdService2, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
@@ -1601,7 +1602,8 @@ void OsdMainMenuPageDraw(void)
     else
     {
 #if (_DYNAMIC_OSD_WINDOW == _ON)
-        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(7 + 2), _CP_DARKGRAY);
+        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH + _MENU_SECTION_1_WIDTH), HEIGHT(7 + 2), _CP_DARKGRAY);
+        //OsdWindowDrawingByFont(_OSD_WINDOW_3, ROW(1), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH + _MENU_SECTION_1_WIDTH), HEIGHT(7), _CP_DARKGRAY);
 #endif
 
         OsdPropPutpString(ROW(_ITEM_1), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdInfo, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
@@ -1613,7 +1615,11 @@ void OsdMainMenuPageDraw(void)
         OsdPropPutpString(ROW(_ITEM_7), COL(_MENU_SECTION_0_STR_X), _PFONT_PAGE_0, tsOsdSetup, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
 
 
-        OsdMainMenuItemDraw();
+        //OsdMainMenuItemDraw();
+        for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
+            OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
+
+        OsdSubMenuPageDraw(_MENU_INFO);
     }
 	
 
@@ -1656,13 +1662,13 @@ void OsdMainMenuItemDraw(void)
 
     #else
     OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdClearText, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-    if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_D56)
+    if (GET_COLOR_TEMP_TYPE() == _CT_D56)
         OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempD56, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-    else if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_D65)
+    else if (GET_COLOR_TEMP_TYPE() == _CT_D65)
         OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempD65, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-    else if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_D93)
+    else if (GET_COLOR_TEMP_TYPE() == _CT_D93)
         OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempD93, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-    else if (GET_COLOR_TEMP_TYPE(GET_OSD_SELECT_REGION()) == _CT_USER)
+    else if (GET_COLOR_TEMP_TYPE() == _CT_USER)
         OsdPropPutpStringRight(ROW(_ITEM_4), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdTempUser, COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
     #endif
     // OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_0_SUB_STR_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_0, tsOsdClearText, COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
@@ -3014,7 +3020,8 @@ void OsdDispMainMenu(void)
     ScalerOsdMapRotation(GET_OSD_ROTATE_STATUS(), _ENABLE, HEIGHT(_OSD_MAIN_MENU_HEIGHT), _DISABLE, 0, _ENABLE);
 #endif
 
-    OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    //OsdFuncBlending(_OSD_TRANSPARENCY_ONLY_WINDOW);
+    OsdFuncBlending(_OSD_TRANSPARENCY_DISABLE);
     OsdFuncTransparency(GET_OSD_TRANSPARENCY_STATUS());
 
     // Adjust Color Palette
