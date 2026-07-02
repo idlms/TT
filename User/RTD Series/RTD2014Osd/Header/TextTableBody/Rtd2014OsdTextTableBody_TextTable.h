@@ -781,21 +781,37 @@ BYTE code tsOsdGammaRC3[] =
 _R_,_C_,_3_,_END_,
 _R_,_C_,_3_,_END_,
 };
+// BYTE code tsOsdTempD56[] =
+// {
+// _C_,_I_,_E_,_,_D_,_5_,_6_,_END_,
+// _C_,_I_,_E_,_,_D_,_5_,_6_,_END_,
+// };
+// BYTE code tsOsdTempD65[] =
+// {
+// _C_,_I_,_E_,_,_D_,_6_,_5_,_END_,
+// _C_,_I_,_E_,_,_D_,_6_,_5_,_END_,
+// };
+// BYTE code tsOsdTempD93[] =
+// {
+// _J_,_P_,_,_D_,_9_,_3_,_END_,
+// _J_,_P_,_,_D_,_9_,_3_,_END_,
+// };
 BYTE code tsOsdTempD56[] =
 {
-_C_,_I_,_E_,_,_D_,_5_,_6_,_END_,
-_C_,_I_,_E_,_,_D_,_5_,_6_,_END_,
+_W_0,_W_1,_A_,_R_,_M_,_END_,
+_W_0,_W_1,_A_,_R_,_M_,_END_,
 };
 BYTE code tsOsdTempD65[] =
 {
-_C_,_I_,_E_,_,_D_,_6_,_5_,_END_,
-_C_,_I_,_E_,_,_D_,_6_,_5_,_END_,
+_N_,_O_,_R_,_M_,_A_,_L_,_END_,
+_N_,_O_,_R_,_M_,_A_,_L_,_END_,
 };
 BYTE code tsOsdTempD93[] =
 {
-_J_,_P_,_,_D_,_9_,_3_,_END_,
-_J_,_P_,_,_D_,_9_,_3_,_END_,
+_C_,_O_,_L_,_D_,_END_,
+_C_,_O_,_L_,_D_,_END_,
 };
+
 BYTE code tsOsdBT709[] =
 {
 _B_,_T_,_,_7_,_0_,_9_,_END_,
@@ -1001,6 +1017,14 @@ _V_,_G_,_A_,_END_,
 _V_,_G_,_A_,_END_,
 };
 
+BYTE code tsOsdSourceDP[] =
+{
+//_D_,_0_,_,_COLON_,_,_D_,_P_,_END_,
+//_D_,_0_,_,_COLON_,_,_D_,_P_,_END_,
+_D_,_P_,_END_,
+_D_,_P_,_END_,
+};
+
 BYTE code tsOsdSourceD0DP2[] =
 {
 //_D_,_0_,_,_COLON_,_,_D_,_P_,_END_,
@@ -1024,6 +1048,13 @@ BYTE code tsOsdMstD1DP1[] =
 {
 _D_,_P_,_1_,_END_,
 _D_,_P_,_1_,_END_,
+};
+BYTE code tsOsdSourceHDMI[] =
+{
+//_D_,_3_,_,_COLON_,_,_H_,_D_,_M_,_I_,_END_,
+//_D_,_3_,_,_COLON_,_,_H_,_D_,_M_,_I_,_END_,
+_H_,_D_,_M_,_I_,_END_,
+_H_,_D_,_M_,_I_,_END_,
 };
 
 BYTE code tsOsdSourceD2HDMI2[] =

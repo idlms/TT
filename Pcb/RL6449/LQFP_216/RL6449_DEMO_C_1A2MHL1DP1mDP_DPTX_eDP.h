@@ -37,7 +37,7 @@
 //--------------------------------------------------
 #define _A0_INPUT_PORT_TYPE                     _A0_VGA_PORT
 
-#define _A0_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE// _EDID_SIZE_NONE(External EEPROM)//_EDID_SIZE_128(Embedded EDID )
+#define _A0_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_128// _EDID_SIZE_NONE(External EEPROM)//_EDID_SIZE_128(Embedded EDID )
 #define _A0_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
 
 //--------------------------------------------------
@@ -46,18 +46,18 @@
 #define _D0_INPUT_PORT_TYPE                     _D0_DP_PORT
 #define _D0_DDC_CHANNEL_SEL                     _DDC0
 #define _D0_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256
-#define _D0_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_USER
-#define _D0_DP_CONNECTOR_TYPE                   _DP_CONNECTOR_MINI
+#define _D0_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
+#define _D0_DP_CONNECTOR_TYPE                   _DP_CONNECTOR_NORMAL
 #define _D0_DP_LINK_CLK_RATE                    _DP_HIGH_SPEED2_540MHZ
 #define _D0_DP_MAIN_LINK_LANES                  _DP_FOUR_LANE
 
 //--------------------------------------------------
 // D1 Input Port
 //--------------------------------------------------
-#define _D1_INPUT_PORT_TYPE                     _D1_DP_PORT
+#define _D1_INPUT_PORT_TYPE                     _D1_NO_PORT
 #define _D1_DDC_CHANNEL_SEL                     _DDC1
-#define _D1_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256
-#define _D1_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_USER
+#define _D1_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE
+#define _D1_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
 #define _D1_DP_CONNECTOR_TYPE                   _DP_CONNECTOR_NORMAL
 #define _D1_DP_LINK_CLK_RATE                    _DP_HIGH_SPEED2_540MHZ
 #define _D1_DP_MAIN_LINK_LANES                  _DP_FOUR_LANE
@@ -67,8 +67,8 @@
 //--------------------------------------------------
 #define _D2_INPUT_PORT_TYPE                     _D2_HDMI_PORT
 #define _D2_DDC_CHANNEL_SEL                     _DDC2
-#define _D2_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE
-#define _D2_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_USER
+#define _D2_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256
+#define _D2_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
 #define _D2_EDID_EXTERNAL_EEPROM_MAX_SIZE       _EDID_EEPROM_SIZE_256
 
 //--------------------------------------------------
@@ -76,8 +76,8 @@
 //--------------------------------------------------
 #define _D3_INPUT_PORT_TYPE                     _D3_HDMI_PORT
 #define _D3_DDC_CHANNEL_SEL                     _DDC3
-#define _D3_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_NONE
-#define _D3_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_USER
+#define _D3_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256
+#define _D3_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
 #define _D3_EDID_EXTERNAL_EEPROM_MAX_SIZE       _EDID_EEPROM_SIZE_256
 												
 /////////////////////////////
@@ -89,19 +89,18 @@
 //--------------------------------------------------
 #define _A0_INPUT_PORT_GROUP                    _INPUT_PORT_GROUP_0
 #define _D0_INPUT_PORT_GROUP                    _INPUT_PORT_GROUP_0
-#define _D1_INPUT_PORT_GROUP                    _INPUT_PORT_GROUP_0
+#define _D1_INPUT_PORT_GROUP                    _INPUT_PORT_GROUP_NONE
 #define _D2_INPUT_PORT_GROUP                    _INPUT_PORT_GROUP_0
 #define _D3_INPUT_PORT_GROUP                    _INPUT_PORT_GROUP_0
 
 //--------------------------------------------------
 // Input Port Search Priority Define (Must Start From Valid Port)
 //--------------------------------------------------
-#define _INPUT_PORT_SEARCH_PRI_4                _A0_INPUT_PORT	// Change VGA Priority 0->5
-#define _INPUT_PORT_SEARCH_PRI_0                _D0_INPUT_PORT
-#define _INPUT_PORT_SEARCH_PRI_1                _D1_INPUT_PORT
+#define _INPUT_PORT_SEARCH_PRI_0                _A0_INPUT_PORT	// Change VGA Priority 0->5
+#define _INPUT_PORT_SEARCH_PRI_1                _D0_INPUT_PORT
 #define _INPUT_PORT_SEARCH_PRI_2                _D2_INPUT_PORT
 #define _INPUT_PORT_SEARCH_PRI_3                _D3_INPUT_PORT
-
+//#define _INPUT_PORT_SEARCH_PRI_4                _D4_INPUT_PORT
 
 ////////////////////
 // V by One Panel //
@@ -603,8 +602,8 @@
 //-----------------------------------------------
 // External AMP PWM Setting
 #define PCB_PWM_SETTING()                       {\
-                                                    ScalerMcuPwmAdjustFrequency(_BACKLIGHT_PWM, 240);\
-													ScalerMcuPwmAdjustFrequency(_VOLUME_PWM, 240);\
+                                                    ScalerMcuPwmAdjustFrequency(_BACKLIGHT_PWM, GET_OSD_BACKLIGHT_FREQ());\
+													ScalerMcuPwmAdjustFrequency(_VOLUME_PWM, GET_OSD_BACKLIGHT_FREQ());\
                                                 }
 
 #if(_PWM_DUT_RESOLUTION == _PWM_8BIT)
@@ -650,10 +649,10 @@
 #define PCB_AMP_MUTE_DETECT()              		(bPCBAMPMUTECONTROL)
 	
 												
-#define bPCBAMPSHUTDOWNCONTROL                  (MCU_FE2D_PORT95_PIN_REG)	// Pin_199, P9.5	
+#define bPCBAMPSHUTDOWNCONTROL                  (MCU_FE13_PORT63_PIN_REG)	// Pin_199, P9.5	
 
-#define _AMP_SHUTDOWN_ON                        1
-#define _AMP_SHUTDOWN_OFF                       0
+#define _AMP_SHUTDOWN_ON                        0
+#define _AMP_SHUTDOWN_OFF                       1
 
 #define PCB_AMP_SHUTDOWN(x)                     {\
                                                     bPCBAMPSHUTDOWNCONTROL = (x);\
@@ -806,7 +805,7 @@
 //--------------------------------------------------
 // Macro of LED On/Off
 //--------------------------------------------------
-#define bLED2                                   (MCU_FE28_PORT90_PIN_REG) // Pin_184, P8.4
+#define bLED2                                   (MCU_FE28_PORT90_PIN_REG) // Pin_194, P9.0//(MCU_FE24_PORT84_PIN_REG) // Pin_184, P8.4
 #define bLED1                                   (MCU_FE28_PORT90_PIN_REG) // Pin_194, P9.0
 
 #define _LED_ON                                 1
@@ -903,19 +902,6 @@
 
 //--------------------------------------
 
-/*
-< ucV1 >
-_DOWN_KEY_MASK	: 0x08 
-_LEFT_KEY_MASK	: 0x78 ( VOL- )
-_MENU_KEY_MASK 	: 0xB0
-_RIGHT_KEY_MASK	: 0xD0 ( VOL+ )
-
-< ucV2 >
-_POWER_KEY_MASK	: 0x08 
-_UP_KEY_MASK	: 0x78 
-_EXIT_KEY_MASK	: 0xD0
-
-*/
 #if 0
 #define PCB_KEY_STATE(ucV0, ucV1,\
                       ucV2, ucV3, ucKeyState)   {\

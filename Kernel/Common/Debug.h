@@ -54,7 +54,7 @@
 #define _DEBUG_MESSAGE_MEMORY_PHASE_CAL             _OFF
 #define _DEBUG_MESSAGE_FRAME_SYNC                   _OFF
 #define _DEBUG_MESSAGE_FRC                          _OFF
-#define _DEBUG_MESSAGE_OSD                          _OFF
+#define _DEBUG_MESSAGE_OSD                          _ON
 #define _DEBUG_MESSAGE_IR                           _OFF
 #define _DEBUG_MESSAGE_USB_COMM                     _OFF
 #define _DEBUG_MESSAGE_USB_EHCI                     _OFF

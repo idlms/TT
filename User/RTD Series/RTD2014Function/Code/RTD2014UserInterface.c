@@ -896,7 +896,7 @@ void UserInterfaceTimerEventProc(EnumScalerTimerEventID enumEventID)
             ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_GO_TO_POWER_SAVING);
             ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_SHOW_NO_CABLE);
             ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_SHOW_NO_SIGNAL);
-
+            
             switch(GET_OSD_INPUT_PORT_OSD_ITEM())
             {   
             case _OSD_INPUT_AUTO:
@@ -913,6 +913,13 @@ void UserInterfaceTimerEventProc(EnumScalerTimerEventID enumEventID)
 
 
                 break;
+            case _OSD_INPUT_A0:
+                SET_FORCE_POW_SAV_STATUS(_FALSE);
+                SysSourceSwitchInputPort(_A0_INPUT_PORT);
+                SysSourceSetScanType(_SOURCE_SWITCH_FIXED_PORT);
+                SysModeSetResetTarget(_MODE_ACTION_RESET_TO_SEARCH);
+                break;
+
             case _OSD_INPUT_D0:
 
                 SET_FORCE_POW_SAV_STATUS(_FALSE);

@@ -2289,28 +2289,28 @@ void MenuInputSubExit(void)
 {
 	ClearFocus(_MENU_SECTION_1);
 	SET_OSD_STATE(_MENU_INPUT);
-	MenuSubMenuClear();
+	//MenuSubMenuClear();
 }
 
 void MenuPictureSubExit(void)	
 {
 	ClearFocus(_MENU_SECTION_1);
 	SET_OSD_STATE(_MENU_PICTURE);
-	MenuSubMenuClear();				
+	//MenuSubMenuClear();				
 }
 void MenuColorSubExit(void)		
 {
-	OsdMainMenuPageDraw();
+	//OsdMainMenuPageDraw();
 	ClearFocus(_MENU_SECTION_1);
 	SET_OSD_STATE(_MENU_COLOR);
-	MenuSubMenuClear();
+	//MenuSubMenuClear();
 }
 void MenuScreenSubExit(void)
 {
-	OsdMainMenuPageDraw();
+	//OsdMainMenuPageDraw();
 	ClearFocus(_MENU_SECTION_1);
 	SET_OSD_STATE(_MENU_SCREEN);
-	MenuSubMenuClear();
+	//MenuSubMenuClear();
 }
 
 //void MenuDisplaySubExit(void)		
@@ -2327,10 +2327,10 @@ void MenuScreenSubExit(void)
 //}
 void MenuAudioSubExit(void)		
 {
-	OsdMainMenuPageDraw();
+	//OsdMainMenuPageDraw();
 	ClearFocus(_MENU_SECTION_1);
 	SET_OSD_STATE(_MENU_AUDIO);
-	MenuSubMenuClear();
+	//MenuSubMenuClear();
 }
 //void MenuDpOptionSubExit(void)		
 //{
@@ -2342,7 +2342,7 @@ void MenuSetupSubExit(void)
 {
 	ClearFocus(_MENU_SECTION_1);
 	SET_OSD_STATE(_MENU_SETUP);
-	MenuSubMenuClear();
+	//MenuSubMenuClear();
 }
 #if(_ENABLE_MENU_VGA == _ON)	
 void MenuVgaSubExit(void)		
@@ -2618,11 +2618,8 @@ void MenuInputSource1Select(void)
 	#endif
 #endif
 */
-	if (GET_OSD_INPUT_PORT_OSD_ITEM() == _OSD_INPUT_AUTO)
-		SET_OSD_ITEM_INDEX(GET_OSD_INPUT_PORT_OSD_ITEM());
-	else
-		SET_OSD_ITEM_INDEX(GET_OSD_INPUT_PORT_OSD_ITEM() - 1);
 
+	SET_OSD_ITEM_INDEX(GET_OSD_INPUT_PORT_OSD_ITEM());
 	SetFocus(_MENU_SECTION_2, ROW_OFFSET + _ITEM_1 + GET_OSD_ITEM_INDEX());
 
 	SET_OSD_STATE(_MENU_INPUT_SOURCE1_ADJ);
@@ -3859,15 +3856,15 @@ void MenuSection3ItemSelect(void)
 		{
 		case _MENU_INPUT_SOURCE1_ADJ:
 			
-#if(_ENABLE_MENU_VGA != _ON)		
-		#if(_ENABLE_MENU_SOURCE_AUTO == _ON)	
-			if(g_usAdjustValue >= _OSD_INPUT_A0)g_usAdjustValue += 1; 
-		#else
-			if(g_usAdjustValue >= _OSD_INPUT_D0)g_usAdjustValue += 2; 
-		#endif
-#else
-			if(g_usAdjustValue >= _OSD_INPUT_A0)g_usAdjustValue += 1; 
-#endif	
+// #if(_ENABLE_MENU_VGA != _ON)		
+// 		#if(_ENABLE_MENU_SOURCE_AUTO == _ON)	
+// 			if(g_usAdjustValue >= _OSD_INPUT_A0)g_usAdjustValue += 1; 
+// 		#else
+// 			if(g_usAdjustValue >= _OSD_INPUT_D0)g_usAdjustValue += 2; 
+// 		#endif
+// #else
+// 			if(g_usAdjustValue >= _OSD_INPUT_A0)g_usAdjustValue += 1; 
+// #endif	
 
 /*
 			_OSD_INPUT_AUTO = 0,
@@ -3877,7 +3874,6 @@ void MenuSection3ItemSelect(void)
 			_OSD_INPUT_D2,	// HDMI2 4
 			_OSD_INPUT_D3,	// HDMI1 5
 */			
-
 			if(GET_OSD_INPUT_PORT_OSD_ITEM() != g_usAdjustValue)	
 			{
 				//SET_OSD_INPUT_PORT_OSD_ITEM(g_usAdjustValue);
@@ -4820,7 +4816,7 @@ void MenuSection3ItemUpDown(void)
 			break;
 #endif
 		case _MENU_SERVICE_D0NAME_ADJ:
-			if (GET_OSD_ITEM_INDEX() > _SOURCE_NAME_DP1)
+			if (GET_OSD_ITEM_INDEX() > _SOURCE_NAME_DP)
 				SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX() - 1);
 			else
 				SET_OSD_ITEM_INDEX(_SOURCE_NAME_PC);
@@ -4836,7 +4832,7 @@ void MenuSection3ItemUpDown(void)
 			SetFocus(_MENU_SECTION_2, ROW_OFFSET + _ITEM_5 + GET_OSD_ITEM_INDEX());
 			break;
 		case _MENU_SERVICE_D2NAME_ADJ:
-			if (GET_OSD_ITEM_INDEX() > _SOURCE_NAME_HDMI1)
+			if (GET_OSD_ITEM_INDEX() > _SOURCE_NAME_HDMI)
 				SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX() - 1);
 			else
 				SET_OSD_ITEM_INDEX(_SOURCE_NAME_PC2);
@@ -4844,7 +4840,7 @@ void MenuSection3ItemUpDown(void)
 			SetFocus(_MENU_SECTION_2, ROW_OFFSET + _ITEM_6 + GET_OSD_ITEM_INDEX());
 			break;
 		case _MENU_SERVICE_D3NAME_ADJ:
-			if (GET_OSD_ITEM_INDEX() > _SOURCE_NAME_HDMI1)
+			if (GET_OSD_ITEM_INDEX() > _SOURCE_NAME_HDMI)
 				SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX() - 1);
 			else
 				SET_OSD_ITEM_INDEX(_SOURCE_NAME_DVI);
@@ -9134,17 +9130,13 @@ void HotKeySourceChange(void)
 
 	ucPortTemp++;
 
-	if (ucPortTemp == _OSD_INPUT_A0)
-	{
-		ucPortTemp = _OSD_INPUT_D0;
-	}
-	else if (ucPortTemp > _OSD_INPUT_D3)
+	if (ucPortTemp > _OSD_INPUT_D3)
 	{
 		ucPortTemp = _OSD_INPUT_AUTO;
 	}
 
 	SET_OSD_INPUT_PORT_OSD_ITEM(ucPortTemp);
-	DebugMessageOsd("HotKeySourceChange", ucPortTemp);
+	//DebugMessageOsd("HotKeySourceChange", ucPortTemp);
 
 	SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
 	OsdDispOsdMessage(_OSD_DISP_INPUTSOURCE_CHANGE_MSG);
@@ -9169,61 +9161,49 @@ void MenuMainUpDown(void)
 		case _MENU_INFO:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_7);
 			SET_OSD_STATE(_MENU_SETUP);
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
-
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SETUP);
 			
 			break;
 		case _MENU_INPUT:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_1);
 			SET_OSD_STATE(_MENU_INFO);
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
-
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INFO);
 			
 			break;
 		case _MENU_PICTURE:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_2);
 			SET_OSD_STATE(_MENU_INPUT);
-			
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INPUT);
 			
 			break;
 		case _MENU_COLOR:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_3);
 			SET_OSD_STATE(_MENU_PICTURE);
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_PICTURE);
 			
 			break;
 		case _MENU_SCREEN:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_4);
 			SET_OSD_STATE(_MENU_COLOR);
-			
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_COLOR);
 			
 			break;
 		case _MENU_AUDIO:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_5);
 			SET_OSD_STATE(_MENU_SCREEN);
-			
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SCREEN);
 			
 			break;
 		case _MENU_SETUP:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_6);
 			SET_OSD_STATE(_MENU_AUDIO);
-			for(i=0; i<_OSD_MAIN_MENU_HEIGHT; i++)
-				OsdFuncClearOsd(ROW(i), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 1);	// Clear Item	
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_AUDIO);
 			
 			break;
@@ -9236,58 +9216,44 @@ void MenuMainUpDown(void)
 		case _MENU_INFO:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_2);
 			SET_OSD_STATE(_MENU_INPUT);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INPUT);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 		case _MENU_INPUT:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_3);
 			SET_OSD_STATE(_MENU_PICTURE);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_PICTURE);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 		case _MENU_PICTURE:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_4);
 			SET_OSD_STATE(_MENU_COLOR);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_COLOR);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 		case _MENU_COLOR:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_5);
 			SET_OSD_STATE(_MENU_SCREEN);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SCREEN);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 		case _MENU_SCREEN:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_6);
 			SET_OSD_STATE(_MENU_AUDIO);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_AUDIO);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 		case _MENU_AUDIO:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_7);
 			SET_OSD_STATE(_MENU_SETUP);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SETUP);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 		case _MENU_SETUP:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_1);
 			SET_OSD_STATE(_MENU_INFO);
-			OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BG_COLOR(_CP_DARKGRAY));
-			MenuSubMenuClear();
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INFO);
-			OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 			break;
 
 		}
@@ -9356,44 +9322,44 @@ void MenuServiceUpDown(void)
 
 void MenuInputSelect(void)
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_1);
 	SET_OSD_STATE(_MENU_INPUT_SOURCE1);
-	OsdSubMenuPageDraw(_MENU_INPUT);
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//OsdSubMenuPageDraw(_MENU_INPUT);
+	//OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 
 void MenuPictureSelect(void)	
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET+_ITEM_1);
 	SET_OSD_STATE(_MENU_PICTURE_BLACKLEVEL);
-	OsdSubMenuPageDraw(_MENU_PICTURE);				
+	//OsdSubMenuPageDraw(_MENU_PICTURE);				
 
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//sdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 void MenuColorSelect(void)	
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET+_ITEM_1);
 #if(_MEDICAL_SURGICAL == _ON)
 	SET_OSD_STATE(_MENU_COLOR_SURGICAL);
 	OsdSubMenuPageDraw(_MENU_COLOR);
 #else
 	SET_OSD_STATE(_MENU_COLOR_TEMPERATURE);
-	OsdSubMenuPageDraw(_MENU_COLOR);
+	//OsdSubMenuPageDraw(_MENU_COLOR);
 #endif
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 
 void MenuScreenSelect(void)
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_1);
 	SET_OSD_STATE(_MENU_SCREEN_OVERSCAN);
 
-	OsdSubMenuPageDraw(_MENU_SCREEN);
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//OsdSubMenuPageDraw(_MENU_SCREEN);
+	//OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 
 //void MenuDisplaySelect(void)	
@@ -9418,11 +9384,11 @@ void MenuScreenSelect(void)
 //}
 void MenuAudioSelect(void)	
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET+_ITEM_1);
 	SET_OSD_STATE(_MENU_AUDIO_INFO);
-	OsdSubMenuPageDraw(_MENU_AUDIO);
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//OsdSubMenuPageDraw(_MENU_AUDIO);
+	//OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 //void MenuDpOptionSelect(void)	
 //{
@@ -9432,18 +9398,18 @@ void MenuAudioSelect(void)
 //}
 void MenuSetupSelect(void)	
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_1);
 	SET_OSD_STATE(_MENU_SETUP_POWERSAVE);
-	OsdSubMenuPageDraw(_MENU_SETUP);
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//OsdSubMenuPageDraw(_MENU_SETUP);
+	//OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 #if(_ENABLE_MENU_VGA == _ON)	
 void MenuVgaSelect(void)	
 {
 	SetFocus(_MENU_SECTION_1, ROW_OFFSET+_ITEM_1);
 	SET_OSD_STATE(_MENU_VGA_AUTO);
-	OsdSubMenuPageDraw(_MENU_VGA);
+	//OsdSubMenuPageDraw(_MENU_VGA);
 }
 #endif
 #if(_ENABLE_MENU_EXPAND == _ON)
@@ -9468,11 +9434,11 @@ void MenuVgaSelect(void)
 #endif
 void MenuInfoSelect(void)	
 {
-	OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
+	//OsdWindowDrawingByFontHighlight(_MENU_SECTION_TRANSPARENT_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH + _MENU_SECTION_2_WIDTH), HEIGHT(ROW_OFFSET + 10 + 2), _CP_DARKGRAY, FG_COLOR(_CP_WHITE), BGCOLOR(0));
 	//SetFocus(_MENU_SECTION_1, ROW_OFFSET+_ITEM_1);	
-	SET_OSD_STATE(_MENU_INFO_FW_VERSION);
-	OsdSubMenuPageDraw(_MENU_INFO);
-	OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
+	//SET_OSD_STATE(_MENU_INFO_FW_VERSION);
+	//OsdSubMenuPageDraw(_MENU_INFO);
+	//OsdFuncCloseWindow(_MENU_SECTION_TRANSPARENT_WINDOW);
 }
 void MenuService1Select(void)	
 {
@@ -10117,6 +10083,7 @@ code void (*OperationTable[][8])(void) =		// OperationTable
 	{ MenuExit,               MenuScreenSelect,           MenuExit,                  MenuScreenSelect,          MenuMainUpDown,            MenuMainUpDown,            MenuExit,                  NoOperation               },   //_MENU_SCREEN
 	{ MenuExit,               MenuAudioSelect,            MenuExit,                  MenuAudioSelect,           MenuMainUpDown,            MenuMainUpDown,            MenuExit,                  NoOperation               },   //_MENU_AUDIO
 	{ MenuExit,               MenuSetupSelect,            MenuExit,                  MenuSetupSelect,           MenuMainUpDown,            MenuMainUpDown,            MenuExit,                  NoOperation               },   //_MENU_SETUP
+	{ MenuExit,               MenuSetupSelect,            MenuExit,                  MenuSetupSelect,           MenuMainUpDown,            MenuMainUpDown,            MenuExit,                  NoOperation               },   //_MENU_VGA
 
 	{ MenuExit,               MenuService1Select,         MenuExit,                  MenuService1Select,        MenuServiceUpDown,         MenuServiceUpDown,         MenuExit,                  NoOperation               },   //_MENU_SERVICE1
 	{ MenuExit,               MenuService2Select,         MenuExit,                  MenuService2Select,        MenuServiceUpDown,         MenuServiceUpDown,         MenuExit,                  NoOperation               },   //_MENU_SERVICE2
@@ -10270,6 +10237,12 @@ code void (*OperationTable[][8])(void) =		// OperationTable
 	{MenuServiceOLEDSubExit,     MenuServiceTimeSelect,      MenuServiceOLEDSubExit,       MenuServiceTimeSelect,     MenuServiceOledSubUpDown,     MenuServiceOledSubUpDown,     MenuExit,                  NoOperation               },	//_MENU_SERVICE_OLED_SEQUENCE_TIME,
 	{MenuSection3Exit,        MenuSection3ItemSelect,     MenuSection3Exit,          MenuServiceSubLeftRight,   MenuSection3ItemUpDown,    MenuSection3ItemUpDown,    MenuExit,                  NoOperation               },	//_MENU_SERVICE_OLED_SEQUENCE_TIME_ADJ,
 
+	{MenuService3SubExit,     MenuServiceDPSelect,        MenuService3SubExit,       MenuServiceDPSelect,       MenuService3SubUpDown,     MenuService3SubUpDown,     MenuExit,                  NoOperation               },	//_MENU_VGA_AUTO
+	{MenuService3SubExit,     MenuServiceDPSelect,        MenuService3SubExit,       MenuServiceDPSelect,       MenuService3SubUpDown,     MenuService3SubUpDown,     MenuExit,                  NoOperation               },	//_MENU_VGA_AUTO_ADJ
+	{MenuService3SubExit,     MenuServiceDPSelect,        MenuService3SubExit,       MenuServiceDPSelect,       MenuService3SubUpDown,     MenuService3SubUpDown,     MenuExit,                  NoOperation               },	//_MENU_VGA_H_POSI
+	{MenuService3SubExit,     MenuServiceDPSelect,        MenuService3SubExit,       MenuServiceDPSelect,       MenuService3SubUpDown,     MenuService3SubUpDown,     MenuExit,                  NoOperation               },	//_MENU_VGA_V_POSI
+	{MenuService3SubExit,     MenuServiceDPSelect,        MenuService3SubExit,       MenuServiceDPSelect,       MenuService3SubUpDown,     MenuService3SubUpDown,     MenuExit,                  NoOperation               },	//_MENU_VGA_CLOCK
+	{MenuService3SubExit,     MenuServiceDPSelect,        MenuService3SubExit,       MenuServiceDPSelect,       MenuService3SubUpDown,     MenuService3SubUpDown,     MenuExit,                  NoOperation               },	//_MENU_VGA_PHASE
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	{ MenuInfoSubExit,        MenuInfoSubExit,            MenuInfoSubExit,           MenuInfoSubExit,           MenuInfoSubExit,           MenuInfoSubExit,           MenuExit,                  MenuInputSource           },	//_MENU_INFO_FW_VERSION	 

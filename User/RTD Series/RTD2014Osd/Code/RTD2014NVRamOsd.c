@@ -156,11 +156,11 @@ code StructOsdServiceDataType g_stOsdServiceDataDefault =
     {
         _OFF,                   // BYTE b1IsService : 1;	
         _OFF,                   // BYTE b1LCDtest:1;
-        _SOURCE_NAME_DP1,       // BYTE b4D0Name : 4;
+        _SOURCE_NAME_DP,       // BYTE b4D0Name : 4;
         _SOURCE_NAME_DP2,       // BYTE b4D1Name : 4;
-        _SOURCE_NAME_HDMI1,     // BYTE b4D2Name : 4;
+        _SOURCE_NAME_HDMI,     // BYTE b4D2Name : 4;
 #if(_SDI_CONVERTER_TYPE == _SDI_CONVERTER_NONE)
-        _SOURCE_NAME_HDMI2,     // BYTE b4D3Name : 4;
+        _SOURCE_NAME_DVI,     // BYTE b4D3Name : 4;
 #else
         _SOURCE_NAME_SDI,       // BYTE b4D3Name : 4;
 #endif
@@ -224,8 +224,8 @@ code StructOsdUserDataType g_stOSDDefaultData =		//  OSD Default Data
 	*/
 	(WORD)_DEFAULT_BACKLIGHT_MAX, // 0x0800,                   // usBackLight;	// (4095)
 	_LINEAR,					  // BYTE b1BacklightControl : 1;	
-    100,//64,//62,//50,//55,//50,                       // ucOsdHPos;	
-    100,//50,//4,//50,                       // ucOsdVPos;	
+    55,//64,//62,//50,//55,//50,                       // ucOsdHPos;	
+    50,//50,//4,//50,                       // ucOsdVPos;	
     30,//10,                       // ucOsdTimeout;		
     0,                        // ucAspectOriginRatio
     20,//30,//0,                        // ucTransparency;	

@@ -715,7 +715,7 @@
 
 #define _DYNAMIC_OSD_WINDOW				_ON		
 #define _ENABLE_MENU_EXPAND				_ON		
-#define _ENABLE_MENU_VGA				_OFF
+#define _ENABLE_MENU_VGA				_ON
 #define _ENABLE_MENU_SOURCE_AUTO		_ON//_OFF	
 #define _ENABLE_MENU_REGION				_OFF//_ON	
 #define _ENABLE_MENU_OVERSCAN			_OFF	

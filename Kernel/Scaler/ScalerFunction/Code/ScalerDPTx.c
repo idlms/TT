@@ -988,9 +988,6 @@ void ScalerDpTxCloneSwitchFormatConversionMux(BYTE ucInputPort)
     {
 #if(_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
         case _A0_INPUT_PORT:
-        case _A1_INPUT_PORT:
-        case _A2_INPUT_PORT:
-
             // Set source index to A0
             ScalerSetBit(P31_02_FC_INPUT_DPTX_SEL, ~(_BIT7 | _BIT6 | _BIT5 | _BIT4), (_FC_SOURCE_ADC << 4));
             break;

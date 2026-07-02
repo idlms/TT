@@ -6313,21 +6313,12 @@ void ScalerSyncInterfaceSwitch(BYTE ucInputPort, BYTE ucPortType, BYTE ucSourceS
 #if(_A0_INPUT_PORT_TYPE != _A0_NO_PORT)
 
         case _A0_INPUT_PORT:
-        case _A1_INPUT_PORT:
-        case _A2_INPUT_PORT:
 
             if(ucInputPort == _A0_INPUT_PORT)
             {
                 PCB_VGA_SWITCH_A0();
             }
-            else if(ucInputPort == _A1_INPUT_PORT)
-            {
-                PCB_VGA_SWITCH_A1();
-            }
-            else if(ucInputPort == _A2_INPUT_PORT)
-            {
-                PCB_VGA_SWITCH_A2();
-            }
+
 
             if(ucSourceSearchDelayMode != _SOURCE_SEARCH_POLLING_MODE)
             {

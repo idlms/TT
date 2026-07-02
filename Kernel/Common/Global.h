@@ -3738,6 +3738,7 @@ typedef enum
 
 typedef enum
 {
+    _SOURCE_NAME_DP,
     _SOURCE_NAME_DP1,
     _SOURCE_NAME_DP2,
     _SOURCE_NAME_PC,
@@ -3745,12 +3746,13 @@ typedef enum
 
 typedef enum
 {
+    _SOURCE_NAME_DVI,
+    _SOURCE_NAME_HDMI,
     _SOURCE_NAME_HDMI1,
     _SOURCE_NAME_HDMI2,
     _SOURCE_NAME_PC2,
     _SOURCE_NAME_SDI,
     _SOURCE_NAME_10GSFP,
-    _SOURCE_NAME_DVI,
 } EnumHDMITypeDef;
 
 
@@ -3769,31 +3771,27 @@ typedef enum
 typedef enum
 {
     _A0_INPUT_PORT = 0x00,
-    _A1_INPUT_PORT,
-    _A2_INPUT_PORT,
     _D0_INPUT_PORT,
-    _D1_INPUT_PORT,
     _D2_INPUT_PORT,
     _D3_INPUT_PORT,
     _D4_INPUT_PORT,
     _D5_INPUT_PORT,
     _D6_INPUT_PORT,
     _D12_INPUT_PORT,
+    _D1_INPUT_PORT,
     _NO_INPUT_PORT,
 } EnumSourceSearchPort;
 
 #define _A0_INPUT_PORT                          0x00
-#define _A1_INPUT_PORT                          0x01
-#define _A2_INPUT_PORT                          0x02
-#define _D0_INPUT_PORT                          0x03
-#define _D1_INPUT_PORT                          0x04
-#define _D2_INPUT_PORT                          0x05
-#define _D3_INPUT_PORT                          0x06
-#define _D4_INPUT_PORT                          0x07
-#define _D5_INPUT_PORT                          0x08
-#define _D6_INPUT_PORT                          0x09
-#define _D12_INPUT_PORT                         0x0A
-#define _NO_INPUT_PORT                          0x0B
+#define _D0_INPUT_PORT                          0x01
+#define _D1_INPUT_PORT                          0x02
+#define _D2_INPUT_PORT                          0x03
+#define _D3_INPUT_PORT                          0x04
+#define _D4_INPUT_PORT                          0x05
+#define _D5_INPUT_PORT                          0x06
+#define _D6_INPUT_PORT                          0x07
+#define _D12_INPUT_PORT                         0x08
+#define _NO_INPUT_PORT                          0x09
 
 //--------------------------------------------------
 // Enumerations of Input Port Type

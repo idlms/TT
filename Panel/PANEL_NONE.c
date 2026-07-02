@@ -856,57 +856,61 @@ void DipSwitch(void)
 {
     BYTE U8DIPSWITCH = 0;
 	
-    U8DIPSWITCH = ((bGPIO10 ? 1 : 0) << 0) |
-                  ((bGPIO9 ? 1 : 0) << 1) |
-                  ((bGPIO8 ? 1 : 0) << 2) | // 5V EN
-                  ((bGPIO7 ? 1 : 0) << 3) | // BLU INVERT
-                  ((bGPIO6 ? 1 : 0) << 4) |
-                  ((bGPIO5 ? 1 : 0) << 5) |
-                  ((bGPIO4 ? 1 : 0) << 6) |
-                  ((bGPIO3 ? 1 : 0) << 7);
+//     U8DIPSWITCH = ((bGPIO10 ? 1 : 0) << 0) |
+//                   ((bGPIO9 ? 1 : 0) << 1) |
+//                   ((bGPIO8 ? 1 : 0) << 2) | // 5V EN
+//                   ((bGPIO7 ? 1 : 0) << 3) | // BLU INVERT
+//                   ((bGPIO6 ? 1 : 0) << 4) |
+//                   ((bGPIO5 ? 1 : 0) << 5) |
+//                   ((bGPIO4 ? 1 : 0) << 6) |
+//                   ((bGPIO3 ? 1 : 0) << 7);
 	
-    U8DIPSWITCH = (~U8DIPSWITCH);
-    DebugMessageScaler("U8DIPSWITCH", U8DIPSWITCH);
-#if(_CUSTOMER_TYPE == _CUSTOMER_AWERONET)
-    switch (U8DIPSWITCH & 0xF3)    //&0xF3 IGNORE bGPIO7, bGPIO8
-    {
-    case 0x12: // 0001XX10 LG EDP 4K
+//     U8DIPSWITCH = (~U8DIPSWITCH);
+//     DebugMessageScaler("U8DIPSWITCH", U8DIPSWITCH);
+// #if(_CUSTOMER_TYPE == _CUSTOMER_AWERONET)
+//     switch (U8DIPSWITCH & 0xF3)    //&0xF3 IGNORE bGPIO7, bGPIO8
+//     {
+//     case 0x12: // 0001XX10 LG EDP 4K
+//         g_pActivePanelConfig = &LM270WR3_SSA1;
+//         _OGC_FLASH_BANK = 21;
+//         break;
+//     case 0x90: // 1001XX00 LG VBY1 4K
+//         g_pActivePanelConfig = &LD490EGE_FHM1;
+//         _OGC_FLASH_BANK = 20;
+//         break;
+//     case 0x91: // 1001XX01 AUO VBY1 4K
+//         g_pActivePanelConfig = &G320ZAN01_0;
+//         break;
+//     default: // INNOLUX VBY1 4K
+//         g_pActivePanelConfig = &_ACTIVE_PANEL_CONFIG;
+//         _OGC_FLASH_BANK = 15;
+//         break;
+//     }
+// #else
+//     switch (U8DIPSWITCH & 0xF3)    //&0xF3 IGNORE bGPIO7, bGPIO8
+//     {
+//     case 0x12: // 0001XX10 LG EDP 4K
+//         g_pActivePanelConfig = &LM270WR3_SSA1;
+//         break;
+//     case 0x90: // 1001XX00 LG VBY1 4K
+//         g_pActivePanelConfig = &LD490EGE_FHM1;
+//         break;
+//     case 0x91: // 1001XX01 AUO VBY1 4K
+//         g_pActivePanelConfig = &G320ZAN01_0;
+//         break;
+//     case 0xB8:
+//         g_pActivePanelConfig = &LW550AQD_OLED;
+//         break;
+//     default: 
+//         g_pActivePanelConfig = &_ACTIVE_PANEL_CONFIG;
+//         break;
+//     }
+// #endif //(_CUSTOMER_TYPE == _CUSTOMER_AWERONET)
+//      //DebugMessageLee("_OGC_FLASH_BANK", _OGC_FLASH_BANK);
+    if(MCU_FE27_PORT87_PIN_REG)
+        g_pActivePanelConfig = &M280DGJ_L30;
+    else
         g_pActivePanelConfig = &LM270WR3_SSA1;
-        _OGC_FLASH_BANK = 21;
-        break;
-    case 0x90: // 1001XX00 LG VBY1 4K
-        g_pActivePanelConfig = &LD490EGE_FHM1;
-        _OGC_FLASH_BANK = 20;
-        break;
-    case 0x91: // 1001XX01 AUO VBY1 4K
-        g_pActivePanelConfig = &G320ZAN01_0;
-        break;
-    default: // INNOLUX VBY1 4K
-        g_pActivePanelConfig = &_ACTIVE_PANEL_CONFIG;
-        _OGC_FLASH_BANK = 15;
-        break;
-    }
-#else
-    switch (U8DIPSWITCH & 0xF3)    //&0xF3 IGNORE bGPIO7, bGPIO8
-    {
-    case 0x12: // 0001XX10 LG EDP 4K
-        g_pActivePanelConfig = &LM270WR3_SSA1;
-        break;
-    case 0x90: // 1001XX00 LG VBY1 4K
-        g_pActivePanelConfig = &LD490EGE_FHM1;
-        break;
-    case 0x91: // 1001XX01 AUO VBY1 4K
-        g_pActivePanelConfig = &G320ZAN01_0;
-        break;
-    case 0xB8:
-        g_pActivePanelConfig = &LW550AQD_OLED;
-        break;
-    default: 
-        g_pActivePanelConfig = &_ACTIVE_PANEL_CONFIG;
-        break;
-    }
-#endif //(_CUSTOMER_TYPE == _CUSTOMER_AWERONET)
-     //DebugMessageLee("_OGC_FLASH_BANK", _OGC_FLASH_BANK);
 }
 
 void InitPanelSetting(void)

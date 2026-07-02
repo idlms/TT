@@ -51,8 +51,6 @@
 BYTE code tINPUT_PORT_TYPE[] =
 {
     _A0_INPUT_PORT_TYPE,
-    _A1_INPUT_PORT_TYPE,
-    _A2_INPUT_PORT_TYPE,
     _D0_INPUT_PORT_TYPE,
     _D1_INPUT_PORT_TYPE,
     _D2_INPUT_PORT_TYPE,
@@ -106,24 +104,20 @@ StructSourceInfoType g_pstBgSourceInfo[_INPUT_PORT_VALID];
 BYTE g_ucBgDetectIndex;
 #endif
 
-BYTE g_pucSourceSearchPriority[11] =
+BYTE g_pucSourceSearchPriority[8] =
 {
-    _INPUT_PORT_SEARCH_PRI_0, _INPUT_PORT_SEARCH_PRI_1,
-    _INPUT_PORT_SEARCH_PRI_2, _INPUT_PORT_SEARCH_PRI_3,
-    _INPUT_PORT_SEARCH_PRI_4, _INPUT_PORT_SEARCH_PRI_5,
-    _INPUT_PORT_SEARCH_PRI_6, _INPUT_PORT_SEARCH_PRI_7,
-    _INPUT_PORT_SEARCH_PRI_8, _INPUT_PORT_SEARCH_PRI_9,
-    _INPUT_PORT_SEARCH_PRI_10,
+	_INPUT_PORT_SEARCH_PRI_0, _INPUT_PORT_SEARCH_PRI_1,
+	_INPUT_PORT_SEARCH_PRI_2, _INPUT_PORT_SEARCH_PRI_3,
+	_INPUT_PORT_SEARCH_PRI_4, _INPUT_PORT_SEARCH_PRI_5,
+	_INPUT_PORT_SEARCH_PRI_6, _INPUT_PORT_SEARCH_PRI_7,
 };
 
-BYTE g_pucSourceSearchGroup[11] =
+BYTE g_pucSourceSearchGroup[8] =
 {
-    _A0_INPUT_PORT_GROUP, _A1_INPUT_PORT_GROUP,
-    _A2_INPUT_PORT_GROUP, _D0_INPUT_PORT_GROUP,
-    _D1_INPUT_PORT_GROUP, _D2_INPUT_PORT_GROUP,
-    _D3_INPUT_PORT_GROUP, _D4_INPUT_PORT_GROUP,
-    _D5_INPUT_PORT_GROUP, _D6_INPUT_PORT_GROUP,
-    _D12_INPUT_PORT_GROUP,
+	_A0_INPUT_PORT_GROUP, _D0_INPUT_PORT_GROUP,
+	_D1_INPUT_PORT_GROUP, _D2_INPUT_PORT_GROUP,
+	_D3_INPUT_PORT_GROUP, _D4_INPUT_PORT_GROUP,
+	_D5_INPUT_PORT_GROUP, _D6_INPUT_PORT_GROUP,
 };
 
 #if(_VGA_PORT_EXIST == _ON)
@@ -4331,6 +4325,8 @@ void SysSourceSwitchInputPort(BYTE ucInputPort)
         default:
 
             g_ucSearchIndex = SysSourceConvertSearchPort(ucInputPort);
+            DebugMessageOsd("ucInputPort",ucInputPort);
+            DebugMessageOsd("SysSourceConvertSearchPort",g_ucSearchIndex);
 			//----------------------------------------------------------
 			//printf("ucInputPort:%d , g_ucSearchIndex:%d\n\r",(int)ucInputPort,(int)g_ucSearchIndex );	
 			// InputPort                  // g_ucSearchIndex
@@ -4517,14 +4513,6 @@ void SysSourceCableDetection(void)
     SET_A0_CABLE_STATUS(!PCB_A0_PIN());
 #endif
 
-#if(_A1_INPUT_PORT_TYPE != _A1_NO_PORT)
-    SET_A1_CABLE_STATUS(!PCB_A1_PIN());
-#endif
-
-#if(_A2_INPUT_PORT_TYPE != _A2_NO_PORT)
-    SET_A2_CABLE_STATUS(!PCB_A2_PIN());
-#endif
-
 #if(_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
 #if(_D0_INPUT_PORT_TYPE == _D0_MHL_PORT)
     SET_D0_CABLE_STATUS((!PCB_D0_PIN()) | PCB_D0_MHL_DETECT());
@@ -4609,49 +4597,6 @@ void SysSourceCableDetection(void)
                 break;
 #endif
 
-#if(_A1_INPUT_PORT_TYPE != _A1_NO_PORT)
-
-            case _A1_INPUT_PORT:
-
-                if(GET_CABLE_DETECT(ucI) != GET_A1_CABLE_STATUS())
-                {
-                    ScalerTimerDelayXms(10);
-
-                    SET_A1_CABLE_STATUS(!PCB_A1_PIN());
-
-                    if(GET_CABLE_DETECT(ucI) != GET_A1_CABLE_STATUS())
-                    {
-                        SET_CABLE_DETECT(ucI, GET_A1_CABLE_STATUS());
-                        SET_CABLE_STATUS_CHANGE(ucI, _TRUE);
-
-                        DebugMessageSystem("0. Cable Status Chanaged A1", ucI);
-                    }
-                }
-
-                break;
-#endif
-
-#if(_A2_INPUT_PORT_TYPE != _A2_NO_PORT)
-
-            case _A2_INPUT_PORT:
-
-                if(GET_CABLE_DETECT(ucI) != GET_A2_CABLE_STATUS())
-                {
-                    ScalerTimerDelayXms(10);
-
-                    SET_A2_CABLE_STATUS(!PCB_A2_PIN());
-
-                    if(GET_CABLE_DETECT(ucI) != GET_A2_CABLE_STATUS())
-                    {
-                        SET_CABLE_DETECT(ucI, GET_A2_CABLE_STATUS());
-                        SET_CABLE_STATUS_CHANGE(ucI, _TRUE);
-
-                        DebugMessageSystem("0. Cable Status Chanaged A2", ucI);
-                    }
-                }
-
-                break;
-#endif
 
 #if(_D0_INPUT_PORT_TYPE != _D0_NO_PORT)
 

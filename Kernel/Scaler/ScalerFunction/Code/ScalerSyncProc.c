@@ -221,18 +221,7 @@ bit ScalerSyncProcPreDetect(BYTE ucInputPort)
 #if(_A0_VGA_CONNECTOR_TYPE == _VGA_CONNECTOR_YPBPR)
         pData[0] = _FALSE;
 #endif
-    }
-    else if(ucInputPort == _A1_INPUT_PORT)
-    {
-#if(_A1_VGA_CONNECTOR_TYPE == _VGA_CONNECTOR_YPBPR)
-        pData[0] = _FALSE;
-#endif
-    }
-    else if(ucInputPort == _A2_INPUT_PORT)
-    {
-#if(_A2_VGA_CONNECTOR_TYPE == _VGA_CONNECTOR_YPBPR)
-        pData[0] = _FALSE;
-#endif
+
     }
 
     if(pData[0] == _TRUE)

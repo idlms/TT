@@ -45,8 +45,6 @@
 // Input Valid Port Option
 //--------------------------------------------------
 #define _INPUT_PORT_VALID                           ((_A0_INPUT_PORT_TYPE != _A0_NO_PORT) +\
-                                                     (_A1_INPUT_PORT_TYPE != _A1_NO_PORT) +\
-                                                     (_A2_INPUT_PORT_TYPE != _A2_NO_PORT) +\
                                                      (_D0_INPUT_PORT_TYPE != _D0_NO_PORT) +\
                                                      (_D1_INPUT_PORT_TYPE != _D1_NO_PORT) +\
                                                      (_D2_INPUT_PORT_TYPE != _D2_NO_PORT) +\

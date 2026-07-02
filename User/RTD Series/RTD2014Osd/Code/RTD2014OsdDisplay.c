@@ -269,8 +269,10 @@ extern BYTE code tsOsdRotateNOFlip[];
 
 extern BYTE code tsOsdSourceAuto[];
 extern BYTE code tsOsdSourceA0VGA[];
+extern BYTE code tsOsdSourceDP[];
 extern BYTE code tsOsdSourceD0DP2[];
 extern BYTE code tsOsdSourceD1DP1[];
+extern BYTE code tsOsdSourceHDMI[];
 extern BYTE code tsOsdSourceD2HDMI2[];
 extern BYTE code tsOsdSourceD3HDMI1[];
 extern BYTE code tsOsdSourceDVI[];
@@ -622,6 +624,9 @@ BYTE *OsdDisplayGetSourcePortStringP(EnumSourceSearchPort enumSourceSearchPort)
         // pucArray = tsOsdSourceD0DP2;
         switch (GET_OSD_D0_NAME())
         {
+        case _SOURCE_NAME_DP:
+            pucArray = tsOsdSourceDP;
+            break;
         case _SOURCE_NAME_DP1:
             pucArray = tsOsdSourceD1DP1;
             break;
@@ -654,6 +659,12 @@ BYTE *OsdDisplayGetSourcePortStringP(EnumSourceSearchPort enumSourceSearchPort)
     case _D2_INPUT_PORT:
         switch (GET_OSD_D2_NAME())
         {
+        case _SOURCE_NAME_DVI:
+            pucArray = tsOsdSourceDVI;
+            break;
+        case _SOURCE_NAME_HDMI:
+            pucArray = tsOsdSourceHDMI;
+            break;
         case _SOURCE_NAME_HDMI1:
             pucArray = tsOsdSourceD3HDMI1;
             break;
@@ -670,6 +681,9 @@ BYTE *OsdDisplayGetSourcePortStringP(EnumSourceSearchPort enumSourceSearchPort)
     case _D3_INPUT_PORT:
         switch (GET_OSD_D3_NAME())
         {
+        case _SOURCE_NAME_HDMI:
+            pucArray = tsOsdSourceHDMI;
+            break;
         case _SOURCE_NAME_HDMI1:
             pucArray = tsOsdSourceD3HDMI1;
             break;
@@ -681,9 +695,6 @@ BYTE *OsdDisplayGetSourcePortStringP(EnumSourceSearchPort enumSourceSearchPort)
             break;
         case _SOURCE_NAME_SDI:
             pucArray = tsOsdSourceSDI;
-            break;
-        case _SOURCE_NAME_10GSFP:
-            pucArray = tsOsdSource10GSFP;
             break;
         case _SOURCE_NAME_DVI:
             pucArray = tsOsdSourceDVI;
@@ -1932,6 +1943,52 @@ void OsdSubMenuPageDraw(BYTE ucMainItem)
         break;
     }
 }
+
+void RefreshOsdSubMenuItemText(BYTE ucMainItem)
+{   
+    BYTE ucColor = COLOR(_CP_WHITE, _CP_BG);
+    switch (ucMainItem)
+    {
+    case _MENU_INPUT:
+        OsdDispNumberAndText(_MENU_INPUT_SOURCE1,  GET_OSD_INPUT_PORT_OSD_ITEM()/*OsdDisplayGetSourcePortStringP(SysSourceGetInputPort())*/, ucColor);
+        break;
+    case _MENU_PICTURE:
+        OsdDispNumberAndText(_MENU_PICTURE_BLACKLEVEL, GET_OSD_BRIGHTNESS(), ucColor);
+        OsdDispNumberAndText(_MENU_PICTURE_CONTRAST, GET_OSD_CONTRAST(), ucColor);
+        OsdDispNumberAndText(_MENU_PICTURE_CHROMA, GET_OSD_SATURATION(), ucColor);
+        OsdDispNumberAndText(_MENU_PICTURE_SHARPNESS, GET_OSD_SHARPNESS(), ucColor);
+        OsdDispNumberAndText(_MENU_PICTURE_GAMMA, GET_OSD_GAMMA(), ucColor);
+        break;
+    case _MENU_COLOR:
+        OsdDispNumberAndText(_MENU_COLOR_TEMPERATURE, GET_COLOR_TEMP_TYPE(), ucColor);
+        OsdDispNumberAndText(_MENU_COLOR_BIAS_R, GET_COLOR_BIAS_R(), ucColor);
+        OsdDispNumberAndText(_MENU_COLOR_BIAS_G, GET_COLOR_BIAS_G(), ucColor);
+        OsdDispNumberAndText(_MENU_COLOR_BIAS_B, GET_COLOR_BIAS_B(), ucColor);
+        OsdDispNumberAndText(_MENU_COLOR_GAIN_R, GET_COLOR_GAIN_R(), ucColor);
+        OsdDispNumberAndText(_MENU_COLOR_GAIN_G, GET_COLOR_GAIN_G(), ucColor);
+        OsdDispNumberAndText(_MENU_COLOR_GAIN_B, GET_COLOR_GAIN_B(), ucColor);
+        break;
+    case _MENU_SCREEN:
+        OsdDispNumberAndText(_MENU_SCREEN_OVERSCAN, GET_OSD_OVERSCAN_STATUS(), ucColor);    
+        OsdDispNumberAndText(_MENU_SCREEN_ASPECT, GET_OSD_ASPECT_RATIO_TYPE(), ucColor);
+        OsdDispNumberAndText(_MENU_SCREEN_MONO_COLOR, GET_OSD_COLOR_EFFECT(), ucColor);
+        OsdDispNumberAndText(_MENU_SCREEN_ROTATE, GET_OSD_DISP_ROTATE(), ucColor);
+        break;
+    case _MENU_AUDIO:
+        OsdDispNumberAndText(_MENU_AUDIO_VOLUME, GET_OSD_VOLUME(), ucColor);
+        OsdDispNumberAndText(_MENU_AUDIO_MUTE, GET_OSD_VOLUME_MUTE(), ucColor);
+        break;
+    case _MENU_SETUP:
+        OsdDispNumberAndText(_MENU_SETUP_POWERSAVE, GET_OSD_POWERSAVE_TIME(), ucColor);
+        OsdDispNumberAndText(_MENU_SETUP_KEYLOCK, GET_OSD_KEYLOCK(), ucColor);
+        OsdDispNumberAndText(_MENU_SETUP_BACKLIGHT, GET_OSD_BACKLIGHT(), ucColor);    
+        OsdDispNumberAndText(_MENU_SETUP_BACKLIGHT_CONTROL, GET_OSD_BACKLIGHT_CONTROL(), ucColor);
+        break;
+    default:
+        break;
+    }
+}
+
 void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
 {
 
@@ -1949,15 +2006,12 @@ void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
         case _MENU_INPUT_SOURCE1_ADJ:
 #if (_ENABLE_MENU_VGA == _ON)
 
-            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
-
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
 			OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_1), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceAuto, ucColor, GET_OSD_LANGUAGE());
             OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_2), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
             OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D1_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
-            
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D2_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, OsdDisplayGetSourcePortStringP(_D3_INPUT_PORT), ucColor, GET_OSD_LANGUAGE());
 #else
 
             OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET ), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
@@ -2098,7 +2152,7 @@ void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
             OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma20, ucColor, GET_OSD_LANGUAGE());
             OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
             OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGamma24, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+           // OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
 #endif
             break;
         case _MENU_PICTURE_RESETTODEFAULT:
@@ -2729,9 +2783,10 @@ void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
             break;
         case _MENU_SERVICE_D0NAME_ADJ:
             OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_3), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD1DP1, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD0DP2, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_4), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceDP, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD1DP1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD0DP2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
             break;
         case _MENU_SERVICE_D1NAME:
             OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdD1Name, ucColor, GET_OSD_LANGUAGE());
@@ -2748,10 +2803,12 @@ void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
             OsdDispNumberAndText(_MENU_SERVICE_D2NAME, GET_OSD_D2_NAME(), ucColor);
             break;
         case _MENU_SERVICE_D2NAME_ADJ:
-            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(3 + 2), _CP_DARKGRAY);
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(5 + 2), _CP_DARKGRAY);
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceDVI, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceHDMI, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
             break;
         case _MENU_SERVICE_D3NAME:
             OsdPropPutpString(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_1_STR_X), _PFONT_PAGE_1, tsOsdD3Name, ucColor, GET_OSD_LANGUAGE());
@@ -2759,12 +2816,13 @@ void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor)
             break;
         case _MENU_SERVICE_D3NAME_ADJ:
             OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(ROW_OFFSET + _ITEM_6), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(6 + 2), _CP_DARKGRAY);
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceSDI, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSource10GSFP, ucColor, GET_OSD_LANGUAGE());
-            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceDVI, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_7), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceDVI, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_8), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceHDMI, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_9), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD3HDMI1, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_10), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceD2HDMI2, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_11), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourcePc, ucColor, GET_OSD_LANGUAGE());
+            OsdPropPutpStringLeft(ROW(ROW_OFFSET + _ITEM_12), COL(_MENU_SECTION_2_STR_X), _PFONT_PAGE_3, tsOsdSourceSDI, ucColor, GET_OSD_LANGUAGE());
+            
             break;
         }
         break;
@@ -3047,7 +3105,7 @@ void OsdDispMainMenu(void)
 		//OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(_MENU_SECTION_0_WIN_X), WIDTH(_MENU_SECTION_0_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);
 		//OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY); 
 		//OsdWindowDrawingByFont(_MENU_SECTION_2_WINDOW, ROW(0), COL(_MENU_SECTION_2_WIN_X), WIDTH(_MENU_SECTION_2_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);
- 
+
     }
 
     // Realtek Mark
@@ -3242,8 +3300,8 @@ void OsdDispNumberAndText(WORD usOsdState, WORD usValue, BYTE ucColor)
             OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGamma22, ucColor, GET_OSD_LANGUAGE());
         else if (g_usAdjustValue == _GAMMA_24)
             OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGamma24, ucColor, GET_OSD_LANGUAGE());
-        else if (g_usAdjustValue == _GAMMA_DICOM)
-            OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
+        // else if (g_usAdjustValue == _GAMMA_DICOM)
+        //     OsdPropPutpStringRight(ROW(ROW_OFFSET + _ITEM_5), COL(_MENU_SECTION_1_NUM_X_STR), WIDTH(_MENU_SECTION_1_SUB_STR_WIDTH), _PFONT_PAGE_ITEM_5, tsOsdGammaDicom, ucColor, GET_OSD_LANGUAGE());
         break;
 #endif
 #if (_ENABLE_MENU_REGION == _ON)
@@ -5035,6 +5093,9 @@ void OsdDispOsdMessage(EnumOSDDispMsg enumMessage)
 
 		switch (GET_OSD_INPUT_PORT_OSD_ITEM())
 		{
+            case _OSD_INPUT_A0:
+                OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_A0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
+                break;
             case _OSD_INPUT_D0:
                 OsdPropPutpStringCenter(ROW(2), COL(3), WIDTH(20), _PFONT_PAGE_0, OsdDisplayGetSourcePortStringP(_D0_INPUT_PORT), COLOR(_CP_WHITE, _CP_BG), GET_OSD_LANGUAGE());
                 break;
@@ -5265,7 +5326,7 @@ void OsdDispShowInformation(void)
 	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_RANGE, COLOR(_CP_WHITE, _CP_BG));
 	OsdPropPutpStringRight(ROW(_ITEM_5), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_INFORMATION, OsdDisplayGetRangeStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
 	
-	OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_FW_VERSION, COLOR(_CP_WHITE, _CP_BG));
+	//OsdSubMenuItemText(_MENU_INFO, _MENU_INFO_FW_VERSION, COLOR(_CP_WHITE, _CP_BG));
 
 
 }

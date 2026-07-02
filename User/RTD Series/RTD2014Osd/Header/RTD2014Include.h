@@ -3359,7 +3359,7 @@ typedef enum
     _GAMMA_22,
     _GAMMA_24,
     _GAMMA_DICOM,
-    _GAMMA_AMOUNT = _GAMMA_DICOM,
+    _GAMMA_AMOUNT = _GAMMA_24,
 } EnumGammaType;
 #endif
 
@@ -3584,10 +3584,10 @@ typedef enum
 {
     _OSD_INPUT_AUTO = 0,
     _OSD_INPUT_A0,	// VGA
-    _OSD_INPUT_D0,	// DP2
-    _OSD_INPUT_D1,	// DP1
-    _OSD_INPUT_D2,	// HDMI2
-    _OSD_INPUT_D3,	// HDMI1
+    _OSD_INPUT_D0,	// DP
+    _OSD_INPUT_D2,	// HDMI
+    _OSD_INPUT_D3,	// DVI
+    _OSD_INPUT_D1,
     _OSD_INPUT_D4,
     _OSD_INPUT_D5,
     _OSD_INPUT_D6,
@@ -3894,7 +3894,8 @@ typedef enum
     _MENU_SCREEN,
     _MENU_AUDIO,
     _MENU_SETUP,
-    
+    _MENU_VGA,
+
     _MENU_SERVICE1,
     _MENU_SERVICE2,
     _MENU_SERVICE3,
@@ -4045,6 +4046,13 @@ typedef enum
     _MENU_SERVICE_OLED_JB_ADJ,
     _MENU_SERVICE_OLED_SEQUENCE_TIME,
     _MENU_SERVICE_OLED_SEQUENCE_TIME_ADJ,
+    //VGA
+    _MENU_VGA_AUTO,
+    _MENU_VGA_AUTO_ADJ,
+    _MENU_VGA_H_POSI,
+    _MENU_VGA_V_POSI,
+    _MENU_VGA_CLOCK,
+    _MENU_VGA_PHASE,
 
 	_MENU_INFO_FW_VERSION,
 	_MENU_INFO_SERIAL_NUM,
@@ -5081,6 +5089,7 @@ extern void OsdSubMenuPageDraw(BYTE ucMainItem);
 extern void OsdSection3ItemPageDraw(BYTE ucMainItem);	
 
 extern void OsdSubMenuItemText(BYTE ucMainItem, BYTE ucSubItem, BYTE ucColor);	
+extern void RefreshOsdSubMenuItemText(BYTE ucMainItem);
 
 extern void OsdDispNumberAndText(WORD usOsdState, WORD usValue, BYTE ucColor);	
 
