@@ -124,12 +124,16 @@ void OsdWindowDrawing(BYTE ucWindow, WORD usXStart, WORD usYStart, WORD usXEnd, 
 
 #endif
 
+    
+
+
     SET_OSD_WINDOW_NUMBER(ucWindow);
     SET_OSD_WINDOW_COLOR(ucColor);
 
     SET_OSD_WINDOW_BLEND_ENABLE(_ENABLE);
     SET_OSD_WINDOW_ENABLE(_ENABLE);
     ScalerTimerWaitForEvent(_EVENT_DVS);
+    
     ScalerOsdDrawWindow(usXStart, usYStart, usXEnd, usYEnd);
 }
 
@@ -154,6 +158,16 @@ void OsdWindowDrawingByFont(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWidth,
         usVstart = ((ucRow) * 18);
     }
     usVend = usVstart + (18 * (ucHeight));
+    if(ucWindow ==_MENU_SECTION_0_WINDOW)
+    {
+        SET_OSD_WINDOW_COLOR_SHADOW(_CP_WHITE);
+        SET_OSD_WINDOW_COLOR_BORDER(_CP_WHITE);
+        SET_OSD_WINDOW_SHADOW_BORDER_PIXEL_WIDTH(_OSD_BORDER_PIXEL);
+        SET_OSD_WINDOW_SHADOW_BORDER_PIXEL_HEIGHT(_OSD_BORDER_PIXEL);
+        SET_OSD_WINDOW_REFERENCE_DELAY(_OSD_FIRST_DELAY);
+        SET_OSD_WINDOW_BUTTON_ENABLE(_ENABLE);
+        SET_OSD_WINDOW_BUTTON_TYPE(0);
+    }
 
     OsdWindowDrawing(ucWindow, usHstart, usVstart, usHend, usVend, ucColor);
 	
@@ -197,8 +211,16 @@ void OsdWindowDrawingByFontOrg(BYTE ucWindow, BYTE ucRow, BYTE ucCol, BYTE ucWid
     WORD usVstart = 0;
     WORD usVend = 0;
 
-    usHstart = ((WORD)ucCol * 12);
-    usHend = usHstart + ((WORD)ucWidth * 12);
+    if(ucWindow == _MENU_SECTION_0_SELECT_WINDOW)
+    {
+        usHstart = ((WORD)ucCol * 12) + _OSD_BORDER_PIXEL;
+        usHend = usHstart + ((WORD)ucWidth * 12) - _OSD_BORDER_PIXEL;
+    }
+    else
+    {
+        usHstart = ((WORD)ucCol * 12) ;
+        usHend = usHstart + ((WORD)ucWidth * 12) ;
+    }
 
     if(ucRow > 0)
     {

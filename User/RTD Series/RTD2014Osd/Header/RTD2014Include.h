@@ -1656,7 +1656,6 @@ typedef enum
 #define _OSD_NUMBER_1_COL                           21
 
 #define _OSD_NUMBER_UNSTLECT_COLOR                  COLOR(_CP_BLUE, _CP_BG)
-#define _OSD_NUMBER_UNSTLECT_COLOR                  COLOR(_CP_BLUE, _CP_BG)
 //--------------------------------------------------
 // Definitions of OSD
 //--------------------------------------------------
@@ -3163,14 +3162,16 @@ typedef enum
 #define _OSD_INFO_BOX_WIDTH 20
 #define _OSD_INFO_BOX_HEIGHT 6
 
+#define _OSD_BORDER_PIXEL 10
+
 #define _SECTION_SPACE 0
 // #define _SECTION_1_SPACE							1
 // #define _SECTION_2_SPACE							2
 
 #define _MENU_STRING_INDENT 1
 
-#define _MENU_SECTION_0_WIN_X (0)
-#define _MENU_SECTION_1_WIN_X (_MENU_SECTION_0_WIDTH + _SECTION_SPACE)
+#define _MENU_SECTION_0_WIN_X (1)
+#define _MENU_SECTION_1_WIN_X (_MENU_SECTION_0_WIN_X + _MENU_SECTION_0_WIDTH + _SECTION_SPACE)
 #define _MENU_SECTION_2_WIN_X (_MENU_SECTION_1_WIN_X + _MENU_SECTION_1_WIDTH + _SECTION_SPACE)
 
 #define _MENU_SECTION_0_STR_X (_MENU_SECTION_0_WIN_X + _MENU_STRING_INDENT)
@@ -3190,7 +3191,7 @@ typedef enum
 
 #define _MENU_SECTION_1_NUM_X_CLR4 (_MENU_SECTION_1_NUM_X - 4)
 
-#define _MENU_SECTION_INFO_X _MENU_SECTION_1_WIN_X + _MENU_SECTION_0_SUB_STR_X + 2
+#define _MENU_SECTION_INFO_X _MENU_SECTION_1_WIN_X + _MENU_SECTION_0_SUB_STR_X + 1
 
 #define _MENU_SECTION_0 0
 #define _MENU_SECTION_1 1

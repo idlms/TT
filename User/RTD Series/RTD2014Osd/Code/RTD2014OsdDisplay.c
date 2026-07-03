@@ -3093,7 +3093,6 @@ void OsdDispMainMenu(void)
 
     OsdFontVLCLoadFont(_FONT1_GLOBAL);
     // OsdFontVLCLoadFont(_FONT2_ICON_MENU);
-
     // Background window
 #if(_OSD_ROTATE_FUNCTION == _OSD_ROTATE_SOFTWARE)
     if((GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_90) ||
@@ -4470,13 +4469,13 @@ void OsdDispHotKeySourceMenu(void)
        (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
     {
         OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(12), g_ucOsdWidth, _CP_BLUE);	
-        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(52), g_ucOsdWidth, _CP_LIGHTBLUE);	
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(12), WIDTH(52), g_ucOsdWidth, _CP_LIGHTBLUE);	
     }
     else
 #endif
     {
 		OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(_MENU_SOURCE_WIDTH), HEIGHT(3), _CP_LIGHTBLUE);	
-        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0), WIDTH(_MENU_SOURCE_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);	
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(0), WIDTH(_MENU_SOURCE_WIDTH), HEIGHT(g_ucOsdHeight), _CP_DARKGRAY);	
     }
 
 	OsdPropPutpString(ROW(1), COL(3), _PFONT_PAGE_3, tsOsdSource, COLOR(_CP_DARKGRAY, _CP_BG), GET_OSD_LANGUAGE());
@@ -4710,7 +4709,7 @@ void OsdDispHotKeyOsdMessage(BYTE ucHotKeyItem)
        (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
     {
         OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);	
-        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);	
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);	
     }
     else
 #endif
@@ -4718,7 +4717,7 @@ void OsdDispHotKeyOsdMessage(BYTE ucHotKeyItem)
         {
             //OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(0), WIDTH(12), g_ucOsdHeight, _CP_BLUE);
             //OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdWidth - 12), g_ucOsdHeight, _CP_LIGHTBLUE);
-            OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0), WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(_OSD_DIALOG_BOX_HEIGHT+1), _CP_DARKGRAY);	
+            OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(0), WIDTH(_OSD_DIALOG_BOX_WIDTH), HEIGHT(_OSD_DIALOG_BOX_HEIGHT+1), _CP_DARKGRAY);	
         }
     }
 	
@@ -4864,7 +4863,7 @@ void OsdDispOsdMessage(EnumOSDDispMsg enumMessage)
        (GET_OSD_ROTATE_STATUS() == _OSD_ROTATE_DEGREE_270))
     {
         OsdWindowDrawingByFont(_MENU_SECTION_1_TITLE_WINDOW, ROW(0), COL(0), WIDTH(12), HEIGHT(g_ucOsdWidth), _CP_BLUE);	
-        OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
+        OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(12), WIDTH(g_ucOsdHeight - 12), HEIGHT(g_ucOsdWidth), _CP_LIGHTBLUE);
     }
     else
 #endif
@@ -4876,7 +4875,7 @@ void OsdDispOsdMessage(EnumOSDDispMsg enumMessage)
         else
         {
 			if(enumMessage != _OSD_DISP_INPUT_SIGNAL_MSG)
-            	OsdWindowDrawingByFont(_MENU_SECTION_0_WINDOW, ROW(0), COL(0+2), WIDTH(_OSD_DIALOG_BOX_WIDTH-6), HEIGHT(_OSD_DIALOG_BOX_HEIGHT-2), _CP_DARKGRAY);	
+            	OsdWindowDrawingByFont(_MENU_SECTION_1_WINDOW, ROW(0), COL(0+2), WIDTH(_OSD_DIALOG_BOX_WIDTH-6), HEIGHT(_OSD_DIALOG_BOX_HEIGHT-2), _CP_DARKGRAY);	
 			else
 				OsdWindowDrawingByFont(_OSD_WINDOW_4_1 , ROW(0), COL(3+2), WIDTH(_OSD_INFO_BOX_WIDTH), HEIGHT(_OSD_INFO_BOX_HEIGHT), _CP_DARKGRAY);
         }
@@ -5286,7 +5285,6 @@ void OsdDispShowInformation(void)
 
 	OsdPropPutpStringRight(ROW(_ITEM_1), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_1, OsdDisplayGetSourcePortStringP(SysSourceGetInputPort()), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
 	OsdPropPutpStringRight(ROW(_ITEM_2), COL(_MENU_SECTION_INFO_X), WIDTH(_MENU_SECTION_0_SUB_STR_WIDTH), _PFONT_PAGE_1, OsdDisplayGetResolutionStringP(), COLOR(_CP_WHITE, _CP_BG), _ENGLISH);
-	
 // 	{
 // #if(_MEDICAL_SURGICAL == _ON)
 //         {
