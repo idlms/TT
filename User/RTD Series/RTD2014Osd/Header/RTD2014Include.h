@@ -1682,16 +1682,16 @@ typedef enum
 #define _OSD_GLOBAL_END                             0x0F
 
 #define _OSD_PAGE_0_START                           0x00
-#define _OSD_PAGE_0_END                             0x50//0x27				// Section1	( Main Page )					
+#define _OSD_PAGE_0_END                             0x27				// Section1	( Main Page )					
 
-#define _OSD_PAGE_1_START                           0x51//0x28				// Section2 ( Sub Page )					
-#define _OSD_PAGE_1_END                             0x95//0xB0//0xC8//0x5F	
+#define _OSD_PAGE_1_START                           0x28				// Section2 ( Sub Page )					
+#define _OSD_PAGE_1_END                             0x85//0xB0//0xC8//0x5F	
 
-#define _OSD_PAGE_2_START                           0x96//0xB1//0xC1		// Item 	
-#define _OSD_PAGE_2_END                             0xDA//0xD5//0xF0
+#define _OSD_PAGE_2_START                           0x86//0xB1//0xC1		// Item 	
+#define _OSD_PAGE_2_END                             0xD0//0xD5//0xF0
 
-#define _OSD_PAGE_3_START                           0xDB//0xD6				// Section3 ( Item Page ) 	
-#define _OSD_PAGE_3_END                             0xFC	
+#define _OSD_PAGE_3_START                           0xD1//0xD6				// Section3 ( Item Page ) 	
+#define _OSD_PAGE_3_END                             0xF0	
 
 #define _SUB_PAGE_ITEM_1 (_OSD_PAGE_2_START)
 #define _SUB_PAGE_ITEM_1_END (_OSD_PAGE_2_START + 10)
@@ -3199,7 +3199,7 @@ typedef enum
 //-------------------------------------------------------------------------
 #define _MENU_SECTION_1_SUB 						3
 
-#define _MENU_SECTION_0_WINDOW _OSD_WINDOW_0	
+#define _MENU_SECTION_0_WINDOW _OSD_WINDOW_1	
 #define _MENU_SECTION_1_WINDOW _OSD_WINDOW_5
 #define _MENU_SECTION_2_WINDOW _OSD_WINDOW_5_1	//_OSD_WINDOW_4_8
 
@@ -3213,7 +3213,8 @@ typedef enum
 #define _MENU_SECTION_1_SELECT_WINDOW _OSD_WINDOW_5_7//2
 #define _MENU_SECTION_2_SELECT_WINDOW _OSD_WINDOW_5_8//3
 
-#define _MENU_SECTION_TRANSPARENT_WINDOW _OSD_WINDOW_7	//  Not Used
+#define _MENU_SECTION_2_MASK _OSD_WINDOW_9	
+#define _MENU_SECTION_TRANSPARENT_WINDOW _OSD_WINDOW_7	
 //-------------------------------------------------------------------------
 
 

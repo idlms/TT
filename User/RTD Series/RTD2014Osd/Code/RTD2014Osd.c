@@ -774,7 +774,7 @@ void RTDOsdEventMsgProc(void)
 			ScalerTimerCancelTimerEvent(_USER_TIMER_EVENT_OSD_SHOW_NO_SIGNAL);
 
 			OsdDispDisableOsd();
-			SET_OSD_STATE(_MENU_INFO);
+			SET_OSD_STATE(_MENU_PICTURE);
 			OsdFuncSetOsdItemFlag();
 			OsdDispMainMenu();
 			// OsdSubMenuPageDraw(_MENU_PICTURE);
@@ -2210,7 +2210,7 @@ void MenuNoneMenu(void)
 			}
 
 			OsdDispDisableOsd();
-			SET_OSD_STATE(_MENU_INFO);
+			SET_OSD_STATE(_MENU_PICTURE);
 			OsdFuncSetOsdItemFlag();
 			OsdDispMainMenu();
 			// OsdSubMenuPageDraw(_MENU_PICTURE);
@@ -4430,7 +4430,7 @@ void MenuSection3ItemUpDown(void)
 			if (GET_OSD_ITEM_INDEX() > _GAMMA_OFF)
 				SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX() - 1);
 			else
-				SET_OSD_ITEM_INDEX(_GAMMA_DICOM);
+				SET_OSD_ITEM_INDEX(_GAMMA_AMOUNT);
 			SetFocus(_MENU_SECTION_2, ROW_OFFSET + _ITEM_5 + GET_OSD_ITEM_INDEX());
 			break;
 
@@ -5032,7 +5032,7 @@ void MenuSection3ItemUpDown(void)
 			SetFocus(_MENU_SECTION_2, ROW_OFFSET + _ITEM_4 + GET_OSD_ITEM_INDEX());
 			break;
 		case _MENU_PICTURE_GAMMA_ADJ:
-			if (GET_OSD_ITEM_INDEX() < _GAMMA_DICOM)
+			if (GET_OSD_ITEM_INDEX() < _GAMMA_AMOUNT)
 				SET_OSD_ITEM_INDEX(GET_OSD_ITEM_INDEX() + 1);
 			else
 				SET_OSD_ITEM_INDEX(_GAMMA_OFF);
@@ -5888,8 +5888,10 @@ void MenuPictureSubUpDown(void)
 			break;
 #else
 		case _MENU_PICTURE_BLACKLEVEL:
-			SET_OSD_STATE(_MENU_PICTURE_RESETTODEFAULT);
-			SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_6);
+			// SET_OSD_STATE(_MENU_PICTURE_RESETTODEFAULT);
+			// SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_6);
+			SET_OSD_STATE(_MENU_PICTURE_GAMMA);
+			SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_5);
 			break;
 		case _MENU_PICTURE_CONTRAST:
 			SET_OSD_STATE(_MENU_PICTURE_BLACKLEVEL);
@@ -5965,8 +5967,10 @@ void MenuPictureSubUpDown(void)
 			SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_5);
 			break;
 		case _MENU_PICTURE_GAMMA:
-			SET_OSD_STATE(_MENU_PICTURE_RESETTODEFAULT);
-			SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_6);
+			// SET_OSD_STATE(_MENU_PICTURE_RESETTODEFAULT);
+			// SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_6);
+			SET_OSD_STATE(_MENU_PICTURE_BLACKLEVEL);
+			SetFocus(_MENU_SECTION_1, ROW_OFFSET + _ITEM_1);
 			break;
 		case _MENU_PICTURE_RESETTODEFAULT:
 			SET_OSD_STATE(_MENU_PICTURE_BLACKLEVEL);
@@ -9153,59 +9157,58 @@ void HotKeySourceChange(void)
 void MenuMainUpDown(void)
 {
 	int i = 0;
+	OsdWindowDrawingByFont(_MENU_SECTION_2_MASK, ROW(0), COL(_MENU_SECTION_1_WIN_X), WIDTH(_MENU_SECTION_1_WIDTH), HEIGHT(ROW_OFFSET + 7 + 2), _CP_ORANGE_H);
+
 	switch (GET_KEYMESSAGE())
 	{
 	case _UP_KEY_MESSAGE:
 		switch (GET_OSD_STATE())
 		{
-		case _MENU_INFO:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_7);
-			SET_OSD_STATE(_MENU_SETUP);
-			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
-			OsdSubMenuPageDraw(_MENU_SETUP);
+
+		case _MENU_PICTURE:
 			
-			break;
-		case _MENU_INPUT:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_1);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_7);
 			SET_OSD_STATE(_MENU_INFO);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INFO);
-			
 			break;
-		case _MENU_PICTURE:
+		case _MENU_INPUT:
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_1);
+			SET_OSD_STATE(_MENU_PICTURE);
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
+			OsdSubMenuPageDraw(_MENU_PICTURE);
+			OsdFuncCloseWindow(_MENU_SECTION_2_MASK);
+			break;
+		case _MENU_COLOR:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_2);
 			SET_OSD_STATE(_MENU_INPUT);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INPUT);
-			
-			break;
-		case _MENU_COLOR:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_3);
-			SET_OSD_STATE(_MENU_PICTURE);
-			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
-			OsdSubMenuPageDraw(_MENU_PICTURE);
-			
+			OsdFuncCloseWindow(_MENU_SECTION_2_MASK);
 			break;
 		case _MENU_SCREEN:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_4);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_3);
 			SET_OSD_STATE(_MENU_COLOR);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_COLOR);
-			
 			break;
 		case _MENU_AUDIO:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_5);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_4);
 			SET_OSD_STATE(_MENU_SCREEN);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SCREEN);
-			
 			break;
 		case _MENU_SETUP:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_6);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_5);
 			SET_OSD_STATE(_MENU_AUDIO);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_AUDIO);
-			
+			break;
+		case _MENU_INFO:
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_6);
+			SET_OSD_STATE(_MENU_SETUP);
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
+			OsdSubMenuPageDraw(_MENU_SETUP);
 			break;
 		}
 		break;
@@ -9213,7 +9216,7 @@ void MenuMainUpDown(void)
 	case _DOWN_KEY_MESSAGE:
 		switch (GET_OSD_STATE())
 		{
-		case _MENU_INFO:
+		case _MENU_PICTURE:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_2);
 			SET_OSD_STATE(_MENU_INPUT);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
@@ -9221,44 +9224,45 @@ void MenuMainUpDown(void)
 			break;
 		case _MENU_INPUT:
 			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_3);
-			SET_OSD_STATE(_MENU_PICTURE);
-			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
-			OsdSubMenuPageDraw(_MENU_PICTURE);
-			break;
-		case _MENU_PICTURE:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_4);
 			SET_OSD_STATE(_MENU_COLOR);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_COLOR);
 			break;
 		case _MENU_COLOR:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_5);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_4);
 			SET_OSD_STATE(_MENU_SCREEN);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SCREEN);
 			break;
 		case _MENU_SCREEN:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_6);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_5);
 			SET_OSD_STATE(_MENU_AUDIO);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_AUDIO);
 			break;
 		case _MENU_AUDIO:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_7);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_6);
 			SET_OSD_STATE(_MENU_SETUP);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_SETUP);
 			break;
 		case _MENU_SETUP:
-			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_1);
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_7);
 			SET_OSD_STATE(_MENU_INFO);
 			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
 			OsdSubMenuPageDraw(_MENU_INFO);
 			break;
-
+		case _MENU_INFO:
+			SetFocus(_MENU_SECTION_0, ROW_OFFSET + _ITEM_1);
+			SET_OSD_STATE(_MENU_PICTURE);
+			OsdFuncClearOsd(ROW(0), COL(_MENU_SECTION_1_WIN_X), _MENU_SECTION_1_WIDTH+_MENU_SECTION_2_WIDTH, 12);	// Clear Item	
+			OsdSubMenuPageDraw(_MENU_PICTURE);
+			break;
 		}
 		break;
 	}
+	OsdFuncCloseWindow(_MENU_SECTION_2_MASK);
+
 }
 
 void MenuServiceUpDown(void)

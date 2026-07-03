@@ -42,7 +42,7 @@
 #define _RGB_SELECTBOTTOM                       58,   70,  80
 #define _RGB_PINK                               255, 128, 255
 
-#define _RGB_ORANGE_H                           250, 180,  40
+#define _RGB_ORANGE_H                           20, 20,  20
 #define _RGB_ORANGE_DARK                        224, 120,   7
 
 

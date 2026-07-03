@@ -2325,6 +2325,7 @@ void OsdPropPutpString(BYTE ucRow, BYTE ucCol, BYTE ucFptsSelect, BYTE *pucStrin
     CLR_OSD_INFO_STRING_MODE_LENGTH();
 }
 */
+#if 0
 void OsdPropPutpString(BYTE ucRow, BYTE ucCol, BYTE ucFptsSelect, BYTE *pucString, BYTE ucColor, BYTE ucLanguage)
 {
     BYTE *pucArray = pucString;
@@ -2784,7 +2785,419 @@ void OsdPropPutpString(BYTE ucRow, BYTE ucCol, BYTE ucFptsSelect, BYTE *pucStrin
     CLR_OSD_INFO_STRING_MODE();
     CLR_OSD_INFO_STRING_MODE_LENGTH();
 }
+#else 
+void OsdPropPutpString(BYTE ucRow, BYTE ucCol, BYTE ucFptsSelect, BYTE *pucString, BYTE ucColor, BYTE ucLanguage)
+{
+    // [C51 안전한 초고속화] 연산용 루프 변수만 빠른 내부 RAM(data)에 배치
+    data BYTE ucLoop0 = 0;
+    data WORD usFontIdxBase = 0; // 곱셈 제거용 누적 변수 (안전을 위해 WORD 유지)
+    data WORD usTempIdx = 0;
+    
+    BYTE *pucArray = pucString;
+    bit bCenterFlag = _FALSE;
+    bit bNextLineFlag = _FALSE;
+    BYTE pucpTemp[27] = {0};
+    BYTE ucElementCount = 0;
+    BYTE ucColBackup = ucCol;
+    
+    register BYTE ucStrMode = GET_OSD_INFO_STRING_MODE();
+    register WORD usStrModeLen = GET_OSD_INFO_STRING_MODE_LENGTH();
+    BYTE ucLangPlusOne = ucLanguage + 1;
+    BYTE ucRotateSetting = 0;
+    BYTE ucBaseRotateSetting = 0;
+    BYTE ucOsdMode = 0;
+    
+    // 테이블 오프셋 변수들은 깨짐 방지를 위해 안전하게 WORD(16비트) 유지
+    WORD usOffset = 0;
+    WORD usWidth = 0;
+    WORD usTableOffset = 0;
+    BYTE ucNextTableOffset = 0;
+    WORD usFontIdxNext = 0;
 
+    pData[0] = ucLanguage;
+    while (pData[0] != 0)
+    {
+        if (pucArray[0] == _END_)
+        {
+            pData[0]--;
+        }
+        pucArray++;
+    }
+
+    do
+    {
+        bNextLineFlag = _FALSE;
+        memset(pData, 0x00, _DATA_ITEM_LENGTH);
+        ucElementCount = 0;
+
+        PDATA_WORD(5) = OsdPropGetFontPointer(ucFptsSelect);
+
+        if (ucStrMode != _PUT_STRING_LEFT)
+        {
+            usOffset = 0;
+            usWidth = 0;
+
+            while ((pucArray[ucElementCount] != _END_) &&
+                   (pucArray[ucElementCount] != _NEXT_LINE))
+            {
+                if ((ucStrMode == _PUT_STRING_CENTER) && (*(pucArray + ucElementCount) == _L))
+                {
+                    ucElementCount++;
+                    continue;
+                }
+
+                pData[2] = pucArray[ucElementCount];
+
+                switch (pData[2])
+                {
+                    case _FONT_SELECT_EXT1: usOffset = _FONT_SELECT_OFFSET1; break;
+                    case _FONT_SELECT_EXT2: usOffset = _FONT_SELECT_OFFSET2; break;
+                    default:                usOffset = 0;                    break;
+                }
+
+                if (usOffset != 0)
+                {
+                    ucElementCount++;
+                    pData[2] = pucArray[ucElementCount];
+                }
+
+                if ((usOffset + pData[2]) < (_GLOBAL_FONT_END_OFFSET + _GLOBAL_FONT_END))
+                {
+                    usWidth += tOSD_TABLE_LANGUAGE_FONT_WIDTH[0][pData[2] + usOffset];
+                }
+                else
+                {
+                    if ((ucLangPlusOne < (WORD)(sizeof(tOSD_TABLE_LANGUAGE_FONT_WIDTH) / sizeof(tOSD_TABLE_LANGUAGE_FONT_WIDTH[0]))) &&
+                        (tOSD_TABLE_LANGUAGE_FONT_WIDTH[ucLangPlusOne] != NULL))
+                    {
+                        usWidth += tOSD_TABLE_LANGUAGE_FONT_WIDTH[ucLangPlusOne][pData[2] + usOffset - _GLOBAL_FONT_END - _GLOBAL_FONT_END_OFFSET];
+                    }
+                }
+
+                ucElementCount++;
+            }
+
+            pData[0] = usWidth / 12;
+            if ((usWidth % 12) > 0)
+            {
+                pData[0]++;
+            }
+
+            if (ucStrMode == _PUT_STRING_CENTER)
+            {
+                if (((usStrModeLen & 1) == 0 && (pData[0] & 1) == 1) ||
+                    ((usStrModeLen & 1) == 1 && (pData[0] & 1) == 0))
+                {
+                    pData[0]++;
+                }
+                pData[9] = ((pData[0] * 12) - usWidth) / 2;
+            }
+            else if (ucStrMode == _PUT_STRING_RIGHT)
+            {
+                pData[9] = (pData[0] * 12) - usWidth;
+            }
+
+            if (pData[9] != 0)
+            {
+                bCenterFlag = _TRUE;
+            }
+        }
+        ucElementCount = pData[0] = 0;
+
+        ucRotateSetting = SCALEROSD_FONT_ROTATE_SETTING_GET();
+        ucRotateSetting |= _BIT6;
+        ucRotateSetting &= ~(_BIT7 | _BIT5);
+        SCALEROSD_FONT_ROTATE_SETTING_SET(ucRotateSetting);
+
+        while ((*(pucArray + ucElementCount) != _END_) &&
+               (*(pucArray + ucElementCount) != _NEXT_LINE))
+        {
+            if ((ucStrMode == _PUT_STRING_LEFT_EMPTY_REMOVE) && (*(pucArray + ucElementCount) == _L))
+            {
+                ucElementCount++;
+                continue;
+            }
+
+            switch (*(pucArray + ucElementCount))
+            {
+                case _END_:
+                    break;
+
+                default:
+                    if (pData[5] == 0) 
+                    {
+                        pData[2] = *(pucArray + ucElementCount);
+                        if (pData[2] == _FONT_BLANK_PIXEL)
+                        {
+                            pData[5] = *(pucArray + ucElementCount + 1);
+                            pData[2] = _;
+                        }
+                        if (bCenterFlag == _TRUE)
+                        {
+                            pData[2] = _;
+                        }
+                    }
+                    else
+                    {
+                        pData[2] = _;
+                    }
+
+                    switch (pData[2])
+                    {
+                        case _FONT_SELECT_EXT1: PDATA_WORD(6) = _FONT_SELECT_OFFSET1; break;
+                        case _FONT_SELECT_EXT2: PDATA_WORD(6) = _FONT_SELECT_OFFSET2; break;
+                        default:                PDATA_WORD(6) = 0;                    break;
+                    }
+
+                    if (PDATA_WORD(6) != 0)
+                    {
+                        ucElementCount++;
+                        pData[2] = *(pucArray + ucElementCount);
+                    }
+
+                    if ((PDATA_WORD(6) + pData[2]) < (_GLOBAL_FONT_END_OFFSET + _GLOBAL_FONT_END))
+                    {
+                        if (pData[5] == 0)
+                        {
+                            pData[3] = tOSD_TABLE_LANGUAGE_FONT_WIDTH[0][pData[2] + PDATA_WORD(6)];
+                            if (bCenterFlag == _TRUE) { pData[3] = pData[9]; }
+                        }
+                        else
+                        {
+                            pData[3] = (pData[5] > 12) ? 12 : pData[5];
+                            pData[5] -= pData[3];
+                        }
+                    }
+                    else
+                    {
+                        if (pData[5] == 0)
+                        {
+                            pData[3] = tOSD_TABLE_LANGUAGE_FONT_WIDTH[ucLangPlusOne][pData[2] + PDATA_WORD(6) - _GLOBAL_FONT_END - _GLOBAL_FONT_END_OFFSET];
+                            if (bCenterFlag == _TRUE) { pData[3] = pData[9]; }
+                        }
+                        else
+                        {
+                            pData[3] = (pData[5] > 12) ? 12 : pData[5];
+                            pData[5] -= pData[3];
+                        }
+                    }
+
+                    if (pData[5] == 0)
+                    {
+                        if ((*(pucArray + ucElementCount) != _FONT_BLANK_PIXEL))
+                        {
+                            ucElementCount++;
+                            if (bCenterFlag == _TRUE) { ucElementCount = 0; }
+                        }
+                        else
+                        {
+                            ucElementCount += 2;
+                        }
+                    }
+                    break;
+            }
+
+            if (pData[6] == 0)
+            {
+                pData[6] = pData[3];
+            }
+
+            ucBaseRotateSetting = SCALEROSD_FONT_ROTATE_SETTING_GET() | _BIT3;
+            ucBaseRotateSetting &= ~_BIT2;
+            SCALEROSD_FONT_ROTATE_SETTING_SET(ucBaseRotateSetting);
+            SCALEROSD_FONT_ROTATE_1_2_BITS_SHIFT_SET(((pData[3] - pData[6]) << 4) | pData[6]);
+
+            pData[8] = ucElementCount;
+            pData[7] = pData[6];
+
+            // -----------------------------------------------------------------
+            // [안전 최적화 구간] WORD 스케일 유지 + 곱셈 연산 제거 및 시프트 처리
+            // -----------------------------------------------------------------
+            usFontIdxBase = 0; // 루프 돌면서 3씩 누적 (pData[0] * 3 곱셈 차단)
+
+            for (ucLoop0 = 0; ucLoop0 < 9; ucLoop0++)
+            {
+                SCALEROSD_FONT_ROTATE_SETTING_SET(ucBaseRotateSetting | _BIT0); 
+
+                // 무거운 '* 27' 곱셈을 WORD형 비트 시프트 연산으로 안전하고 빠르게 처리
+                if (PDATA_WORD(6) == _GLOBAL_FONT_END_OFFSET)
+                {
+                    if (pData[2] >= _GLOBAL_FONT_END)
+                    {
+                        usTableOffset = pData[2] + PDATA_WORD(6) - _GLOBAL_FONT_END - _GLOBAL_FONT_END_OFFSET;
+                        usTableOffset = (usTableOffset << 4) + (usTableOffset << 3) + (usTableOffset << 1) + usTableOffset + usFontIdxBase;
+                        
+                        SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucLangPlusOne, usTableOffset));
+                        SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucLangPlusOne, usTableOffset + 1));
+                        SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucLangPlusOne, usTableOffset + 2));
+                    }
+                    else
+                    {
+                        usTableOffset = pData[2] + PDATA_WORD(6);
+                        usTableOffset = (usTableOffset << 4) + (usTableOffset << 3) + (usTableOffset << 1) + usTableOffset + usFontIdxBase;
+                        
+                        SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(0, usTableOffset));
+                        SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(0, usTableOffset + 1));
+                        SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(0, usTableOffset + 2));
+                    }
+                }
+                else if (PDATA_WORD(6) > _GLOBAL_FONT_END_OFFSET)
+                {
+                    usTableOffset = pData[2] + PDATA_WORD(6) - _GLOBAL_FONT_END - _GLOBAL_FONT_END_OFFSET;
+                    usTableOffset = (usTableOffset << 4) + (usTableOffset << 3) + (usTableOffset << 1) + usTableOffset + usFontIdxBase;
+                    
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucLangPlusOne, usTableOffset));
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucLangPlusOne, usTableOffset + 1));
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucLangPlusOne, usTableOffset + 2));
+                }
+                else 
+                {
+                    usTableOffset = pData[2] + PDATA_WORD(6);
+                    usTableOffset = (usTableOffset << 4) + (usTableOffset << 3) + (usTableOffset << 1) + usTableOffset + usFontIdxBase;
+                    
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(0, usTableOffset));
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(0, usTableOffset + 1));
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(0, usTableOffset + 2));
+                }
+
+                ucElementCount = pData[8];
+                pData[6] = pData[7];
+
+                if ((pData[6] == 12) || (*(pucArray + ucElementCount) == _END_) || (*(pucArray + ucElementCount) == _NEXT_LINE))
+                {
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(0x00);
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(0x00);
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(0x00);
+                }
+
+                while ((pData[6] < 12) &&
+                       (*(pucArray + ucElementCount) != _END_) &&
+                       (*(pucArray + ucElementCount) != _NEXT_LINE))
+                {
+                    SCALEROSD_FONT_ROTATE_3_L_BITS_SHIFT_SET((pData[6] << 4) | pData[6]);
+
+                    if (pData[5] == 0)
+                    {
+                        pData[1] = *(pucArray + ucElementCount);
+                        if (pData[1] == _FONT_BLANK_PIXEL)
+                        {
+                            pData[5] = *(pucArray + ucElementCount + 1);
+                            pData[1] = _;
+                        }
+                    }
+                    else
+                    {
+                        pData[1] = _;
+                    }
+
+                    if ((pData[1] == _FONT_SELECT_EXT1) || (pData[1] == _FONT_SELECT_EXT2))
+                    {
+                        PDATA_WORD(7) = (pData[1] == _FONT_SELECT_EXT1) ? _FONT_SELECT_OFFSET1 : _FONT_SELECT_OFFSET2;
+                        ucElementCount++;
+                        pData[1] = *(pucArray + ucElementCount);
+                    }
+                    else
+                    {
+                        PDATA_WORD(7) = 0;
+                    }
+
+                    if ((PDATA_WORD(7) + pData[1]) < (_GLOBAL_FONT_END_OFFSET + _GLOBAL_FONT_END))
+                    {
+                        pData[3] = (pData[5] == 0) ? tOSD_TABLE_LANGUAGE_FONT_WIDTH[0][pData[1] + PDATA_WORD(7)] : ((pData[5] > 12) ? 12 : pData[5]);
+                    }
+                    else
+                    {
+                        pData[3] = (pData[5] == 0) ? tOSD_TABLE_LANGUAGE_FONT_WIDTH[ucLangPlusOne][pData[1] + PDATA_WORD(7) - _GLOBAL_FONT_END - _GLOBAL_FONT_END_OFFSET] : ((pData[5] > 12) ? 12 : pData[5]);
+                    }
+
+                    ucElementCount++;
+                    pData[6] += pData[3];
+
+                    ucNextTableOffset = (PDATA_WORD(7) == _GLOBAL_FONT_END_OFFSET && pData[1] < _GLOBAL_FONT_END) || (PDATA_WORD(7) < _GLOBAL_FONT_END_OFFSET) ? 0 : ucLangPlusOne;
+                    
+                    // 16비트 연산 정합성을 지키며 내부 인덱스 곱셈 제거
+                    usFontIdxNext = (ucNextTableOffset == 0) ? (pData[1] + PDATA_WORD(7)) : (pData[1] + PDATA_WORD(7) - _GLOBAL_FONT_END - _GLOBAL_FONT_END_OFFSET);
+                    usFontIdxNext = (usFontIdxNext << 4) + (usFontIdxNext << 3) + (usFontIdxNext << 1) + usFontIdxNext + usFontIdxBase;
+
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucNextTableOffset, usFontIdxNext));
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucNextTableOffset, usFontIdxNext + 1));
+                    SCALEROSD_FONT_ROTATE_INPUT_SET(OsdPutStringPropFontTable(ucNextTableOffset, usFontIdxNext + 2));
+                }
+
+                usTempIdx = usFontIdxBase;
+                pucpTemp[usTempIdx + 2] = SCALEROSD_FONT_ROTATE_ONPUT_GET();
+                pucpTemp[usTempIdx + 1] = SCALEROSD_FONT_ROTATE_ONPUT_GET();
+                pucpTemp[usTempIdx]     = SCALEROSD_FONT_ROTATE_ONPUT_GET();
+                
+                usFontIdxBase += 3; // 다음 루프용 오프셋 선계산 (+3)
+            }
+            pData[0] = ucLoop0; // 훼손된 pData[0] 값에 최종 루프 횟수 복원
+
+            if (pData[6] <= 12)
+            {
+                pData[6] = 0;
+            }
+            else
+            {
+                pData[6] = pData[6] - 12;
+                if (ucElementCount >= 1) { ucElementCount--; }
+                if (ucElementCount != 0)
+                {
+                    pData[1] = *(pucArray + ucElementCount - 1);
+                    if ((pData[1] == _FONT_SELECT_EXT1) || (pData[1] == _FONT_SELECT_EXT2))
+                    {
+                        ucElementCount--;
+                    }
+                }
+            }
+
+            OsdPropFontDataToSram(ucFptsSelect, pucpTemp, GET_OSD_ROTATE_STATUS());
+            pData[4]++;
+            bCenterFlag = _FALSE;
+
+        } // End of while(*(pArray + stringcnt) != _END_)
+
+        if (ucStrMode == _PUT_STRING_CENTER)
+        {
+            ucCol = ucColBackup + (((usStrModeLen - pData[4]) < 0) ? 0 : ((usStrModeLen - pData[4]) >> 1));
+        }
+        else if (ucStrMode == _PUT_STRING_RIGHT)
+        {
+            ucCol = ucColBackup + (((usStrModeLen - pData[4]) < 0) ? 0 : (usStrModeLen - pData[4]));
+        }
+
+        ScalerOsdSramAddressCount(ucRow, ucCol, _OSD_BYTEALL);
+        
+        ucOsdMode = _OSD_MODE_BYTE0;
+#if (_OSD_FONT_MODE_FORCE_256_511 == _ON)
+        ucOsdMode = _OSD_MODE_BYTE0_256_511;
+#endif
+
+        for (pData[0] = 0; pData[0] < pData[4]; pData[0]++)
+        {
+#if (_OSD_FONT_MODE_FORCE_256_511 != _ON)
+            ucOsdMode = (PDATA_WORD(5) < 256) ? _OSD_MODE_BYTE0 : _OSD_MODE_BYTE0_256_511;
+#endif
+            ScalerOsdDataPort(ucOsdMode);
+            ScalerOsdDataPort(PDATA_WORD(5) & 0xFF);
+            ScalerOsdDataPort(ucColor);
+
+            PDATA_WORD(5) = OsdPropSetFontPointer(ucFptsSelect, PDATA_WORD(5));
+        }
+
+        if (*(pucArray + ucElementCount) == _NEXT_LINE)
+        {
+            pucArray += ucElementCount + 1;
+            ucRow++;
+            bNextLineFlag = _TRUE;
+        }
+
+    } while (bNextLineFlag == _TRUE);
+
+    CLR_OSD_INFO_STRING_MODE();
+    CLR_OSD_INFO_STRING_MODE_LENGTH();
+}
+#endif
 //--------------------------------------------------
 // Description  :
 // Input Value  : None
