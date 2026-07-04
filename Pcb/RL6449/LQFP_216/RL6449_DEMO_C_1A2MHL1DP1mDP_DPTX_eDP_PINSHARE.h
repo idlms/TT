@@ -145,7 +145,7 @@
 // 0 ~ 3 (0: P5D3i<I>, 1: P5D3o<PP>, 2: P5D3o<OD>, 3: dptx_aux_ch_n_2
 
 // VTX_PLL_LOCK
-#define _PIN_145_OFF_REGION                     (4 & 0x0F) // Page 10-0x1C[2:0]
+#define _PIN_145_OFF_REGION                     (3 & 0x0F) // Page 10-0x1C[2:0]
 // 0 ~ 4 (0: P5D4i<I>, 1: P5D4o<PP>, 2: P5D4o<OD>, 3: dptx_hpd2_org, 4: vb1_lock_n,
 
 // EDPTX_AUX_P_1
@@ -157,7 +157,7 @@
 // 0 ~ 3 (0: P5D6i<I>, 1: P5D6o<PP>,  2: P5D6o<OD>, 3: dptx_aux_ch_n_1)
 
 // VTX_HPD
-#define _PIN_148_OFF_REGION                     (4 & 0x0F) // Page 10-0x1F[2:0]
+#define _PIN_148_OFF_REGION                     (3 & 0x0F) // Page 10-0x1F[2:0]
 // 0 ~ 4 (0: P5D7i<I>, 1: P5D7o<PP>, 2: P5D7o<OD>, 3: dptx_hpd1_org,
 //        4: vb1_htpd_n)
 

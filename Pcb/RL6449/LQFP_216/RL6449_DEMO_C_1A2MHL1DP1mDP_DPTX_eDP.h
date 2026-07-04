@@ -76,7 +76,7 @@
 //--------------------------------------------------
 #define _D3_INPUT_PORT_TYPE                     _D3_HDMI_PORT
 #define _D3_DDC_CHANNEL_SEL                     _DDC3
-#define _D3_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_256
+#define _D3_EMBEDDED_DDCRAM_MAX_SIZE            _EDID_SIZE_128
 #define _D3_EMBEDDED_DDCRAM_LOCATION            _EDID_TABLE_LOCATION_CODE
 #define _D3_EDID_EXTERNAL_EEPROM_MAX_SIZE       _EDID_EEPROM_SIZE_256
 												
@@ -344,15 +344,15 @@
 //--------------------------------------------------
 // Macro of Panel Power Up/Down
 //--------------------------------------------------
-// #define bPANELPOWER                             (MCU_FE19_PORT71_PIN_REG) // Pin_158, P7.1
+#define bPANELPOWER                             (MCU_FE19_PORT71_PIN_REG) // Pin_158, P7.1
 
-// #define _PANEL_CONTROL_ON                       0
-// #define _PANEL_CONTROL_OFF                      1
+#define _PANEL_CONTROL_ON                       0
+#define _PANEL_CONTROL_OFF                      1
 
-#define bPANELPOWER                             (MCU_FE24_PORT84_PIN_REG) // Pin_184, P8.4 
+// #define bPANELPOWER                             (MCU_FE24_PORT84_PIN_REG) // Pin_184, P8.4 
 
-#define _PANEL_CONTROL_ON                       1//0	// TCON VCC
-#define _PANEL_CONTROL_OFF                      0//1
+// #define _PANEL_CONTROL_ON                       1//0	// TCON VCC
+// #define _PANEL_CONTROL_OFF                      0//1
 
 #define PCB_PANEL_POWER(x)                      {\
                                                     bPANELPOWER = (x);\
@@ -645,6 +645,7 @@
 
 #define PCB_AMP_MUTE(x)                         {\
                                                     bPCBAMPMUTECONTROL = (x);\
+                                                    ScalerDebugMessage("bPCBAMPMUTECONTROL",bPCBAMPMUTECONTROL);\
                                                 }
 #define PCB_AMP_MUTE_DETECT()              		(bPCBAMPMUTECONTROL)
 	
@@ -805,7 +806,7 @@
 //--------------------------------------------------
 // Macro of LED On/Off
 //--------------------------------------------------
-#define bLED2                                   (MCU_FE28_PORT90_PIN_REG) // Pin_194, P9.0//(MCU_FE24_PORT84_PIN_REG) // Pin_184, P8.4
+#define bLED2                                   (MCU_FE24_PORT84_PIN_REG) // Pin_184, P8.4
 #define bLED1                                   (MCU_FE28_PORT90_PIN_REG) // Pin_194, P9.0
 
 #define _LED_ON                                 1
@@ -902,7 +903,7 @@
 
 //--------------------------------------
 
-#if 0
+#if 1
 #define PCB_KEY_STATE(ucV0, ucV1,\
                       ucV2, ucV3, ucKeyState)   {\
                                                     if((0x88 <= (ucV1)) && ((ucV1) < 0x95))\

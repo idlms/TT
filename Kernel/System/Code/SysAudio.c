@@ -293,7 +293,7 @@ void SysAudioPowerProc(EnumPowerAction enumSwitch)
 
             // Mute Audio
             SysAudioOutputProc(_DISABLE);
-
+            
             // Reset Digital Audio
             ScalerAudioDigitalReset(ScalerAudioGetDigitalAudioPortMapping());
 
@@ -371,19 +371,20 @@ void SysAudioOutputProc(bit bEnable)
 {
     if(bEnable == _DISABLE)
     {
-        SysAudioMuteProc(_ON);
-
-#if(_AUDIO_OSD_MUTE_SEPARATE_CONTROL_SUPPORT == _ON)
-        UserInterfaceAudioExternalCodecProc(_DISABLE);
-#endif
-    }
-    else
-    {
 #if(_AUDIO_OSD_MUTE_SEPARATE_CONTROL_SUPPORT == _ON)
         UserInterfaceAudioExternalCodecProc(_ENABLE);
 #endif
 
         SysAudioMuteProc(_OFF);
+    }
+    else
+    {
+
+        SysAudioMuteProc(_ON);
+
+#if(_AUDIO_OSD_MUTE_SEPARATE_CONTROL_SUPPORT == _ON)
+        UserInterfaceAudioExternalCodecProc(_DISABLE);
+#endif
     }
 }
 

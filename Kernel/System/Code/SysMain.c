@@ -220,7 +220,7 @@ void main(void)
 	
         while(SysMainSytemPowerDetect() == _TRUE)
         {
-            //UserDipSwitchHandler();
+            UserDipSwitchHandler();
 			UserInterfaceKeyHandler();
 			SysPowerHandler();
 			SysJudgeHandler();

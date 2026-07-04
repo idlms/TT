@@ -5316,13 +5316,13 @@ void UserInterfaceAdjustAudioAmpMuteProc(bit bMute)
     {
         if (PCB_HEADPHONE_JACK_DETECT() == _HP_JACK_ON) //  Headphone Detect
         {
-            PCB_AMP_MUTE(_AMP_MUTE_ON);
+            PCB_AMP_MUTE((bMute == _ON) ? _AMP_MUTE_ON : _AMP_MUTE_OFF);
             PCB_AMP_SHUTDOWN(_AMP_SHUTDOWN_ON);
         }
         else
         {
 
-            PCB_AMP_MUTE(bMute);
+            PCB_AMP_MUTE((bMute == _ON) ? _AMP_MUTE_ON : _AMP_MUTE_OFF);
             PCB_AMP_SHUTDOWN(bMute); //  Audio AMP Control
         }
     }

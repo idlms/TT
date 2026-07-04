@@ -25,7 +25,7 @@
 //--------------------------------------------------
 // DDC Channel Select
 //--------------------------------------------------
-#define _DEBUG_DDC_CHANNEL_SEL                      _DDC3//_DDC2//_VGA_DDC//_DDC3//_PCB_DEBUG_DDC 	// Debug Channel ( _DDC2 : HDMI2 )( _DDC3 : HDMI1 ) 240725 ( _VGA_DDC : VGA ) 
+#define _DEBUG_DDC_CHANNEL_SEL                      _DDC2//_DDC2//_VGA_DDC//_DDC3//_PCB_DEBUG_DDC 	// Debug Channel ( _DDC2 : HDMI2 )( _DDC3 : HDMI1 ) 240725 ( _VGA_DDC : VGA ) 
 
 //--------------------------------------------------
 // RTD Tool IIC Debug by UserInterface Function
@@ -35,7 +35,7 @@
 //--------------------------------------------------
 // Debug Message Supported
 //--------------------------------------------------
-#define _DEBUG_MESSAGE_SYSTEM                       _OFF//_OFF	//  Debug(NewCtrlReg , I2C Through IC) & Debug message
+#define _DEBUG_MESSAGE_SYSTEM                       _ON//_OFF	//  Debug(NewCtrlReg , I2C Through IC) & Debug message
 #define _DEBUG_MESSAGE_SCALER                       _OFF
 #define _DEBUG_MESSAGE_ANALOG                       _OFF
 #define _DEBUG_MESSAGE_DIGITAL                      _OFF
@@ -54,7 +54,7 @@
 #define _DEBUG_MESSAGE_MEMORY_PHASE_CAL             _OFF
 #define _DEBUG_MESSAGE_FRAME_SYNC                   _OFF
 #define _DEBUG_MESSAGE_FRC                          _OFF
-#define _DEBUG_MESSAGE_OSD                          _ON
+#define _DEBUG_MESSAGE_OSD                          _OFF
 #define _DEBUG_MESSAGE_IR                           _OFF
 #define _DEBUG_MESSAGE_USB_COMM                     _OFF
 #define _DEBUG_MESSAGE_USB_EHCI                     _OFF

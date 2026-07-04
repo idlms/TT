@@ -21,7 +21,7 @@
 
 #elif(_D0_INPUT_PORT_TYPE == _D0_DP_PORT)
 
-#define _EDID_D0_TYPE_SEL                               _EDID_DP_1920_1080_60HZ
+#define _EDID_D0_TYPE_SEL                               _EDID_DP_3840_2160_60HZ_RTK
 
 #endif
 

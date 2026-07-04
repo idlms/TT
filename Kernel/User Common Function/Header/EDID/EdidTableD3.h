@@ -10,13 +10,13 @@
 #if(_D3_HDMI_2_0_SUPPORT == _ON)
 
 #if(_HDMI_2_0_YCBCR420_SUPPORT == _ON)
-#define _EDID_D3_TYPE_SEL                               _EDID_HDMI2_3840_2160_60HZ_NO_HFVSDB_WITH_420
+#define _EDID_D3_TYPE_SEL                               _EDID_DVI_1680_1050_60HZ
 #else
-#define _EDID_D3_TYPE_SEL                               _EDID_HDMI_1920_1080_60HZ
+#define _EDID_D3_TYPE_SEL                               _EDID_DVI_1680_1050_60HZ
 #endif
 
 #else
-#define _EDID_D3_TYPE_SEL                               _EDID_HDMI_1920_1080_60HZ
+#define _EDID_D3_TYPE_SEL                               _EDID_DVI_1680_1050_60HZ
 #endif
 
 #endif
